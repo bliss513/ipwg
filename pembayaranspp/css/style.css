@@ -1,0 +1,75 @@
+/* Styling untuk body dan login container */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f9;
+    font-family: Arial, sans-serif;
+}
+
+.login-container {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Styling untuk form */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Styling untuk label */
+label {
+    margin-bottom: 8px;
+    color: #555;
+    text-align: left;
+    width: 100%;
+}
+
+/* Styling untuk input */
+input[type="text"],
+input[type="password"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Styling untuk button */
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #5c67f2;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Hover effect untuk button */
+button:hover {
+    background-color: #4a54e1;
+}
+
+/* Styling untuk link jika ada */
+a {
+    display: block;
+    margin-top: 10px;
+    color: #5c67f2;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
