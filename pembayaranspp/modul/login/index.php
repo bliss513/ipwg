@@ -19,8 +19,8 @@ if (isset($_SESSION['is_login'])) {
     <div class="login">
 
       <div class="avatar">
-        <img src="assets/img/1.png" style="width: 150px;" alt="Avatar">
-      </div>
+        <img src="assets/img/logoip.png" style="width: 150px;" alt="Avatar">
+      </div> 
 
       <h2><b>pembayaran spp</b></h2>
       <br>
