@@ -22,7 +22,8 @@ if (isset($_SESSION['is_login'])) {
         <img src="assets/img/logoip.png" style="width: 150px;" alt="Avatar">
       </div> 
 
-      <h2><b>pembayaran spp</b></h2>
+      <h2><b>PEMBAYARAN SPP</b></h2>
+      <h3>SMK MA'ARIF WALISONGO KAJORAN</h3>
       <br>
       <p>Masukan <b>Username</b> Dan <b>Password</b></p>
 
