@@ -320,7 +320,6 @@
                 <tbody>
                     <?php
                         include "../assets/knk/koneksi.php";
-
                         $no = 1;
                         $data = mysqli_query($koneksi, "SELECT * FROM tb_mhs");
                         while ($hasil = mysqli_fetch_array($data)) {
