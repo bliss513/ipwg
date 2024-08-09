@@ -53,7 +53,7 @@ if (!isset($_SESSION['is_login'])) {
             <li class="nav-item d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-white font-weight-bold px-0">
                 <i class="fa fa-user me-sm-1"></i>
-                <span class="d-sm-inline d-none">Sign In</span>
+                <a onclick="return confirm('Apakah Anda Yakin Ingin keluar dari aplikasi ini?')" href="/ipwg/aplikasi_spp/modul/login/proses_logout.php" class="btn btn-danger"> log out </a> 
               </a>
             </li>
             <li class="nav-item d-xl-none ps-3 d-flex align-items-center">

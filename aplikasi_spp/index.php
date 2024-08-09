@@ -33,7 +33,7 @@ if (!isset($_SESSION['is_login'])) {
             <li class="nav-item d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-white font-weight-bold px-0">
                 <i class="fa fa-user me-sm-1"></i>
-                <a onclick="return confirm('Apakah Anda Yakin Ingin keluar dari aplikasi ini?')" href="aplikasi_spp" class="btn btn-danger"> log out </a> 
+                <a onclick="return confirm('Apakah Anda Yakin Ingin keluar dari aplikasi ini?')" href="/ipwg/aplikasi_spp/modul/login/proses_logout.php" class="btn btn-danger"> log out </a> 
              
               </a>
             </li>
@@ -476,7 +476,7 @@ if (!isset($_SESSION['is_login'])) {
                       <i class="ni ni-box-2 text-white opacity-10"></i>
                     </div>
                     <div class="d-flex flex-column">
-                      <h6 class="mb-1 text-dark text-sm">Error logs</h6>
+                      <h6 class="mb-1 text-dark text-sm"></h6>
                       <span class="text-xs">1 is active, <span class="font-weight-bold">40 closed</span></span>
                     </div>
                   </div>

@@ -9,6 +9,6 @@ session_unset();
 session_destroy();
 
 // Redirect ke halaman login atau halaman lain
-header("Location:/ipwg/aplikasi_spp");
+header("Location: ./");
 exit();
-?>
+
