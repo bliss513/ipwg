@@ -1,5 +1,5 @@
 <?php 
-$root_app = '/aplikasi_spp';
+$root_app = '/ipwg/aplikasi_spp';
 ?>
 
 <aside class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 " id="sidenav-main">
@@ -30,11 +30,11 @@ $root_app = '/aplikasi_spp';
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="index_siswa.php">
+          <a class="nav-link" href="<?= $root_app ?>/ipwg/aplikasi_spp">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-credit-card text-success text-sm opacity-10"></i>
+              <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
             </div>
-            <span class="nav-link-text ms-1">Laporan</span>
+            <span class="nav-link-text ms-1">log out</span>
           </a>
         </li>
       </ul>
