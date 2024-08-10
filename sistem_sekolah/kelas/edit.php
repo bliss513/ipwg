@@ -22,24 +22,25 @@
 		<label>nama_kelas</label><br>
 		<input type="text" name="nama_kelas" value="<?php echo $hasil ['nama_kelas']?>"><br>
 		<br>
-		<button type="submit" name="simpan">Simpan</button> || <button><a href="index_siswa.php">kembali</a></button>
+		<button type="submit" name="simpan">Simpan</button> || <button><a href="index_kelas.php">kembali</a></button>
 	</form>
-	<?php } ?>
+	<?php 
+} 
+?>
 </body>
 </html>
 <?php
     include"../config/koneksi.php";
 
     if(isset($_POST['simpan']))
-    	$id= $_POST['id'];
     	$username= $_POST['kd_kelas'];
     	$password= $_POST['tingkat'];
     	$nip= $_POST['nama_kelas'];
     	$sql = "UPDATE kelas SET id='$id',  kd_kelas='$kd_kelas',  tingkat='$tingkat',  nama_kelas='$nama_kelas',   
     	//cek apakah proses simpan berhasil
     	if(mysqli_query($koneksi,$sql)){
-    	//jika berhasil, redirect ke index_siswa.php
-    		header('location:index_siswa.php');
+    	//jika berhasil, redirect ke index_kelas.php
+    		header('location:index_kelas.php');
     	}else{
     		//jika tidak berhasil
     		echo "Oupss....Maaf proses penyimpan data tidak berhasil";

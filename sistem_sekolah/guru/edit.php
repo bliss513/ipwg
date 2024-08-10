@@ -42,7 +42,7 @@
 		<label>foto</label><br>
 		<input type="text" name="foto" value="<?php echo $hasil ['foto']?>"><br>
 		<br>
-		<button type="submit" name="simpan">Simpan</button> || <button><a href="index.php">kembali</a></button>
+		<button type="submit" name="simpan">Simpan</button> || <button><a href="index_guru.php">kembali</a></button>
 	</form>
 	<?php } ?>
 </body>
@@ -66,10 +66,11 @@
         $hp = $_POST['hp'];
         $foto = $_POST['foto'];
     	$sql = "UPDATE guru SET id='$id',  username='$username',  password='$password',  nip='$nip',  sekolah='$sekolah',  nama_guru='$nama_guru',  jenis_kelamin='$jenis_kelamin',  tempat_lahir='$tempat_lahir',  tanggal_lahir='$tanggal_lahir',  nik='$nik',  pengawas_bidang_studi='$pengawas_bidang_studi', alamat='$alamat', hp='$hp',  foto='$foto', 
-    	//cek apakah proses simpan berhasil
+    	
+			//cek apakah proses simpan berhasil
     	if(mysqli_query($koneksi,$sql)){
-    	//jika berhasil, redirect ke index_guru.php
-    		header('location:index_guru.php');
+    	//jika berhasil, redirect ke index_pinjaman.php
+    		header('location:index_pinjaman.php');
     	}else{
     		//jika tidak berhasil
     		echo "Oupss....Maaf proses penyimpan data tidak berhasil";
