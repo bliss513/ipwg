@@ -1,7 +1,7 @@
 <?php 
 session_start();
 if (!isset($_SESSION['is_login'])) {
-  header('Location: /aplikasi_spp/modul/login');
+  header('Location: /aplikasi_spp/modul/login'); 
 }
 ?>
 

@@ -1,0 +1,78 @@
+<?php
+ include"../config/koneksi.php";
+ $id= $_GET['id'];
+ $data= mysqli_query($koneksi,"SELECT * FROM guru where id='$id'");
+ while ($hasil= mysqli_fetch_array($data)){
+
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Mengubah Data Mahasiswa</title>
+</head>
+<body>
+	<h1>Ubah Data</h1>
+	<form method="post" action="">
+	    <label>Id</label><br>
+		<input type="text" name="id" value="<?php echo $hasil ['id']?>" readonly><br>
+		<label>username</label><br>
+		<input type="text" name="username" value="<?php echo $hasil ['username']?>"><br>
+		<label>password</label><br>
+		<input type="text" name="password" value="<?php echo $hasil ['password']?>"><br>
+		<label>nip</label><br>
+		<input type="text" name="nip" value="<?php echo $hasil ['nip']?>"><br>
+		<label>sekolah</label><br>
+		<input type="text" name="sekolah" value="<?php echo $hasil ['sekolah']?>"><br>
+		<label>nama guru</label><br>
+		<input type="text" name="nama_guru" value="<?php echo $hasil ['nama_guru']?>"><br>
+		<label>jenis kelamin</label><br>
+		<input type="text" name="jenis_kelamin" value="<?php echo $hasil ['jenis_kelamin']?>"><br>
+		<label>tempat lahir</label><br>
+		<input type="text" name="tempat_lahir" value="<?php echo $hasil ['tempat_lahir']?>"><br>
+		<label>tanggal lahir</label><br>
+		<input type="text" name="tanggal_lahir" value="<?php echo $hasil ['tanggal_lahir']?>"><br>
+	   <label>nik</label><br>
+		<input type="text" name="nik" value="<?php echo $hasil ['nik']?>"><br>
+		<label>pengawasbidang studi</label><br>
+		<input type="text" name="pengawas_bidang_studi" value="<?php echo $hasil ['pengawas_bidang_studi']?>"><br>
+		<label>alamat</label><br>
+		<input type="text" name="alamat" value="<?php echo $hasil ['alamat']?>"><br>
+		<label>hp</label><br>
+		<input type="text" name="hp" value="<?php echo $hasil ['hp']?>"><br>
+		<label>foto</label><br>
+		<input type="text" name="foto" value="<?php echo $hasil ['foto']?>"><br>
+		<br>
+		<button type="submit" name="simpan">Simpan</button> || <button><a href="index.php">kembali</a></button>
+	</form>
+	<?php } ?>
+</body>
+</html>
+<?php
+    include"../config/koneksi.php";
+
+    if(isset($_POST['simpan']))
+    	$id= $_POST['id'];
+    	$username= $_POST['username'];
+    	$password= $_POST['password'];
+    	$nip= $_POST['nip'];
+    	$sekolah= $_POST['sekolah'];
+    	$nama_guru= $_POST['nama_guru'];
+    	$jenis_kelamin = $_POST['jenis_kelamin'];
+    	$tempat_lahir= $_POST['tempat_lahir'];
+    	$tanggal_lahir= $_POST['tanggal_lahir'];
+        $nik = $_POST['nik'];
+        $pengawas_bidang_studi = $_POST['pengawas_bidang_studi'];
+        $alamat  = $_POST['alamat'];
+        $hp = $_POST['hp'];
+        $foto = $_POST['foto'];
+    	$sql = "UPDATE guru SET id='$id',  username='$username',  password='$password',  nip='$nip',  sekolah='$sekolah',  nama_guru='$nama_guru',  jenis_kelamin='$jenis_kelamin',  tempat_lahir='$tempat_lahir',  tanggal_lahir='$tanggal_lahir',  nik='$nik',  pengawas_bidang_studi='$pengawas_bidang_studi', alamat='$alamat', hp='$hp',  foto='$foto', 
+    	//cek apakah proses simpan berhasil
+    	if(mysqli_query($koneksi,$sql)){
+    	//jika berhasil, redirect ke index.php
+    		header('location:index.php');
+    	}else{
+    		//jika tidak berhasil
+    		echo "Oupss....Maaf proses penyimpan data tidak berhasil";
+    	}
+    }
+?>
