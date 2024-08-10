@@ -68,8 +68,8 @@
     	$sql = "UPDATE guru SET id='$id',  username='$username',  password='$password',  nip='$nip',  sekolah='$sekolah',  nama_guru='$nama_guru',  jenis_kelamin='$jenis_kelamin',  tempat_lahir='$tempat_lahir',  tanggal_lahir='$tanggal_lahir',  nik='$nik',  pengawas_bidang_studi='$pengawas_bidang_studi', alamat='$alamat', hp='$hp',  foto='$foto', 
     	//cek apakah proses simpan berhasil
     	if(mysqli_query($koneksi,$sql)){
-    	//jika berhasil, redirect ke index.php
-    		header('location:index.php');
+    	//jika berhasil, redirect ke index_guru.php
+    		header('location:index_guru.php');
     	}else{
     		//jika tidak berhasil
     		echo "Oupss....Maaf proses penyimpan data tidak berhasil";

@@ -18,7 +18,7 @@
             $foto = $_POST['foto'];
             $sql = "INSERT INTO guru(id, username, password, nip, sekolah, nama_guru, jenis_kelamin, tempat_lahir, tanggal_lahir, nik, pengawas_bidang_studi, alamat, hp, foto,)VALUES('$id','$username','$password','$nip','$sekolah','$nama_guru', '$jenis_kelamin','$tempat_lahir','$tanggal_lahir','$nik','$pengawas_bidang_studi','$alamat','$hp','$foto')";
             if(mysqli_query($koneksi,$sql)){
-                header('location:index.php');
+                header('location:index_guru.php');
             }else{
                 echo "Oupss....Maaf proses penyimpan data tidak berhasil";
             }

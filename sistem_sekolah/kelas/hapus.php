@@ -4,7 +4,7 @@
  $data= mysqli_query($koneksi,"DELETE FROM kelas where id='$id'");
 
 if($data){
-    header('location:index_siswa.php');
+    header('location:index_kelas.php');
 }else{
     echo "Maaf Data Tidak Berhasil";
 }
