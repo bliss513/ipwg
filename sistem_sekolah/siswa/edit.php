@@ -1,7 +1,7 @@
 <?php
- include"koneksi.php";
+ include"../config/koneksi.php";
  $id= $_GET['id'];
- $data= mysqli_query($koneksi,"SELECT * FROM mahasiswa where id='$id'");
+ $data= mysqli_query($koneksi,"SELECT * FROM siswa where id='$id'");
  while ($hasil= mysqli_fetch_array($data)){
 
 ?>
@@ -13,7 +13,7 @@
 <body>
 	<h1>Ubah Data</h1>
 	<form method="post" action="">
-		 <label>Id</label><br>
+		<label>Id</label><br>
 		<input type="text" name="id" value="<?php echo $hasil ['id']?>"><br>
 		<label>username</label><br>
 		<input type="text" name="username"value="<?php echo $hasil ['username']?>"><br>
@@ -60,7 +60,7 @@
 </body>
 </html>
 <?php
-    include"koneksi.php";
+    include"../config/koneksi.php";
 
     if(isset($_POST['simpan'])){
     	$id= $_POST['id'];

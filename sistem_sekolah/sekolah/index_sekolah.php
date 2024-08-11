@@ -16,17 +16,9 @@
  <tr style="background-color: pink;">
     <th> No. </th>
     <th> Id</th>
-    <th> NIS</th>
     <th> Nama</th>
-    <th> Kelas </th>
-    <th> Jurusan</th>
-    <th> Jenis Kelamin </th>
-    <th> Tanggal Bayar </th>
-    <th> Jumlah Bayar </th>
-    <th> Keterangan </th>
-
-    <th> aksi </th>
-
+    <th> alamat </th>
+    <th> logo</th>
 </tr>
   </thead>
   <tbody>
@@ -41,15 +33,9 @@
     <tr> 
         <td><?php echo $no++; ?></td>
         <td><?php echo $hasil['id'] ?></td>
-        <td><?php echo $hasil['nis'] ?></td>
         <td><?php echo $hasil['nama'] ?></td>
-        <td><?php echo $hasil['kelas'] ?></td>
-        <td><?php echo $hasil['jurusan'] ?></td>
-        <td><?php echo $hasil['jenis_kelamin'] ?></td>
-        <td><?php echo $hasil['tanggal_bayar'] ?></td>
-        <td><strong><?php echo $hasil['jumlah_bayar'] ?></strong></td>
-        <td><?php echo $hasil['keterangan'] ?></td>
-
+        <td><?php echo $hasil['alamat'] ?></td>
+        <td><?php echo $hasil['logo'] ?></td>
         <td align="center">
             <a href="ubah.php?id=<?php echo$hasil['id'] ?>"> Ubah </a> ||
             <a onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data ini?')  " href="hapus.php?id=<?php echo$hasil['id'] ?>"> Hapus </a> 
@@ -64,10 +50,10 @@
     $row = mysqli_fetch_assoc($tampil);                
     $total = $row['total_siswa'];
 ?>
-<tr>
+<!-- <tr>
     <td colspan="8" style="text-align:center;"><strong>Total</strong></td>
     <td colspan="3"><strong>Rp.<?php echo $total; ?></strong></td>
-</tr>
+</tr> -->
 
     
 </tfoot>
