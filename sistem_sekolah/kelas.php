@@ -65,8 +65,8 @@
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="button.html" class="dropdown-item">Data siswa</a>
                             <a href="typography.html" class="dropdown-item">Data guru</a>
-                            <a href="kelas.php" class="dropdown-item">kelas</a>
-                            <a href="element.html" class="dropdown-item active">buku </a>
+                            <a href="kelas.php" class="dropdown-item active">kelas</a>
+                            <a href="element.html" class="dropdown-item">buku </a>
                         </div>
                     </div>
                     <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>
