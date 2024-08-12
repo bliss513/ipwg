@@ -27,6 +27,13 @@
     <th> hp</th>
     <th> email</th>
     <th> foto</th>
+    <th> nama_wali</th>
+    <th> tahun_lahir_wali</th>
+    <th> pendidikan_wali</th>
+    <th> pekerjaan_wali</th>
+    <th> penghasilan_wali</th>
+    <th> angkatan</th>
+    <th> spp_nominal</th>
 </tr>
   </thead>
   <tbody>
@@ -41,9 +48,24 @@
     <tr> 
         <td><?php echo $no++; ?></td>
         <td><?php echo $hasil['id'] ?></td>
+        <td><?php echo $hasil['username'] ?></td>
+        <td><?php echo $hasil['password'] ?></td>
         <td><?php echo $hasil['nama'] ?></td>
+        <td><?php echo $hasil['jenis_kelamin'] ?></td>
+        <td><?php echo $hasil['nisn'] ?></td>
+        <td><?php echo $hasil['tempat_lahir'] ?></td>
+        <td><?php echo $hasil['tanggal_lahir'] ?></td>
         <td><?php echo $hasil['alamat'] ?></td>
-        <td><?php echo $hasil['logo'] ?></td>
+        <td><?php echo $hasil['hp'] ?></td>
+        <td><?php echo $hasil['email'] ?></td>
+        <td><?php echo $hasil['foto'] ?></td>
+        <td><?php echo $hasil['nama_wali'] ?></td>
+        <td><?php echo $hasil['tahun_lahir_wali'] ?></td>
+        <td><?php echo $hasil['pendidikan_wali'] ?></td>
+        <td><?php echo $hasil['pekerjaan_wali'] ?></td>
+        <td><?php echo $hasil['penghasilan_wali'] ?></td>
+        <td><?php echo $hasil['angkatan'] ?></td>
+        <td><?php echo $hasil['spp_nominal'] ?></td>
         <td align="center">
             <a href="ubah.php?id=<?php echo$hasil['id'] ?>"> Ubah </a> ||
             <a onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data ini?')  " href="hapus.php?id=<?php echo$hasil['id'] ?>"> Hapus </a> 
