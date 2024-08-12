@@ -13,36 +13,44 @@
 <body>
 	<h1>Ubah Data</h1>
 	<form method="post" action="">
-		 <label>Id</label><br>
-		<input type="text" name="id" value="<?php echo $hasil ['id']?>" readonly><br>
-		<label>nis</label><br>
-		<input type="text" name="nis"value="<?php echo $hasil ['nis']?>"><br>
-		<label>nama</label><br>
-		<input type="text" name="nama"value="<?php echo $hasil ['nama']?>"><br>
-		<label>kelas</label><br>
-		<select name="kelas" id="kelas"><br>
-                <option value="X">X</option>
-                <option value="XI">XI</option>
-                <option value="XII">XII</option>
+		     <label>username</label><br>
+		      <label>password</label><br>
+	    	<input type="text" name="password"value="<?php echo $hasil ['password']?>"><br>
+              <label>nama</label><br>
+		      <input type="text" name="nama"value="<?php echo $hasil ['nama']?>"><br>
+	       	 <label>jenis_kelamin</label><br>
+		       <select name="jenis_kelamin" id="jenis_kelamin"><br>
+                <option value="L">L</option>
+                <option value="P">P</option>
                 </select><br>
-                <label>jurusan</label><br>
-		<select name="jurusan" id="jurusan"><br>
-                <option value="PPLG">PPLG</option>
-                <option value="BCF">BCF</option>
-                <option value="MPLB A">MPLB A</option>
-                <option value="MPLB B">MPLB B</option>
-                </select><br>
-		<label>jenis kelamin</label><br>
-		<input type="radio" name="jenis_kelamin"value="laki-laki">
-		<label for="laki-laki">laki-laki</label><br>
-		<input type="radio" name="jenis_kelamin"value="perempuan">
-		<label for="perempuan">perempuan</label><br>
-		<label>tanggal bayar</label><br>
-		<input type="date" name="tanggal bayar" value="<?php echo $hasil ['tanggal_bayar']?>"><br>
-                <label>jumlah bayar</label><br>
-		<input type="number" name="jumlah bayar" value="<?php echo $hasil ['jumlah_bayar']?>"><br>
-		<label>keterangan</label><br>
-		<input type="text" name="keterangan" value="<?php echo $hasil ['keterangan']?>"><br>
+                <label>nisn</label><br>
+                <input type="text" name="nisn"value="<?php echo $hasil ['nisn']?>"><br>
+                <label>tempat_lahir</label><br>
+                <input type="text" name="tempat_lahir"value="<?php echo $hasil ['tempat_lahir']?>"><br>
+                <label>tanggal_lahir</label><br>
+                <input type="date" name="tanggal_lahir" value="<?php echo $hasil ['tanggal_lahir']?>"><br>
+                <label>alamat</label><br>
+		        <input type="text" name="alamat"value="<?php echo $hasil ['alamat']?>"><br>
+                <label>hp</label><br>
+		        <input type="text" name="hp"value="<?php echo $hasil ['hp']?>"><br>
+                <label>email</label><br>
+		        <input type="text" name="email"value="<?php echo $hasil ['email']?>"><br>
+                <label>foto</label><br>
+		        <input type="file" name="foto"value="<?php echo $hasil ['foto']?>"><br>
+                <label>nama_wali</label><br>
+		       <input type="text" name="nama_wali"value="<?php echo $hasil ['nama_wali']?>"><br>
+               <label>tahun_lahir_wali</label><br>
+               <input type="text" name="tahun_lahir_wali"value="<?php echo $hasil ['tahun_lahir_wali']?>"><br>
+               <label>pendidikan_wali</label><br>
+		        <input type="text" name="pendidikan_wali"value="<?php echo $hasil ['pendidikan_wali']?>"><br>
+                <label>pekerjaan_wali</label><br>
+		        <input type="text" name="pekerjaan_wali"value="<?php echo $hasil ['pekerjaan_wali']?>"><br>
+                <label>penghasilan_wali</label><br>
+		        <input type="text" name="penghasilan_wali"value="<?php echo $hasil ['penghasilan_wali']?>"><br>
+                <label>angkatan</label><br>
+		        <input type="text" name="angkatan"value="<?php echo $hasil ['angkatan']?>"><br>
+                <label>spp_nominal</label><br>
+		        <input type="text" name="spp_nominal"value="<?php echo $hasil ['spp_nominal']?>"><br>
 		<br>
 		<button type="submit" name="simpan">Simpan</button> || <button><a href="index.php">kembali</a></button>
 	</form>
