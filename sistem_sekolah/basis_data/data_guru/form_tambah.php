@@ -26,7 +26,8 @@
 		<input type="text" name="alamat"><br>
         <label>hp</label><br>
 		<input type="text" name="hp"><br>
-		<button type="submit" name="simpan">Simpan</button> || <button><a href="index.php">kembali</a></button>
+		<button type="submit" name="simpan">Simpan</button> |
+		| <button><a href="../../guru.php">kembali</a></button>
 	</form>
 </body>
 </html>

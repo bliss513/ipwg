@@ -13,9 +13,9 @@
             $alamat= $_POST['alamat'];
             $hp= $_POST['hp'];
 
-            $sql = "INSERT INTO mahasiswa(id,username,password,nip,sekolah,nama_guru,jenis_kelamin,nik,pengawas_bidang_studi,alamat,hp) VALUES('$id','$username','$password','$nip','$sekolah','$nama_guru','$jenis_kelamin','$tempat_lahir','$tanggal_lahir','$nik','$pengawas_bidang_studi','$alamat','$hp')";
+            $sql = "INSERT INTO mahasiswa(id,username,password,nip,sekolah,nama_guru,nik,pengawas_bidang_studi,alamat,hp) VALUES('$id','$username','$password','$nip','$sekolah','$nama_guru','$tempat_lahir','$tanggal_lahir','$nik','$pengawas_bidang_studi','$alamat','$hp')";
             if(mysqli_query($koneksi,$sql)){
-                header('location:index.php');
+                header('location:../../guru.php');
             }else{
                 echo "Oupss....Maaf proses penyimpan data tidak berhasil";
             }

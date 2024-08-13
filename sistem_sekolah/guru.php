@@ -101,6 +101,15 @@
                             </tbody>       
                             </tbody>
                         </table>
+                        <div class="bg-light rounded h-90 p-3">
+                            <a href ="basis_data/data_guru/form_tambah.php" style="background-color: #4CAF50; color: white; padding: 5px 10px; border: none; border-radius: 5px; cursor: pointer;">tambah</a>
+                            <a href="basis_data/data_guru/edit.php" style="background-color: #007BFF; color: white; padding: 5px 10px; border: none; border-radius: 5px; cursor: pointer;">edit</a>
+                            <a href="basis_data/data_guru/hapus.php" style="background-color: #f44336; color: white; padding: 5px 10px; border: none; border-radius: 5px; cursor: pointer;">hapus</a>
+
+
+                            <div>
+                    </div>
+                </div>
                     </div>
                 </div>
             </div>  
