@@ -21,14 +21,10 @@
     <th> nip</th>
     <th> sekolah</th>
     <th> nama guru</th>
-    <th> jenis kelamin</th>
-    <th> tempat lahir </th>
-    <th> tanggal lahir</th>
     <th> nik</th>
     <th> pengawas bidang studi</th>
     <th> alamat</th>
     <th> hp </th>
-    <th> foto</th>
  </tr>
   </thead>
   <tbody>
@@ -48,14 +44,10 @@
         <td><?php echo $hasil['nip'] ?></td>
         <td><?php echo $hasil['sekolah'] ?></td>
         <td><?php echo $hasil['nama_guru'] ?></td>
-        <td><?php echo $hasil['jenis_kelamin'] ?></td>
-        <td><?php echo $hasil['tempat_lahir'] ?></td>
-        <td><?php echo $hasil['tanggal_lahir'] ?></td>
         <td><?php echo $hasil['nik'] ?></td>
         <td><?php echo $hasil['pengawas_bidang_studi'] ?></td>
         <td><?php echo $hasil['alamat'] ?></td>
         <td><?php echo $hasil['hp'] ?></td>
-        <td><?php echo $hasil['foto'] ?></td>
         <td align="center">
             <a href="edit.php?id=<?php echo$hasil['id'] ?>"> Ubah </a> ||
             <a onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data ini?')  " href="hapus.php?id=<?php echo$hasil['id'] ?>"> Hapus </a> 
