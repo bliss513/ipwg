@@ -25,12 +25,6 @@
 		<input type="text" name="sekolah"value="<?php echo $hasil ['sekolah']?>"><br>
         <label>nama guru</label><br>
 		<input type="text" name="nama_guru"value="<?php echo $hasil ['nama_guru']?>"><br>
-        <label>jenis kelamin</label><br>
-		<input type="text" name="jenis_kelamin"value="<?php echo $hasil ['jenis_kelamin']?>"><br>
-        <label>tempat lahir</label><br>
-		<input type="text" name="tempat_lahir"value="<?php echo $hasil ['tempat_lahir']?>"><br>
-        <label>tanggal lahir</label><br>
-		<input type="text" name="tanggal_lahir"value="<?php echo $hasil ['tanggal_lahir']?>"><br>
         <label>nik</label><br>
 		<input type="text" name="nik"value="<?php echo $hasil ['nik']?>"><br>
         <label>pengawas bidang studi</label><br>
@@ -39,8 +33,6 @@
 		<input type="text" name="alamat"value="<?php echo $hasil ['alamat']?>"><br>
         <label>hp</label><br>
 		<input type="text" name="hp"value="<?php echo $hasil ['hp']?>"><br>
-        <label>foto</label><br>
-		<input type="text" name="foto"value="<?php echo $hasil ['foto']?>"><br>
         <button type="submit" name="simpan">Simpan</button> || <button><a href="index.php">kembali</a></button>
 	</form>
 	<?php } ?>
@@ -57,14 +49,11 @@
         $sekolah= $_POST['sekolah'];
     	$nama_guru= $_POST['nama_guru'];
         $jenis_kelamin= $_POST['jenis_kelamin'];
-        $tempat_lahir= $_POST['tempat_lahir'];
-        $tanggal_lahir= $_POST['tanggal_lahir'];
     	$nik= $_POST['nik'];
         $pengawas_bidang_studi= $_POST['pengawas_bidang_studi'];
         $alamat= $_POST['alamat'];
         $hp= $_POST['hp'];
-    	$foto= $_POST['foto'];
-        $sql = "UPDATE mahasiswa SET id='$id', username='$username', password='$password', nip='$nip', sekolah='$sekolah', nama_guru='$nama_guru', jenis_kelamin='$jenis_kelamin',tempat_lahir='$tempat_lahir', tanggal_lahir='$tanggal_lahir', nik='$nik', pengawas_bidang_studi='$pengawas_bidang_studi', alamat='$alamat', hp='$hp', foto='$foto' WHERE id='$id'"; 
+        $sql = "UPDATE mahasiswa SET id='$id', username='$username', password='$password', nip='$nip', sekolah='$sekolah', nama_guru='$nama_guru', jenis_kelamin='$jenis_kelamin', nik='$nik', pengawas_bidang_studi='$pengawas_bidang_studi', alamat='$alamat', hp='$hp' WHERE id='$id'"; 
     	//cek apakah proses simpan berhasil
     	if(mysqli_query($koneksi,$sql)){
     	//jika berhasil, redirect ke index.php

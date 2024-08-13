@@ -18,15 +18,6 @@
 		<input type="text" name="sekolah"><br>
         <label>nama guru</label><br>
 		<input type="text" name="nama_guru"><br>
-        <label>jenis kelamin</label><br>
-		<input type="radio" id="jenis_kelamin" name="jenis_kelamin" value="laki-laki">
-		<label for="laki-laki">laki-laki</label><br>
-		<input type="radio" id="jenis_kelamin" name="jenis_kelamin" value="perempuan">
-		<label for="perempuan">perempuan</label><br>
-        <label>tempat lahir</label><br>
-		<input type="text" name="tempat_lahir"><br>
-        <label>tanggal lahir</label><br>
-		<input type="text" name="tanggal_lahir"><br>
         <label>nik</label><br>
 		<input type="text" name="nik"><br>
         <label>pengawas bidang studi</label><br>
@@ -35,9 +26,6 @@
 		<input type="text" name="alamat"><br>
         <label>hp</label><br>
 		<input type="text" name="hp"><br>
-        <label>foto</label><br>
-		<input type="text" name="foto"><br>
-
 		<button type="submit" name="simpan">Simpan</button> || <button><a href="index.php">kembali</a></button>
 	</form>
 </body>
