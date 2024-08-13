@@ -44,6 +44,8 @@
         <?php
         include 'sidebar.php'
         ?>
+
+
         <!-- Content Start -->
         <div class="content">
             <!-- Navbar Start -->
@@ -135,132 +137,89 @@
                 </div>
             </nav>
             <!-- Navbar End -->
+            <div class="col-12">
+                <div class="bg-light rounded h-100 p-4">
+                    <h6 class="mb-4">Pembayaran Spp</h6>
+                    <a href = "basis_data/data_siswa/form_tambah.php" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">tambah</a>
+                    
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col"> No. </th>
+                                    <th scope="col"> Id</th>
+                                    <th scope="col"> username</th>
+                                    <th scope="col"> password </th>
+                                    <th scope="col"> nama</th>
+                                    <th scope="col"> jenis kelamin</th>
+                                    <th scope="col"> nisn</th>
+                                    <th scope="col"> tempat lahir</th>
+                                    <th scope="col"> tanggal lahir</th>
+                                    <th scope="col"> alamat</th>
+                                    <th scope="col"> hp</th>
+                                    <th scope="col"> email</th>
+                                    <th scope="col"> foto</th>
+                                    <th scope="col"> nama_wali</th>
+                                    <th scope="col"> tahun_lahir_wali</th>
+                                    <th scope="col"> pendidikan_wali</th>
+                                    <th scope="col"> pekerjaan_wali</th>
+                                    <th scope="col"> penghasilan_wali</th>
+                                    <th scope="col"> angkatan</th>
+                                    <th scope="col"> spp_nominal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>John</td>
+                                    <td>Doe</td>
+                                    <td>jhon@email.com</td>
+                                    <td>USA</td>
+                                    <td>123</td>
+                                    <td>Member</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td>mark@email.com</td>
+                                    <td>UK</td>
+                                    <td>456</td>
+                                    <td>Member</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td>Jacob</td>
+                                    <td>Thornton</td>
+                                    <td>jacob@email.com</td>
+                                    <td>AU</td>
+                                    <td>789</td>
+                                    <td>Member</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>  
 
-            <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daftar Kelas</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
-        table {
-            width: 80%;
-            margin: 50px auto;
-            border-collapse: collapse;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        th, td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        th {
-            background-color: #4CAF50;
-            color: white;
-        }
-        tr:hover {
-            background-color: #f5f5f5;
-        }
-    </style>
-</head>
-<body>
-    <h2 style="text-align: center;">Daftar Kelas</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Kode Kelas</th>
-                <th>Tingkat</th>
-                <th>Nama Kelas</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>KD001</td>
-                <td>10</td>
-                <td>X-PPLG</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>KD002</td>
-                <td>10</td>
-                <td>X-BCF</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>KD003</td>
-                <td>10</td>
-                <td>X-MPLB A</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>KD003</td>
-                <td>10</td>
-                <td>X-MPLB B</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>KD004</td>
-                <td>11</td>
-                <td>XI-PPLG</td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>KD005</td>
-                <td>11</td>
-                <td>XI-BCF</td>
-            </tr>
-            <tr>
-                <td>6</td>
-                <td>KD006</td>
-                <td>11</td>
-                <td>XI-MPLB A</td>
-            </tr>
-            <tr>
-                <td>7</td>
-                <td>KD007</td>
-                <td>11</td>
-                <td>XI-MPLB B</td>
-            </tr>
-            <tr>
-                <td>8</td>
-                <td>KD008</td>
-                <td>12</td>
-                <td>XII-PPLG</td>
-            </tr>
-            <tr>
-                <td>9</td>
-                <td>KD009</td>
-                <td>12</td>
-                <td>XII-BCF</td>
-            </tr>
-            <tr>
-                <td>10</td>
-                <td>KD0010</td>
-                <td>12</td>
-                <td>XII-MPLB A</td>
-            </tr>
-            <tr>
-                <td>11</td>
-                <td>KD0011</td>
-                <td>12</td>
-                <td>XII-MPLB B</td>
-            </tr>
-        </tbody>
-    </table>
-</body>
+
+            
 
 
             <!-- Footer Start -->
-            <?php
-            include 'footer.php';
-            ?>
+            <div class="container-fluid pt-4 px-4">
+                <div class="bg-light rounded-top p-4">
+                    <div class="row">
+                        <div class="col-12 col-sm-6 text-center text-sm-start">
+                            &copy; <a href="#">Your Site Name</a>, All Right Reserved. 
+                        </div>
+                        <div class="col-12 col-sm-6 text-center text-sm-end">
+                            <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                            Designed By <a href="https://htmlcodex.com">HTML Codex</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!-- Footer End -->
         </div>
         <!-- Content End -->
