@@ -140,68 +140,34 @@
             <div class="col-12">
                 <div class="bg-light rounded h-100 p-4">
                     <h6 class="mb-4">Pembayaran Spp</h6>
-                    <a href = "basis_data/data_siswa/form_tambah.php" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">tambah</a>
-                    
-                    <div class="table-responsive">
+                    <div>
                         <table class="table">
                             <thead>
-                                <tr>
-                                    <th scope="col"> No. </th>
-                                    <th scope="col"> Id</th>
-                                    <th scope="col"> username</th>
-                                    <th scope="col"> password </th>
-                                    <th scope="col"> nama</th>
-                                    <th scope="col"> jenis kelamin</th>
-                                    <th scope="col"> nisn</th>
-                                    <th scope="col"> tempat lahir</th>
-                                    <th scope="col"> tanggal lahir</th>
-                                    <th scope="col"> alamat</th>
-                                    <th scope="col"> hp</th>
-                                    <th scope="col"> email</th>
-                                    <th scope="col"> foto</th>
-                                    <th scope="col"> nama_wali</th>
-                                    <th scope="col"> tahun_lahir_wali</th>
-                                    <th scope="col"> pendidikan_wali</th>
-                                    <th scope="col"> pekerjaan_wali</th>
-                                    <th scope="col"> penghasilan_wali</th>
-                                    <th scope="col"> angkatan</th>
-                                    <th scope="col"> spp_nominal</th>
-                                </tr>
+                              <tr>  
+                                <th> No. </th>
+                                <th> Nama</th>
+                                <th> Nisn</th>
+                            </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <th scope="row">1</th>
-                                    <td>John</td>
-                                    <td>Doe</td>
-                                    <td>jhon@email.com</td>
-                                    <td>USA</td>
-                                    <td>123</td>
-                                    <td>Member</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>mark@email.com</td>
-                                    <td>UK</td>
-                                    <td>456</td>
-                                    <td>Member</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>jacob@email.com</td>
-                                    <td>AU</td>
-                                    <td>789</td>
-                                    <td>Member</td>
+                                    <td>--</td>
+                                    <td>--</td>
+                                   
                                 </tr>
                             </tbody>
                         </table>
+                        <div class="bg-light rounded h-90 p-3">
+                            <a href ="basis_data/data_siswa/form_tambah.php" style="background-color: #4CAF50; color: white; padding: 5px 10px; border: none; border-radius: 5px; cursor: pointer;">tambah</a>
+                            <a href="basis_data/data_siswa/edit.php" style="background-color: #007BFF; color: white; padding: 5px 10px; border: none; border-radius: 5px; cursor: pointer;">edit</a>
+                            <a href="basis_data/data_siswa/hapus.php" style="background-color: #f44336; color: white; padding: 5px 10px; border: none; border-radius: 5px; cursor: pointer;">hapus</a>
+
+
+                            <div>
                     </div>
                 </div>
             </div>  
-
 
             
 

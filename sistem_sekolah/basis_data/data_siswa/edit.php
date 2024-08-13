@@ -1,7 +1,6 @@
 <?php
- include"config/koneksi.php";
- $id= $_GET['id'];
- $data= mysqli_query($koneksi,"SELECT * FROM data_siswa where id='$id'");
+ include"../../config/koneksi.php";
+ $data= mysqli_query($koneksi,"SELECT * FROM siswa where ");
  while ($hasil= mysqli_fetch_array($data)){
 
 ?>
@@ -24,12 +23,12 @@
 </body>
 </html>
 <?php
-    include"koneksi.php";
+    include"../../config/koneksi.php";
 
     if(isset($_POST['simpan'])){
     	$nama= $_POST['nama'];
     	$nisn= $_POST['nisn'];
-    	$sql = "UPDATE mahasiswa SET nama='$nama', nisn='$nisn' WHERE id='$id'"; 
+    	$sql = "UPDATE sistem_sekolah SET nama='$nama', nisn='$nisn' WHERE id='$id'"; 
     	//cek apakah proses simpan berhasil
     	if(mysqli_query($koneksi,$sql)){
     	//jika berhasil, redirect ke index.php
