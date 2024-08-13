@@ -20,7 +20,7 @@
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Basis Data </a>
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="button.php" class="dropdown-item">Data siswa</a>
-                            <a href="typography.php" class="dropdown-item">Data guru</a>
+                            <a href="guru.php" class="dropdown-item">Data guru</a>
                             <a href="kelas.php" class="dropdown-item">kelas</a>
                             <a href="element.php" class="dropdown-item">buku</a>
                         </div>
