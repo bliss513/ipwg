@@ -83,7 +83,22 @@
                                     <td>kota a</td>
                                     <td>085643564432</td>
                                 </tr>
+                                <tbody>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>guru2</td>
+                                    <td>user</td>
+                                    <td>password098</td>
+                                    <td>123212324</td>
+                                    <td>smk w9</td>
+                                    <td>Nita</td>
+                                    <td>6543234</td>
+                                    <td>IPA</td>
+                                    <td>kota c</td>
+                                    <td>086754332145</td>
+                                </tr>
                                     
+                            </tbody>       
                             </tbody>
                         </table>
                     </div>
