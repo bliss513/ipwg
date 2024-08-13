@@ -1,5 +1,5 @@
 <?php
- include"koneksi.php";
+ include"config/koneksi.php";
  $id= $_GET['id'];
  $data= mysqli_query($koneksi,"SELECT * FROM data_siswa where id='$id'");
  while ($hasil= mysqli_fetch_array($data)){
