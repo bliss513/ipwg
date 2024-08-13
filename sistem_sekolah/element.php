@@ -47,99 +47,194 @@
 
         <!-- Content Start -->
         <div class="content">
-            <!-- Navbar Start -->
-            <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
-                <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
-                    <h2 class="text-primary mb-0"><i class="fa fa-hashtag"></i></h2>
-                </a>
-                <a href="#" class="sidebar-toggler flex-shrink-0">
-                    <i class="fa fa-bars"></i>
-                </a>
-                <form class="d-none d-md-flex ms-4">
-                    <input class="form-control border-0" type="search" placeholder="Search">
-                </form>
-                <div class="navbar-nav align-items-center ms-auto">
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <i class="fa fa-envelope me-lg-2"></i>
-                            <span class="d-none d-lg-inline-flex">Message</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">
-                                <div class="d-flex align-items-center">
-                                    <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                    <div class="ms-2">
-                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                                        <small>15 minutes ago</small>
-                                    </div>
-                                </div>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item">
-                                <div class="d-flex align-items-center">
-                                    <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                    <div class="ms-2">
-                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                                        <small>15 minutes ago</small>
-                                    </div>
-                                </div>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item">
-                                <div class="d-flex align-items-center">
-                                    <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                    <div class="ms-2">
-                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                                        <small>15 minutes ago</small>
-                                    </div>
-                                </div>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item text-center">See all message</a>
-                        </div>
-                    </div>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <i class="fa fa-bell me-lg-2"></i>
-                            <span class="d-none d-lg-inline-flex">Notificatin</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">
-                                <h6 class="fw-normal mb-0">Profile updated</h6>
-                                <small>15 minutes ago</small>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item">
-                                <h6 class="fw-normal mb-0">New user added</h6>
-                                <small>15 minutes ago</small>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item">
-                                <h6 class="fw-normal mb-0">Password changed</h6>
-                                <small>15 minutes ago</small>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item text-center">See all notifications</a>
-                        </div>
-                    </div>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <img class="rounded-circle me-lg-2" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex">John Doe</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">My Profile</a>
-                            <a href="#" class="dropdown-item">Settings</a>
-                            <a href="#" class="dropdown-item">Log Out</a>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-            <!-- Navbar End -->
+        <?php
+            include 'header.php';
+            ?>
 
 
             <!-- Other Elements Start -->
-            <div class="container-fluid pt-4 px-4">
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <title>Dashboard Perpustakaan</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Dashboard Perpustakaan</h1>
+        <h2>Daftar Buku</h2>
+        <table id="book-table" class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>judul</th>
+                    <th>pengarang</th>
+                    <th>id_genre</th>
+                    <th>tentang_buku</th>
+                    <th>status</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data buku akan dimuat di sini melalui AJAX -->
+            </tbody>
+        </table>
+
+        <!-- Tombol untuk menambah buku baru -->
+        <button class="btn btn-primary" data-toggle="modal" data-target="#addBookModal">Tambah Buku Baru</button>
+    </div>
+
+    <!-- Modal untuk menambah buku baru -->
+    <div class="modal fade" id="addBookModal" tabindex="-1" role="dialog" aria-labelledby="addBookModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addBookModalLabel">Tambah Buku Baru</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="add-book-form">
+                        <div class="form-group">
+                            <label for="book-id">id:</label>
+                            <input type="text" class="form-control" id="book-id" name="id" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="book-judul">judul:</label>
+                            <input type="text" class="form-control" id="book-judul" name="judul" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="book-pengarang">pengarang:</label>
+                            <input type="text" class="form-control" id="book-pengarang" name="pengarang" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="book-id_genre">id_genre:</label>
+                            <input type="text" class="form-control" id="book-id_genre" name="id_genre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="book-tentang_buku">tentang_buku:</label>
+                            <input type="text" class="form-control" id="book-tentang_buku" name="tentang_buku" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="book-status">status:</label>
+                            <input type="text" class="form-control" id="book-status" name="status" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Tambah Buku</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+   $(document).ready(function() {
+    // Fungsi untuk memuat data buku
+    function loadBooks() {
+        $.ajax({
+            url: 'fetch_books.php',
+            type: 'GET',
+            success: function(data) {
+                $('#book-table tbody').html(data);
+            }
+        });
+    }
+
+    loadBooks(); // Load books on page load
+
+    // Fungsi untuk menambah buku
+    $('#add-book-form').submit(function(e) {
+        e.preventDefault();
+
+        var id = $('#book-id').val();
+        var judul = $('#book-judul').val();
+        var pengarang = $('#book-pengarang').val();
+        var id_genre = $('#book-id_genre').val();
+        var tentang_buku = $('#book-tentang_buku').val();
+        var status = $('#book-status').val();
+
+        if (id && judul && pengarang && id_genre && tentang_buku && status) {
+            $.ajax({
+                url: 'tambah.php',
+                type: 'POST',
+                data: {
+                    id: id,
+                    judul: judul,
+                    pengarang: pengarang,
+                    id_genre: id_genre,
+                    tentang_buku: tentang_buku,
+                    status: status
+                },
+                success: function(response) {
+                    if (response.trim() === 'success') {
+                        $('#addBookModal').modal('hide');
+                        loadBooks();
+                    } else {
+                        alert('Gagal menambah buku: ' + response);
+                    }
+                }
+            });
+        } else {
+            alert('Harap isi semua kolom');
+        }
+    });
+
+    // Fungsi untuk menghapus buku
+    $('#book-table').on('click', '.btn-delete', function() {
+        var id = $(this).data('id');
+
+        if (confirm('Apakah Anda yakin ingin menghapus buku ini?')) {
+            $.ajax({
+                url: 'delete_book.php',
+                type: 'GET',
+                data: { id: id },
+                success: function(response) {
+                    if (response.trim() === 'success') {
+                        loadBooks();
+                    } else {
+                        alert('Gagal menghapus buku: ' + response);
+                    }
+                }
+            });
+        }
+    });
+});
+</script>
+</body>
+
+                                </div>
+                                <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                                    Sit consetetur eirmod lorem ea magna sadipscing ipsum elitr invidunt, dolores lorem erat ipsum ut aliquyam eos lorem sed. Nonumy aliquyam ea justo eos dolores dolores duo dolores. Aliquyam dolor sea dolores sit takimata no erat vero. At lorem justo tempor lorem duo, stet kasd aliquyam ipsum voluptua labore at.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-xl-6">
+                        <div class="bg-light rounded h-100 p-4">
+                            <h6 class="mb-4">Pills Navs & Tabs</h6>
+                            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
+                                        data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
+                                        aria-selected="true">Home</button>
+                                </li>   <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">
                     <div class="col-sm-12 col-xl-6">
                         <div class="bg-light rounded h-100 p-4">
@@ -333,22 +428,6 @@
                                 </div>
                                 <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                                     Sanctus vero sit kasd sea gubergren takimata consetetur elitr elitr, consetetur sadipscing takimata ipsum dolores. Accusam duo accusam et labore ea elitr ipsum tempor sit, dolore aliquyam ipsum sit amet sit. Et dolore ipsum labore invidunt rebum. Sed dolore gubergren sanctus vero diam lorem rebum elitr, erat diam dolor clita.
-                                </div>
-                                <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                                    Sit consetetur eirmod lorem ea magna sadipscing ipsum elitr invidunt, dolores lorem erat ipsum ut aliquyam eos lorem sed. Nonumy aliquyam ea justo eos dolores dolores duo dolores. Aliquyam dolor sea dolores sit takimata no erat vero. At lorem justo tempor lorem duo, stet kasd aliquyam ipsum voluptua labore at.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-xl-6">
-                        <div class="bg-light rounded h-100 p-4">
-                            <h6 class="mb-4">Pills Navs & Tabs</h6>
-                            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
-                                        data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
-                                        aria-selected="true">Home</button>
-                                </li>
                                 <li class="nav-item" role="presentation">
                                     <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
                                         data-bs-target="#pills-profile" type="button" role="tab"
@@ -440,7 +519,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+         
             <!-- Other Elements End -->
 
 
