@@ -1,5 +1,5 @@
 <?php
-include "../buku/config.php";
+include "../config/koneksi.php";
 $id = $_GET['id'];
 $data = mysqli_query($koneksi, "SELECT * FROM buku WHERE id='$id'");
 $hasil = mysqli_fetch_array($data);
@@ -126,7 +126,7 @@ if (isset($_POST['simpan'])) {
     // cek apakah proses simpan berhasil 
     if (mysqli_query($koneksi, $sql)) {
         // jika berhasil, redirect ke index.php
-        header('Location: index.php');
+        header('Location: buku.php');
     } else {
         // jika tidak berhasil
         echo "Oupss....Maaf proses penyimpanan data tidak berhasil";
