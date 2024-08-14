@@ -155,7 +155,7 @@
     // Fungsi untuk memuat data buku
     function loadBooks() {
         $.ajax({
-            url: 'fetch_books.php',
+            url: '../buku/fetch_books.php',
             type: 'GET',
             success: function(data) {
                 $('#book-table tbody').html(data);
@@ -178,7 +178,7 @@
 
         if (id && judul && pengarang && id_genre && tentang_buku && status) {
             $.ajax({
-                url: 'tambah.php',
+                url: '../buku/add_book.php',
                 type: 'POST',
                 data: {
                     id: id,
@@ -208,7 +208,7 @@
 
         if (confirm('Apakah Anda yakin ingin menghapus buku ini?')) {
             $.ajax({
-                url: 'delete_book.php',
+                url: '../buku/delete_book.php',
                 type: 'GET',
                 data: { id: id },
                 success: function(response) {
