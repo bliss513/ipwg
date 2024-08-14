@@ -53,30 +53,11 @@
 
 
             <!-- Other Elements Start -->
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
+            <!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <title>Dashboard Perpustakaan</title>
-    <style>
-         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-         }
-        table {
-            width: 640%;
-            border-collapse: collapse;
-        }
-        table, th, td {
-            border: 130px solid black;
-        }
-        th, td {
-            padding: 10px;
-            text-align: left;
-        }
-    </style>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
@@ -117,27 +98,27 @@
                 <div class="modal-body">
                     <form id="add-book-form">
                         <div class="form-group">
-                            <label for="book-id">id:</label>
+                            <label for="book-id">ID:</label>
                             <input type="text" class="form-control" id="book-id" name="id" required>
                         </div>
                         <div class="form-group">
-                            <label for="book-judul">judul:</label>
+                            <label for="book-judul">Judul:</label>
                             <input type="text" class="form-control" id="book-judul" name="judul" required>
                         </div>
                         <div class="form-group">
-                            <label for="book-pengarang">pengarang:</label>
+                            <label for="book-pengarang">Pengarang:</label>
                             <input type="text" class="form-control" id="book-pengarang" name="pengarang" required>
                         </div>
                         <div class="form-group">
-                            <label for="book-id_genre">id_genre:</label>
+                            <label for="book-id_genre">ID Genre:</label>
                             <input type="text" class="form-control" id="book-id_genre" name="id_genre" required>
                         </div>
                         <div class="form-group">
-                            <label for="book-tentang_buku">tentang_buku:</label>
+                            <label for="book-tentang_buku">Tentang Buku:</label>
                             <input type="text" class="form-control" id="book-tentang_buku" name="tentang_buku" required>
                         </div>
                         <div class="form-group">
-                            <label for="book-status">status:</label>
+                            <label for="book-status">Status:</label>
                             <input type="text" class="form-control" id="book-status" name="status" required>
                         </div>
                         <button type="submit" class="btn btn-primary">Tambah Buku</button>
@@ -151,80 +132,80 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-   $(document).ready(function() {
-    // Fungsi untuk memuat data buku
-    function loadBooks() {
-        $.ajax({
-            url: '../buku/fetch_books.php',
-            type: 'GET',
-            success: function(data) {
-                $('#book-table tbody').html(data);
+    $(document).ready(function() {
+        // Fungsi untuk memuat data buku
+        function loadBooks() {
+            $.ajax({
+                url: '../buku/fetch_books.php',
+                type: 'GET',
+                success: function(data) {
+                    $('#book-table tbody').html(data);
+                }
+            });
+        }
+
+        loadBooks(); // Load books on page load
+
+        // Fungsi untuk menambah buku
+        $('#add-book-form').submit(function(e) {
+            e.preventDefault();
+
+            var id = $('#book-id').val();
+            var judul = $('#book-judul').val();
+            var pengarang = $('#book-pengarang').val();
+            var id_genre = $('#book-id_genre').val();
+            var tentang_buku = $('#book-tentang_buku').val();
+            var status = $('#book-status').val();
+
+            if (id && judul && pengarang && id_genre && tentang_buku && status) {
+                $.ajax({
+                    url: '../buku/add_book.php',
+                    type: 'POST',
+                    data: {
+                        id: id,
+                        judul: judul,
+                        pengarang: pengarang,
+                        id_genre: id_genre,
+                        tentang_buku: tentang_buku,
+                        status: status
+                    },
+                    success: function(response) {
+                        if (response.trim() === 'success') {
+                            $('#addBookModal').modal('hide');
+                            loadBooks();
+                        } else {
+                            alert('Gagal menambah buku: ' + response);
+                        }
+                    }
+                });
+            } else {
+                alert('Harap isi semua kolom');
             }
         });
-    }
 
-    loadBooks(); // Load books on page load
+        // Fungsi untuk menghapus buku
+        $('#book-table').on('click', '.btn-delete', function() {
+            var id = $(this).data('id');
 
-    // Fungsi untuk menambah buku
-    $('#add-book-form').submit(function(e) {
-        e.preventDefault();
-
-        var id = $('#book-id').val();
-        var judul = $('#book-judul').val();
-        var pengarang = $('#book-pengarang').val();
-        var id_genre = $('#book-id_genre').val();
-        var tentang_buku = $('#book-tentang_buku').val();
-        var status = $('#book-status').val();
-
-        if (id && judul && pengarang && id_genre && tentang_buku && status) {
-            $.ajax({
-                url: '../buku/add_book.php',
-                type: 'POST',
-                data: {
-                    id: id,
-                    judul: judul,
-                    pengarang: pengarang,
-                    id_genre: id_genre,
-                    tentang_buku: tentang_buku,
-                    status: status
-                },
-                success: function(response) {
-                    if (response.trim() === 'success') {
-                        $('#addBookModal').modal('hide');
-                        loadBooks();
-                    } else {
-                        alert('Gagal menambah buku: ' + response);
+            if (confirm('Apakah Anda yakin ingin menghapus buku ini?')) {
+                $.ajax({
+                    url: '../buku/delete_book.php',
+                    type: 'GET',
+                    data: { id: id },
+                    success: function(response) {
+                        if (response.trim() === 'success') {
+                            loadBooks();
+                        } else {
+                            alert('Gagal menghapus buku: ' + response);
+                        }
                     }
-                }
-            });
-        } else {
-            alert('Harap isi semua kolom');
-        }
+                });
+            }
+        });
     });
-
-    // Fungsi untuk menghapus buku
-    $('#book-table').on('click', '.btn-delete', function() {
-        var id = $(this).data('id');
-
-        if (confirm('Apakah Anda yakin ingin menghapus buku ini?')) {
-            $.ajax({
-                url: '../buku/delete_book.php',
-                type: 'GET',
-                data: { id: id },
-                success: function(response) {
-                    if (response.trim() === 'success') {
-                        loadBooks();
-                    } else {
-                        alert('Gagal menghapus buku: ' + response);
-                    }
-                }
-            });
-        }
-    });
-});
-</script>
+    </script>
 </body>
-
+</html>
                     <?php
                     include 'footer.php';
                     ?>

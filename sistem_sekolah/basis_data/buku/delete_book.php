@@ -1,11 +1,12 @@
 <?php
 include '../buku/config.php';
 
-if (isset($_GET['id'])) {
+if (isset($_GET['id']) && is_numeric($_GET['id'])) { // Cek apakah ID ada dan valid
     $id = $_GET['id'];
 
     // Menggunakan prepared statement untuk mencegah SQL injection
     $stmt = $conn->prepare("DELETE FROM buku WHERE id = ?");
+    
     if ($stmt === false) {
         die('Prepare failed: ' . $conn->error);
     }
@@ -20,8 +21,7 @@ if (isset($_GET['id'])) {
 
     $stmt->close();
 } else {
-    echo "ID tidak ditemukan";
+    echo "ID tidak ditemukan atau tidak valid";
 }
 
 $conn->close();
-?>
