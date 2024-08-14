@@ -85,100 +85,43 @@
 <body>
     <h2 style="text-align: center;">Daftar Kelas</h2>
     <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Kode Kelas</th>
-                <th>Tingkat</th>
-                <th>Nama Kelas</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>KD001</td>
-                <td>10</td>
-                <td>X-PPLG</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>KD002</td>
-                <td>10</td>
-                <td>X-BCF</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>KD003</td>
-                <td>10</td>
-                <td>X-MPLB A</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>KD003</td>
-                <td>10</td>
-                <td>X-MPLB B</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>KD004</td>
-                <td>11</td>
-                <td>XI-PPLG</td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>KD005</td>
-                <td>11</td>
-                <td>XI-BCF</td>
-            </tr>
-            <tr>
-                <td>6</td>
-                <td>KD006</td>
-                <td>11</td>
-                <td>XI-MPLB A</td>
-            </tr>
-            <tr>
-                <td>7</td>
-                <td>KD007</td>
-                <td>11</td>
-                <td>XI-MPLB B</td>
-            </tr>
-            <tr>
-                <td>8</td>
-                <td>KD008</td>
-                <td>12</td>
-                <td>XII-PPLG</td>
-            </tr>
-            <tr>
-                <td>9</td>
-                <td>KD009</td>
-                <td>12</td>
-                <td>XII-BCF</td>
-            </tr>
-            <tr>
-                <td>10</td>
-                <td>KD0010</td>
-                <td>12</td>
-                <td>XII-MPLB A</td>
-            </tr>
-            <tr>
-                <td>11</td>
-                <td>KD0011</td>
-                <td>12</td>
-                <td>XII-MPLB B</td>
-            </tr>
-        </tbody>
-    </table>
-</body>
+    <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Id</th>
+                        <th>Kd_kls</th>
+                        <th>Tingkat</th>
+                        <th>Nama_kls</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                        include "config/koneksi.php";
+                        $no = 1;
+                        $data = mysqli_query($koneksi, "SELECT * FROM kelas");
+                        while ($hasil = mysqli_fetch_array($data)) {
+                    ?>
+                    <tr>
+                        <td><?php echo $no++; ?></td>
+                        <td><?php echo $hasil['id']; ?></td>
+                        <td><?php echo $hasil['kd_kelas']; ?></td>
+                        <td><?php echo $hasil['tingkat']; ?></td>
+                        <td><?php echo $hasil['nama_kelas']; ?></td>
+                        <td>
+                            <a onclick="return confirm('yakin ingin menghapus data ini?')" href="basis_data/kelas/hapus.php?id=<?php echo $hasil['id']; ?>" style="color: #f44336;">Hapus</a>
+                        </td>
+                    </tr>
+                    <?php
+                        }
+                    ?>
+                </tbody>
 
 
-            <!-- Footer Start -->
-            <?php
-            include 'footer.php';
-            ?>
-            <!-- Footer End -->
+            
         </div>
         <!-- Content End -->
-
+         
 
         <!-- Back to Top -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
@@ -198,5 +141,6 @@
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
 </body>
+
 
 </html>
