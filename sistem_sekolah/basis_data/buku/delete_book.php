@@ -1,5 +1,5 @@
 <?php
-include '../config/koneksi.php';
+include '../buku/config.php';
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];

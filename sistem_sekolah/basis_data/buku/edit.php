@@ -1,5 +1,5 @@
 <?php
-include "../config/koneksi.php";
+include "../buku/config.php";
 $id = $_GET['id'];
 $data = mysqli_query($koneksi, "SELECT * FROM buku WHERE id='$id'");
 $hasil = mysqli_fetch_array($data);
