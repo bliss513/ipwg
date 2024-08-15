@@ -49,7 +49,7 @@
         <?php
             include 'header.php';
             ?>
-<head>,
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>daftar buku</title>
@@ -132,11 +132,6 @@
 </style>
 </head>
 <body>
-    <div class="header">
-        <h1>Daftar buku</h1>
-        <h1>Smk Ma'arif Walisongo Kajoran</h1>
-    </div>
-
     <div class="container">
         <button><a href="form_tambah.php" style="color: white;">Tambah</a></button>
         
