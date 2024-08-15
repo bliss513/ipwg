@@ -17,7 +17,7 @@
                 <label>nisn</label><br>
                 <input type="text" name="nisn"value="<?php echo $hasil ['nisn']?>"><br>
 		<br>
-		<button type="submit" name="simpan">Simpan</button> || <button><a href="index.php">kembali</a></button>
+		<button type="submit" name="simpan">Simpan</button> || <button><a href="button.php">kembali</a></button>
 	</form>
 	<?php } ?>
 </body>
@@ -28,7 +28,7 @@
     if(isset($_POST['simpan'])){
     	$nama= $_POST['nama'];
     	$nisn= $_POST['nisn'];
-    	$sql = "UPDATE sistem_sekolah SET nama='$nama', nisn='$nisn' WHERE id='$id'"; 
+    	$sql = "UPDATE siswa SET nama='$nama', nisn='$nisn' WHERE id='$id'"; 
     	//cek apakah proses simpan berhasil
     	if(mysqli_query($koneksi,$sql)){
     	//jika berhasil, redirect ke index.php
