@@ -6,8 +6,6 @@
 <body>
 	<h1>Tambah Data</h1>
 	<form method="post" action="tambah.php">
-		<label>Id</label><br>
-		<input type="text" name="id"readonly><br>
 		<label>username</label><br>
 		<input type="text" name="username"><br>
 		<label>password</label><br>

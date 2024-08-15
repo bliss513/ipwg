@@ -38,7 +38,6 @@
     
     <tr> 
         <td><?php echo $no++; ?></td>
-        <td><?php echo $hasil['id'] ?></td>
         <td><?php echo $hasil['username'] ?></td>
         <td><?php echo $hasil['password'] ?></td>
         <td><?php echo $hasil['nip'] ?></td>

@@ -57,7 +57,6 @@
                             <thead>
                                 <tr>
                                     <th scope="col"> No. </th>
-                                    <th scope="col"> id</th>
                                     <th scope="col"> username</th>
                                     <th scope="col"> password </th>
                                     <th scope="col"> nip</th>
@@ -72,7 +71,6 @@
                             <tbody>
                                 <tr>
                                     <th scope="row">1</th>
-                                    <td>guru1</td>
                                     <td>username</td>
                                     <td>password321</td>
                                     <td>987653456</td>
@@ -86,7 +84,6 @@
                                 <tbody>
                                 <tr>
                                     <th scope="row">2</th>
-                                    <td>guru2</td>
                                     <td>user</td>
                                     <td>password098</td>
                                     <td>123212324</td>
