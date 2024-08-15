@@ -21,10 +21,10 @@
   </thead>
   <tbody>
  <?php
-    include"koneksi.php";
+    include"../config/koneksi.php";
 
     $no =1;
-    $data= mysqli_query($koneksi,"SELECT * FROM mahasiswa");
+    $data= mysqli_query($koneksi,"SELECT * FROM siswa");
     while ($hasil= mysqli_fetch_array($data)) {
         ?>
     

@@ -10,8 +10,8 @@
         <input type="text" name="nama" required><br>
         <label>NISN</label><br>
         <input type="text" name="nisn" required><br>
-        <button type="submit" name="simpan">Simpan</button> || 
-        <button><a href="../../config/button.php" style="text-decoration: none;">Kembali</a></button>
+        <button type="submit" name="simpan">Simpan</button> 
+        <button><a href="../../button.php" style="text-decoration: none;">Kembali</a></button>
     </form>
 </body>
 </html>
