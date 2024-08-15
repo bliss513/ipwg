@@ -1,27 +1,16 @@
 <?php
-include '../config/koneksi.php';
+include "..//config/koneksi.php";
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
+    $data = mysqli_query($koneksi, "DELETE FROM buku WHERE id='$id'");
 
-    // Menggunakan prepared statement untuk mencegah SQL injection
-    $stmt = $conn->prepare("DELETE FROM buku WHERE id = ?");
-    if ($stmt === false) {
-        die('Prepare failed: ' . $conn->error);
-    }
-
-    $stmt->bind_param("i", $id);
-
-    if ($stmt->execute()) {
-        echo 'success';
+    if ($data) {
+        header('Location: buku.php');
     } else {
-        echo "Maaf, proses menghapus data tidak berhasil. Error: " . $stmt->error;
+        echo "Maaf, proses menghapus data tidak berhasil";
     }
-
-    $stmt->close();
 } else {
     echo "ID tidak ditemukan";
 }
-
-$conn->close();
 ?>

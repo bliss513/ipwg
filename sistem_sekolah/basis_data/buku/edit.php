@@ -1,5 +1,5 @@
 <?php
-include "../../config/koneksi.php";
+include "../config/koneksi.php";
 $id = $_GET['id'];
 $data = mysqli_query($koneksi, "SELECT * FROM buku WHERE id='$id'");
 $hasil = mysqli_fetch_array($data);
@@ -7,7 +7,7 @@ $hasil = mysqli_fetch_array($data);
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Mengubah Data buku</title>
+    <title>Mengubah Data Mahasiswa</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -92,7 +92,7 @@ $hasil = mysqli_fetch_array($data);
     <div class="container">
         <h1>Ubah Data</h1>
         <form method="post" action="">
-            <label for="id">id</label>
+            <label for="id">ID</label>
             <input type="text" id="id" name="id" value="<?php echo $hasil['id'];?>" readonly>
             <label for="judul">judul</label>
             <input type="text" id="judul" name="judul" value="<?php echo $hasil['judul'];?>">
@@ -103,10 +103,15 @@ $hasil = mysqli_fetch_array($data);
             <label for="tentang_buku">tentang_buku</label>
             <input type="text" id="tentang_buku" name="tentang_buku" value="<?php echo $hasil['tentang_buku'];?>">
             <label for="status">status</label>
-            <input type="text" id="status" name="status" value="<?php echo $hasil['status'];?>">
+            <select id="status" name="status">
+                <option value="dipinjam" <?php echo ($hasil['status'] == 'dipinjam') ? 'selected' : ''; ?>>DIPINJAM</option>
+                <option value="tersedia" <?php echo ($hasil['status'] == 'tersedia') ? 'selected' : ''; ?>>TERSEDIA</option>
+                <option value="sudah_dikembalikan" <?php echo ($hasil['status'] == 'sudah_dikembalikan') ? 'selected' : ''; ?>>SUDAH_DIKEMBALIKAN</option>
+                <option value="lewat_tempo" <?php echo ($hasil['status'] == 'lewat_tempo') ? 'selected' : ''; ?>>LEWAT_TEMPO</option>
+            </select>
             <div class="button-container">
                 <button type="submit" name="simpan">Simpan</button>
-                <a href="index.php" class="cancel-btn">Batal</a>
+                <a href="buku.php" class="cancel-btn">Batal</a>
             </div>
         </form>
     </div>
@@ -121,12 +126,12 @@ if (isset($_POST['simpan'])) {
     $tentang_buku = $_POST['tentang_buku'];
     $status = $_POST['status'];
     
-    $sql = "UPDATE buku SET id='$id', judul='$judul', pengarang='$pengarang', id_genre='$id_genre', tentang_buku='$tentang_buku', status='$status' WHERE id='$id'";
+    $sql = "UPDATE buku SET id='$id', judul='$judul', pengarang='$pengarang', id_genre='$id_genre', tentang_buku='$tentang_buku', sta_tus='$status' WHERE nisn='$nisn'";
 
     // cek apakah proses simpan berhasil 
     if (mysqli_query($koneksi, $sql)) {
         // jika berhasil, redirect ke index.php
-        header('Location: buku.php');
+        header('Location: index.php');
     } else {
         // jika tidak berhasil
         echo "Oupss....Maaf proses penyimpanan data tidak berhasil";
