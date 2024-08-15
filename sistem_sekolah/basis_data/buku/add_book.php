@@ -22,7 +22,7 @@ $status = $_POST['status'];
 
 // Query untuk menambahkan buku ke dalam database
 $sql = "INSERT INTO buku (judul, pengarang, id_genre, tentang_buku, status) 
-        VALUES (?, ?, ?, ?, ?)";
+        VALUES (?, ?, ?)";
 
 // Mempersiapkan statement
 $stmt = $conn->prepare($sql);

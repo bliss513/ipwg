@@ -1,5 +1,5 @@
 <?php
-include '../config/koneksi.php';
+include '../../config/koneksi.php';
 
 if (isset($_GET['id']) && is_numeric($_GET['id'])) { // Cek apakah ID ada dan valid
     $id = $_GET['id'];

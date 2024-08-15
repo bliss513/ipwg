@@ -1,5 +1,5 @@
 <?php
-include '../config/koneksi.php';
+include '../../config/koneksi.php';
 
 // Query untuk mengambil data buku
 $sql = "SELECT * FROM buku";
