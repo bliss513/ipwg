@@ -94,6 +94,7 @@
         text-align: left;
     }
     th {
+
         background-color: #0000FF; /* Blue color for headers */
         color: white;
     }
@@ -133,7 +134,7 @@
 </head>
 <body>
     <div class="container">
-        <button><a href="form_tambah.php" style="color: white;">Tambah</a></button>
+        <button><a href="basis_data/buku/from_tambah.php" style="color: white;">Tambah</a></button>
         
         <table>
             <thead>
@@ -163,8 +164,8 @@
                     <td><?php echo $hasil['tentang_buku']; ?></td>
                     <td><?php echo $hasil['status']; ?></td>
                     <td class="action-container">
-                        <a href="ubah.php?id=<?php echo $hasil['id']; ?>" style="color: #00000FF;">Ubah</a>
-                        <a onclick="return confirm('Yakin ingin menghapus data ini?')" href="hapus.php?id=<?php echo $hasil['id']; ?>" style="color: #00000FF;">Hapus</a>
+                        <a href="basis_data/buku/ubah.php?id=<?php echo $hasil['id']; ?>" style="color: #00000FF;">Ubah</a>
+                        <a onclick="return confirm('Yakin ingin menghapus data ini?')" href="basis_data/buku/hapus.php?id=<?php echo $hasil['id']; ?>" style="color: #00000FF;">Hapus</a>
                     </td>
                 </tr>
                 <?php

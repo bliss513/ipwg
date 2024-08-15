@@ -100,7 +100,7 @@
             </select>
             <div class="button-container">
                 <button type="submit" name="simpan">Simpan</button>
-                <a href="index.php" class="cancel-btn">Batal</a>
+                <a href="../../element.php" class="cancel-btn">Batal</a>
             </div>
         </form>
     </div>

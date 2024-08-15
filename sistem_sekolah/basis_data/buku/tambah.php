@@ -1,5 +1,5 @@
 <?php
-include "..//config/koneksi.php";
+include "../../config/koneksi.php";
 
 if (isset($_POST['simpan'])) {
     $id = $_POST['id'];
@@ -13,7 +13,7 @@ if (isset($_POST['simpan'])) {
     //cek apakah proses simpan berhasil
     if (mysqli_query($koneksi, $sql)) {
         //jika berhasil, redirect ke index.php
-        header('Location: buku.php');
+        header('Location: ../../element.php');
     } else {
         //jika tidak berhasil
         echo "Oupss....Maaf proses penyimpanan data tidak berhasil";
