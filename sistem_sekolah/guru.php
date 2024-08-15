@@ -57,42 +57,21 @@
                             <thead>
                                 <tr>
                                     <th scope="col"> No. </th>
-                                    <th scope="col"> username</th>
-                                    <th scope="col"> password </th>
                                     <th scope="col"> nip</th>
-                                    <th scope="col"> sekolah</th>
                                     <th scope="col"> nama guru</th>
-                                    <th scope="col"> nik</th>
-                                    <th scope="col"> pengawas bidang studi</th>
-                                    <th scope="col"> alamat</th>
-                                    <th scope="col"> hp</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <th scope="row">1</th>
-                                    <td>username</td>
-                                    <td>password321</td>
                                     <td>987653456</td>
-                                    <td>smk ipwg</td>
                                     <td>Budi</td>
-                                    <td>1234321</td>
-                                    <td>Matematika</td>
-                                    <td>kota a</td>
-                                    <td>085643564432</td>
                                 </tr>
                                 <tbody>
                                 <tr>
                                     <th scope="row">2</th>
-                                    <td>user</td>
-                                    <td>password098</td>
                                     <td>123212324</td>
-                                    <td>smk w9</td>
                                     <td>Nita</td>
-                                    <td>6543234</td>
-                                    <td>IPA</td>
-                                    <td>kota c</td>
-                                    <td>086754332145</td>
                                 </tr>
                                     
                             </tbody>       

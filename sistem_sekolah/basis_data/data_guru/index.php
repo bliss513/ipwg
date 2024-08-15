@@ -15,38 +15,23 @@
   <thead>
  <tr style="background-color: pink;">
     <th> No. </th>
-    <th> Id</th>
-    <th> username</th>
-    <th> password </th>
     <th> nip</th>
-    <th> sekolah</th>
     <th> nama guru</th>
-    <th> nik</th>
-    <th> pengawas bidang studi</th>
-    <th> alamat</th>
-    <th> hp </th>
  </tr>
   </thead>
   <tbody>
  <?php
-    include"../config/koneksi.php";
+    include"../../config/koneksi.php";
 
     $no =1;
-    $data= mysqli_query($koneksi,"SELECT * FROM mahasiswa");
+    $data= mysqli_query($koneksi,"SELECT * FROM guru");
     while ($hasil= mysqli_fetch_array($data)) {
         ?>
     
     <tr> 
         <td><?php echo $no++; ?></td>
-        <td><?php echo $hasil['username'] ?></td>
-        <td><?php echo $hasil['password'] ?></td>
         <td><?php echo $hasil['nip'] ?></td>
-        <td><?php echo $hasil['sekolah'] ?></td>
         <td><?php echo $hasil['nama_guru'] ?></td>
-        <td><?php echo $hasil['nik'] ?></td>
-        <td><?php echo $hasil['pengawas_bidang_studi'] ?></td>
-        <td><?php echo $hasil['alamat'] ?></td>
-        <td><?php echo $hasil['hp'] ?></td>
         <td align="center">
             <a href="edit.php?id=<?php echo$hasil['id'] ?>"> Ubah </a> ||
             <a onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data ini?')  " href="hapus.php?id=<?php echo$hasil['id'] ?>"> Hapus </a> 
