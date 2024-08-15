@@ -1,7 +1,7 @@
 <?php
-include "../config/koneksi.php";
+include "../../config/koneksi.php";
 $id = $_GET['id'];
-$data = mysqli_query($koneksi, "SELECT * FROM buku WHERE id='$id'");
+$data = mysqli_query($koneksi, "SELECT * FROM kelas WHERE id='$id'");
 $hasil = mysqli_fetch_array($data);
 ?>
 <!DOCTYPE html>
@@ -17,32 +17,31 @@ $hasil = mysqli_fetch_array($data);
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: cyan; /* Ubah warna latar belakang menjadi cyan */
+            background-color: #f4f4f4;
         }
         .container {
             background: #fff;
-            padding: 20px; /* Mengurangi padding untuk memperkecil ukuran tabel */
+            padding: 30px;
             border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 400px; /* Mengurangi lebar tabel */
+            width: 450px;
         }
         h1 {
             text-align: center;
-            margin-bottom: 20px; /* Mengurangi jarak bawah untuk merapikan */
+            margin-bottom: 25px;
             font-family: 'Georgia', serif;
             color: #333;
         }
         label {
             display: block;
-            margin: 10px 0 5px; /* Mengurangi margin untuk merapikan */
+            margin: 15px 0 5px;
             font-weight: bold;
             color: #555;
-            text-align: center; /* Menengahkan label */
         }
         input[type="text"], select {
             width: 100%;
-            padding: 10px; /* Mengurangi padding untuk memperkecil ukuran input */
-            margin: 8px 0; /* Mengurangi margin untuk merapikan */
+            padding: 12px;
+            margin-bottom: 20px;
             border: 1px solid #ccc;
             border-radius: 8px;
             box-sizing: border-box;
@@ -58,12 +57,11 @@ $hasil = mysqli_fetch_array($data);
         .button-container {
             display: flex;
             justify-content: space-between;
-            margin-top: 20px; /* Tambahkan margin atas untuk merapikan */
         }
         button[type="submit"], .cancel-btn {
             background-color: #5A67D8;
             color: white;
-            padding: 10px 20px; /* Mengurangi padding untuk memperkecil ukuran tombol */
+            padding: 12px 24px;
             border: none;
             border-radius: 8px;
             cursor: pointer;
@@ -92,26 +90,28 @@ $hasil = mysqli_fetch_array($data);
     <div class="container">
         <h1>Ubah Data</h1>
         <form method="post" action="">
-            <label for="id">ID</label>
+            <label for="id">Id</label>
             <input type="text" id="id" name="id" value="<?php echo $hasil['id'];?>" readonly>
-            <label for="judul">judul</label>
-            <input type="text" id="judul" name="judul" value="<?php echo $hasil['judul'];?>">
-            <label for="pengarang">pengarang</label>
-            <input type="text" id="pengarang" name="pengarang" value="<?php echo $hasil['pengarang'];?>">
-            <label for="id_genre">id_genre</label>
-            <input type="text" id="id_genre" name="id_genre" value="<?php echo $hasil['id_genre'];?>">
-            <label for="tentang_buku">tentang_buku</label>
-            <input type="text" id="tentang_buku" name="tentang_buku" value="<?php echo $hasil['tentang_buku'];?>">
-            <label for="status">status</label>
-            <select id="status" name="status">
-                <option value="dipinjam" <?php echo ($hasil['status'] == 'dipinjam') ? 'selected' : ''; ?>>DIPINJAM</option>
-                <option value="tersedia" <?php echo ($hasil['status'] == 'tersedia') ? 'selected' : ''; ?>>TERSEDIA</option>
-                <option value="sudah_dikembalikan" <?php echo ($hasil['status'] == 'sudah_dikembalikan') ? 'selected' : ''; ?>>SUDAH_DIKEMBALIKAN</option>
-                <option value="lewat_tempo" <?php echo ($hasil['status'] == 'lewat_tempo') ? 'selected' : ''; ?>>LEWAT_TEMPO</option>
+            <label for="kd_kelas">Kd_kelas</label>
+            <input type="text" id="kd_kelas" name="kd_kelas" value="<?php echo $hasil['kd_kelas'];?>">
+            <label for="tingkat">Tingkat</label>
+            <select id="tingkat" name="tingkat">
+                <option value="X" <?php echo ($hasil['tingkat'] == 'X') ? 'selected' : ''; ?>>X</option>
+                <option value="XI" <?php echo ($hasil['tingkat'] == 'XI') ? 'selected' : ''; ?>>XI</option>
+                <option value="XII" <?php echo ($hasil['tingkat'] == 'XII') ? 'selected' : ''; ?>>XII</option>
+            </select>
+            <label for="nama_kelas">Nama_Kelas</label>
+            <select id="nama_kelas" name="nama_kelas">
+                <option value="PPLG" <?php echo ($hasil['nama_kelas'] == 'PPLG') ? 'selected' : ''; ?>>PPLG</option>
+                <option value="MPLB" <?php echo ($hasil['nama_kelas'] == 'MPLB') ? 'selected' : ''; ?>>MPLB</option>
+                <option value="BCF" <?php echo ($hasil['nama_kelas'] == 'BCF') ? 'selected' : ''; ?>>BCF</option>
+                <option value="DKV" <?php echo ($hasil['nama_kelas'] == 'DKV') ? 'selected' : ''; ?>>DKV</option>
+                <option value="KULINER" <?php echo ($hasil['nama_kelas'] == 'KULINER') ? 'selected' : ''; ?>>KULINER</option>
             </select>
             <div class="button-container">
                 <button type="submit" name="simpan">Simpan</button>
-                <a href="buku.php" class="cancel-btn">Batal</a>
+                  <a onclick="return confirm('Yakin ingin menghapus data ini?')" href="basis_data/kelas/hapus.php?id=<?php echo $hasil['id']; ?>" class="cancel-btn">Hapus</a>
+                <a href="../../kelas.php" class="cancel-btn">Batal</a>
             </div>
         </form>
     </div>
@@ -120,18 +120,15 @@ $hasil = mysqli_fetch_array($data);
 <?php
 if (isset($_POST['simpan'])) {
     $id = $_POST['id'];
-    $judul = $_POST['judul'];
-    $pengarang = $_POST['pengarang'];
-    $id_genre = $_POST['id_genre'];
-    $tentang_buku = $_POST['tentang_buku'];
-    $status = $_POST['status'];
-    
-    $sql = "UPDATE buku SET id='$id', judul='$judul', pengarang='$pengarang', id_genre='$id_genre', tentang_buku='$tentang_buku', sta_tus='$status' WHERE nisn='$nisn'";
+    $kd_kelas = $_POST['kd_kelas'];
+    $tingkat = $_POST['tingkat'];
+    $nama_kelas = $_POST['nama_kelas'];
+    $sql = "UPDATE kelas SET kd_kelas='$kd_kelas', tingkat='$tingkat', nama_kelas='$nama_kelas' WHERE id='$id'";
 
-    // cek apakah proses simpan berhasil 
+    // cek apakah proses simpan berhasil
     if (mysqli_query($koneksi, $sql)) {
         // jika berhasil, redirect ke index.php
-        header('Location: index.php');
+        header('Location: ../../kelas.php');
     } else {
         // jika tidak berhasil
         echo "Oupss....Maaf proses penyimpanan data tidak berhasil";

@@ -163,6 +163,7 @@
                     <td><?php echo $hasil['id_genre']; ?></td>
                     <td><?php echo $hasil['tentang_buku']; ?></td>
                     <td><?php echo $hasil['status']; ?></td>
+                    
                     <td class="action-container">
                         <a href="basis_data/buku/ubah.php?id=<?php echo $hasil['id']; ?>" style="color: #00000FF;">Ubah</a>
                         <a onclick="return confirm('Yakin ingin menghapus data ini?')" href="basis_data/buku/hapus.php?id=<?php echo $hasil['id']; ?>" style="color: #00000FF;">Hapus</a>

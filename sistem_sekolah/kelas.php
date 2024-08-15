@@ -93,7 +93,6 @@
                 <th>Kd_kls</th>
                 <th>Tingkat</th>
                 <th>Nama_kls</th>
-                <th>Aksi</th>
             </tr>
         </thead>
         <tbody>
@@ -103,15 +102,12 @@
                 $data = mysqli_query($koneksi, "SELECT * FROM kelas");
                 while ($hasil = mysqli_fetch_array($data)) {
             ?>
-            <tr onclick="window.location.href='ubah.php?id=<?php echo $hasil['id']; ?>'">
+            <tr onclick="window.location.href='basis_data/kelas/ubah.php?id=<?php echo $hasil['id']; ?>'">
                 <td><?php echo $no++; ?></td>
                 <td><?php echo $hasil['id']; ?></td>
                 <td><?php echo $hasil['kd_kelas']; ?></td>
                 <td><?php echo $hasil['tingkat']; ?></td>
                 <td><?php echo $hasil['nama_kelas']; ?></td>
-                <td>
-                    <a onclick="return confirm('yakin ingin menghapus data ini?')" href="basis_data/kelas/hapus.php?id=<?php echo $hasil['id']; ?>" style="color: #f44336;">Hapus</a>
-                </td>
             </tr>
             <?php
                 }
