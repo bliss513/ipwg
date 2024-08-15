@@ -41,90 +41,40 @@
         </div>
         <!-- Spinner End -->
 
-        <?php
-        include 'sidebar.php'
-        ?>
-        <!-- Content Start -->
-        <div class="content">
-        <?php
-            include 'header.php';
-            ?>
 
-            <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daftar Kelas</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
-        table {
-            width: 80%;
-            margin: 50px auto;
-            border-collapse: collapse;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        th, td {
-            padding: 6px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        th {
-            background-color: #4CAF50;
-            color: white;
-        }
-        tr:hover {
-            background-color: #f5f5f5;
-            cursor: pointer;
-        }
-    </style>
-</head>
-<body>
-    <h2 style="text-align: center;">Daftar Kelas</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>Id</th>
-                <th>Kd_kls</th>
-                <th>Tingkat</th>
-                <th>Nama_kls</th>
-                <th>Aksi</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-                include "config/koneksi.php";
-                $no = 1;
-                $data = mysqli_query($koneksi, "SELECT * FROM kelas");
-                while ($hasil = mysqli_fetch_array($data)) {
-            ?>
-            <tr onclick="window.location.href='ubah.php?id=<?php echo $hasil['id']; ?>'">
-                <td><?php echo $no++; ?></td>
-                <td><?php echo $hasil['id']; ?></td>
-                <td><?php echo $hasil['kd_kelas']; ?></td>
-                <td><?php echo $hasil['tingkat']; ?></td>
-                <td><?php echo $hasil['nama_kelas']; ?></td>
-                <td>
-                    <a onclick="return confirm('yakin ingin menghapus data ini?')" href="basis_data/kelas/hapus.php?id=<?php echo $hasil['id']; ?>" style="color: #f44336;">Hapus</a>
-                </td>
-            </tr>
-            <?php
-                }
-            ?>
-        </tbody>
-    </table>
-</body>
-
-        <!-- Content End -->
-         
-
-        <!-- Back to Top -->
-        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+        <!-- Sign In Start -->
+        <div class="container-fluid">
+            <div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh;">
+                <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
+                    <div class="bg-light rounded p-4 p-sm-5 my-4 mx-3">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <a href="index.php" class="">
+                                <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>DASHMIN</h3>
+                            </a>
+                            <h3>Sign In</h3>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                            <label for="floatingInput">Email address</label>
+                        </div>
+                        <div class="form-floating mb-4">
+                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                            <label for="floatingPassword">Password</label>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between mb-4">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                            </div>
+                            <a href="">Forgot Password</a>
+                        </div>
+                        <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Sign In</button>
+                        <p class="text-center mb-0">Don't have an Account? <a href="signup.php">Sign Up</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Sign In End -->
     </div>
 
     <!-- JavaScript Libraries -->
@@ -141,6 +91,5 @@
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
 </body>
-
 
 </html>
