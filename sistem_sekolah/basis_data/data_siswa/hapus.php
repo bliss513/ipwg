@@ -1,7 +1,7 @@
 <?php
  include"../../config/koneksi.php";
  $id= $_GET['id'];
- $data= mysqli_query($koneksi,"DELETE FROM siswa where id='$id'");
+ $data= mysqli_query($koneksi,"DELETE FROM sistem_sekolah where id='$id'");
 
 if($data){
     header('location:../../button.php');
