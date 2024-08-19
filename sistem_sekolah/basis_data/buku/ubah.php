@@ -31,7 +31,7 @@ if (!$hasil) {
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: cyan; /* Mengubah latar belakang menjadi cyan */
+            background-color: cyan; /* Latar belakang cyan */
         }
         .container {
             background: #fff;
@@ -53,6 +53,7 @@ if (!$hasil) {
         }
         td {
             padding: 10px;
+            vertical-align: middle; /* Menyelaraskan vertikal */
         }
         label {
             font-weight: bold;
@@ -70,8 +71,12 @@ if (!$hasil) {
             font-size: 16px;
         }
         .button-container {
-            text-align: center;
+            display: flex;
+            justify-content: center; /* Menyelaraskan tombol di tengah */
             margin-top: 20px;
+        }
+        .button-container > * {
+            margin: 0 10px; /* Menambahkan jarak horizontal antara tombol */
         }
         button[type="submit"], .cancel-btn, .delete-btn {
             background-color: #5A67D8;
@@ -84,7 +89,6 @@ if (!$hasil) {
             text-align: center;
             text-decoration: none;
             transition: background-color 0.3s ease;
-            margin: 0 10px; /* Menambahkan jarak horizontal antara tombol */
         }
         .cancel-btn {
             background-color: #E53E3E;
@@ -143,7 +147,7 @@ if (!$hasil) {
             <div class="button-container">
                 <button type="submit" name="simpan">Simpan</button>
                 <a onclick="return confirm('Yakin ingin menghapus data ini?')" href="hapus.php?id=<?php echo htmlspecialchars($hasil['id']); ?>" class="delete-btn">Hapus</a>
-                <a href=" ../../element.php" class="cancel-btn">Batal</a>
+                <a href="../../element.php" class="cancel-btn">Batal</a>
             </div>
         </form>
     </div>
@@ -152,25 +156,23 @@ if (!$hasil) {
 
 <?php
 if (isset($_POST['simpan'])) {
-    // Ambil data dari form dan escape untuk keamanan
-    $id = mysqli_real_escape_string($koneksi, $_POST['id']);
-    $judul = mysqli_real_escape_string($koneksi, $_POST['judul']);
-    $pengarang = mysqli_real_escape_string($koneksi, $_POST['pengarang']);
-    $id_genre = mysqli_real_escape_string($koneksi, $_POST['id_genre']);
-    $tentang_buku = mysqli_real_escape_string($koneksi, $_POST['tentang_buku']);
-    $status = mysqli_real_escape_string($koneksi, $_POST['status']);
-
+    $id = $_POST['id'];
+    $judul = $_POST['judul'];
+    $pengarang = $_POST['pengarang'];
+    $id_genre = $_POST['id_genre'];
+    $tentang_buku = $_POST['tentang_buku'];
+    $status = $_POST['status'];
     // Query untuk mengupdate data
     $sql = "UPDATE buku SET judul='$judul', pengarang='$pengarang', id_genre='$id_genre', tentang_buku='$tentang_buku', status='$status' WHERE id='$id'";
 
     // Execute query and handle errors
     if (mysqli_query($koneksi, $sql)) {
-        // Menghindari output sebelum header
-        header('Location: ../../element.php');
-        exit; // Menghentikan eksekusi script setelah pengalihan
+        // jika berhasil, redirect ke index.php
+        header('Location:../../element.php');
     } else {
-        // Menampilkan pesan error dengan lebih informatif
-        echo "<script>alert('Oupss....Maaf, proses penyimpanan data tidak berhasil: " . mysqli_error($koneksi) . "');</script>";
+        // jika tidak berhasil
+        echo "Oupss....Maaf proses penyimpanan data tidak berhasil";
     }
 }
+
 ?>
