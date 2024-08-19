@@ -5,7 +5,7 @@
             $nip= $_POST['nip'];
             $nama_guru= $_POST['nama_guru'];
 
-            $sql = "INSERT INTO guru(nip,nama_guru) VALUES('$nip','$nama_guru')";
+            $sql = "INSERT INTO guru(id,nip,nama_guru) VALUES('$id', '$nip','$nama_guru')";
             if(mysqli_query($koneksi,$sql)){
                 header('location:../../guru.php');
             }else{

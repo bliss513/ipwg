@@ -83,13 +83,15 @@
         <form method="post" action="tambah.php">
             <label for="id">id</label>
             <input type="text" id="id" name="id">
-            <label for="nip">nip</label>
-            <input type="text" id="nip" name="nip">
-            <label for="nama_guru">nama guru</label>
-            <input type="text" id="nama_guru" name="nama_guru">
+            <label for="nisn">nisn</label>
+            <input type="text" id="nisn" name="nisn">
+            <label for="nama">nama</label>
+            <input type="text" id="nama" name="nama">
+            <label for="nomer">nomer</label>
+            <input type="text" id="nomer" name="nomer">
             <div class="button-container">
                 <button type="submit" name="simpan">Simpan</button>
-                <a href="../../guru.php" class="cancel-btn">Batal</a>
+                <a href="../../button.php" class="cancel-btn">Batal</a>
             </div>
         </form>
     </div>

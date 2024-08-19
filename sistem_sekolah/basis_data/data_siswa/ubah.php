@@ -1,7 +1,7 @@
 <?php
 include "../../config/koneksi.php";
 $id = $_GET['id'];
-$data = mysqli_query($koneksi, "SELECT * FROM guru WHERE id='$id'");
+$data = mysqli_query($koneksi, "SELECT * FROM siswa WHERE id='$id'");
 $hasil = mysqli_fetch_array($data);
 ?>
 <!DOCTYPE html>
@@ -88,13 +88,15 @@ $hasil = mysqli_fetch_array($data);
         <form method="post" action="">
             <label for="id">Id</label>
             <input type="text" id="id" name="id" value="<?php echo $hasil['id'];?>" readonly>
-            <label for="nip">nip</label>
-            <input type="text" id="nip" name="nip" value="<?php echo $hasil['nip'];?>">
-			<label for="nama_guru">nama guru</label>
-            <input type="text" id="nama_guru" name="nama_guru" value="<?php echo $hasil['nama_guru'];?>">
+            <label for="nisn">nisn</label>
+            <input type="text" id="nisn" name="nisn" value="<?php echo $hasil['nisn'];?>">
+			<label for="nama">nama</label>
+            <input type="text" id="nama" name="nama" value="<?php echo $hasil['nama'];?>">
+            <label for="nomer">nomer</label>
+            <input type="text" id="nomer" name="nomer" value="<?php echo $hasil['nomer'];?>">
             <div class="button-container">
                 <button type="submit" name="simpan">Simpan</button>
-                <a href="../../guru.php" class="cancel-btn">Batal</a>
+                <a href="../../button.php" class="cancel-btn">Batal</a>
             </div>
         </form>
         <a onclick="return confirm('Yakin ingin menghapus data ini?')" href="hapus.php?id=<?php echo $hasil['id']; ?>" class="delete-btn">Hapus Data Ini</a>
@@ -105,14 +107,15 @@ $hasil = mysqli_fetch_array($data);
 <?php
 if (isset($_POST['simpan'])) {
     $id = $_POST['id'];
-    $nip = $_POST['nip'];
-    $nama_guru = $_POST['nama_guru'];
-    $sql = "UPDATE guru SET id='$id', nip='$nip', nama_guru='$nama_guru' WHERE id='$id'";
+    $nisn = $_POST['nisn'];
+    $nama = $_POST['nama'];
+    $nomer = $_POST['nomer'];
+    $sql = "UPDATE siswa SET id='$id', nisn='$nisn', nama='$nama', nomer='$nomer' WHERE id='$id'";
 
     // cek apakah proses simpan berhasil
     if (mysqli_query($koneksi, $sql)) {
         // jika berhasil, redirect ke index.php
-        header('Location: ../../guru.php');
+        header('Location: ../../button.php');
     } else {
         // jika tidak berhasil
         echo "Oupss....Maaf proses penyimpanan data tidak berhasil";
