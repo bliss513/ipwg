@@ -10,79 +10,75 @@ $hasil = mysqli_fetch_array($data);
     <title>Mengubah Data Mahasiswa</title>
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
             margin: 0;
             padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f4f4f4;
         }
         .container {
             background: #fff;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 450px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 350px;
         }
         h1 {
+            font-size: 20px;
             text-align: center;
-            margin-bottom: 25px;
-            font-family: 'Georgia', serif;
+            margin-bottom: 20px;
             color: #333;
         }
         label {
             display: block;
-            margin: 15px 0 5px;
+            margin-bottom: 5px;
             font-weight: bold;
             color: #555;
         }
         input[type="text"], select {
             width: 100%;
-            padding: 12px;
-            margin-bottom: 20px;
+            padding: 10px;
+            margin-bottom: 15px;
             border: 1px solid #ccc;
-            border-radius: 8px;
+            border-radius: 4px;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        select {
-            font-size: 16px; /* Menambahkan ukuran font */
-        }
-        select option {
-            font-size: 16px; /* Menambahkan ukuran font untuk opsi */
-            padding: 10px; /* Menambahkan padding untuk opsi */
         }
         .button-container {
             display: flex;
             justify-content: space-between;
         }
-        button[type="submit"], .cancel-btn {
-            background-color: #5A67D8;
-            color: white;
-            padding: 12px 24px;
+        button[type="submit"], .cancel-btn, .delete-btn {
+            padding: 10px 20px;
             border: none;
-            border-radius: 8px;
+            border-radius: 4px;
             cursor: pointer;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             text-align: center;
             text-decoration: none;
+            font-size: 14px;
             transition: background-color 0.3s ease;
         }
-        .cancel-btn {
-            background-color: #E53E3E;
-            margin-left: 10px;
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
         }
-        .cancel-btn a {
+        .cancel-btn {
+            background-color: #ff9800;
             color: white;
             text-decoration: none;
         }
-        button[type="submit"]:hover, .cancel-btn:hover {
-            background-color: #434190;
+        .delete-btn {
+            background-color: #f44336;
+            color: white;
+            text-decoration: none;
+            margin-top: 10px;
+            display: block;
+            text-align: center;
         }
-        .cancel-btn:hover {
-            background-color: #C53030;
+        button[type="submit"]:hover, .cancel-btn:hover, .delete-btn:hover {
+            opacity: 0.9;
         }
     </style>
 </head>
@@ -92,31 +88,30 @@ $hasil = mysqli_fetch_array($data);
         <form method="post" action="">
             <label for="id">Id</label>
             <input type="text" id="id" name="id" value="<?php echo $hasil['id'];?>" readonly>
-            <label for="kd_kelas">Kd_kelas</label>
-            <input type="text" id="kd_kelas" name="kd_kelas" value="<?php echo $hasil['kd_kelas'];?>">
+            <label for="kd_kelas">Kd Kelas</label>
+            <select id="kd_kelas" name="kd_kelas">
+                <option value="025" <?php echo ($hasil['kd_kelas'] == '025') ? 'selected' : ''; ?>>025</option>
+                <option value="026" <?php echo ($hasil['kd_kelas'] == '026') ? 'selected' : ''; ?>>026</option>
+                <option value="027" <?php echo ($hasil['kd_kelas'] == '027') ? 'selected' : ''; ?>>027</option>
+            </select>
             <label for="tingkat">Tingkat</label>
             <select id="tingkat" name="tingkat">
                 <option value="X" <?php echo ($hasil['tingkat'] == 'X') ? 'selected' : ''; ?>>X</option>
                 <option value="XI" <?php echo ($hasil['tingkat'] == 'XI') ? 'selected' : ''; ?>>XI</option>
                 <option value="XII" <?php echo ($hasil['tingkat'] == 'XII') ? 'selected' : ''; ?>>XII</option>
             </select>
-            <label for="nama_kelas">Nama_Kelas</label>
-            <select id="nama_kelas" name="nama_kelas">
-                <option value="PPLG" <?php echo ($hasil['nama_kelas'] == 'PPLG') ? 'selected' : ''; ?>>PPLG</option>
-                <option value="MPLB" <?php echo ($hasil['nama_kelas'] == 'MPLB') ? 'selected' : ''; ?>>MPLB</option>
-                <option value="BCF" <?php echo ($hasil['nama_kelas'] == 'BCF') ? 'selected' : ''; ?>>BCF</option>
-                <option value="DKV" <?php echo ($hasil['nama_kelas'] == 'DKV') ? 'selected' : ''; ?>>DKV</option>
-                <option value="KULINER" <?php echo ($hasil['nama_kelas'] == 'KULINER') ? 'selected' : ''; ?>>KULINER</option>
-            </select>
+            <label for="nama_kelas">Nama Kelas</label>
+            <input type="text" id="nama_kelas" name="nama_kelas" value="<?php echo $hasil['nama_kelas'];?>">
             <div class="button-container">
                 <button type="submit" name="simpan">Simpan</button>
-                  <a onclick="return confirm('Yakin ingin menghapus data ini?')" href="basis_data/kelas/hapus.php?id=<?php echo $hasil['id']; ?>" class="cancel-btn">Hapus</a>
                 <a href="../../kelas.php" class="cancel-btn">Batal</a>
             </div>
         </form>
+        <a onclick="return confirm('Yakin ingin menghapus data ini?')" href="hapus.php?id=<?php echo $hasil['id']; ?>" class="delete-btn">Hapus Data Ini</a>
     </div>
 </body>
 </html>
+
 <?php
 if (isset($_POST['simpan'])) {
     $id = $_POST['id'];
@@ -134,4 +129,3 @@ if (isset($_POST['simpan'])) {
         echo "Oupss....Maaf proses penyimpanan data tidak berhasil";
     }
 }
-?>

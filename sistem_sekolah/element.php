@@ -71,45 +71,62 @@
         padding: 25px;
         border-radius: 8px;
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-        flex: 1; /* This makes the container take up the remaining space */
+        flex: 1; 
     }
+    
     h1 {
         font-size: 32px;
         margin-bottom: 10px;
         text-align: center;
     }
+    
     p {
         font-size: 18px;
         margin-bottom: 20px;
         text-align: center;
     }
+    
     table {
         width: 100%;
         border-collapse: collapse;
         margin-top: 20px;
     }
+    
     table, th, td {
-        border: 1px solid #ddd;
+        border: none; /* Remove table borders */
         padding: 12px;
         text-align: left;
     }
+    
     th {
-
         background-color: #0000FF; /* Blue color for headers */
         color: white;
     }
+    
     th, td {
         font-size: 16px;
     }
+    
+    tr:hover {
+        background-color: #f1f1f1; /* Add hover effect */
+        cursor: pointer;
+    }
+    
+    .action-container {
+        display: none; /* Hide action buttons by default */
+    }
+    
     a {
         text-decoration: none;
         color: #FF0000;
         transition: color 0.3s;
         font-weight: bold; /* Make link text bold */
     }
+    
     a:hover {
         color: #45a049;
     }
+    
     button {
         background-color: #4CAF50;
         color: white;
@@ -120,17 +137,26 @@
         font-size: 16px;
         transition: background-color 0.3s;
     }
+    
     button:hover {
         background-color: #45a049;
     }
-    
-    
-    .action-container {
-        display: flex;
-        justify-content: space-between;
-        gap: 10px; /* Add spacing between links */
-    }
 </style>
+<script>
+    function showActions(row) {
+        // Hide all action containers first
+        const actionContainers = document.querySelectorAll('.action-container');
+        actionContainers.forEach(container => {
+            container.style.display = 'none';
+        });
+
+        // Show the action container for the clicked row
+        const actionContainer = row.querySelector('.action-container');
+        if (actionContainer) {
+            actionContainer.style.display = 'flex';
+        }
+    }
+</script>
 </head>
 <body>
     <div class="container">
@@ -145,7 +171,6 @@
                     <th>id_genre</th>
                     <th>tentang_buku</th>
                     <th>status</th>
-                    <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -156,7 +181,7 @@
                     $data = mysqli_query($koneksi, "SELECT * FROM buku");
                     while ($hasil = mysqli_fetch_array($data)) {
                 ?>
-                <tr>
+                       <tr onclick="window.location.href='basis_data/buku/ubah.php?id=<?php echo $hasil['id']; ?>'">
                     <td><?php echo $hasil['id']; ?></td>
                     <td><?php echo $hasil['judul']; ?></td>
                     <td><?php echo $hasil['pengarang']; ?></td>
@@ -165,15 +190,18 @@
                     <td><?php echo $hasil['status']; ?></td>
                     
                     <td class="action-container">
-                        <a href="basis_data/buku/ubah.php?id=<?php echo $hasil['id']; ?>" style="color: #00000FF;">Ubah</a>
-                        <a onclick="return confirm('Yakin ingin menghapus data ini?')" href="basis_data/buku/hapus.php?id=<?php echo $hasil['id']; ?>" style="color: #00000FF;">Hapus</a>
+                        <a href="basis_data/buku/ubah.php?id=<?php echo $hasil['id']; ?>" style="color: #0000FF;">Ubah</a>
+                        <a onclick="return confirm('Yakin ingin menghapus data ini?')" href="basis_data/buku/hapus.php?id=<?php echo $hasil['id']; ?>" style="color: #0000FF;">Hapus</a>
                     </td>
                 </tr>
                 <?php
                     }
                 ?>
-                   </tbody>   
-</div> 
+            </tbody>
+        </table>
+    </div>
+</body>
+
         <!-- Back to Top -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>

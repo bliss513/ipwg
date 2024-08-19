@@ -1,8 +1,8 @@
 <!-- Sidebar Start -->
 <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-light navbar-light">
-                <a href="index.html" class="navbar-brand mx-4 mb-3">
-                    <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>DASHMIN</h3>
+                <a href="https://www.instagram.com/pplg_11?igsh=bGNxdHd2bmxldnQ=" class="navbar-brand mx-4 mb-3">
+                    <h5 class="text-primary"><i ></i>SISTEM SEKOLAH</h5>
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
                     <div class="position-relative">
@@ -20,7 +20,7 @@
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Basis Data </a>
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="button.php" class="dropdown-item">Data siswa</a>
-                            <a href="typography.php" class="dropdown-item">Data guru</a>
+                            <a href="guru.php" class="dropdown-item">Data guru</a>
                             <a href="kelas.php" class="dropdown-item">kelas</a>
                             <a href="element.php" class="dropdown-item">buku</a>
                         </div>

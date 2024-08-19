@@ -333,7 +333,27 @@
                 </div>
             </div>
             <!-- Form End -->
+<<<<<<< HEAD:sistem_sekolah/form.php
              <?php include 'footer.php'; ?>
+=======
+
+
+            <!-- Footer Start -->
+            <div class="container-fluid pt-4 px-4">
+                <div class="bg-light rounded-top p-4">
+                    <div class="row">
+                        <div class="col-12 col-sm-6 text-center text-sm-start">
+                           
+                        </div>
+                        <div class="col-12 col-sm-6 text-center text-sm-end">
+                            <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                            Designed By <a href="https://htmlcodex.com">Young of PPLG</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Footer End -->
+>>>>>>> 87d9d80c978d98ce53e6f58f0f27ab802faae304:sistem_sekolah/form.html
         </div>
         <!-- Content End -->
 
