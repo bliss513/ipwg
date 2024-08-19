@@ -44,46 +44,125 @@
         include 'sidebar.php'
         ?>
 
-
         <!-- Content Start -->
         <div class="content">
         <?php
             include 'header.php';
             ?>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>daftar buku</title>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #FFFF00;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+    
+    .container {
+        max-width: 900px;
+        margin: 25px auto;
+        background-color: white;
+        padding: 25px;
+        border-radius: 8px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        flex: 1; 
+    }
+    
+    h1 {
+        font-size: 32px;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    
+    p {
+        font-size: 18px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+    
+    table, th, td {
+        border: none; /* Remove table borders */
+        padding: 12px;
+        text-align: left;
+    }
+    
+    th {
+        background-color: #0000FF; /* Blue color for headers */
+        color: white;
+    }
+    
+    th, td {
+        font-size: 16px;
+    }
+    
+    tr:hover {
+        background-color: #f1f1f1; /* Add hover effect */
+        cursor: pointer;
+    }
+    
+    .action-container {
+        display: none; /* Hide action buttons by default */
+    }
+    
+    a {
+        text-decoration: none;
+        color: #FF0000;
+        transition: color 0.3s;
+        font-weight: bold; /* Make link text bold */
+    }
+    
+    a:hover {
+        color: #45a049;
+    }
+    
+    button {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        cursor: pointer;
+        border-radius: 4px;
+        font-size: 16px;
+        transition: background-color 0.3s;
+    }
+    
+    button:hover {
+        background-color: #45a049;
+    }
+</style>
+<script>
+    function showActions(row) {
+        // Hide all action containers first
+        const actionContainers = document.querySelectorAll('.action-container');
+        actionContainers.forEach(container => {
+            container.style.display = 'none';
+        });
 
-
-            <!-- Other Elements Start -->
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-    <meta charset="UTF-8">
-    <title>Dashboard Perpustakaan</title>
-    <style>
-         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-         }
-        table {
-            width: 640%;
-            border-collapse: collapse;
+        // Show the action container for the clicked row
+        const actionContainer = row.querySelector('.action-container');
+        if (actionContainer) {
+            actionContainer.style.display = 'flex';
         }
-        table, th, td {
-            border: 130px solid black;
-        }
-        th, td {
-            padding: 10px;
-            text-align: left;
-        }
-    </style>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    }
+</script>
 </head>
 <body>
     <div class="container">
-        <h1>Dashboard Perpustakaan</h1>
-        <h2>Daftar Buku</h2>
-        <table id="book-table" class="table table-bordered">
+        <button><a href="basis_data/buku/from_tambah.php" style="color: white;">Tambah</a></button>
+        
+        <table>
             <thead>
                 <tr>
                     <th>id</th>
@@ -92,143 +171,36 @@
                     <th>id_genre</th>
                     <th>tentang_buku</th>
                     <th>status</th>
-                    <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
-                <!-- Data buku akan dimuat di sini melalui AJAX -->
+                <?php
+                    include "config/koneksi.php";
+
+                    $no = 1;
+                    $data = mysqli_query($koneksi, "SELECT * FROM buku");
+                    while ($hasil = mysqli_fetch_array($data)) {
+                ?>
+                       <tr onclick="window.location.href='basis_data/buku/ubah.php?id=<?php echo $hasil['id']; ?>'">
+                    <td><?php echo $hasil['id']; ?></td>
+                    <td><?php echo $hasil['judul']; ?></td>
+                    <td><?php echo $hasil['pengarang']; ?></td>
+                    <td><?php echo $hasil['id_genre']; ?></td>
+                    <td><?php echo $hasil['tentang_buku']; ?></td>
+                    <td><?php echo $hasil['status']; ?></td>
+                    
+                    <td class="action-container">
+                        <a href="basis_data/buku/ubah.php?id=<?php echo $hasil['id']; ?>" style="color: #0000FF;">Ubah</a>
+                        <a onclick="return confirm('Yakin ingin menghapus data ini?')" href="basis_data/buku/hapus.php?id=<?php echo $hasil['id']; ?>" style="color: #0000FF;">Hapus</a>
+                    </td>
+                </tr>
+                <?php
+                    }
+                ?>
             </tbody>
         </table>
-
-        <!-- Tombol untuk menambah buku baru -->
-        <button class="btn btn-primary" data-toggle="modal" data-target="#addBookModal">Tambah Buku Baru</button>
     </div>
-
-    <!-- Modal untuk menambah buku baru -->
-    <div class="modal fade" id="addBookModal" tabindex="-1" role="dialog" aria-labelledby="addBookModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="addBookModalLabel">Tambah Buku Baru</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form id="add-book-form">
-                        <div class="form-group">
-                            <label for="book-id">id:</label>
-                            <input type="text" class="form-control" id="book-id" name="id" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="book-judul">judul:</label>
-                            <input type="text" class="form-control" id="book-judul" name="judul" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="book-pengarang">pengarang:</label>
-                            <input type="text" class="form-control" id="book-pengarang" name="pengarang" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="book-id_genre">id_genre:</label>
-                            <input type="text" class="form-control" id="book-id_genre" name="id_genre" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="book-tentang_buku">tentang_buku:</label>
-                            <input type="text" class="form-control" id="book-tentang_buku" name="tentang_buku" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="book-status">status:</label>
-                            <input type="text" class="form-control" id="book-status" name="status" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Tambah Buku</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script>
-   $(document).ready(function() {
-    // Fungsi untuk memuat data buku
-    function loadBooks() {
-        $.ajax({
-            url: 'fetch_books.php',
-            type: 'GET',
-            success: function(data) {
-                $('#book-table tbody').html(data);
-            }
-        });
-    }
-
-    loadBooks(); // Load books on page load
-
-    // Fungsi untuk menambah buku
-    $('#add-book-form').submit(function(e) {
-        e.preventDefault();
-
-        var id = $('#book-id').val();
-        var judul = $('#book-judul').val();
-        var pengarang = $('#book-pengarang').val();
-        var id_genre = $('#book-id_genre').val();
-        var tentang_buku = $('#book-tentang_buku').val();
-        var status = $('#book-status').val();
-
-        if (id && judul && pengarang && id_genre && tentang_buku && status) {
-            $.ajax({
-                url: 'tambah.php',
-                type: 'POST',
-                data: {
-                    id: id,
-                    judul: judul,
-                    pengarang: pengarang,
-                    id_genre: id_genre,
-                    tentang_buku: tentang_buku,
-                    status: status
-                },
-                success: function(response) {
-                    if (response.trim() === 'success') {
-                        $('#addBookModal').modal('hide');
-                        loadBooks();
-                    } else {
-                        alert('Gagal menambah buku: ' + response);
-                    }
-                }
-            });
-        } else {
-            alert('Harap isi semua kolom');
-        }
-    });
-
-    // Fungsi untuk menghapus buku
-    $('#book-table').on('click', '.btn-delete', function() {
-        var id = $(this).data('id');
-
-        if (confirm('Apakah Anda yakin ingin menghapus buku ini?')) {
-            $.ajax({
-                url: 'delete_book.php',
-                type: 'GET',
-                data: { id: id },
-                success: function(response) {
-                    if (response.trim() === 'success') {
-                        loadBooks();
-                    } else {
-                        alert('Gagal menghapus buku: ' + response);
-                    }
-                }
-            });
-        }
-    });
-});
-</script>
 </body>
-
-                    <?php
-                    include 'footer.php';
-                    ?>
-
 
         <!-- Back to Top -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>

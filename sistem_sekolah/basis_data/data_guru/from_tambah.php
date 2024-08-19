@@ -83,24 +83,13 @@
         <form method="post" action="tambah.php">
             <label for="id">id</label>
             <input type="text" id="id" name="id">
-            <label for="judul">judul</label>
-            <input type="text" id="judul" name="judul">
-            <label for="pengarang">pengarang</label>
-            <input type="text" id="pengarang" name="pengarang">
-            <label for="id_genre">id_genre</label>
-            <input type="text" id="id_genre" name="id_genre">
-            <label for="tentang_buku">tentang_buku</label>
-            <input type="text" id="tentang_buku" name="tentang_buku">
-            <label for="status">status</label>
-            <select id="status" name="status">
-                <option value="tersedia">tersedia</option>
-                <option value="dipinjam">dipinjam</option>
-                <option value="sudah_dikembalikaan">sudah_dikembalikan</option>
-                <option value="lewat_tempo">lewat_tempo</option>
-            </select>
+            <label for="nip">nip</label>
+            <input type="text" id="nip" name="nip">
+            <label for="nama_guru">nama_guru</label>
+            <input type="text" id="nama_guru" name="nama_guru">
             <div class="button-container">
                 <button type="submit" name="simpan">Simpan</button>
-                <a href="../../element.php" class="cancel-btn">Batal</a>
+                <a href="../../guru.php" class="cancel-btn">Batal</a>
             </div>
         </form>
     </div>
