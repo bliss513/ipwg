@@ -21,10 +21,10 @@
   </thead>
   <tbody>
  <?php
-    include"../config/koneksi.php";
+    include"../../config/koneksi.php";
 
     $no =1;
-    $data= mysqli_query($koneksi,"SELECT * FROM siswa");
+    $data= mysqli_query($koneksi,"SELECT * FROM sistem_sekolah");
     while ($hasil= mysqli_fetch_array($data)) {
         ?>
     
@@ -33,26 +33,14 @@
         <td><?php echo $hasil['nama'] ?></td>
         <td><?php echo $hasil['nisn'] ?></td>
         <td align="center">
-            <a href="ubah.php?id=<?php echo$hasil['id'] ?>"> Ubah </a> ||
+            <a href="edit.php?id=<?php echo$hasil['id'] ?>"> edit </a> ||
             <a onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data ini?')  " href="hapus.php?id=<?php echo$hasil['id'] ?>"> Hapus </a> 
         </td>
     </tr>
   </tbody>
   <?php } ?>
  
-  <tfoot>
-    <?php 
-    $tampil = mysqli_query($koneksi, "SELECT SUM(jumlah_bayar) as total_siswa FROM mahasiswa");
-    $row = mysqli_fetch_assoc($tampil);                
-    $total = $row['total_siswa'];
-?>
-<!-- <tr>
-    <td colspan="8" style="text-align:center;"><strong>Total</strong></td>
-    <td colspan="3"><strong>Rp.<?php echo $total; ?></strong></td>
-</tr> -->
-
-    
-</tfoot>
+ 
 
 
 </table>

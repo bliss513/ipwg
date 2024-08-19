@@ -66,8 +66,8 @@
                             <tbody>
                                 <tr>
                                     <th scope="row">1</th>
-                                    <td>o1</td>
-                                    <td>nama kamu</td>
+                                    <td>Nama kamu</td>
+                                    <td>0812</td>
                                    
                                 </tr>
                             </tbody>

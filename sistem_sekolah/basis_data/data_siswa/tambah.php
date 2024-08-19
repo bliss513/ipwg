@@ -8,7 +8,7 @@ if(isset($_POST['simpan'])){
     $sql = "INSERT INTO siswa(nama, nisn) VALUES('$nama', '$nisn')";
 
     if(mysqli_query($koneksi, $sql)){
-        header('location:.././button.php');
+        header('location:../../button.php');
     } else {
         echo "Oupss....Maaf proses penyimpanan data tidak berhasil";
     }
