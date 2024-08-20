@@ -143,6 +143,7 @@
                 <table>
                     <thead>
                         <tr>
+                            <th>no</th>
                             <th>id</th>
                             <th>nip</th>
                             <th>nama guru</th>
@@ -151,11 +152,12 @@
                     <tbody>
                         <?php
                             include "config/koneksi.php";
-
+                             $no = 1;
                             $data = mysqli_query($koneksi, "SELECT * FROM guru");
                             while ($hasil = mysqli_fetch_array($data)) {
                         ?>
                         <tr onclick="window.location.href='basis_data/data_guru/ubah.php?id=<?php echo $hasil['id']; ?>'">
+                            <td><?php echo $no++; ?></td>
                             <td><?php echo $hasil['id']; ?></td>
                             <td><?php echo $hasil['nip']; ?></td>
                             <td><?php echo $hasil['nama_guru']; ?></td>

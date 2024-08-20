@@ -83,10 +83,10 @@
         <form method="post" action="tambah.php">
             <label for="id">id</label>
             <input type="text" id="id" name="id">
-            <label for="nisn">nisn</label>
-            <input type="text" id="nisn" name="nisn">
             <label for="nama">nama</label>
             <input type="text" id="nama" name="nama">
+            <label for="nisn">nisn</label>
+            <input type="text" id="nisn" name="nisn">
             <label for="nomer">nomer</label>
             <input type="text" id="nomer" name="nomer">
             <div class="button-container">

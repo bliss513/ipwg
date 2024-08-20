@@ -88,10 +88,10 @@ $hasil = mysqli_fetch_array($data);
         <form method="post" action="">
             <label for="id">Id</label>
             <input type="text" id="id" name="id" value="<?php echo $hasil['id'];?>" readonly>
-            <label for="nisn">nisn</label>
-            <input type="text" id="nisn" name="nisn" value="<?php echo $hasil['nisn'];?>">
-			<label for="nama">nama</label>
+            <label for="nama">nama</label>
             <input type="text" id="nama" name="nama" value="<?php echo $hasil['nama'];?>">
+			<label for="nisn">nisn</label>
+            <input type="text" id="nisn" name="nisn" value="<?php echo $hasil['nisn'];?>">
             <label for="nomer">nomer</label>
             <input type="text" id="nomer" name="nomer" value="<?php echo $hasil['nomer'];?>">
             <div class="button-container">
@@ -107,10 +107,10 @@ $hasil = mysqli_fetch_array($data);
 <?php
 if (isset($_POST['simpan'])) {
     $id = $_POST['id'];
-    $nisn = $_POST['nisn'];
-    $nama = $_POST['nama'];
+    $nisn = $_POST['nama'];
+    $nama = $_POST['nisn'];
     $nomer = $_POST['nomer'];
-    $sql = "UPDATE siswa SET id='$id', nisn='$nisn', nama='$nama', nomer='$nomer' WHERE id='$id'";
+    $sql = "UPDATE siswa SET id='$id', nama='$nama', nisn='$nisn', nomer='$nomer' WHERE id='$id'";
 
     // cek apakah proses simpan berhasil
     if (mysqli_query($koneksi, $sql)) {
