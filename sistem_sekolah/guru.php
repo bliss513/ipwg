@@ -138,7 +138,7 @@
             <?php include 'header.php'; ?>
 
             <div class="container">
-                <button><a href="basis_data/data_guru/from_tambah.php" style="color: white;">Tambah</a></button>
+                <button><a href="basis_data/data_guru/form_tambah.php" style="color: white;">Tambah</a></button>
 
                 <table>
                     <thead>
