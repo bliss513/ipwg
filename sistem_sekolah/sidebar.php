@@ -25,6 +25,14 @@
                             <a href="element.php" class="dropdown-item">buku</a>
                         </div>
                     </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-table me-2"></i>Absensi </a>
+                        <div class="dropdown-menu bg-transparent border-0">
+                            <a href="button.php" class="dropdown-item">Siswa</a>
+                            <a href="guru.php" class="dropdown-item">Guru</a>
+                            <a href="kelas.php" class="dropdown-item">kelas</a>
+                        </div>
+                    </div>
                     <a href="widget.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>
                     <a href="form.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Forms</a>
                     <a href="table.php" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>
