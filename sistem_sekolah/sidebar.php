@@ -1,4 +1,4 @@
-<!-- Sidebar Start -->
+ <!-- Sidebar Start -->
 <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-light navbar-light">
                 <a href="https://www.instagram.com/pplg_11?igsh=bGNxdHd2bmxldnQ=" class="navbar-brand mx-4 mb-3">
@@ -25,10 +25,23 @@
                             <a href="element.php" class="dropdown-item">buku</a>
                         </div>
                     </div>
-                    <a href="widget.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-chart-bar me-2"></i>perpus</a>
+                        <div class="dropdown-menu bg-transparent border-0">
+                        <a href="pinjaman.php" class="dropdown-item">pinjaman</a>
+                   </div>
+                 </div>
                     <a href="form.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Forms</a>
                     <a href="table.php" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>
-                    <a href="chart.php" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-table me-2"></i>SPP</a>
+                        <div class="dropdown-menu bg-transparent border-0">
+                            <a href="register.php" class="dropdown-item">Register</a>
+                            <a href="signup.php" class="dropdown-item">peralihan</a>
+                            <a href="404.php" class="dropdown-item">pembayaran</a>
+                        </div>
+                     </div>
+                    <a href="chart.php" class="nav-iclasstem nav-link"><i class="fa fa-chart-bar me-2"></i>chart</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
                         <div class="dropdown-menu bg-transparent border-0">
