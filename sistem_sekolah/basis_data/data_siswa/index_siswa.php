@@ -17,6 +17,7 @@
     <th> No. </th>
     <th> nama</th>
     <th> nisn</th>
+    <th> nomer</th>
 </tr>
   </thead>
   <tbody>
