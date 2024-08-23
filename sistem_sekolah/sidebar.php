@@ -37,8 +37,8 @@
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-table me-2"></i>SPP</a>
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="register.php" class="dropdown-item">Register</a>
-                            <a href="signup.php" class="dropdown-item">peralihan</a>
-                            <a href="pembayaran/index.php" class="dropdown-item">pembayaran</a>
+                            <a href="peralihan.php" class="dropdown-item">peralihan</a>
+                            <a href="pembayaran.php" class="dropdown-item">pembayaran</a>
                         </div>
                      </div>
                     <a href="chart.php" class="nav-iclasstem nav-link"><i class="fa fa-chart-bar me-2"></i>chart</a>
