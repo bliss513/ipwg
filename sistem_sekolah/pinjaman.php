@@ -83,7 +83,8 @@
         }
 
         th {
-            background-color: #f4f4f4;
+            background-color: #007bff; /* Warna biru untuk header tabel */
+            color: white; /* Warna teks putih untuk header tabel */
         }
 
         td:nth-child(1) {
@@ -121,11 +122,23 @@
             justify-content: flex-end; /* Align button to the right */
             margin-top: 20px;
         }
+
+        .search-container {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .search-container input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Sistem Pinjaman Perpustakaan</h1>
+        <h1>Pinjaman Perpustakaan</h1>
         
         <div class="form-container">
             <div class="form-item">
@@ -137,16 +150,24 @@
                 <select id="status" required>
                     <option value="Dipinjam">Dipinjam</option>
                     <option value="Kembali">Kembali</option>
+                    <option value="Lewat Tempo">Lewat Tempo</option>
                 </select>
             </div>
         </div>
         
         <div class="button-container">
-            <button type="submit">Proses</button>
+            <button type="submit" id="prosesButton">Proses</button>
         </div>
         
         <div class="table-container">
             <h2>Daftar Pinjaman</h2>
+            
+            <!-- Pencarian -->
+            <div class="search-container">
+                <label for="searchInput">Judul:</label>
+                <input type="text" id="searchInput" placeholder="Cari berdasarkan judul...">
+            </div>
+            
             <table id="pinjamanTable">
                 <thead>
                     <tr>
@@ -155,13 +176,69 @@
                     </tr>
                 </thead>
                 <tbody id="pinjamanTableBody">
-                    <!-- Data akan diisi menggunakan JavaScript -->
+                    <!-- Data buku yang sudah ada -->
+                    <tr>
+                        <td>tips agar dapat uang</td>
+                        <td>Dipinjam</td>
+                    </tr>
+                    <tr>
+                        <td>dongeng anak</td>
+                        <td>Kembali</td>
+                    </tr>
+                    <tr>
+                        <td>kodekeras cewe</td>
+                        <td>Lewat Tempo</td>
+                    </tr>
+                    <tr>
+                        <td>siksa neraka</td>
+                        <td>Dipinjam</td>
+                    </tr>
+                    <tr>
+                        <td>hidup enak tanpa narkoba</td>
+                        <td>Kembali</td>
+                    </tr>
                 </tbody>
             </table>
+            
             <button class="share-button" id="shareButton">Bagikan Data</button>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        // Menambahkan data ke tabel
+        document.getElementById('prosesButton').addEventListener('click', function() {
+            const judul = document.getElementById('judul').value;
+            const status = document.getElementById('status').value;
+            if (judul && status) {
+                const tableBody = document.getElementById('pinjamanTableBody');
+                const newRow = document.createElement('tr');
+                newRow.innerHTML = `
+                    <td>${judul}</td>
+                    <td>${status}</td>
+                `;
+                tableBody.appendChild(newRow);
+
+                // Clear the input fields after adding data
+                document.getElementById('judul').value = '';
+                document.getElementById('status').value = 'Dipinjam';
+            } else {
+                alert('Harap lengkapi semua field!');
+            }
+        });
+
+        // Menambahkan fitur pencarian
+        document.getElementById('searchInput').addEventListener('keyup', function() {
+            const searchValue = this.value.toLowerCase();
+            const rows = document.querySelectorAll('#pinjamanTableBody tr');
+            rows.forEach(row => {
+                const title = row.cells[0].textContent.toLowerCase();
+                if (title.includes(searchValue)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
