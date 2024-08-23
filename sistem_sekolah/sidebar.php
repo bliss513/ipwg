@@ -38,7 +38,7 @@
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="register.php" class="dropdown-item">Register</a>
                             <a href="signup.php" class="dropdown-item">peralihan</a>
-                            <a href="404.php" class="dropdown-item">pembayaran</a>
+                            <a href="pembayaran/index.php" class="dropdown-item">pembayaran</a>
                         </div>
                      </div>
                     <a href="chart.php" class="nav-iclasstem nav-link"><i class="fa fa-chart-bar me-2"></i>chart</a>
