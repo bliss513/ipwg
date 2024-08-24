@@ -3,117 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pembayaran SPP</title>
+    <title>Rencana dan Realisasi Pembayaran SPP</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
             margin: 0;
-            padding: 0;
-        }
-
-        .container {
-            max-width: 600px;
-            margin: 50px auto;
             padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            background-color: #f4f4f4;
         }
-
-        h1 {
-            text-align: center;
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #ffffff;
         }
-
-        form {
-            display: flex;
-            flex-direction: column;
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
         }
-
-        label {
-            margin: 10px 0 5px;
+        th {
+            background-color: #4CAF50;
+            color: white;
         }
-
-        input, select {
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
         }
-
-        button {
-            padding: 10px;
-            background-color: #28a745;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
+        caption {
+            font-size: 1.5em;
+            margin: 10px;
+        }
+        .status {
+            font-weight: bold;
+        }
+        .terbayar {
+            color: green;
+        }
+        .belum-dibayar {
+            color: red;
+        }
+        .clickable {
             cursor: pointer;
+            color: #007BFF;
+            text-decoration: underline;
         }
-
-        button:hover {
-            background-color: #218838;
+        .clickable:hover {
+            color: #0056b3;
         }
-
-        #message {
-            text-align: center;
-            margin-top: 20px;
+        #form-container {
+            display: none;
+            margin: 20px 0;
+            padding: 20px;
+            background-color: #ffffff;
+            border: 1px solid #dddddd;
+            border-radius: 4px;
+        }
+        #form-container input {
+            margin-bottom: 10px;
+            padding: 8px;
+            width: 100%;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Pembayaran SPP</h1>
+    <h1>Rencana dan Realisasi Pembayaran SPP</h1>
+    <table>
+        <caption>Tabel Rencana dan Realisasi Pembayaran SPP</caption>
+        <thead>
+            <tr>
+                <th>Bulan</th>
+                <th>Rencana Pembayaran</th>
+                <th>Realisasi Pembayaran</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr onclick="showForm('Januari 2024')">
+                <td class="clickable">Januari 2024</td>
+                <td>Rp 100.000</td>
+                <td>Rp 0</td>
+                <td class="status belum-dibayar">Belum Dibayar</td>
+            </tr>
+            <tr onclick="showForm('Februari 2024')">
+                <td class="clickable">Februari 2024</td>
+                <td>Rp 500.000</td>
+                <td>Rp 0</td>
+                <td class="status belum-dibayar">Belum Dibayar</td>
+            </tr>
+            <tr onclick="showForm('Maret 2024')">
+                <td class="clickable">Maret 2024</td>
+                <td>Rp 500.000</td>
+                <td>Rp 500.000</td>
+                <td class="status terbayar">Terbayar</td>
+            </tr>
+            <!-- Tambahkan baris tambahan sesuai kebutuhan -->
+        </tbody>
+    </table>
+
+    <div id="form-container">
+        <h2>Form Input Pembayaran</h2>
         <form id="payment-form">
-            <label for="name">Nama Siswa:</label>
-            <input type="text" id="name" name="name" required>
-
-            <label for="class">Kelas:</label>
-            <select id="class" name="class" required>
-                <option value="">Pilih Kelas</option>
-                <option value="1">Kelas 1</option>
-                <option value="2">Kelas 2</option>
-                <option value="3">Kelas 3</option>
-                <!-- Tambah opsi sesuai kebutuhan -->
+            <input type="hidden" id="month" name="month">
+            <label for="planned">Rencana Pembayaran:</label>
+            <input type="text" id="planned" name="planned">
+            <label for="realized">Realisasi Pembayaran:</label>
+            <input type="text" id="realized" name="realized">
+            <label for="status">Status:</label>
+            <select id="status" name="status">
+                <option value="Terbayar">Terbayar</option>
+                <option value="Belum Dibayar">Belum Dibayar</option>
             </select>
-
-            <label for="amount">Jumlah Pembayaran (Rp):</label>
-            <input type="number" id="amount" name="amount" required>
-
-            <label for="payment-method">Metode Pembayaran:</label>
-            <select id="payment-method" name="payment-method" required>
-                <option value="">Pilih Metode Pembayaran</option>
-                <option value="bank-transfer">Transfer Bank</option>
-                <option value="cash">Tunai</option>
-                <!-- Tambah opsi sesuai kebutuhan -->
-            </select>
-
-            <button type="submit">Bayar</button>
+            <button type="submit">Simpan</button>
+            <button type="button" onclick="hideForm()">Batal</button>
         </form>
-        <div id="message"></div>
     </div>
+
     <script>
+        function showForm(month) {
+            document.getElementById('form-container').style.display = 'block';
+            document.getElementById('month').value = month;
+            // Populate form with current values
+            // This example assumes that the form fields are already filled in.
+            // In a real application, you would fetch the current values from a server or database.
+        }
+
+        function hideForm() {
+            document.getElementById('form-container').style.display = 'none';
+        }
+
         document.getElementById('payment-form').addEventListener('submit', function(event) {
             event.preventDefault();
-
-            // Mengambil data dari form
-            const name = document.getElementById('name').value;
-            const classValue = document.getElementById('class').value;
-            const amount = document.getElementById('amount').value;
-            const paymentMethod = document.getElementById('payment-method').value;
-
-            // Validasi
-            if (!name || !classValue || !amount || !paymentMethod) {
-                document.getElementById('message').innerText = 'Harap isi semua field!';
-                return;
-            }
-
-            // Menampilkan pesan sukses
-            document.getElementById('message').innerText = `Pembayaran berhasil!\nNama: ${name}\nKelas: ${classValue}\nJumlah: Rp${amount}\nMetode Pembayaran: ${paymentMethod}`;
-
-            // Reset form
-            document.getElementById('payment-form').reset();
+            // Handle form submission, e.g., send data to server
+            alert('Data berhasil disimpan!');
+            hideForm();
         });
     </script>
 </body>
 </html>
- 
