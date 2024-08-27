@@ -87,16 +87,16 @@
             <input type="text" id="judul" name="judul">
             <label for="pengarang">pengarang</label>
             <input type="text" id="pengarang" name="pengarang">
-            <label for="id_genre">id_genre</label>
-            <input type="text" id="id_genre" name="id_genre">
-            <label for="tentang_buku">tentang_buku</label>
+            <label for="id_genre">id genre</label>
+            <input type="text" id="id genre" name="id_genre">
+            <label for="tentang_buku">tentang buku</label>
             <input type="text" id="tentang_buku" name="tentang_buku">
             <label for="status">status</label>
             <select id="status" name="status">
                 <option value="tersedia">tersedia</option>
                 <option value="dipinjam">dipinjam</option>
-                <option value="sudah_dikembalikaan">sudah_dikembalikan</option>
-                <option value="lewat_tempo">lewat_tempo</option>
+                <option value="sudah_dikembalikaan">sudah dikembalikan</option>
+                <option value="lewat_tempo">lewat tempo</option>
             </select>
             <div class="button-container">
                 <button type="submit" name="simpan">Simpan</button>

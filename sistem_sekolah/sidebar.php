@@ -26,9 +26,10 @@
                         </div>
                     </div>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-chart-bar me-2"></i>perpus</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-chart-bar me-2"></i>Perpustakaan</a>
                         <div class="dropdown-menu bg-transparent border-0">
-                        <a href="tabel_pinjaman.php" class="dropdown-item">pinjaman</a>
+                        <a href="pinjaman.php" class="dropdown-item">pinjaman</a>
+                        <a href="tabel.php" class="dropdown-item">tabel buku</a>
                    </div>
                    <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-table me-2 "></i>Absensi</a>

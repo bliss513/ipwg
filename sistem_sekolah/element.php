@@ -168,8 +168,8 @@
                     <th>id</th>
                     <th>judul</th>
                     <th>pengarang</th>
-                    <th>id_genre</th>
-                    <th>tentang_buku</th>
+                    <th>id genre</th>
+                    <th>tentang buku</th>
                     <th>status</th>
                 </tr>
             </thead>
