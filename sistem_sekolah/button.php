@@ -51,27 +51,131 @@
         <?php
             include 'header.php';
             ?>
-            <div class="col-12">
-                <div class="bg-light rounded h-100 p-4">
-                    <h6 class="mb-4">Pembayaran Spp</h6>
-                    <div>
-                        <table class="table">
-                            <thead>
-                              <tr>  
-                                <th> No. </th>
-                                <th> Nama</th>
-                                <th> Nisn</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>o1</td>
-                                    <td>nama kamu</td>
-                                   
-                                </tr>
-                            </tbody>
-                        </table>
+      <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>daftar buku</title>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #FFFF00;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+    
+    .container {
+        max-width: 900px;
+        margin: 25px auto;
+        background-color: white;
+        padding: 25px;
+        border-radius: 8px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        flex: 1; 
+    }
+    
+    h1 {
+        font-size: 32px;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    
+    p {
+        font-size: 18px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+    
+    table, th, td {
+        border: none; /* Remove table borders */
+        padding: 12px;
+        text-align: left;
+    }
+    
+    th {
+        background-color: #0000FF; /* Blue color for headers */
+        color: white;
+    }
+    
+    th, td {
+        font-size: 16px;
+    }
+    
+    tr:hover {
+        background-color: #f1f1f1; /* Add hover effect */
+        cursor: pointer;
+    }
+    
+    .action-container {
+        display: none; /* Hide action buttons by default */
+    }
+    
+    a {
+        text-decoration: none;
+        color: #FF0000;
+        transition: color 0.3s;
+        font-weight: bold; /* Make link text bold */
+    }
+    
+    a:hover {
+        color: #45a049;
+    }
+    
+    button {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        cursor: pointer;
+        border-radius: 4px;
+        font-size: 16px;
+        transition: background-color 0.3s;
+    }
+    
+    button:hover {
+        background-color: #45a049;
+    }
+</style>
+<script>
+    function showActions(row) {
+        // Hide all action containers first
+        const actionContainers = document.querySelectorAll('.action-container');
+        actionContainers.forEach(container => {
+            container.style.display = 'none';
+        });
+
+        // Show the action container for the clicked row
+        const actionContainer = row.querySelector('.action-container');
+        if (actionContainer) {
+            actionContainer.style.display = 'flex';
+        }
+    }
+</script>
+</head>
+<body>
+    <div class="container">
+        <button><a href="basis_data/guru/from_tambah.php" style="color: white;">Tambah</a></button>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>judul</th>
+                    <th>pengarang</th>
+                    <th>id_genre</th>
+                    <th>tentang_buku</th>
+                    <th>status</th>
+                </tr>
+            </thead>
+            <tbody>
                         <div class="bg-light rounded h-90 p-3">
                             <a href ="basis_data/data_siswa/form_tambah.php" style="background-color: #4CAF50; color: white; padding: 5px 10px; border: none; border-radius: 5px; cursor: pointer;">tambah</a>
                             <a href="basis_data/data_siswa/edit.php" style="background-color: #007BFF; color: white; padding: 5px 10px; border: none; border-radius: 5px; cursor: pointer;">edit</a>
@@ -82,6 +186,18 @@
                     </div>
                 </div>
             </div>  
+<<<<<<< HEAD
+=======
+
+            
+
+
+            
+
+
+         
+
+>>>>>>> 1c7f1bc45867628913f86bae48a8b991df9f43d2
         </div>
         <!-- Content End -->
 

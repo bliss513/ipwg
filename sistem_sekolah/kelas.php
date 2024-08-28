@@ -34,11 +34,11 @@
     <body>
         <div class="container-xxl position-relative bg-white d-flex p-0">
             <!-- Spinner Start -->
-            <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <!-- <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
                 <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
                     <span class="sr-only">Loading...</span>
                 </div>
-            </div>
+            </div> -->
             <!-- Spinner End -->
 
             <?php
@@ -158,7 +158,7 @@
                         $data = mysqli_query($koneksi, "SELECT * FROM kelas");
                         while ($hasil = mysqli_fetch_array($data)) {
                     ?>
-                    <tr onclick="window.location.href='basis_data/kelas/ubah.php?id=<?php echo $hasil['id']; ?>'">
+                    <tr onclick="window.location.href='ubah_kls.php?id=<?php echo $hasil['id']; ?>'">
                         <td><?php echo $no++; ?></td>
                         <td><?php echo $hasil['id']; ?></td>
                         <td><?php echo $hasil['kd_kelas']; ?></td>
