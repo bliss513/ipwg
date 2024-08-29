@@ -226,6 +226,24 @@
                 table = document.getElementById("dataTable");
                 tr = table.getElementsByTagName("tr");
 
+<<<<<<< HEAD
+                            <div>
+                    </div>
+                </div>
+            </div>  
+<<<<<<< HEAD
+=======
+
+            
+
+
+            
+
+
+         
+
+>>>>>>> 1c7f1bc45867628913f86bae48a8b991df9f43d2
+=======
                 for (i = 1; i < tr.length; i++) {
                     tr[i].style.display = "none";
                     td = tr[i].getElementsByTagName("td");
@@ -279,6 +297,7 @@
                     ?>
                 </tbody>
             </table>
+>>>>>>> 03b36af4e24db661e0b4e408461f8f92ef8b74e3
         </div>
     </body>
             <!-- Content End -->

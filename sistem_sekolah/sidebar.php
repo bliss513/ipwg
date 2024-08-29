@@ -26,6 +26,20 @@
                         </div>
                     </div>
                     <div class="nav-item dropdown">
+<<<<<<< HEAD
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-table me-2"></i>Absensi </a>
+                        <div class="dropdown-menu bg-transparent border-0">
+                            <a href="absensi_siswa.php" class="dropdown-item">Siswa</a>
+                            <a href="absensi_guru.php" class="dropdown-item">Guru</a>
+                            <a href="kelas.php" class="dropdown-item">kelas</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-chart-bar me-2"></i>perpus </a>                    <div class="dropdown-menu bg-transparent border-0">
+                            <a href="pinjaman.php" class="dropdown-item">pinjaman</a>
+                    </div>
+                   </div>
+=======
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-chart-bar me-2"></i>perpus</a>
                         <div class="dropdown-menu bg-transparent border-0">
                         <a href="tabel_pinjaman.php" class="dropdown-item">pinjaman</a>
@@ -44,6 +58,7 @@
                             <a href="pembayaran.php" class="dropdown-item">pembayaran</a>
                         </div>
                      </div>
+>>>>>>> 03b36af4e24db661e0b4e408461f8f92ef8b74e3
                     <a href="form.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Forms</a>
                     <!-- <a href="table.php" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a> -->
                     <a href="chart.php" class="nav-iclasstem nav-link"><i class="fa fa-chart-bar me-2"></i>chart</a>
