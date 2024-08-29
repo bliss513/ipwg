@@ -11,11 +11,11 @@ if (isset($_POST['simpan'])) {
     $nama = mysqli_real_escape_string($koneksi, $_POST['nama']);
     $nisn = mysqli_real_escape_string($koneksi, $_POST['nisn']);
 
-    $sql = "UPDATE siswa SET nama='$nama', nisn='$nisn' WHERE id='$id'";
+    $sql = "UPDATE sistem_sekolah SET nama='$nama', nisn='$nisn' WHERE id='$id'";
 
     if (mysqli_query($koneksi, $sql)) {
         // Jika berhasil, redirect ke index_siswa.php
-        header('Location: index_siswa.php');
+        header('Location:index_siswa.php');
         exit(); // Hentikan eksekusi lebih lanjut setelah redirect
     } else {
         // Jika tidak berhasil
@@ -26,7 +26,7 @@ if (isset($_POST['simpan'])) {
 // Ambil data siswa untuk ditampilkan di formulir
 $data = mysqli_query($koneksi, "SELECT * FROM siswa WHERE id='$id'");
 $hasil = mysqli_fetch_array($data);
-?>
+?> 
 
 <!DOCTYPE html>
 <html>
@@ -40,7 +40,7 @@ $hasil = mysqli_fetch_array($data);
         <input type="text" name="nama" value="<?php echo htmlspecialchars($hasil['nama']); ?>"><br>
         <label>NISN</label><br>
         <input type="text" name="nisn" value="<?php echo htmlspecialchars($hasil['nisn']); ?>"><br>
-        <input type="hidden" name="id" value="<?php echo htmlspecialchars($hasil['id']); ?>"><br>
+        
         <br>
         <button type="submit" name="simpan">Simpan</button> || <button><a href="../../button.php">Kembali</a></button>
     </form>
