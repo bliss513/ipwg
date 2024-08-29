@@ -88,12 +88,12 @@ $hasil = mysqli_fetch_array($data);
         <form method="post" action="">
             <label for="id">Id</label>
             <input type="text" id="id" name="id" value="<?php echo $hasil['id'];?>" readonly>
-            <label for="nama">nama</label>
+            <label for="nama">Nama</label>
             <input type="text" id="nama" name="nama" value="<?php echo $hasil['nama'];?>">
-			<label for="nisn">nisn</label>
+			<label for="nisn">Nisn</label>
             <input type="text" id="nisn" name="nisn" value="<?php echo $hasil['nisn'];?>">
-            <label for="nomer">nomer</label>
-            <input type="text" id="nomer" name="nomer" value="<?php echo $hasil['nomer'];?>">
+            <label for="nomer">Nomer Hp</label>
+            <input type="number" id="nomer" name="nomer" value="<?php echo $hasil['nomer'];?>">
             <div class="button-container">
                 <button type="submit" name="simpan">Simpan</button>
                 <a href="../../button.php" class="cancel-btn">Batal</a>

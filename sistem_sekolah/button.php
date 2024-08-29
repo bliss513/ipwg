@@ -218,7 +218,7 @@
                 cursor: pointer;
             }
         </style>
-        <script>
+     <script>
             function searchTable() {
                 var input, filter, table, tr, td, i, j, txtValue;
                 input = document.getElementById("searchInput");
@@ -243,19 +243,21 @@
         </script>
     </head>
     <body>
+  
         <div class="container">
             <a href="basis_data/data_siswa/form_tambah.php" class="cancel-btn">Tambah Data</a>
             <div class="search-container">
-               
+            <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search...">
+   
             </div>
             <table id="dataTable">
                 <thead>
                     <tr>
                         <th>no</th>
                         <th>Id</th>
-                        <th>nama</th>
-                        <th>nisn</th>
-                        <th>nomer</th>
+                        <th>Nama</th>
+                        <th>Nisn</th>
+                        <th> Nomer Hp</th>
                     </tr>
                 </thead>
                 <tbody>

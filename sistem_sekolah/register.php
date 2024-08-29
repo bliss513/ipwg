@@ -17,26 +17,27 @@
 </head>
 <body>
     <div class="container">
-        <h1>SPP Management System</h1>
+        <h1>REGISTRASI SPP</h1>
 
-        <h2>Register Student</h2>
-        <form action="register_student.php" method="post">
+     
+       
+        <label for="nama">Nama:</label>
+            <input type="text" id="nama" name="nama" required>
+            <form action="register_student.php" method="post">
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" required>
         <label for="password">Password:</label>
             <input type="text" id="password" name="password" required>
-        <label for="nama">Nama:</label>
-            <input type="text" id="nama" name="nama" required>
-            <label for="status">jenis kelamin</label>
+            <label for="status">Jenis Kelamin</label>
                 <select id="status" required>
-                    <option value="laki-laki">laki-laki</option>
-                    <option value="perempuan">perempuan</option>
+                    <option value="laki-laki">Laki-Laki</option>
+                    <option value="perempuan">Perempuan</option>
                 </select>
                 <label for="nisn">Nisn:</label>
                 <input type="text" id="nisn" name="nisn" required>
-                <label for="tempat_lahir">Tempat_lahir:</label>
+                <label for="tempat_lahir">Tempat Lahir:</label>
                 <input type="text" id="tempat_lahir" name="tempat_lahir" required>
-                <label for="tanggal_lahir">Tanggal lahir:</label>
+                <label for="tanggal_lahir">Tanggal Lahir:</label>
                 <input type="text" id="tanggal_lahir" name="tanggal_lahir" required>
                 <label for="alamat">Alamat:</label>
                 <input type="text" id="alamat" name="alamat" required>
@@ -44,29 +45,30 @@
             <input type="text" id="hp" name="hp" required>
             <label for="email">Email:</label>
             <input type="text" id="email" name="email" required>
-            <label for="foto">foto:</label>
-            <input type="text" id="foto" name="foto" required>
-            <label for="nama_wali">Nama wali:</label>
+            <label for="foto">Foto:</label>
+            <input type="file" id="foto" name="foto" required>
+            <label for="nama_wali">Nama Wali:</label>
             <input type="text" id="nama_wali" name="nama_wali" required>
-            <label for="tahun_lahir_wali">Tahun lahir wali:</label>
-            <input type="text" id="tahun_lahir_wali" name="tahun_lahir_wali" required>
-            <label for="pendidikan_wali">Pendidikan wali:</label>
+            <label for="tahun_lahir_wali">Tanggal lahir wali:</label>
+            <input type="date" id="tahun_lahir_wali" name="tahun_lahir_wali" required>
+            <label for="pendidikan_wali">pendidikan wali:</label>
             <input type="text" id="pendidikan_wali" name="pendidikan_wali" required>
             <label for="pekerjaan_wali">Pekerjaan wali:</label>
             <input type="text" id="pekerjaan_wali" name="pekerjaan_wali" required>
             <label for="penghasilan_wali">Penghasilan wali:</label>
             <input type="text" id="penghasilan_wali" name="penghasilan_wali" required>
-            <label for="angkatan">Angkatan:</label>
-            <input type="text" id="angkatan" name="angatan" required>
            
         <form action="make_payment.php" method="post">
-            <label for="id_kelas">ID kelas:</label>
-            <input type="number" id="id_kelas" name="id_kelas" required>
+        </select>
 
-            <label for="amount">Payment Amount:</label>
-            <input type="number" id="amount" name="amount" step="0.01" required>
-
-            <button type="submit">Pay</button>
+<label for="kelas">Kelas</label>
+<select id="kelas" name="kelas" required>
+    <option value="X">X</option>
+    <option value="XI">XI</option>
+    <option value="XII">XII</option>
+</select>
+          
+            <button type="submit">simpan</button>
         </form>
 
         <div class="message">

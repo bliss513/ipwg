@@ -38,7 +38,7 @@ $hasil = mysqli_fetch_array($data);
     <form method="post" action="">
         <label>Nama</label><br>
         <input type="text" name="nama" value="<?php echo htmlspecialchars($hasil['nama']); ?>"><br>
-        <label>NISN</label><br>
+        <label>Nisn</label><br>
         <input type="text" name="nisn" value="<?php echo htmlspecialchars($hasil['nisn']); ?>"><br>
         
         <br>

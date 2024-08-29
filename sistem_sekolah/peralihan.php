@@ -34,13 +34,13 @@
             padding: 10px 20px;
             font-size: 16px;
             color: white;
-            background-color: #6f42c1; /* Warna latar belakang tombol ungu */
+            background-color: #C53030;
             border: none;
             border-radius: 5px;
             cursor: pointer;
         }
         .process-button:hover {
-            background-color: #5a2a7a; /* Warna latar belakang tombol ungu gelap saat hover */
+            background-color: #C53030; 
         }
     </style>
 </head>
@@ -69,10 +69,8 @@
         </tbody>
     </table>
 
-    <div class="button-container">
-        <button class="process-button" onclick="processChanges()">Proses</button>
-    </div>
-
+    <button type="submit" name="simpan">Simpan</button>
+        </form>
     <script>
         function toggleHighlight(checkbox) {
             const tableRow = checkbox.parentElement.parentElement;

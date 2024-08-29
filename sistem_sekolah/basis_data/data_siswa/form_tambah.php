@@ -81,13 +81,13 @@
     <div class="container">
         <h1>Tambah Data</h1>
         <form method="post" action="tambah.php">
-            <label for="id">id</label>
+            <label for="id">Id</label>
             <input type="text" id="id" name="id">
-            <label for="nama">nama</label>
+            <label for="nama">Nama</label>
             <input type="text" id="nama" name="nama">
-            <label for="nisn">nisn</label>
+            <label for="nisn">Nisn</label>
             <input type="text" id="nisn" name="nisn">
-            <label for="nomer">nomer</label>
+            <label for="nomer">Nomer Hp</label>
             <input type="text" id="nomer" name="nomer">
             <div class="button-container">
                 <button type="submit" name="simpan">Simpan</button>
