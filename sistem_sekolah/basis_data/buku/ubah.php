@@ -23,14 +23,14 @@ if (isset($_POST['simpan'])) {
     $id = $_POST['id'];
     $judul = $_POST['judul'];
     $pengarang = $_POST['pengarang'];
-    $id_genre = $_POST['id_genre'];
+    $id_genre = $_POST['genre'];
     $tentang_buku = $_POST['tentang_buku'];
     $status = $_POST['status'];
 
     // Query untuk mengupdate data
-    $sql = "UPDATE buku SET judul=?, pengarang=?, id_genre=?, tentang_buku=?, status=? WHERE id=?";
+    $sql = "UPDATE buku SET judul=?, pengarang=?, genre=?, tentang_buku=?, status=? WHERE id=?";
     $stmt = mysqli_prepare($koneksi, $sql);
-    mysqli_stmt_bind_param($stmt, 'sssssi', $judul, $pengarang, $id_genre, $tentang_buku, $status, $id);
+    mysqli_stmt_bind_param($stmt, 'sssssi', $judul, $pengarang, $genre, $tentang_buku, $status, $id);
 
     if (mysqli_stmt_execute($stmt)) {
         // jika berhasil, redirect ke element.php
@@ -152,8 +152,14 @@ if (isset($_POST['simpan'])) {
                     <td><input type="text" id="pengarang" name="pengarang" value="<?php echo htmlspecialchars($hasil['pengarang']); ?>"></td>
                 </tr>
                 <tr>
-                    <td><label for="id_genre">ID Genre</label></td>
-                    <td><input type="text" id="id_genre" name="id_genre" value="<?php echo htmlspecialchars($hasil['id_genre']); ?>"></td>
+                <tr>
+                    <td><label for="genre">genre</label></td>
+                    <td>
+                        <select id="genre" name="genre">
+                            <option value="fiksi" <?php echo ($hasil['genre'] == 'fiksi') ? 'selected' : ''; ?>>fiksi</option>
+                            <option value="non_fiksi" <?php echo ($hasil['genre'] == 'non_fiksi') ? 'selected' : ''; ?>>non_fiksi</option>
+                        </select>
+                   </td>
                 </tr>
                 <tr>
                     <td><label for="tentang_buku">Tentang Buku</label></td>

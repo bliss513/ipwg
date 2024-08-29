@@ -168,7 +168,7 @@
                     <th>id</th>
                     <th>judul</th>
                     <th>pengarang</th>
-                    <th>id genre</th>
+                    <th>genre</th>
                     <th>tentang buku</th>
                     <th>status</th>
                 </tr>
@@ -185,7 +185,7 @@
                     <td><?php echo $hasil['id']; ?></td>
                     <td><?php echo $hasil['judul']; ?></td>
                     <td><?php echo $hasil['pengarang']; ?></td>
-                    <td><?php echo $hasil['id_genre']; ?></td>
+                    <td><?php echo $hasil['genre']; ?></td>
                     <td><?php echo $hasil['tentang_buku']; ?></td>
                     <td><?php echo $hasil['status']; ?></td>
                     

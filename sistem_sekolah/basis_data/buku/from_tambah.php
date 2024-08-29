@@ -87,8 +87,11 @@
             <input type="text" id="judul" name="judul">
             <label for="pengarang">pengarang</label>
             <input type="text" id="pengarang" name="pengarang">
-            <label for="id_genre">id genre</label>
-            <input type="text" id="id genre" name="id_genre">
+            <label for="genre">genre</label>
+            <select id="genre" name="genre">
+                <option value="fiksi">fiksi</option>
+                <option value="non_fiksi">non fiksi</option>
+            </select>
             <label for="tentang_buku">tentang buku</label>
             <input type="text" id="tentang_buku" name="tentang_buku">
             <label for="status">status</label>

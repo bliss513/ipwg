@@ -1,142 +1,210 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rencana dan Realisasi Pembayaran SPP</title>
+    <meta charset="utf-8">
+    <title>DASHMIN - Bootstrap Admin Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
             background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
         }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
             margin: 20px 0;
-            background-color: #ffffff;
+            background: #fff;
         }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
         th, td {
-            border: 1px solid #dddddd;
+            padding: 12px;
             text-align: left;
-            padding: 8px;
         }
+
         th {
-            background-color: #4CAF50;
-            color: white;
-        }
-        tr:nth-child(even) {
             background-color: #f2f2f2;
         }
-        caption {
-            font-size: 1.5em;
-            margin: 10px;
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
         }
-        .status {
-            font-weight: bold;
-        }
-        .terbayar {
-            color: green;
-        }
-        .belum-dibayar {
-            color: red;
-        }
-        .clickable {
+
+        tr:hover {
+            background-color: #f1f1f1;
             cursor: pointer;
-            color: #007BFF;
-            text-decoration: underline;
-        }
-        .clickable:hover {
-            color: #0056b3;
-        }
-        #form-container {
-            display: none;
-            margin: 20px 0;
-            padding: 20px;
-            background-color: #ffffff;
-            border: 1px solid #dddddd;
-            border-radius: 4px;
-        }
-        #form-container input {
-            margin-bottom: 10px;
-            padding: 8px;
-            width: 100%;
         }
     </style>
 </head>
-<body>
-    <h1>Rencana dan Realisasi Pembayaran SPP</h1>
-    <table>
-        <caption>Tabel Rencana dan Realisasi Pembayaran SPP</caption>
-        <thead>
-            <tr>
-                <th>Bulan</th>
-                <th>Rencana Pembayaran</th>
-                <th>Realisasi Pembayaran</th>
-                <th>Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr onclick="showForm('Januari 2024')">
-                <td class="clickable">Januari 2024</td>
-                <td>Rp 100.000</td>
-                <td>Rp 0</td>
-                <td class="status belum-dibayar">Belum Dibayar</td>
-            </tr>
-            <tr onclick="showForm('Februari 2024')">
-                <td class="clickable">Februari 2024</td>
-                <td>Rp 500.000</td>
-                <td>Rp 0</td>
-                <td class="status belum-dibayar">Belum Dibayar</td>
-            </tr>
-            <tr onclick="showForm('Maret 2024')">
-                <td class="clickable">Maret 2024</td>
-                <td>Rp 500.000</td>
-                <td>Rp 500.000</td>
-                <td class="status terbayar">Terbayar</td>
-            </tr>
-            <!-- Tambahkan baris tambahan sesuai kebutuhan -->
-        </tbody>
-    </table>
 
-    <div id="form-container">
-        <h2>Form Input Pembayaran</h2>
-        <form id="payment-form">
-            <input type="hidden" id="month" name="month">
-            <label for="planned">Rencana Pembayaran:</label>
-            <input type="text" id="planned" name="planned">
-            <label for="realized">Realisasi Pembayaran:</label>
-            <input type="text" id="realized" name="realized">
-            <label for="status">Status:</label>
-            <select id="status" name="status">
-                <option value="Terbayar">Terbayar</option>
-                <option value="Belum Dibayar">Belum Dibayar</option>
-            </select>
-            <button type="submit">Simpan</button>
-            <button type="button" onclick="hideForm()">Batal</button>
-        </form>
+<body>
+    <div class="container-xxl position-relative bg-white d-flex p-0">
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+        <?php include 'sidebar.php'; ?>
+        <!-- Content Start -->
+        <div class="content">
+        <?php include 'header.php'; ?>
+            <!-- Table Start -->
+            <div class="container">
+                <h1>Tabel Pembayaran SPP</h1>
+                <table id="paymentTable">
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Nama Siswa</th>
+                            <th>Kelas</th>
+                            <th>Bulan</th>
+                            <th>Tahun</th>
+                            <th>Jumlah Pembayaran</th>
+                            <th>Tanggal Pembayaran</th>
+                            <th>Metode Pembayaran</th>
+                            <th>Keterangan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-href="transaksi.php">
+                            <td>1</td>
+                            <td>Ahmad</td>
+                            <td>10 IPA</td>
+                            <td>Januari</td>
+                            <td>2024</td>
+                            <td>Rp 500.000</td>
+                            <td>15 Januari 2024</td>
+                            <td>Transfer Bank</td>
+                            <td>Lunas</td>
+                        </tr>
+                        <tr data-href="transaksi.php">
+                            <td>2</td>
+                            <td>Siti</td>
+                            <td>10 IPA</td>
+                            <td>Januari</td>
+                            <td>2024</td>
+                            <td>Rp 500.000</td>
+                            <td>20 Januari 2024</td>
+                            <td>Tunai</td>
+                            <td>Lunas</td>
+                        </tr>
+                        <tr data-href="transaksi.php">
+                            <td>3</td>
+                            <td>Budi</td>
+                            <td>11 IPS</td>
+                            <td>Februari</td>
+                            <td>2024</td>
+                            <td>Rp 500.000</td>
+                            <td>5 Februari 2024</td>
+                            <td>Transfer Bank</td>
+                            <td>Lunas</td>
+                        </tr>
+                        <tr data-href="transaksi.php">
+                            <td>4</td>
+                            <td>Dewi</td>
+                            <td>11 IPS</td>
+                            <td>Februari</td>
+                            <td>2024</td>
+                            <td>Rp 500.000</td>
+                            <td>10 Februari 2024</td>
+                            <td>Tunai</td>
+                            <td>Belum Lunas</td>
+                        </tr>
+                        <tr data-href="transaksi.php">
+                            <td>5</td>
+                            <td>Andi</td>
+                            <td>12 IPA</td>
+                            <td>Maret</td>
+                            <td>2024</td>
+                            <td>Rp 500.000</td>
+                            <td>1 Maret 2024</td>
+                            <td>Transfer Bank</td>
+                            <td>Lunas</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- Footer End -->
+        </div>
+        <!-- Content End -->
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
 
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/chart/chart.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+
     <script>
-        function showForm(month) {
-            document.getElementById('form-container').style.display = 'block';
-            document.getElementById('month').value = month;
-            // Populate form with current values
-            // This example assumes that the form fields are already filled in.
-            // In a real application, you would fetch the current values from a server or database.
-        }
-
-        function hideForm() {
-            document.getElementById('form-container').style.display = 'none';
-        }
-
-        document.getElementById('payment-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-            // Handle form submission, e.g., send data to server
-            alert('Data berhasil disimpan!');
-            hideForm();
+        document.addEventListener('DOMContentLoaded', () => {
+            const tableRows = document.querySelectorAll('#paymentTable tbody tr');
+            
+            tableRows.forEach(row => {
+                row.addEventListener('click', () => {
+                    const href = row.getAttribute('data-href');
+                    if (href) {
+                        window.location.href = href;
+                    }
+                });
+            });
         });
     </script>
 </body>
+
 </html>

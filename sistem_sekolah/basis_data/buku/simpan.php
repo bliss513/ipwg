@@ -19,7 +19,7 @@ if (isset($_POST['simpan'])) {
         exit;
     }
 
-    $sql = "INSERT INTO buku (id, judul, pengarang, id_genre, tentang_buku, statu_s) VALUES ('$id', '$judul', '$pengarang', '$id_genre', '$tentang_buku', '$status')";
+    $sql = "INSERT INTO buku (id, judul, pengarang, genre, tentang_buku, status) VALUES ('$id', '$judul', '$pengarang', '$genre', '$tentang_buku', '$status')";
     // cek apakah proses simpan berhasil
     if (mysqli_query($koneksi, $sql)) {
         // jika berhasil, redirect ke halaman index.php
