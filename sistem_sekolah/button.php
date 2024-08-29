@@ -29,6 +29,114 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+
+    <!-- Custom Styles -->
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #FFFF00;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 25px auto;
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            flex: 1;
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: none; /* Remove table borders */
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #0000FF; /* Blue color for headers */
+            color: white;
+        }
+
+        th, td {
+            font-size: 16px;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1; /* Add hover effect */
+            cursor: pointer;
+        }
+
+        .action-container {
+            display: none; /* Hide action buttons by default */
+        }
+
+        a {
+            text-decoration: none;
+            color: #FF0000;
+            transition: color 0.3s;
+            font-weight: bold; /* Make link text bold */
+        }
+
+        a:hover {
+            color: #45a049;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+
+    <!-- JavaScript Functions -->
+    <script>
+        function showActions(row) {
+            // Hide all action containers first
+            const actionContainers = document.querySelectorAll('.action-container');
+            actionContainers.forEach(container => {
+                container.style.display = 'none';
+            });
+
+            // Show the action container for the clicked row
+            const actionContainer = row.querySelector('.action-container');
+            if (actionContainer) {
+                actionContainer.style.display = 'flex';
+            }
+        }
+    </script>
 </head>
 
 <body>
@@ -41,147 +149,84 @@
         </div>
         <!-- Spinner End -->
 
-        <?php
-        include 'sidebar.php'
-        ?>
-
+        <!-- Sidebar -->
+        <?php include 'sidebar.php'; ?>
 
         <!-- Content Start -->
         <div class="content">
-        <?php
-            include 'header.php';
-            ?>
-      <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>daftar buku</title>
-<style>
-    body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background-color: #FFFF00;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-    }
-    
-    .container {
-        max-width: 900px;
-        margin: 25px auto;
-        background-color: white;
-        padding: 25px;
-        border-radius: 8px;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-        flex: 1; 
-    }
-    
-    h1 {
-        font-size: 32px;
-        margin-bottom: 10px;
-        text-align: center;
-    }
-    
-    p {
-        font-size: 18px;
-        margin-bottom: 20px;
-        text-align: center;
-    }
-    
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 20px;
-    }
-    
-    table, th, td {
-        border: none; /* Remove table borders */
-        padding: 12px;
-        text-align: left;
-    }
-    
-    th {
-        background-color: #0000FF; /* Blue color for headers */
-        color: white;
-    }
-    
-    th, td {
-        font-size: 16px;
-    }
-    
-    tr:hover {
-        background-color: #f1f1f1; /* Add hover effect */
-        cursor: pointer;
-    }
-    
-    .action-container {
-        display: none; /* Hide action buttons by default */
-    }
-    
-    a {
-        text-decoration: none;
-        color: #FF0000;
-        transition: color 0.3s;
-        font-weight: bold; /* Make link text bold */
-    }
-    
-    a:hover {
-        color: #45a049;
-    }
-    
-    button {
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        padding: 12px 20px;
-        cursor: pointer;
-        border-radius: 4px;
-        font-size: 16px;
-        transition: background-color 0.3s;
-    }
-    
-    button:hover {
-        background-color: #45a049;
-    }
-</style>
-<script>
-    function showActions(row) {
-        // Hide all action containers first
-        const actionContainers = document.querySelectorAll('.action-container');
-        actionContainers.forEach(container => {
-            container.style.display = 'none';
-        });
 
-        // Show the action container for the clicked row
-        const actionContainer = row.querySelector('.action-container');
-        if (actionContainer) {
-            actionContainer.style.display = 'flex';
-        }
-    }
-</script>
-</head>
-<body>
-    <div class="container">
-        <button><a href="basis_data/guru/from_tambah.php" style="color: white;">Tambah</a></button>
-        
-        <table>
-            <thead>
-                <tr>
-                    <th>id</th>
-                    <th>judul</th>
-                    <th>pengarang</th>
-                    <th>id_genre</th>
-                    <th>tentang_buku</th>
-                    <th>status</th>
-                </tr>
-            </thead>
-            <tbody>
-                        <div class="bg-light rounded h-90 p-3">
-                            <a href ="basis_data/data_siswa/form_tambah.php" style="background-color: #4CAF50; color: white; padding: 5px 10px; border: none; border-radius: 5px; cursor: pointer;">tambah</a>
-                            <a href="basis_data/data_siswa/edit.php" style="background-color: #007BFF; color: white; padding: 5px 10px; border: none; border-radius: 5px; cursor: pointer;">edit</a>
-                            <a href="basis_data/data_siswa/hapus.php" style="background-color: #f44336; color: white; padding: 5px 10px; border: none; border-radius: 5px; cursor: pointer;">hapus</a>
+            <?php include 'header.php'; ?>
 
+            <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Daftar Kelas</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f4f4f4;
+                margin: 0;
+                padding: 0;
+            }
+            .container {
+                width: 80%;
+                margin: 50px auto;
+                background-color: #fff;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+                border-radius: 8px;
+            }
+            .cancel-btn {
+                background-color: #E53E3E;
+                color: white;
+                text-decoration: none;
+                padding: 8px 16px;
+                border-radius: 4px;
+                margin-bottom: 20px;
+                display: inline-block;
+                font-size: 14px;
+            }
+            .cancel-btn:hover {
+                background-color: #C53030;
+            }
+            .search-container {
+                float: right;
+                margin-bottom: 10px;
+            }
+            .search-container input[type="text"] {
+                padding: 8px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                font-size: 14px;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 10px;
+            }
+            th, td {
+                padding: 8px;
+                text-align: left;
+                border-bottom: 1px solid #ddd;
+            }
+            th {
+                background-color: #4CAF50;
+                color: white;
+            }
+            tr:hover {
+                background-color: #f5f5f5;
+                cursor: pointer;
+            }
+        </style>
+        <script>
+            function searchTable() {
+                var input, filter, table, tr, td, i, j, txtValue;
+                input = document.getElementById("searchInput");
+                filter = input.value.toLowerCase();
+                table = document.getElementById("dataTable");
+                tr = table.getElementsByTagName("tr");
 
+<<<<<<< HEAD
                             <div>
                     </div>
                 </div>
@@ -198,27 +243,82 @@
          
 
 >>>>>>> 1c7f1bc45867628913f86bae48a8b991df9f43d2
+=======
+                for (i = 1; i < tr.length; i++) {
+                    tr[i].style.display = "none";
+                    td = tr[i].getElementsByTagName("td");
+                    for (j = 0; j < td.length; j++) {
+                        if (td[j]) {
+                            txtValue = td[j].textContent || td[j].innerText;
+                            if (txtValue.toLowerCase().indexOf(filter) > -1) {
+                                tr[i].style.display = "";
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <a href="basis_data/data_siswa/form_tambah.php" class="cancel-btn">Tambah Data</a>
+            <div class="search-container">
+               
+            </div>
+            <table id="dataTable">
+                <thead>
+                    <tr>
+                        <th>no</th>
+                        <th>Id</th>
+                        <th>nama</th>
+                        <th>nisn</th>
+                        <th>nomer</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                        include "config/koneksi.php";
+                        $no = 1;
+                        $data = mysqli_query($koneksi, "SELECT * FROM siswa");
+                        while ($hasil = mysqli_fetch_array($data)) {
+                    ?>
+                    <tr onclick="window.location.href='basis_data/data_siswa/ubah.php?id=<?php echo $hasil['id']; ?>'">
+                        <td><?php echo $no++; ?></td>
+                        <td><?php echo $hasil['id']; ?></td>
+                        <td><?php echo $hasil['nama']; ?></td>
+                        <td><?php echo $hasil['nisn']; ?></td>
+                        <td><?php echo $hasil['nomer']; ?></td>
+                    </tr>
+                    <?php
+                        }
+                    ?>
+                </tbody>
+            </table>
+>>>>>>> 03b36af4e24db661e0b4e408461f8f92ef8b74e3
         </div>
-        <!-- Content End -->
+    </body>
+            <!-- Content End -->
+            <?php include 'footer.php'; ?>
+
+            <!-- Back to Top -->
+            <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+        </div>
+
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="lib/chart/chart.min.js"></script>
+        <script src="lib/easing/easing.min.js"></script>
+        <script src="lib/waypoints/waypoints.min.js"></script>
+        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+        <script src="lib/tempusdominus/js/moment.min.js"></script>
+        <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+        <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+        <!-- Template Javascript -->
+        <script src="js/main.js"></script>
+    </body>
 
 
-        <!-- Back to Top -->
-        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
-    </div>
-
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/chart/chart.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/tempusdominus/js/moment.min.js"></script>
-    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
-    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
-
-    <!-- Template Javascript -->
-    <script src="js/main.js"></script>
-</body>
-
-</html>
+    </html>

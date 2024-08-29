@@ -17,10 +17,36 @@ $hasil = mysqli_fetch_array($data);
 if (!$hasil) {
     die('Data buku tidak ditemukan.');
 }
+
+// Handle form submission
+if (isset($_POST['simpan'])) {
+    $id = $_POST['id'];
+    $judul = $_POST['judul'];
+    $pengarang = $_POST['pengarang'];
+    $id_genre = $_POST['id_genre'];
+    $tentang_buku = $_POST['tentang_buku'];
+    $status = $_POST['status'];
+
+    // Query untuk mengupdate data
+    $sql = "UPDATE buku SET judul=?, pengarang=?, id_genre=?, tentang_buku=?, status=? WHERE id=?";
+    $stmt = mysqli_prepare($koneksi, $sql);
+    mysqli_stmt_bind_param($stmt, 'sssssi', $judul, $pengarang, $id_genre, $tentang_buku, $status, $id);
+
+    if (mysqli_stmt_execute($stmt)) {
+        // jika berhasil, redirect ke element.php
+        header('Location:../../element.php');
+        exit();
+    } else {
+        // jika tidak berhasil
+        $error = "Oups... Maaf, proses penyimpanan data tidak berhasil.";
+    }
+}
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mengubah Data Buku</title>
     <style>
         body {
@@ -110,6 +136,7 @@ if (!$hasil) {
 <body>
     <div class="container">
         <h1>Ubah Data Buku</h1>
+        <?php if (isset($error)) { echo "<p style='color: red;'>$error</p>"; } ?>
         <form method="post" action="">
             <table>
                 <tr>
@@ -153,26 +180,3 @@ if (!$hasil) {
     </div>
 </body>
 </html>
-
-<?php
-if (isset($_POST['simpan'])) {
-    $id = $_POST['id'];
-    $judul = $_POST['judul'];
-    $pengarang = $_POST['pengarang'];
-    $id_genre = $_POST['id_genre'];
-    $tentang_buku = $_POST['tentang_buku'];
-    $status = $_POST['status'];
-    // Query untuk mengupdate data
-    $sql = "UPDATE buku SET judul='$judul', pengarang='$pengarang', id_genre='$id_genre', tentang_buku='$tentang_buku', status='$status' WHERE id='$id'";
-
-    // Execute query and handle errors
-    if (mysqli_query($koneksi, $sql)) {
-        // jika berhasil, redirect ke index.php
-        header('Location:../../element.php');
-    } else {
-        // jika tidak berhasil
-        echo "Oupss....Maaf proses penyimpanan data tidak berhasil";
-    }
-}
-
-?>

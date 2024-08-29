@@ -85,7 +85,7 @@
             <input type="text" id="id" name="id">
             <label for="nip">nip</label>
             <input type="text" id="nip" name="nip">
-            <label for="nama_guru">nama_guru</label>
+            <label for="nama_guru">nama guru</label>
             <input type="text" id="nama_guru" name="nama_guru">
             <div class="button-container">
                 <button type="submit" name="simpan">Simpan</button>

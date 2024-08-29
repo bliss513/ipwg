@@ -1,4 +1,4 @@
-<!-- Sidebar Start -->
+ <!-- Sidebar Start -->
 <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-light navbar-light">
                 <a href="https://www.instagram.com/pplg_11?igsh=bGNxdHd2bmxldnQ=" class="navbar-brand mx-4 mb-3">
@@ -26,6 +26,7 @@
                         </div>
                     </div>
                     <div class="nav-item dropdown">
+<<<<<<< HEAD
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-table me-2"></i>Absensi </a>
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="absensi_siswa.php" class="dropdown-item">Siswa</a>
@@ -38,9 +39,29 @@
                             <a href="pinjaman.php" class="dropdown-item">pinjaman</a>
                     </div>
                    </div>
+=======
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-chart-bar me-2"></i>perpus</a>
+                        <div class="dropdown-menu bg-transparent border-0">
+                        <a href="tabel_pinjaman.php" class="dropdown-item">pinjaman</a>
+                   </div>
+                   <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-table me-2 "></i>Absensi</a>
+                <div class="dropdown-menu bg-transparent border-0">
+                    <a href="abs.php" class="dropdown-item">Kelas</a>
+                </div>
+                 </div>
+                 <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fas fa-dollar-sign me-2"></i>SPP</a>
+                        <div class="dropdown-menu bg-transparent border-0">
+                            <a href="register.php" class="dropdown-item">Register</a>
+                            <a href="peralihan.php" class="dropdown-item">peralihan</a>
+                            <a href="pembayaran.php" class="dropdown-item">pembayaran</a>
+                        </div>
+                     </div>
+>>>>>>> 03b36af4e24db661e0b4e408461f8f92ef8b74e3
                     <a href="form.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Forms</a>
-                    <a href="table.php" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>
-                    <a href="chart.php" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>
+                    <!-- <a href="table.php" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a> -->
+                    <a href="chart.php" class="nav-iclasstem nav-link"><i class="fa fa-chart-bar me-2"></i>chart</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
                         <div class="dropdown-menu bg-transparent border-0">
