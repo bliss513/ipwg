@@ -50,7 +50,7 @@
                 include 'header.php';
                 ?>
 
-<head>
+<!-- <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tabel Absensi Siswa</title>
@@ -105,15 +105,19 @@
             padding: 8px;
             font-size: 16px;
         }
+        .radio-group {
+            display: flex;
+            gap: 10px;
+        }
     </style>
 </head>
-<body>    
+<body>
     <div class="container">
         <div class="filter">
             <form method="GET" action="">
                 <label for="id-jurnal">Pilih Jurnal:</label>
                 <select id="id-jurnal" name="id-jurnal" onchange="this.form.submit()">
-                    <option value="">Semua Jurnal</option>
+                    <option value="">Pilih Jurnal</option>
                     <?php
                         // Konfigurasi database
                         $servername = "localhost";
@@ -145,14 +149,6 @@
             </form>
         </div>
 
-        <div class="message">
-            <?php
-                if (isset($_GET['message'])) {
-                    echo htmlspecialchars($_GET['message']);
-                }
-            ?>
-        </div>
-        
         <table>
             <thead>
                 <tr>
@@ -165,51 +161,143 @@
             </thead>
             <tbody>
                 <?php
-                    // Konfigurasi database
-                    $servername = "localhost";
-                    $username = "root"; // ganti dengan username database Anda
-                    $password = ""; // ganti dengan password database Anda
-                    $dbname = "sistem_sekolah"; // ganti dengan nama database Anda
+                    // Cek apakah ada jurnal yang dipilih
+                    if (isset($_GET['id-jurnal']) && !empty($_GET['id-jurnal'])) {
+                        // Konfigurasi database
+                        $servername = "localhost";
+                        $username = "root"; // ganti dengan username database Anda
+                        $password = ""; // ganti dengan password database Anda
+                        $dbname = "sistem_sekolah"; // ganti dengan nama database Anda
 
-                    // Buat koneksi
-                    $conn = new mysqli($servername, $username, $password, $dbname);
+                        // Buat koneksi
+                        $conn = new mysqli($servername, $username, $password, $dbname);
 
-                    // Cek koneksi
-                    if ($conn->connect_error) {
-                        die("Koneksi gagal: " . $conn->connect_error);
-                    }
-
-                    // Ambil filter jurnal dari query parameter
-                    $id_jurnal = isset($_GET['id-jurnal']) ? $_GET['id-jurnal'] : '';
-
-                    // Query untuk mengambil data absensi dengan filter jurnal
-                    $sql = "SELECT * FROM absensi_kelas";
-                    if ($id_jurnal) {
-                        $sql .= " WHERE id_jurnal = " . $conn->real_escape_string($id_jurnal);
-                    }
-                    $result = $conn->query($sql);
-
-                    if ($result->num_rows > 0) {
-                        // Output data per baris
-                        while($row = $result->fetch_assoc()) {
-                            echo "<tr>";
-                            echo "<td>" . $row["id"] . "</td>";
-                            echo "<td>" . $row["id_siswa"] . "</td>";
-                            echo "<td>" . $row["tanggal"] . "</td>";
-                            echo "<td>" . $row["id_jurnal"] . "</td>";
-                            echo "<td>" . $row["kehadiran_kelas"] . "</td>";
-                            echo "</tr>";
+                        // Cek koneksi
+                        if ($conn->connect_error) {
+                            die("Koneksi gagal: " . $conn->connect_error);
                         }
-                    } else {
-                        echo "<tr><td colspan='5'>Tidak ada data absensi</td></tr>";
-                    }
 
-                    $conn->close();
+                        // Ambil filter jurnal dari query parameter
+                        $id_jurnal = $conn->real_escape_string($_GET['id-jurnal']);
+
+                        // Query untuk mengambil data absensi dengan filter jurnal
+                        $sql = "SELECT * FROM absensi_kelas WHERE id_jurnal = '$id_jurnal'";
+                        $result = $conn->query($sql);
+
+                        if ($result->num_rows > 0) {
+                            // Output data per baris
+                            while($row = $result->fetch_assoc()) {
+                                $kehadiran = $row["kehadiran_kelas"];
+                                echo "<tr>";
+                                echo "<td>" . $row["id"] . "</td>";
+                                echo "<td>" . $row["id_siswa"] . "</td>";
+                                echo "<td>" . $row["tanggal"] . "</td>";
+                                echo "<td>" . $row["id_jurnal"] . "</td>";
+                                echo "<td>";
+                                echo "<form method='POST' action=''>";
+                                echo "<input type='hidden' name='id' value='" . $row["id"] . "' />";
+                                echo "<div class='radio-group'>";
+                                echo "<label><input type='radio' name='kehadiran' value='H'" . ($kehadiran == 'H' ? ' checked' : '') . "> H</label>";
+                                echo "<label><input type='radio' name='kehadiran' value='I'" . ($kehadiran == 'I' ? ' checked' : '') . "> I</label>";
+                                echo "<label><input type='radio' name='kehadiran' value='S'" . ($kehadiran == 'S' ? ' checked' : '') . "> S</label>";
+                                echo "<label><input type='radio' name='kehadiran' value='A'" . ($kehadiran == 'A' ? ' checked' : '') . "> A</label>";
+                                echo "</div>";
+                                echo "<input type='submit' value='Update'>";
+                                echo "</form>";
+                                echo "</td>";
+                                echo "</tr>";
+                            }
+                        } else {
+                            echo "<tr><td colspan='5'>Tidak ada data absensi</td></tr>";
+                        }
+
+                        $conn->close();
+                    } else {
+                        echo "<tr><td colspan='5'>Silakan pilih jurnal untuk melihat data absensi</td></tr>";
+                    }
                 ?>
             </tbody>
         </table>
     </div>
+</body> -->
+
+<?php
+$servername = "localhost";  // Ganti dengan nama server Anda
+$username = "root";         // Ganti dengan username Anda
+$password = "";             // Ganti dengan password Anda
+$dbname = "sistem_sekolah";
+
+// Membuat koneksi
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Mengecek koneksi
+if ($conn->connect_error) {
+    die("Koneksi gagal: " . $conn->connect_error);
+}
+
+// Query untuk mengambil data dari tabel
+$sql = "SELECT * FROM absensi_kelas";
+$result = $conn->query($sql);
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Absensi Harian</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+    <h1>Data Absensi Harian</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>ID Siswa</th>
+                <th>Tanggal</th>
+                <th>ID Jurnal</th>
+                <th>Kehadiran Kelas</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            if ($result->num_rows > 0) {
+                // Menampilkan data setiap baris
+                while($row = $result->fetch_assoc()) {
+                    echo "<tr>";
+                    echo "<td>" . $row["id"] . "</td>";
+                    echo "<td>" . $row["id_siswa"] . "</td>";
+                    echo "<td>" . $row["tanggal"] . "</td>";
+                    echo "<td>" . $row["id_jurnal"] . "</td>";
+                    echo "<td>" . $row["kehadiran_kelas"] . "</td>";
+                    echo "</tr>";
+                }
+            } else {
+                echo "<tr><td colspan='5'>Tidak ada data</td></tr>";
+            }
+            ?>
+        </tbody>
+    </table>
+    <?php
+    // Menutup koneksi
+    $conn->close();
+    ?>
 </body>
+</html>
 
             <!-- Content End -->
             <?php include 'footer.php'; ?>
