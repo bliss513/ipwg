@@ -87,8 +87,8 @@
             <input type="text" id="nama" name="nama">
             <label for="nisn">Nisn</label>
             <input type="text" id="nisn" name="nisn">
-            <label for="nomer">Nomer Hp</label>
-            <input type="text" id="nomer" name="nomer">
+            <label for="nomer_hp">Nomer Hp</label>
+            <input type="number" id="nomer_hp" name="nomer_hp">
             <div class="button-container">
                 <button type="submit" name="simpan">Simpan</button>
                 <a href="../../button.php" class="cancel-btn">Batal</a>
