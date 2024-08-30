@@ -15,9 +15,9 @@
   <thead>
  <tr style="background-color: pink;">
     <th> No. </th>
-    <th> nama</th>
-    <th> nisn</th>
-    <th> nomer</th>
+    <th> Nama</th>
+    <th> Nisn</th>
+    <th> Nomer Hp</th>
 </tr>
   </thead>
   <tbody>

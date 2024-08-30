@@ -38,7 +38,7 @@ $hasil = mysqli_fetch_array($data);
             font-weight: bold;
             color: #555;
         }
-        input[type="text"], select {
+        input[type="text"], input[type="number"], select {
             width: 100%;
             padding: 10px;
             margin-bottom: 15px;
@@ -87,37 +87,40 @@ $hasil = mysqli_fetch_array($data);
         <h1>Ubah Data</h1>
         <form method="post" action="">
             <label for="id">Id</label>
-            <input type="text" id="id" name="id" value="<?php echo $hasil['id'];?>" readonly>
-            <label for="nama">nama</label>
-            <input type="text" id="nama" name="nama" value="<?php echo $hasil['nama'];?>">
-			<label for="nisn">nisn</label>
-            <input type="text" id="nisn" name="nisn" value="<?php echo $hasil['nisn'];?>">
-            <label for="nomer">nomer</label>
-            <input type="text" id="nomer" name="nomer" value="<?php echo $hasil['nomer'];?>">
+            <input type="text" id="id" name="id" value="<?php echo htmlspecialchars($hasil['id']);?>" readonly>
+            <label for="nama">Nama</label>
+            <input type="text" id="nama" name="nama" value="<?php echo htmlspecialchars($hasil['nama']);?>">
+            <label for="nisn">Nisn</label>
+            <input type="text" id="nisn" name="nisn" value="<?php echo htmlspecialchars($hasil['nisn']);?>">
+            <label for="nomer_hp">Nomer Hp</label>
+            <input type="number" id="nomer_hp" name="nomer_hp" value="<?php echo htmlspecialchars($hasil['nomer_hp']);?>">
             <div class="button-container">
                 <button type="submit" name="simpan">Simpan</button>
                 <a href="../../button.php" class="cancel-btn">Batal</a>
+                <a onclick="return confirm('Yakin ingin menghapus data ini?')" href="hapus.php?id=<?php echo urlencode($hasil['id']); ?>" class="delete-btn">Hapus Data Ini</a>
             </div>
         </form>
-        <a onclick="return confirm('Yakin ingin menghapus data ini?')" href="hapus.php?id=<?php echo $hasil['id']; ?>" class="delete-btn">Hapus Data Ini</a>
     </div>
 </body>
 </html>
 
 <?php
 if (isset($_POST['simpan'])) {
-    $id = $_POST['id'];
-    $nisn = $_POST['nama'];
-    $nama = $_POST['nisn'];
-    $nomer = $_POST['nomer'];
-    $sql = "UPDATE siswa SET id='$id', nama='$nama', nisn='$nisn', nomer='$nomer' WHERE id='$id'";
+    $id = mysqli_real_escape_string($koneksi, $_POST['id']);
+    $nama = mysqli_real_escape_string($koneksi, $_POST['nama']);
+    $nisn = mysqli_real_escape_string($koneksi, $_POST['nisn']);
+    $nomer_hp = mysqli_real_escape_string($koneksi, $_POST['nomer_hp']);
 
-    // cek apakah proses simpan berhasil
+    // Pastikan nama variabel di SQL query konsisten dengan nama input form
+    $sql = "UPDATE siswa SET nama='$nama', nisn='$nisn', nomer_hp='$nomer_hp' WHERE id='$id'";
+
     if (mysqli_query($koneksi, $sql)) {
-        // jika berhasil, redirect ke index.php
+        // Jika berhasil, redirect ke button.php
         header('Location: ../../button.php');
+        exit(); // Pastikan tidak ada kode yang dijalankan setelah redirect
     } else {
-        // jika tidak berhasil
-        echo "Oupss....Maaf proses penyimpanan data tidak berhasil";
+        // Jika tidak berhasil
+        echo "Oupss....Maaf proses penyimpanan data tidak berhasil: " . mysqli_error($koneksi);
     }
 }
+?>

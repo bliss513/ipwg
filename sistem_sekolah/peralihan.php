@@ -1,98 +1,83 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tabel Nama dan Peralihan Kelas</title>
+    <title>Form Peralihan SPP</title>
     <style>
         body {
             font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
             padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
         }
-        table {
+        h1 {
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input[type="text"],
+        .form-group input[type="number"],
+        .form-group input[type="date"] {
             width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-            background-color: #f3f0f6; /* Latar belakang tabel */
-        }
-        th, td {
-            border: 1px solid #6c757d; /* Border tabel warna abu-abu */
             padding: 8px;
-            text-align: left;
+            border: 1px solid #ccc;
+            border-radius: 4px;
         }
-        th {
-            background-color: #6f42c1; /* Warna latar belakang header tabel ungu */
-            color: white; /* Warna teks header tabel putih */
-        }
-        .checked {
-            background-color: #d4edda;
-        }
-        .button-container {
-            text-align: right;
-        }
-        .process-button {
-            padding: 10px 20px;
-            font-size: 16px;
+        .form-group input[type="submit"] {
+            background-color: #4CAF50;
             color: white;
-            background-color: #6f42c1; /* Warna latar belakang tombol ungu */
             border: none;
-            border-radius: 5px;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
             cursor: pointer;
-        }
-        .process-button:hover {
-            background-color: #5a2a7a; /* Warna latar belakang tombol ungu gelap saat hover */
+            border-radius: 4px;
         }
     </style>
 </head>
 <body>
-    <h1>Tabel Nama dan Peralihan Kelas</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Nama</th>
-                <th>Naik Kelas</th>
-            </tr>
-        </thead>
-        <tbody id="name-table">
-            <tr>
-                <td>John Doe</td>
-                <td><input type="checkbox" class="class-switch" onchange="toggleHighlight(this)"></td>
-            </tr>
-            <tr>
-                <td>Jane Smith</td>
-                <td><input type="checkbox" class="class-switch" onchange="toggleHighlight(this)"></td>
-            </tr>
-            <tr>
-                <td>Emily Johnson</td>
-                <td><input type="checkbox" class="class-switch" onchange="toggleHighlight(this)"></td>
-            </tr>
-        </tbody>
-    </table>
-
-    <div class="button-container">
-        <button class="process-button" onclick="processChanges()">Proses</button>
+    <div class="container">
+        <h1>Form Peralihan SPP</h1>
+        <form action="/submit_form" method="post">
+            <div class="form-group">
+                <label for="nama">Nama Lengkap:</label>
+                <input type="text" id="nama" name="nama" required>
+            </div>
+            <div class="form-group">
+                <label for="nis">Nomor Induk Siswa (NIS):</label>
+                <input type="text" id="nis" name="nis" required>
+            </div>
+            <div class="form-group">
+                <label for="kelas">Kelas:</label>
+                <input type="text" id="kelas" name="kelas" required>
+            </div>
+            <div class="form-group">
+                <label for="tanggal">Tanggal Peralihan:</label>
+                <input type="date" id="tanggal" name="tanggal" required>
+            </div>
+            <div class="form-group">
+                <label for="jumlah">Jumlah Pembayaran:</label>
+                <input type="number" id="jumlah" name="jumlah" step="0.01" required>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Kirim">
+            </div>
+        </form>
     </div>
-
-    <script>
-        function toggleHighlight(checkbox) {
-            const tableRow = checkbox.parentElement.parentElement;
-            if (checkbox.checked) {
-                tableRow.classList.add('checked');
-            } else {
-                tableRow.classList.remove('checked');
-            }
-        }
-
-        function processChanges() {
-            const rows = document.querySelectorAll('#name-table tr');
-            rows.forEach(row => {
-                const checkbox = row.querySelector('input[type="checkbox"]');
-                const name = row.querySelector('td').innerText;
-                const status = checkbox.checked ? 'Naik Kelas' : 'Tidak Naik Kelas';
-                console.log(`${name}: ${status}`);
-            });
-            alert('Perubahan telah diproses! Cek konsol untuk detail.');
-        }
-    </script>
 </body>
 </html>

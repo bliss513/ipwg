@@ -218,7 +218,7 @@
                 cursor: pointer;
             }
         </style>
-        <script>
+    <script>
             function searchTable() {
                 var input, filter, table, tr, td, i, j, txtValue;
                 input = document.getElementById("searchInput");
@@ -246,16 +246,16 @@
         <div class="container">
             <a href="basis_data/data_siswa/form_tambah.php" class="cancel-btn">Tambah Data</a>
             <div class="search-container">
-               
+                <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search...">
             </div>
             <table id="dataTable">
                 <thead>
                     <tr>
-                        <th>no</th>
+                        
                         <th>Id</th>
-                        <th>nama</th>
-                        <th>nisn</th>
-                        <th>nomer</th>
+                        <th>Nama</th>
+                        <th>Nisn</th>
+                        <th> Nomer Hp</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -266,17 +266,18 @@
                         while ($hasil = mysqli_fetch_array($data)) {
                     ?>
                     <tr onclick="window.location.href='basis_data/data_siswa/ubah.php?id=<?php echo $hasil['id']; ?>'">
-                        <td><?php echo $no++; ?></td>
+                        
                         <td><?php echo $hasil['id']; ?></td>
                         <td><?php echo $hasil['nama']; ?></td>
                         <td><?php echo $hasil['nisn']; ?></td>
-                        <td><?php echo $hasil['nomer']; ?></td>
+                        <td><?php echo $hasil['nomer_hp']; ?></td>
                     </tr>
                     <?php
                         }
                     ?>
                 </tbody>
             </table>
+
         </div>
     </body>
             <!-- Content End -->
