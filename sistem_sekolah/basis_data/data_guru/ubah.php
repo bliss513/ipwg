@@ -24,7 +24,7 @@ $hasil = mysqli_fetch_array($data);
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            width: 350px;
+            width: 400px;
         }
         h1 {
             font-size: 20px;
@@ -48,10 +48,11 @@ $hasil = mysqli_fetch_array($data);
         }
         .button-container {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
+            gap: 10px; /* Menambahkan jarak antara tombol */
         }
         button[type="submit"], .cancel-btn, .delete-btn {
-            padding: 10px 20px;
+            padding: 10px 15px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
@@ -73,12 +74,14 @@ $hasil = mysqli_fetch_array($data);
             background-color: #f44336;
             color: white;
             text-decoration: none;
-            margin-top: 10px;
-            display: block;
+            width: 100px; /* Mengatur lebar tombol hapus */
             text-align: center;
         }
         button[type="submit"]:hover, .cancel-btn:hover, .delete-btn:hover {
             opacity: 0.9;
+        }
+        .delete-btn:hover {
+            background-color: #d32f2f;
         }
     </style>
 </head>
@@ -90,14 +93,14 @@ $hasil = mysqli_fetch_array($data);
             <input type="text" id="id" name="id" value="<?php echo $hasil['id'];?>" readonly>
             <label for="nip">nip</label>
             <input type="text" id="nip" name="nip" value="<?php echo $hasil['nip'];?>">
-			<label for="nama_guru">nama guru</label>
+            <label for="nama_guru">nama guru</label>
             <input type="text" id="nama_guru" name="nama_guru" value="<?php echo $hasil['nama_guru'];?>">
             <div class="button-container">
                 <button type="submit" name="simpan">Simpan</button>
+                <a href="hapus.php?id=<?php echo $hasil['id']; ?>" class="delete-btn" onclick="return confirm('Yakin ingin menghapus data ini?')">Hapus</a>
                 <a href="../../guru.php" class="cancel-btn">Batal</a>
             </div>
         </form>
-        <a onclick="return confirm('Yakin ingin menghapus data ini?')" href="hapus.php?id=<?php echo $hasil['id']; ?>" class="delete-btn">Hapus Data Ini</a>
     </div>
 </body>
 </html>
@@ -118,3 +121,4 @@ if (isset($_POST['simpan'])) {
         echo "Oupss....Maaf proses penyimpanan data tidak berhasil";
     }
 }
+?>
