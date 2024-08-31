@@ -244,7 +244,7 @@
                         <td>Kembali</td>
                     </tr>
                     <tr>
-                        <td>kodekeras cewe</td>
+                        <td>kode keras cewe</td>
                         <td>Lewat Tempo</td>
                     </tr>
                     <tr>

@@ -30,7 +30,7 @@ if (isset($_POST['simpan'])) {
     // Query untuk mengupdate data
     $sql = "UPDATE buku SET judul=?, pengarang=?, id_genre=?, tentang_buku=?, status=? WHERE id=?";
     $stmt = mysqli_prepare($koneksi, $sql);
-    mysqli_stmt_bind_param($stmt, 'sssssi', $judul, $pengarang, $genre, $tentang_buku, $status, $id);
+    mysqli_stmt_bind_param($stmt, 'sssssi', $judul, $pengarang, $id_genre, $tentang_buku, $status, $id);
 
     if (mysqli_stmt_execute($stmt)) {
         // jika berhasil, redirect ke element.php
@@ -152,11 +152,8 @@ if (isset($_POST['simpan'])) {
                     <td><input type="text" id="pengarang" name="pengarang" value="<?php echo htmlspecialchars($hasil['pengarang']); ?>"></td>
                 </tr>
                 <tr>
-                <tr>
-                   
                     <td><label for="id_genre">id_genre</label></td>
                     <td><input type="text" id="id_genre" name="id_genre" value="<?php echo htmlspecialchars($hasil['id_genre']); ?>"></td>
-                </tr>
                 </tr>
                 <tr>
                     <td><label for="tentang_buku">Tentang Buku</label></td>

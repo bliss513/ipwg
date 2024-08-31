@@ -40,182 +40,71 @@
             </div>
         </div>
         <!-- Spinner End -->
-        <?php
-        include 'sidebar.php'
-        ?>
+
+        <?php include 'sidebar.php'; ?>
 
         <!-- Content Start -->
         <div class="content">
-        <?php
-            include 'header.php';
-            ?>
-            <!DOCTYPE html>
-            <html lang="id">
-            <head>
-                <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>Tabel Peminjaman Buku</title>
-                <style>
-                    body {
-                        font-family: Arial, sans-serif;
-                        margin: 0;
-                        padding: 20px;
-                        background-color: #f4f4f4;
-                    }
-                    table {
-                        width: 100%;
-                        border-collapse: collapse;
-                        margin: 20px 0;
-                        background-color: #ffffff;
-                    }
-                    th, td {
-                        border: 1px solid #dddddd;
-                        text-align: left;
-                        padding: 8px;
-                    }
-                    th {
-                        background-color: #4CAF50;
-                        color: white;
-                    }
-                    tr:nth-child(even) {
-                        background-color: #f2f2f2;
-                    }
-                    caption {
-                        font-size: 1.5em;
-                        margin: 10px;
-                    }
-                    .clickable {
-                        cursor: pointer;
-                        color: #007BFF;
-                        text-decoration: underline;
-                    }
-                    .clickable:hover {
-                        color: #0056b3;
-                    }
-                    #details-container {
-                        display: none;
-                        margin: 20px 0;
-                        padding: 20px;
-                        background-color: #ffffff;
-                        border: 1px solid #dddddd;
-                        border-radius: 4px;
-                    }
-                    #details-container input {
-                        margin-bottom: 10px;
-                        padding: 8px;
-                        width: 100%;
-                    }
-                </style>
-            </head>
-            <body>
-                <h1>Tabel Peminjaman Buku</h1>
-                <table>
-                    <caption>Tabel Peminjaman Buku</caption>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>ID Buku</th>
-                            <th>ID Siswa</th>
-                            <th>Tanggal Pinjam</th>
-                            <th>Tanggal Rencana Pengembalian</th>
-                            <th>Tanggal Pengembalian</th>
-                            <th>Status</th>
-                            <th>Keterangan</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr onclick="showDetails(1)">
-                            <td>1</td>
-                            <td>B001</td>
-                            <td>S001</td>
-                            <td>2024-08-01</td>
-                            <td>2024-08-15</td>
-                            <td>2024-08-14</td>
-                            <td>Kembali</td>
-                            <td>Dalam kondisi baik</td>
-                        </tr>
-                        <tr onclick="showDetails(2)">
-                            <td>2</td>
-                            <td>B002</td>
-                            <td>S002</td>
-                            <td>2024-08-05</td>
-                            <td>2024-08-20</td>
-                            <td>-</td>
-                            <td>Belum Kembali</td>
-                            <td>Terjadi kerusakan</td>
-                        </tr>
-                        <tr onclick="showDetails(3)">
-                            <td>3</td>
-                            <td>B003</td>
-                            <td>S003</td>
-                            <td>2024-08-10</td>
-                            <td>2024-08-25</td>
-                            <td>-</td>
-                            <td>Belum Kembali</td>
-                            <td>Dalam proses perbaikan</td>
-                        </tr>
-                        <!-- Tambahkan baris tambahan sesuai kebutuhan -->
-                    </tbody>
-                </table>
+            <?php include 'header.php'; ?>
+            <h1>Tabel Peminjaman Buku</h1>
+            <table>
+                <caption>Tabel Peminjaman Buku</caption>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>ID Buku</th>
+                        <th>ID Siswa</th>
+                        <th>Tanggal Pinjam</th>
+                        <th>Tanggal Rencana Pengembalian</th>
+                        <th>Tanggal Pengembalian</th>
+                        <th>Status</th>
+                        <th>Keterangan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr onclick="redirectToFinePage(1)">
+                        <td>1</td>
+                        <td>B001</td>
+                        <td>S001</td>
+                        <td>2024-08-01</td>
+                        <td>2024-08-15</td>
+                        <td>2024-08-14</td>
+                        <td>Kembali</td>
+                        <td>Dalam kondisi baik</td>
+                    </tr>
+                    <tr onclick="redirectToFinePage(2)">
+                        <td>2</td>
+                        <td>B002</td>
+                        <td>S002</td>
+                        <td>2024-08-05</td>
+                        <td>2024-08-20</td>
+                        <td>-</td>
+                        <td>Belum Kembali</td>
+                        <td>Terjadi kerusakan</td>
+                    </tr>
+                    <tr onclick="redirectToFinePage(3)">
+                        <td>3</td>
+                        <td>B003</td>
+                        <td>S003</td>
+                        <td>2024-08-10</td>
+                        <td>2024-08-25</td>
+                        <td>-</td>
+                        <td>Belum Kembali</td>
+                        <td>Dalam proses perbaikan</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <script>
+                function redirectToFinePage(id) {
+                    // Redirect ke halaman denda.php dengan parameter ID
+                    window.location.href = `denda.php?id=${id}`;
+                }
+            </script>
             
-                <div id="details-container">
-                    <h2>Detail Peminjaman</h2>
-                    <form id="details-form">
-                        <input type="hidden" id="record-id">
-                        <label for="id-buku">ID Buku:</label>
-                        <input type="text" id="id-buku" name="id-buku" readonly>
-                        <label for="id-siswa">ID Siswa:</label>
-                        <input type="text" id="id-siswa" name="id-siswa" readonly>
-                        <label for="tanggal-pinjam">Tanggal Pinjam:</label>
-                        <input type="text" id="tanggal-pinjam" name="tanggal-pinjam" readonly>
-                        <label for="tanggal-rencana">Tanggal Rencana Pengembalian:</label>
-                        <input type="text" id="tanggal-rencana" name="tanggal-rencana" readonly>
-                        <label for="tanggal-pengembalian">Tanggal Pengembalian:</label>
-                        <input type="text" id="tanggal-pengembalian" name="tanggal-pengembalian" readonly>
-                        <label for="status">Status:</label>
-                        <input type="text" id="status" name="status" readonly>
-                        <label for="keterangan">Keterangan:</label>
-                        <input type="text" id="keterangan" name="keterangan" readonly>
-                        <button type="button" onclick="hideDetails()">Tutup</button>
-                    </form>
-                </div>
-            
-                <script>
-                    function showDetails(id) {
-                        // Data dummy untuk demonstrasi
-                        const data = {
-                            1: { id_buku: 'B001', id_siswa: 'S001', tanggal_pinjam: '2024-08-01', tanggal_rencana: '2024-08-15', tanggal_pengembalian: '2024-08-14', status: 'Kembali', keterangan: 'Dalam kondisi baik' },
-                            2: { id_buku: 'B002', id_siswa: 'S002', tanggal_pinjam: '2024-08-05', tanggal_rencana: '2024-08-20', tanggal_pengembalian: '', status: 'Belum Kembali', keterangan: 'Terjadi kerusakan' },
-                            3: { id_buku: 'B003', id_siswa: 'S003', tanggal_pinjam: '2024-08-10', tanggal_rencana: '2024-08-25', tanggal_pengembalian: '', status: 'Belum Kembali', keterangan: 'Dalam proses perbaikan' }
-                        };
-            
-                        // Ambil data berdasarkan ID
-                        const record = data[id];
-            
-                        if (record) {
-                            document.getElementById('record-id').value = id;
-                            document.getElementById('id-buku').value = record.id_buku;
-                            document.getElementById('id-siswa').value = record.id_siswa;
-                            document.getElementById('tanggal-pinjam').value = record.tanggal_pinjam;
-                            document.getElementById('tanggal-rencana').value = record.tanggal_rencana;
-                            document.getElementById('tanggal-pengembalian').value = record.tanggal_pengembalian;
-                            document.getElementById('status').value = record.status;
-                            document.getElementById('keterangan').value = record.keterangan;
-            
-                            // Tampilkan detail
-                            document.getElementById('details-container').style.display = 'block';
-                        }
-                    }
-            
-                    function hideDetails() {
-                        document.getElementById('details-container').style.display = 'none';
-                    }
-                </script>
-            </body>
-            </html>
-            
-        <!-- Back to Top -->
-        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+            <!-- Back to Top -->
+            <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+        </div>
     </div>
 
     <!-- JavaScript Libraries -->
