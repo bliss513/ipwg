@@ -152,7 +152,7 @@ if (isset($_POST['simpan'])) {
                     <td><input type="text" id="pengarang" name="pengarang" value="<?php echo htmlspecialchars($hasil['pengarang']); ?>"></td>
                 </tr>
                 <tr>
-                    <td><label for="id_genre">ID Genre</label></td>
+                    <td><label for="id_genre">id_genre</label></td>
                     <td><input type="text" id="id_genre" name="id_genre" value="<?php echo htmlspecialchars($hasil['id_genre']); ?>"></td>
                 </tr>
                 <tr>

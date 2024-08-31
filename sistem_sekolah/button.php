@@ -218,7 +218,7 @@
                 cursor: pointer;
             }
         </style>
-     <script>
+    <script>
             function searchTable() {
                 var input, filter, table, tr, td, i, j, txtValue;
                 input = document.getElementById("searchInput");
@@ -226,24 +226,6 @@
                 table = document.getElementById("dataTable");
                 tr = table.getElementsByTagName("tr");
 
-<<<<<<< HEAD
-                            <div>
-                    </div>
-                </div>
-            </div>  
-<<<<<<< HEAD
-=======
-
-            
-
-
-            
-
-
-         
-
->>>>>>> 1c7f1bc45867628913f86bae48a8b991df9f43d2
-=======
                 for (i = 1; i < tr.length; i++) {
                     tr[i].style.display = "none";
                     td = tr[i].getElementsByTagName("td");
@@ -261,17 +243,15 @@
         </script>
     </head>
     <body>
-  
         <div class="container">
             <a href="basis_data/data_siswa/form_tambah.php" class="cancel-btn">Tambah Data</a>
             <div class="search-container">
-            <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search...">
-   
+                <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search...">
             </div>
             <table id="dataTable">
                 <thead>
                     <tr>
-                        <th>no</th>
+                        
                         <th>Id</th>
                         <th>Nama</th>
                         <th>Nisn</th>
@@ -286,18 +266,18 @@
                         while ($hasil = mysqli_fetch_array($data)) {
                     ?>
                     <tr onclick="window.location.href='basis_data/data_siswa/ubah.php?id=<?php echo $hasil['id']; ?>'">
-                        <td><?php echo $no++; ?></td>
+                        
                         <td><?php echo $hasil['id']; ?></td>
                         <td><?php echo $hasil['nama']; ?></td>
                         <td><?php echo $hasil['nisn']; ?></td>
-                        <td><?php echo $hasil['nomer']; ?></td>
+                        <td><?php echo $hasil['nomer_hp']; ?></td>
                     </tr>
                     <?php
                         }
                     ?>
                 </tbody>
             </table>
->>>>>>> 03b36af4e24db661e0b4e408461f8f92ef8b74e3
+
         </div>
     </body>
             <!-- Content End -->

@@ -6,10 +6,10 @@
             $nama_guru= $_POST['nama_guru'];
 
             $sql = "INSERT INTO guru(id,nip,nama_guru) VALUES('$id', '$nip','$nama_guru')";
-            if(mysqli_query($koneksi,$sql)){
+           if(mysqli_query($koneksi,$sql)){
                 header('location:../../guru.php');
             }else{
-                echo "Oupss....Maaf proses penyimpan data tidak berhasil";
+                echo "Oupss....Maaf poses penyimpan data tidak berhasil";
             }
         }
     ?>

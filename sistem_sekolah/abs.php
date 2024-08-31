@@ -49,8 +49,8 @@
             <?php
                 include 'header.php';
                 ?>
-
-<?php
+                
+                <?php
 // Konfigurasi database
 $servername = "localhost"; // Ganti dengan nama server Anda
 $username = "root"; // Ganti dengan nama pengguna database Anda
@@ -67,15 +67,40 @@ if ($conn->connect_error) {
 
 // Inisialisasi variabel
 $selected_jurnal = isset($_GET['jurnal']) ? $_GET['jurnal'] : '';
+$selected_date = isset($_GET['tanggal']) ? $_GET['tanggal'] : '';
+
+// Proses penyimpanan absensi
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    foreach ($_POST as $key => $value) {
+        if (strpos($key, 'kehadiran_') === 0) {
+            $id_absensi = str_replace('kehadiran_', '', $key);
+            $kehadiran_kelas = $value;
+            $update_sql = "UPDATE absensi_kelas SET kehadiran_kelas='$kehadiran_kelas' WHERE id=$id_absensi";
+            $conn->query($update_sql);
+        }
+    }
+    header("Location: " . $_SERVER['PHP_SELF'] . "?jurnal=" . $selected_jurnal . "&tanggal=" . $selected_date);
+    exit();
+}
 
 // Query untuk mengambil data dari tabel jurnal untuk dropdown
 $jurnal_sql = "SELECT id, mapel FROM jurnal";
 $jurnal_result = $conn->query($jurnal_sql);
 
-// Query untuk mengambil data dari tabel absensi_kelas berdasarkan jurnal yang dipilih
-$sql = "SELECT id, id_siswa, tanggal, id_jurnal, kehadiran_kelas FROM absensi_kelas";
+// Query untuk mengambil data dari tabel absensi_kelas berdasarkan jurnal dan tanggal yang dipilih
+$sql = "SELECT a.id, a.id_siswa, a.tanggal, a.id_jurnal, a.kehadiran_kelas, s.nama 
+        FROM absensi_kelas a
+        JOIN siswa s ON a.id_siswa = s.id
+        WHERE 1=1";
+$conditions = [];
 if ($selected_jurnal != '') {
-    $sql .= " WHERE id_jurnal = " . $conn->real_escape_string($selected_jurnal);
+    $conditions[] = "a.id_jurnal = " . $conn->real_escape_string($selected_jurnal);
+}
+if ($selected_date != '') {
+    $conditions[] = "a.tanggal = " . $conn->real_escape_string($selected_date);
+}
+if (count($conditions) > 0) {
+    $sql .= " AND " . implode(' AND ', $conditions);
 }
 $result = $conn->query($sql);
 ?>
@@ -105,6 +130,9 @@ $result = $conn->query($sql);
             text-align: right;
             margin-bottom: 10px;
         }
+        .date-container {
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
@@ -126,36 +154,53 @@ $result = $conn->query($sql);
             </select>
         </form>
     </div>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>ID Siswa</th>
-                <th>Tanggal</th>
-                <th>ID Jurnal</th>
-                <th>Kehadiran Kelas</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            // Menampilkan data
-            if ($result->num_rows > 0) {
-                // Output data per baris
-                while($row = $result->fetch_assoc()) {
-                    echo "<tr>";
-                    echo "<td>" . $row["id"] . "</td>";
-                    echo "<td>" . $row["id_siswa"] . "</td>";
-                    echo "<td>" . $row["tanggal"] . "</td>";
-                    echo "<td>" . $row["id_jurnal"] . "</td>";
-                    echo "<td>" . $row["kehadiran_kelas"] . "</td>";
-                    echo "</tr>";
+    <div class="date-container">
+        <form method="GET" action="">
+            <label for="tanggal">Pilih Tanggal:</label>
+            <input type="date" id="tanggal" name="tanggal" value="<?php echo htmlspecialchars($selected_date); ?>" onchange="this.form.submit()">
+        </form>
+    </div>
+    <form method="POST" action="">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nama Siswa</th>
+                    <th>Tanggal</th>
+                    <th>ID Jurnal</th>
+                    <th>Hadir</th>
+                    <th>Izin</th>
+                    <th>Sakit</th>
+                    <th>Alfa</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                // Menampilkan data
+                if ($result->num_rows > 0) {
+                    // Output data per baris
+                    while($row = $result->fetch_assoc()) {
+                        echo "<tr>";
+                        echo "<td>" . $row["id"] . "</td>";
+                        echo "<td>" . $row["nama"] . "</td>";
+                        echo "<td>" . $row["tanggal"] . "</td>";
+                        echo "<td>" . $row["id_jurnal"] . "</td>";
+                        echo "<td><input type='radio' name='kehadiran_" . $row["id"] . "' value='Hadir'" . ($row["kehadiran_kelas"] == "Hadir" ? " checked" : "") . "></td>";
+                        echo "<td><input type='radio' name='kehadiran_" . $row["id"] . "' value='Izin'" . ($row["kehadiran_kelas"] == "Izin" ? " checked" : "") . "></td>";
+                        echo "<td><input type='radio' name='kehadiran_" . $row["id"] . "' value='Sakit'" . ($row["kehadiran_kelas"] == "Sakit" ? " checked" : "") . "></td>";
+                        echo "<td><input type='radio' name='kehadiran_" . $row["id"] . "' value='Alfa'" . ($row["kehadiran_kelas"] == "Alfa" ? " checked" : "") . "></td>";
+                        echo "</tr>";
+                    }
+                } else {
+                    echo "<tr><td colspan='8'>Tidak ada data</td></tr>";
                 }
-            } else {
-                echo "<tr><td colspan='5'>Tidak ada data</td></tr>";
-            }
-            ?>
-        </tbody>
-    </table>
+                ?>
+            </tbody>
+        </table>
+        <div class="filter-container">
+            <button type="submit">Simpan</button>
+        </div>
+    </form>
 </body>
 </html>
 
@@ -163,7 +208,6 @@ $result = $conn->query($sql);
 // Menutup koneksi
 $conn->close();
 ?>
-
 
             <!-- Content End -->
             <?php include 'footer.php'; ?>
