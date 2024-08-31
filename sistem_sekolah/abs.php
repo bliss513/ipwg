@@ -50,166 +50,120 @@
                 include 'header.php';
                 ?>
 
+<?php
+// Konfigurasi database
+$servername = "localhost"; // Ganti dengan nama server Anda
+$username = "root"; // Ganti dengan nama pengguna database Anda
+$password = ""; // Ganti dengan kata sandi database Anda
+$dbname = "sistem_sekolah"; // Ganti dengan nama database Anda
+
+// Membuat koneksi
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Memeriksa koneksi
+if ($conn->connect_error) {
+    die("Koneksi gagal: " . $conn->connect_error);
+}
+
+// Inisialisasi variabel
+$selected_jurnal = isset($_GET['jurnal']) ? $_GET['jurnal'] : '';
+
+// Query untuk mengambil data dari tabel jurnal untuk dropdown
+$jurnal_sql = "SELECT id, mapel FROM jurnal";
+$jurnal_result = $conn->query($jurnal_sql);
+
+// Query untuk mengambil data dari tabel absensi_kelas berdasarkan jurnal yang dipilih
+$sql = "SELECT id, id_siswa, tanggal, id_jurnal, kehadiran_kelas FROM absensi_kelas";
+if ($selected_jurnal != '') {
+    $sql .= " WHERE id_jurnal = " . $conn->real_escape_string($selected_jurnal);
+}
+$result = $conn->query($sql);
+?>
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tabel Absensi Siswa</title>
+    <title>Tabel Absensi Kelas</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f4f4f4;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .filter {
-            display: flex;
-            justify-content: flex-end;
-            margin-bottom: 20px;
-        }
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 20px 0;
-            background-color: #ffffff;
+        }
+        table, th, td {
+            border: 1px solid black;
         }
         th, td {
-            border: 1px solid #dddddd;
-            text-align: left;
             padding: 8px;
+            text-align: left;
         }
         th {
-            background-color: #4CAF50;
-            color: white;
-        }
-        tr:nth-child(even) {
             background-color: #f2f2f2;
         }
-        caption {
-            font-size: 1.5em;
-            margin: 10px;
-        }
-        .message {
-            margin: 10px 0;
-            color: green;
-            font-weight: bold;
-        }
-        .error {
-            color: red;
-            font-weight: bold;
-        }
-        select {
-            padding: 8px;
-            font-size: 16px;
+        .filter-container {
+            text-align: right;
+            margin-bottom: 10px;
         }
     </style>
 </head>
-<body>    
-    <div class="container">
-        <div class="filter">
-            <form method="GET" action="">
-                <label for="id-jurnal">Pilih Jurnal:</label>
-                <select id="id-jurnal" name="id-jurnal" onchange="this.form.submit()">
-                    <option value="">Semua Jurnal</option>
-                    <?php
-                        // Konfigurasi database
-                        $servername = "localhost";
-                        $username = "root"; // ganti dengan username database Anda
-                        $password = ""; // ganti dengan password database Anda
-                        $dbname = "sistem_sekolah"; // ganti dengan nama database Anda
-
-                        // Buat koneksi
-                        $conn = new mysqli($servername, $username, $password, $dbname);
-
-                        // Cek koneksi
-                        if ($conn->connect_error) {
-                            die("Koneksi gagal: " . $conn->connect_error);
-                        }
-
-                        // Query untuk mengambil daftar jurnal
-                        $sql_jurnal = "SELECT id, id_kelas, hari, id_guru, jam_ke, mapel FROM jurnal";
-                        $result_jurnal = $conn->query($sql_jurnal);
-
-                        if ($result_jurnal->num_rows > 0) {
-                            while($row_jurnal = $result_jurnal->fetch_assoc()) {
-                                $selected = (isset($_GET['id-jurnal']) && $_GET['id-jurnal'] == $row_jurnal['id']) ? 'selected' : '';
-                                echo "<option value='" . htmlspecialchars($row_jurnal['id']) . "' $selected>" . htmlspecialchars($row_jurnal['mapel']) . " - " . htmlspecialchars($row_jurnal['id_kelas']) . "</option>";
-                            }
-                        }
-                        $conn->close();
-                    ?>
-                </select>
-            </form>
-        </div>
-
-        <div class="message">
-            <?php
-                if (isset($_GET['message'])) {
-                    echo htmlspecialchars($_GET['message']);
-                }
-            ?>
-        </div>
-        
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>ID Siswa</th>
-                    <th>Tanggal</th>
-                    <th>ID Jurnal</th>
-                    <th>Kehadiran Kelas</th>
-                </tr>
-            </thead>
-            <tbody>
+<body>
+    <h1>Tabel Absensi Kelas</h1>
+    <div class="filter-container">
+        <form method="GET" action="">
+            <label for="jurnal">Pilih Jurnal:</label>
+            <select name="jurnal" id="jurnal" onchange="this.form.submit()">
+                <option value="">Semua Jurnal</option>
                 <?php
-                    // Konfigurasi database
-                    $servername = "localhost";
-                    $username = "root"; // ganti dengan username database Anda
-                    $password = ""; // ganti dengan password database Anda
-                    $dbname = "sistem_sekolah"; // ganti dengan nama database Anda
-
-                    // Buat koneksi
-                    $conn = new mysqli($servername, $username, $password, $dbname);
-
-                    // Cek koneksi
-                    if ($conn->connect_error) {
-                        die("Koneksi gagal: " . $conn->connect_error);
+                if ($jurnal_result->num_rows > 0) {
+                    while ($jurnal_row = $jurnal_result->fetch_assoc()) {
+                        echo '<option value="' . $jurnal_row['id'] . '"' . 
+                        ($selected_jurnal == $jurnal_row['id'] ? ' selected' : '') . 
+                        '>' . $jurnal_row['mapel'] . '</option>';
                     }
-
-                    // Ambil filter jurnal dari query parameter
-                    $id_jurnal = isset($_GET['id-jurnal']) ? $_GET['id-jurnal'] : '';
-
-                    // Query untuk mengambil data absensi dengan filter jurnal
-                    $sql = "SELECT * FROM absensi_kelas";
-                    if ($id_jurnal) {
-                        $sql .= " WHERE id_jurnal = " . $conn->real_escape_string($id_jurnal);
-                    }
-                    $result = $conn->query($sql);
-
-                    if ($result->num_rows > 0) {
-                        // Output data per baris
-                        while($row = $result->fetch_assoc()) {
-                            echo "<tr>";
-                            echo "<td>" . $row["id"] . "</td>";
-                            echo "<td>" . $row["id_siswa"] . "</td>";
-                            echo "<td>" . $row["tanggal"] . "</td>";
-                            echo "<td>" . $row["id_jurnal"] . "</td>";
-                            echo "<td>" . $row["kehadiran_kelas"] . "</td>";
-                            echo "</tr>";
-                        }
-                    } else {
-                        echo "<tr><td colspan='5'>Tidak ada data absensi</td></tr>";
-                    }
-
-                    $conn->close();
+                }
                 ?>
-            </tbody>
-        </table>
+            </select>
+        </form>
     </div>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>ID Siswa</th>
+                <th>Tanggal</th>
+                <th>ID Jurnal</th>
+                <th>Kehadiran Kelas</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            // Menampilkan data
+            if ($result->num_rows > 0) {
+                // Output data per baris
+                while($row = $result->fetch_assoc()) {
+                    echo "<tr>";
+                    echo "<td>" . $row["id"] . "</td>";
+                    echo "<td>" . $row["id_siswa"] . "</td>";
+                    echo "<td>" . $row["tanggal"] . "</td>";
+                    echo "<td>" . $row["id_jurnal"] . "</td>";
+                    echo "<td>" . $row["kehadiran_kelas"] . "</td>";
+                    echo "</tr>";
+                }
+            } else {
+                echo "<tr><td colspan='5'>Tidak ada data</td></tr>";
+            }
+            ?>
+        </tbody>
+    </table>
 </body>
+</html>
+
+<?php
+// Menutup koneksi
+$conn->close();
+?>
+
 
             <!-- Content End -->
             <?php include 'footer.php'; ?>

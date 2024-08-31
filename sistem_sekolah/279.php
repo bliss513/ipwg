@@ -50,9 +50,9 @@
                     <div class="col-md-6 text-center p-4">
                         <i class="bi bi-exclamation-triangle display-1 text-primary"></i>
                         <h1 class="display-1 fw-bold">279</h1>
-                        <h1 class="mb-4">Clth Damn Kru!!</h1>
+                        <h1 class="mb-4">ClTh DaMn Kru!!</h1>
                         <p class="mb-4">279dAmNkRu!! site is strictly prohibited! if you don't want your body to explode from the tight embrace of women</p>
-                        <a class="btn btn-primary rounded-pill py-3 px-5" href="">Go Back To Home</a>
+                        <a class="btn btn-primary rounded-pill py-3 px-5" href="index.php">Go Back To Dashboard</a>
                     </div>
                 </div>
             </div>

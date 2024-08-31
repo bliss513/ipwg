@@ -1,5 +1,5 @@
 <?php
-include"../../config/koneksi.php";
+include "../../config/koneksi.php";
 
 if(isset($_POST['simpan'])){
     $id= $_POST['id'];
