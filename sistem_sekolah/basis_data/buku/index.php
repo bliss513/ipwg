@@ -61,7 +61,7 @@
             font-family: Arial, sans-serif;
             margin: 20px;
             padding: 0;
-            background-color: cyan; /* Mengubah latar belakang menjadi cyan */
+            background-color: #fff;
         }
         h1 {
             text-align: center;
@@ -120,52 +120,42 @@
     </style>
     <script>
         function hitungDenda() {
-            // Mendapatkan input dari pengguna
             const tanggalPeminjaman = new Date(document.getElementById("tanggalPeminjaman").value);
             const tanggalPengembalian = new Date(document.getElementById("tanggalPengembalian").value);
 
-            // Tarif denda per hari
             const dendaPerHari = 1000;
-
-            // Menghitung selisih hari
             const selisihWaktu = tanggalPengembalian - tanggalPeminjaman;
             const selisihHari = Math.ceil(selisihWaktu / (1000 * 60 * 60 * 24));
 
-            // Menghitung denda
             let denda = 0;
-            const satuBulan = 30; // Asumsi satu bulan setara dengan 30 hari
+            const satuBulan = 30;
 
             if (selisihHari > satuBulan) {
-                // Menghitung hari terlambat di luar satu bulan
                 const hariTerlambat = selisihHari - satuBulan;
                 denda = hariTerlambat * dendaPerHari;
             }
 
-            // Menampilkan hasil di tabel
             document.getElementById("hasilDenda").innerHTML = `
                 <table>
                     <tr>
                         <th>Tanggal Peminjaman</th>
                         <th>Tanggal Pengembalian</th>
                         <th>Jumlah Hari Terlambat</th>
-                        <th>Denda (Rp1000 per hari)</th>
+                        <th>Total Denda (Rp1000 per hari)</th>
                     </tr>
                     <tr>
                         <td>${tanggalPeminjaman.toISOString().split('T')[0]}</td>
                         <td>${tanggalPengembalian.toISOString().split('T')[0]}</td>
-                        <td>${selisihHari > 0 ? selisihHari : 0}</td>
-                        <td>${denda}</td>
+                        <td>${selisihHari > satuBulan ? selisihHari - satuBulan : 0}</td>
+                        <td>Rp ${denda}</td>
                     </tr>
                 </table>`;
 
-            // Menampilkan tombol Proses
             document.getElementById("btnProses").classList.remove("hidden");
         }
 
         function prosesDenda() {
             alert("Denda sudah diproses. Terima kasih!");
-            // Tambahkan logika untuk memproses denda di sini
-            // Misalnya, kirim data ke server atau simpan di local storage
         }
     </script>
 </head>
@@ -182,6 +172,7 @@
     <button id="btnProses" class="hidden" onclick="prosesDenda()">Proses</button>
 </body>
 </html>
+
 
             <!-- Back to Top -->
             <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>

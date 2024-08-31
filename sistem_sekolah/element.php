@@ -147,7 +147,7 @@
                             <th>id</th>
                             <th>judul</th>
                             <th>pengarang</th>
-                            <th>genre</th>
+                            <th> genre</th>
                             <th>tentang buku</th>
                             <th>status</th>
                         </tr>
