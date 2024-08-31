@@ -99,7 +99,7 @@
    
     <!-- Kotak pencarian -->
     <div class="search-container">
-        <input type="text" id="searchInput" placeholder="Cari bulan..." onkeyup="searchTable()">
+        <input type="text" id="searchInput" placeholder="Cari nama..." onkeyup="searchTable()">
     </div>
 
     <table id="paymentTable">
