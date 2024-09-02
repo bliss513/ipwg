@@ -52,10 +52,10 @@
                 
                 <?php
 // Konfigurasi database
-$servername = "localhost"; // Ganti dengan nama server Anda
-$username = "root"; // Ganti dengan nama pengguna database Anda
-$password = ""; // Ganti dengan kata sandi database Anda
-$dbname = "sistem_sekolah"; // Ganti dengan nama database Anda
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "sistem_sekolah";
 
 // Membuat koneksi
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -79,8 +79,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $conn->query($update_sql);
         }
     }
-    header("Location: " . $_SERVER['PHP_SELF'] . "?jurnal=" . $selected_jurnal . "&tanggal=" . $selected_date);
-    exit();
+    echo "<script>alert('Data berhasil disimpan!'); window.print();</script>";
 }
 
 // Query untuk mengambil data dari tabel jurnal untuk dropdown
@@ -127,11 +126,23 @@ $result = $conn->query($sql);
             background-color: #f2f2f2;
         }
         .filter-container {
-            text-align: right;
             margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
         }
-        .date-container {
-            margin-bottom: 10px;
+        .filter-container form {
+            margin: 0;
+        }
+        button[type="submit"] {
+            margin-top: 10px;
+            padding: 8px 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button[type="submit"]:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
@@ -153,13 +164,13 @@ $result = $conn->query($sql);
                 ?>
             </select>
         </form>
-    </div>
-    <div class="date-container">
+
         <form method="GET" action="">
             <label for="tanggal">Pilih Tanggal:</label>
             <input type="date" id="tanggal" name="tanggal" value="<?php echo htmlspecialchars($selected_date); ?>" onchange="this.form.submit()">
         </form>
     </div>
+
     <form method="POST" action="">
         <table>
             <thead>
@@ -176,9 +187,7 @@ $result = $conn->query($sql);
             </thead>
             <tbody>
                 <?php
-                // Menampilkan data
                 if ($result->num_rows > 0) {
-                    // Output data per baris
                     while($row = $result->fetch_assoc()) {
                         echo "<tr>";
                         echo "<td>" . $row["id"] . "</td>";
@@ -198,7 +207,7 @@ $result = $conn->query($sql);
             </tbody>
         </table>
         <div class="filter-container">
-            <button type="submit">Simpan</button>
+            <button type="submit">Proses</button>
         </div>
     </form>
 </body>
@@ -208,6 +217,7 @@ $result = $conn->query($sql);
 // Menutup koneksi
 $conn->close();
 ?>
+    
 
             <!-- Content End -->
             <?php include 'footer.php'; ?>
