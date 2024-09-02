@@ -29,6 +29,34 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+
+    <style>
+        /* Styling untuk tabel */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        caption {
+            caption-side: top;
+            font-size: 1.5em;
+            margin: 10px 0;
+        }
+        tr:hover {
+            background-color: #f5f5f5;
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body>
@@ -46,9 +74,9 @@
         <!-- Content Start -->
         <div class="content">
             <?php include 'header.php'; ?>
-            <h1>Tabel Peminjaman Buku</h1>
+            <h1>Tabel Penghitungan denda</h1>
             <table>
-                <caption>Tabel Peminjaman Buku</caption>
+                <caption></caption>
                 <thead>
                     <tr>
                         <th>ID</th>

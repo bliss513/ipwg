@@ -29,28 +29,7 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
-</head>
 
-<body>
-    <div class="container-xxl position-relative bg-white d-flex p-0">
-        <!-- Spinner Start -->
-        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-                <span class="sr-only">Loading...</span>
-            </div>
-        </div>
-        <!-- Spinner End -->
-        <?php include 'sidebar.php'; ?>
-        <!-- Content Start -->
-        <div class="content">
-        <?php include 'header.php'; ?>
-            <!-- Table Start -->
-            <!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistem Pinjaman Perpustakaan</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -72,33 +51,35 @@
             color: #333;
         }
 
-        .form-container, .table-container {
-            margin-bottom: 20px;
-        }
-
         .form-container {
+            margin-bottom: 20px;
             display: flex;
             justify-content: space-between;
             gap: 20px;
-            flex-wrap: wrap;
         }
 
-        .form-container .form-item {
+        .form-item {
             flex: 1;
-            margin-bottom: 20px;
         }
 
-        label {
+        .form-item label {
+            font-weight: bold;
+            margin: 0 0 5px;
             display: block;
-            margin: 10px 0 5px;
         }
 
-        input, select {
+        .form-item input,
+        .form-item select {
             width: 100%;
             padding: 10px;
-            margin-bottom: 10px;
             border: 1px solid #ddd;
             border-radius: 4px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: flex-end; /* Menempatkan tombol di pojok kanan */
+            margin-top: 20px;
         }
 
         button {
@@ -117,7 +98,7 @@
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px; /* Adjust margin to add space between form and table */
+            margin-top: 20px;
         }
 
         table, th, td {
@@ -126,185 +107,249 @@
 
         th, td {
             padding: 10px;
-            text-align: left; /* Default alignment for text */
+            text-align: left;
         }
 
         th {
-            background-color: #007bff; /* Warna biru untuk header tabel */
-            color: white; /* Warna teks putih untuk header tabel */
-        }
-
-        td:nth-child(1) {
-            text-align: left; /* Align first column (Judul) to the left */
-        }
-
-        td:nth-child(2) {
-            text-align: right; /* Align second column (Status) to the right */
-        }
-
-        th:nth-child(1) {
-            text-align: left; /* Align header of first column (Judul) to the left */
-        }
-
-        th:nth-child(2) {
-            text-align: right; /* Align header of second column (Status) to the right */
-        }
-
-        .share-button {
             background-color: #007bff;
             color: white;
-            border: none;
-            padding: 10px;
-            border-radius: 4px;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
             cursor: pointer;
-            margin-top: 10px;
         }
 
-        .share-button:hover {
-            background-color: #0056b3;
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            width: 300px;
         }
 
-        .button-container {
-            display: flex;
-            justify-content: flex-end; /* Align button to the right */
-            margin-top: 20px;
+        .popup h2 {
+            margin-top: 0;
+        }
+
+        .popup .close {
+            cursor: pointer;
+            color: red;
+            font-size: 1.2em;
+            float: right;
         }
 
         .search-container {
-            margin-top: 20px;
-            margin-bottom: 20px;
-            max-width: 300px; /* Mengatur lebar maksimum dari area pencarian */
+            margin-top: 20px; /* Jarak antara kotak pencarian dan tabel */
+            margin-bottom: 20px; /* Jarak antara kotak pencarian dan judul tabel */
+            display: flex;
+            justify-content: flex-start; /* Menempatkan kotak pencarian di pojok kiri */
+        }
+
+        .search-container label {
+            display: none; /* Hapus label untuk membuat tampilan lebih bersih */
         }
 
         .search-container input {
-            width: 100%;
-            padding: 8px; /* Mengurangi padding untuk memperkecil area input */
+            width: 200px; /* Mempersempit lebar input pencarian */
+            padding: 8px;
             border: 1px solid #ddd;
             border-radius: 4px;
-            font-size: 14px; /* Mengurangi ukuran font untuk menyesuaikan dengan ukuran input */
+            font-size: 14px;
         }
 
-        /* Additional styles for spacing between form items */
-        .form-item {
-            margin-right: 20px; /* Add margin to the right of each form item */
+        .search-container .search-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-left: 10px; /* Jarak antara input dan tombol pencarian */
         }
 
-        .form-container .form-item:last-child {
-            margin-right: 0; /* Remove margin on the last form item */
+        .search-container .search-button:hover {
+            background-color: #0056b3;
+        }
+
+        .button-container-right {
+            display: flex;
+            justify-content: flex-end; /* Menempatkan tombol di pojok kanan */
+            margin-top: 20px;
         }
     </style>
 </head>
+
 <body>
-    <div class="container">
-        <h1>Pinjaman Perpustakaan</h1>
-        
-        <div class="form-container">
-            <div class="form-item">
-                <label for="judul">Judul:</label>
-                <input type="text" id="judul" required>
-            </div>
-            <div class="form-item">
-                <label for="status">Status:</label>
-                <select id="status" required>
-                    <option value="Dipinjam">Dipinjam</option>
-                    <option value="Kembali">Kembali</option>
-                    <option value="Lewat Tempo">Lewat Tempo</option>
-                </select>
+    <div class="container-xxl position-relative bg-white d-flex p-0">
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
             </div>
         </div>
+        <!-- Spinner End -->
         
-        <div class="button-container">
-            <button type="submit" id="prosesButton">Proses</button>
-        </div>
+        <?php include 'sidebar.php'; ?>
         
-        <div class="table-container">
-            <h2>Daftar Pinjaman</h2>
+        <!-- Content Start -->
+        <div class="content">
+            <?php include 'header.php'; ?>
             
-            <!-- Pencarian -->
-            <div class="search-container">
-                <label for="searchInput">Judul:</label>
-                <input type="text" id="searchInput" placeholder="Cari...">
+            <div class="container">
+                <h1>Pinjaman Perpustakaan</h1>
+
+                <div class="form-container">
+                    <div class="form-item">
+                        <label for="judul">Judul:</label>
+                        <input type="text" id="judul" required>
+                    </div>
+                    <div class="form-item">
+                        <label for="status">Status:</label>
+                        <select id="status" required>
+                            <option value="Dipinjam">Dipinjam</option>
+                            <option value="Kembali">Kembali</option>
+                            <option value="Lewat Tempo">Lewat Tempo</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="button-container">
+                    <button type="submit" id="prosesButton">Proses</button>
+                </div>
+
+                <div class="table-container">
+                    <h2>Daftar Pinjaman</h2>
+                    
+                    <!-- Pindahkan kontainer pencarian ke bawah judul tabel -->
+                    <div class="search-container">
+                        <input type="text" id="searchInput" placeholder="Cari...">
+                    </div>
+
+                    <table id="pinjamanTable">
+                        <thead>
+                            <tr>
+                                <th>Judul</th>
+                                <th>Status</th>
+                                <th>Waktu Pinjaman</th> <!-- Kolom baru untuk waktu pinjaman -->
+                            </tr>
+                        </thead>
+                        <tbody id="pinjamanTableBody">
+                            <tr data-id="1" onclick="showPopup(1)">
+                                <td>tips agar dapat uang</td>
+                                <td>Dipinjam</td>
+                                <td>1 bulan</td> <!-- Waktu pinjaman -->
+                            </tr>
+                            <tr data-id="2" onclick="showPopup(2)">
+                                <td>dongeng anak</td>
+                                <td>Kembali</td>
+                                <td>1 bulan</td>
+                            </tr>
+                            <tr data-id="3" onclick="showPopup(3)">
+                                <td>kode keras cewe</td>
+                                <td>Lewat Tempo</td>
+                                <td>1 bulan</td>
+                            </tr>
+                            <tr data-id="4" onclick="showPopup(4)">
+                                <td>siksa neraka</td>
+                                <td>Dipinjam</td>
+                                <td>1 bulan</td>
+                            </tr>
+                            <tr data-id="5" onclick="showPopup(5)">
+                                <td>hidup enak tanpa narkoba</td>
+                                <td>Kembali</td>
+                                <td>1 bulan</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="button-container-right">
+                        <button class="share-button" id="shareButton">Bagikan Data</button>
+                    </div>
+                </div>
+
+                <!-- Popup for showing details -->
+                <div class="popup" id="popup">
+                    <span class="close" onclick="closePopup()">&times;</span>
+                    <h2>Detail Pinjaman</h2>
+                    <div id="popupContent"></div>
+                </div>
+
+                <script>
+                    // Menambahkan data ke tabel
+                    document.getElementById('prosesButton').addEventListener('click', function() {
+                        const judul = document.getElementById('judul').value;
+                        const status = document.getElementById('status').value;
+                        if (judul && status) {
+                            const tableBody = document.getElementById('pinjamanTableBody');
+                            const newRow = document.createElement('tr');
+                            newRow.innerHTML = `
+                                <td>${judul}</td>
+                                <td>${status}</td>
+                                <td>1 bulan</td>
+                            `;
+                            newRow.setAttribute('data-id', tableBody.children.length + 1);
+                            newRow.addEventListener('click', function() {
+                                showPopup(this.getAttribute('data-id'));
+                            });
+                            tableBody.appendChild(newRow);
+
+                            // Clear the input fields after adding data
+                            document.getElementById('judul').value = '';
+                            document.getElementById('status').value = 'Dipinjam';
+                        } else {
+                            alert('Harap lengkapi semua field!');
+                        }
+                    });
+
+                    // Menambahkan fitur pencarian
+                    document.getElementById('searchInput').addEventListener('keyup', function() {
+                        const searchValue = this.value.toLowerCase();
+                        const rows = document.querySelectorAll('#pinjamanTableBody tr');
+                        rows.forEach(row => {
+                            const title = row.cells[0].textContent.toLowerCase();
+                            if (title.includes(searchValue)) {
+                                row.style.display = '';
+                            } else {
+                                row.style.display = 'none';
+                            }
+                        });
+                    });
+
+                    // Mockup data for popup
+                    const mockupData = {
+                        1: { tanggalPinjam: '2024-08-01', tanggalKembali: '2024-08-31' },
+                        2: { tanggalPinjam: '2024-07-20', tanggalKembali: '2024-08-19' },
+                        3: { tanggalPinjam: '2024-08-10', tanggalKembali: '2024-09-09' },
+                        4: { tanggalPinjam: '2024-08-05', tanggalKembali: '2024-09-04' },
+                        5: { tanggalPinjam: '2024-07-25', tanggalKembali: '2024-08-24' }
+                    };
+
+                    function showPopup(id) {
+                        const data = mockupData[id];
+                        if (data) {
+                            document.getElementById('popupContent').innerHTML = `
+                                <p><strong>Tanggal Pinjam:</strong> ${data.tanggalPinjam}</p>
+                                <p><strong>Tanggal Kembali:</strong> ${data.tanggalKembali}</p>
+                            `;
+                            document.getElementById('popup').style.display = 'block';
+                        }
+                    }
+
+                    function closePopup() {
+                        document.getElementById('popup').style.display = 'none';
+                    }
+                </script>
             </div>
-            
-            <table id="pinjamanTable">
-                <thead>
-                    <tr>
-                        <th>Judul</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody id="pinjamanTableBody">
-                    <!-- Data buku yang sudah ada -->
-                    <tr>
-                        <td>tips agar dapat uang</td>
-                        <td>Dipinjam</td>
-                    </tr>
-                    <tr>
-                        <td>dongeng anak</td>
-                        <td>Kembali</td>
-                    </tr>
-                    <tr>
-                        <td>kode keras cewe</td>
-                        <td>Lewat Tempo</td>
-                    </tr>
-                    <tr>
-                        <td>siksa neraka</td>
-                        <td>Dipinjam</td>
-                    </tr>
-                    <tr>
-                        <td>hidup enak tanpa narkoba</td>
-                        <td>Kembali</td>
-                    </tr>
-                </tbody>
-            </table>
-            
-            <button class="share-button" id="shareButton">Bagikan Data</button>
-        </div>
-    </div>
-
-    <script>
-        // Menambahkan data ke tabel
-        document.getElementById('prosesButton').addEventListener('click', function() {
-            const judul = document.getElementById('judul').value;
-            const status = document.getElementById('status').value;
-            if (judul && status) {
-                const tableBody = document.getElementById('pinjamanTableBody');
-                const newRow = document.createElement('tr');
-                newRow.innerHTML = `
-                    <td>${judul}</td>
-                    <td>${status}</td>
-                `;
-                tableBody.appendChild(newRow);
-
-                // Clear the input fields after adding data
-                document.getElementById('judul').value = '';
-                document.getElementById('status').value = 'Dipinjam';
-            } else {
-                alert('Harap lengkapi semua field!');
-            }
-        });
-
-        // Menambahkan fitur pencarian
-        document.getElementById('searchInput').addEventListener('keyup', function() {
-            const searchValue = this.value.toLowerCase();
-            const rows = document.querySelectorAll('#pinjamanTableBody tr');
-            rows.forEach(row => {
-                const title = row.cells[0].textContent.toLowerCase();
-                if (title.includes(searchValue)) {
-                    row.style.display = '';
-                } else {
-                    row.style.display = 'none';
-                }
-            });
-        });
-    </script>
-</body>
-</html>
-
-            <!-- Footer End -->
         </div>
         <!-- Content End -->
-
 
         <!-- Back to Top -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
