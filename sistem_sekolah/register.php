@@ -9,14 +9,22 @@
             font-family: Arial, sans-serif;
         }
         .form-container {
-            max-width: 600px;
+            max-width: 800px;
             margin: auto;
             padding: 20px;
             border: 1px solid #ddd;
             border-radius: 5px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
         }
         .form-container h2 {
             text-align: center;
+            width: 100%;
+        }
+        .form-container .form-item {
+            flex: 1 1 calc(50% - 20px); /* 50% width minus gap */
+            min-width: 200px;
         }
         .form-container label {
             display: block;
@@ -37,6 +45,7 @@
             border: none;
             border-radius: 4px;
             cursor: pointer;
+            flex: 1 1 100%; /* Button takes full width */
         }
         .form-container button:hover {
             background-color: #218838;
@@ -46,77 +55,138 @@
 <body>
 <div class="form-container">
     <h2>Pendaftaran Siswa</h2>
-    <form id="registerForm">
-        <label for="name">Nama Lengkap:</label>
-        <input type="text" id="name" name="name" required>
-
-        <label for="dob">Tempat, Tanggal Lahir:</label>
-        <input type="text" id="dob" name="dob" required>
-
-        <label for="address">Alamat Rumah:</label>
-        <input type="text" id="address" name="address" required>
-
-        <label for="phone">No. Telepon Orang Tua/Wali:</label>
-        <input type="text" id="phone" name="phone" required>
-
-        <label for="parent">Nama Orang Tua/Wali:</label>
-        <input type="text" id="parent" name="parent" required>
-
-        <label for="school">Sekolah Asal:</label>
-        <input type="text" id="school" name="school" required>
-
-        <label for="grade">Kelas yang Didaftarkan:</label>
-        <input type="text" id="grade" name="grade" required>
-
-        <label for="start_date">Tanggal Masuk Sekolah:</label>
-        <input type="date" id="start_date" name="start_date" required>
-
-        <button type="button" onclick="submitRegistration()">Daftar</button>
-    </form>
-</div>
-
-<div class="form-container">
-    <h2>Catatan Kehadiran</h2>
-    <form id="attendanceForm">
-        <label for="attendance_name">Nama Siswa:</label>
-        <input type="text" id="attendance_name" name="attendance_name" required>
-
-        <label for="attendance_date">Tanggal:</label>
-        <input type="date" id="attendance_date" name="attendance_date" required>
-
-        <label for="status">Status Kehadiran:</label>
-        <select id="status" name="status">
-            <option value="hadir">Hadir</option>
-            <option value="izin">Izin</option>
-            <option value="sakit">Sakit</option>
-            <option value="alpha">Alpha</option>
+    <div class="form-item">
+        <label for="id">ID:</label>
+        <input type="text" id="id" name="id" required>
+    </div>
+    <div class="form-item">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+    </div>
+    <div class="form-item">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+    </div>
+    <div class="form-item">
+        <label for="nama">Nama Lengkap:</label>
+        <input type="text" id="nama" name="nama" required>
+    </div>
+    <div class="form-item">
+        <label for="jenis_kelamin">Jenis Kelamin:</label>
+        <select id="jenis_kelamin" name="jenis_kelamin" required>
+            <option value="" disabled selected>Pilih Jenis Kelamin</option>
+            <option value="Laki-laki">Laki-laki</option>
+            <option value="Perempuan">Perempuan</option>
         </select>
-
-        <button type="button" onclick="submitAttendance()">Kirim Kehadiran</button>
-    </form>
+    </div>
+    <div class="form-item">
+        <label for="nisn">NISN:</label>
+        <input type="text" id="nisn" name="nisn" required>
+    </div>
+    <div class="form-item">
+        <label for="tempat_lahir">Tempat Lahir:</label>
+        <input type="text" id="tempat_lahir" name="tempat_lahir" required>
+    </div>
+    <div class="form-item">
+        <label for="tanggal_lahir">Tanggal Lahir:</label>
+        <input type="date" id="tanggal_lahir" name="tanggal_lahir" required>
+    </div>
+    <div class="form-item">
+        <label for="alamat">Alamat:</label>
+        <input type="text" id="alamat" name="alamat" required>
+    </div>
+    <div class="form-item">
+        <label for="nomor_hp">Nomor HP:</label>
+        <input type="text" id="nomor_hp" name="nomor_hp" required>
+    </div>
+    <div class="form-item">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+    </div>
+    <div class="form-item">
+        <label for="foto">Foto (URL):</label>
+        <input type="url" id="foto" name="foto">
+    </div>
+    <div class="form-item">
+        <label for="nama_wali">Nama Wali:</label>
+        <input type="text" id="nama_wali" name="nama_wali" required>
+    </div>
+    <div class="form-item">
+        <label for="tahun_lahir_wali">Tahun Lahir Wali:</label>
+        <input type="number" id="tahun_lahir_wali" name="tahun_lahir_wali" required>
+    </div>
+    <div class="form-item">
+        <label for="pendidikan_wali">Pendidikan Wali:</label>
+        <input type="text" id="pendidikan_wali" name="pendidikan_wali" required>
+    </div>
+    <div class="form-item">
+        <label for="pekerjaan_wali">Pekerjaan Wali:</label>
+        <input type="text" id="pekerjaan_wali" name="pekerjaan_wali" required>
+    </div>
+    <div class="form-item">
+        <label for="penghasilan_wali">Penghasilan Wali:</label>
+        <input type="number" id="penghasilan_wali" name="penghasilan_wali" required>
+    </div>
+    <div class="form-item">
+        <label for="angkatan">Angkatan:</label>
+        <input type="number" id="angkatan" name="angkatan" required>
+    </div>
+    <div class="form-item">
+        <label for="spp_nominal">Nominal SPP:</label>
+        <input type="number" id="spp_nominal" name="spp_nominal" required>
+    </div>
+    <div class="form-item">
+        <label for="nomer">Nomer:</label>
+        <input type="text" id="nomer" name="nomer" required>
+    </div>
+    <button type="button" onclick="submitRegistration()">Daftar</button>
 </div>
 
 <script>
     function submitRegistration() {
-        const name = document.getElementById('name').value;
-        const dob = document.getElementById('dob').value;
-        const address = document.getElementById('address').value;
-        const phone = document.getElementById('phone').value;
-        const parent = document.getElementById('parent').value;
-        const school = document.getElementById('school').value;
-        const grade = document.getElementById('grade').value;
-        const startDate = document.getElementById('start_date').value;
+        const id = document.getElementById('id').value;
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        const nama = document.getElementById('nama').value;
+        const jenisKelamin = document.getElementById('jenis_kelamin').value;
+        const nisn = document.getElementById('nisn').value;
+        const tempatLahir = document.getElementById('tempat_lahir').value;
+        const tanggalLahir = document.getElementById('tanggal_lahir').value;
+        const alamat = document.getElementById('alamat').value;
+        const nomorHp = document.getElementById('nomor_hp').value;
+        const email = document.getElementById('email').value;
+        const foto = document.getElementById('foto').value;
+        const namaWali = document.getElementById('nama_wali').value;
+        const tahunLahirWali = document.getElementById('tahun_lahir_wali').value;
+        const pendidikanWali = document.getElementById('pendidikan_wali').value;
+        const pekerjaanWali = document.getElementById('pekerjaan_wali').value;
+        const penghasilanWali = document.getElementById('penghasilan_wali').value;
+        const angkatan = document.getElementById('angkatan').value;
+        const sppNominal = document.getElementById('spp_nominal').value;
+        const nomer = document.getElementById('nomer').value;
 
         // Create a text representation of the data
         const registrationData = `
-Nama Lengkap: ${name}
-Tempat, Tanggal Lahir: ${dob}
-Alamat Rumah: ${address}
-No. Telepon Orang Tua/Wali: ${phone}
-Nama Orang Tua/Wali: ${parent}
-Sekolah Asal: ${school}
-Kelas yang Didaftarkan: ${grade}
-Tanggal Masuk Sekolah: ${startDate}
+ID: ${id}
+Username: ${username}
+Password: ${password}
+Nama Lengkap: ${nama}
+Jenis Kelamin: ${jenisKelamin}
+NISN: ${nisn}
+Tempat Lahir: ${tempatLahir}
+Tanggal Lahir: ${tanggalLahir}
+Alamat: ${alamat}
+Nomor HP: ${nomorHp}
+Email: ${email}
+Foto: ${foto}
+Nama Wali: ${namaWali}
+Tahun Lahir Wali: ${tahunLahirWali}
+Pendidikan Wali: ${pendidikanWali}
+Pekerjaan Wali: ${pekerjaanWali}
+Penghasilan Wali: ${penghasilanWali}
+Angkatan: ${angkatan}
+Nominal SPP: ${sppNominal}
+Nomer: ${nomer}
 
         `;
 
@@ -124,25 +194,6 @@ Tanggal Masuk Sekolah: ${startDate}
         localStorage.setItem('registrationData', registrationData);
 
         alert('Pendaftaran berhasil! Data disimpan.');
-    }
-
-    function submitAttendance() {
-        const studentName = document.getElementById('attendance_name').value;
-        const date = document.getElementById('attendance_date').value;
-        const status = document.getElementById('status').value;
-
-        // Create a text representation of the data
-        const attendanceData = `
-Nama Siswa: ${studentName}
-Tanggal: ${date}
-Status Kehadiran: ${status}
-
-        `;
-
-        // Save to localStorage (for demonstration purposes)
-        localStorage.setItem('attendanceData', attendanceData);
-
-        alert('Kehadiran berhasil dikirim!');
     }
 </script>
 </body>
