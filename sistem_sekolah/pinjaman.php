@@ -54,13 +54,12 @@
         .form-container {
             margin-bottom: 20px;
             display: flex;
-            flex-wrap: wrap; /* Agar elemen dapat membungkus jika ruang tidak cukup */
+            flex-wrap: wrap;
             gap: 20px;
         }
 
         .form-item {
             flex: 1;
-            min-width: 220px; /* Menjaga lebar minimum elemen form */
         }
 
         .form-item label {
@@ -185,14 +184,6 @@
             justify-content: flex-end; /* Menempatkan tombol di pojok kanan */
             margin-top: 20px;
         }
-
-        td:first-child {
-            text-align: left; /* Tanggal Pinjam di sebelah kiri */
-        }
-
-        td:last-child {
-            text-align: right; /* Tanggal Pengembalian di sebelah kanan */
-        }
     </style>
 </head>
 
@@ -233,7 +224,7 @@
                         <input type="date" id="tanggalPinjam" required>
                     </div>
                     <div class="form-item">
-                        <label for="tanggalKembali">Tanggal Pengembalian:</label>
+                        <label for="tanggalKembali">Tanggal Kembali:</label>
                         <input type="date" id="tanggalKembali" required>
                     </div>
                 </div>
@@ -253,40 +244,138 @@
                     <table id="pinjamanTable">
                         <thead>
                             <tr>
-                                <th>Tanggal Pinjam</th> <!-- Kolom untuk tanggal pinjam -->
                                 <th>Judul</th>
                                 <th>Status</th>
-                                <th>Tanggal Pengembalian</th> <!-- Kolom untuk tanggal pengembalian -->
+                                <th>Tanggal Pinjam</th>
+                                <th>Tanggal Kembali</th>
                             </tr>
                         </thead>
                         <tbody id="pinjamanTableBody">
-                            <!-- Baris awal tabel dibiarkan kosong karena akan diisi dengan JavaScript -->
+                            <tr data-id="1" onclick="showPopup(1)">
+                                <td>tips agar dapat uang</td>
+                                <td>Dipinjam</td>
+                                <td>2024-08-01</td>
+                                <td>2024-08-31</td>
+                            </tr>
+                            <tr data-id="2" onclick="showPopup(2)">
+                                <td>dongeng anak</td>
+                                <td>Kembali</td>
+                                <td>2024-07-20</td>
+                                <td>2024-08-19</td>
+                            </tr>
+                            <tr data-id="3" onclick="showPopup(3)">
+                                <td>kode keras cewe</td>
+                                <td>Lewat Tempo</td>
+                                <td>2024-08-10</td>
+                                <td>2024-09-09</td>
+                            </tr>
+                            <tr data-id="4" onclick="showPopup(4)">
+                                <td>siksa neraka</td>
+                                <td>Dipinjam</td>
+                                <td>2024-08-05</td>
+                                <td>2024-09-04</td>
+                            </tr>
+                            <tr data-id="5" onclick="showPopup(5)">
+                                <td>hidup enak tanpa narkoba</td>
+                                <td>Kembali</td>
+                                <td>2024-07-25</td>
+                                <td>2024-08-24</td>
+                            </tr>
                         </tbody>
                     </table>
 
                     <div class="button-container-right">
-                        <button type="button" onclick="showAll()">Tampilkan Semua</button>
+                        <button class="share-button" id="shareButton">Bagikan Data</button>
                     </div>
                 </div>
+
+                <!-- Popup for showing details -->
+                <div class="popup" id="popup">
+                    <span class="close" onclick="closePopup()">&times;</span>
+                    <h2>Detail Pinjaman</h2>
+                    <div id="popupContent"></div>
+                </div>
+
+                <script>
+                    // Menambahkan data ke tabel
+                    document.getElementById('prosesButton').addEventListener('click', function() {
+                        const judul = document.getElementById('judul').value;
+                        const status = document.getElementById('status').value;
+                        const tanggalPinjam = document.getElementById('tanggalPinjam').value;
+                        const tanggalKembali = document.getElementById('tanggalKembali').value;
+
+                        if (judul && status && tanggalPinjam && tanggalKembali) {
+                            const tableBody = document.getElementById('pinjamanTableBody');
+                            const newRow = document.createElement('tr');
+                            newRow.innerHTML = `
+                                <td>${judul}</td>
+                                <td>${status}</td>
+                                <td>${tanggalPinjam}</td>
+                                <td>${tanggalKembali}</td>
+                            `;
+                            newRow.setAttribute('data-id', tableBody.children.length + 1);
+                            newRow.addEventListener('click', function() {
+                                showPopup(this.getAttribute('data-id'));
+                            });
+                            tableBody.appendChild(newRow);
+
+                            // Clear the input fields after adding data
+                            document.getElementById('judul').value = '';
+                            document.getElementById('status').value = 'Dipinjam';
+                            document.getElementById('tanggalPinjam').value = '';
+                            document.getElementById('tanggalKembali').value = '';
+                        } else {
+                            alert('Harap lengkapi semua field!');
+                        }
+                    });
+
+                    // Menambahkan fitur pencarian
+                    document.getElementById('searchInput').addEventListener('keyup', function() {
+                        const searchValue = this.value.toLowerCase();
+                        const rows = document.querySelectorAll('#pinjamanTableBody tr');
+                        rows.forEach(row => {
+                            const title = row.cells[0].textContent.toLowerCase();
+                            if (title.includes(searchValue)) {
+                                row.style.display = '';
+                            } else {
+                                row.style.display = 'none';
+                            }
+                        });
+                    });
+
+                    // Mockup data for popup
+                    const mockupData = {
+                        1: { tanggalPinjam: '2024-08-01', tanggalKembali: '2024-08-31' },
+                        2: { tanggalPinjam: '2024-07-20', tanggalKembali: '2024-08-19' },
+                        3: { tanggalPinjam: '2024-08-10', tanggalKembali: '2024-09-09' },
+                        4: { tanggalPinjam: '2024-08-05', tanggalKembali: '2024-09-04' },
+                        5: { tanggalPinjam: '2024-07-25', tanggalKembali: '2024-08-24' }
+                    };
+
+                    function showPopup(id) {
+                        const data = mockupData[id];
+                        if (data) {
+                            document.getElementById('popupContent').innerHTML = `
+                                <p><strong>Tanggal Pinjam:</strong> ${data.tanggalPinjam}</p>
+                                <p><strong>Tanggal Kembali:</strong> ${data.tanggalKembali}</p>
+                            `;
+                            document.getElementById('popup').style.display = 'block';
+                        }
+                    }
+
+                    function closePopup() {
+                        document.getElementById('popup').style.display = 'none';
+                    }
+                </script>
             </div>
         </div>
         <!-- Content End -->
-        
+
         <!-- Back to Top -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
 
-    <div id="popup" class="popup">
-        <span class="close" onclick="closePopup()">×</span>
-        <h2>Detail Pinjaman</h2>
-        <p><strong>Judul:</strong> <span id="popupJudul"></span></p>
-        <p><strong>Status:</strong> <span id="popupStatus"></span></p>
-        <p><strong>Tanggal Pinjam:</strong> <span id="popupTanggalPinjam"></span></p>
-        <p><strong>Tanggal Pengembalian:</strong> <span id="popupTanggalKembali"></span></p>
-        <button onclick="closePopup()">Tutup</button>
-    </div>
-
-    <!-- Javascript Libraries -->
+    <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="lib/chart/chart.min.js"></script>
@@ -299,134 +388,6 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
-    <script>
-        const pinjaman = [
-            {
-                id: 1,
-                judul: 'tips agar dapat uang',
-                status: 'Dipinjam',
-                tanggalPinjam: '2023-09-01',
-                tanggalKembali: '2023-10-01'
-            },
-            {
-                id: 2,
-                judul: 'dongeng anak',
-                status: 'Kembali',
-                tanggalPinjam: '2023-08-01',
-                tanggalKembali: '2023-09-01'
-            },
-            {
-                id: 3,
-                judul: 'kode keras cewe',
-                status: 'Lewat Tempo',
-                tanggalPinjam: '2023-07-01',
-                tanggalKembali: '2023-08-01'
-            },
-            {
-                id: 4,
-                judul: 'siksa neraka',
-                status: 'Dipinjam',
-                tanggalPinjam: '2023-09-05',
-                tanggalKembali: '2023-10-05'
-            },
-            {
-                id: 5,
-                judul: 'hidup dan mati',
-                status: 'Dipinjam',
-                tanggalPinjam: '2023-09-10',
-                tanggalKembali: '2023-10-10'
-            }
-        ];
-
-        document.getElementById('prosesButton').addEventListener('click', function () {
-            const judul = document.getElementById('judul').value;
-            const status = document.getElementById('status').value;
-            const tanggalPinjam = document.getElementById('tanggalPinjam').value;
-            const tanggalKembali = document.getElementById('tanggalKembali').value;
-
-            const newPinjaman = {
-                id: pinjaman.length + 1,
-                judul: judul,
-                status: status,
-                tanggalPinjam: tanggalPinjam,
-                tanggalKembali: tanggalKembali
-            };
-
-            pinjaman.push(newPinjaman);
-            updateTable();
-
-            // Kosongkan input setelah data ditambahkan
-            document.getElementById('judul').value = '';
-            document.getElementById('status').value = 'Dipinjam';
-            document.getElementById('tanggalPinjam').value = '';
-            document.getElementById('tanggalKembali').value = '';
-        });
-
-        function updateTable() {
-            const tableBody = document.getElementById('pinjamanTableBody');
-            tableBody.innerHTML = '';
-            pinjaman.forEach(item => {
-                const row = document.createElement('tr');
-                row.setAttribute('data-id', item.id);
-                row.innerHTML = `
-                    <td>${item.tanggalPinjam}</td>
-                    <td>${item.judul}</td>
-                    <td>${item.status}</td>
-                    <td>${item.tanggalKembali}</td>
-                `;
-                row.addEventListener('click', function () {
-                    showPopup(item.id);
-                });
-                tableBody.appendChild(row);
-            });
-        }
-
-        function showPopup(id) {
-            const item = pinjaman.find(p => p.id === id);
-            if (item) {
-                document.getElementById('popupJudul').textContent = item.judul;
-                document.getElementById('popupStatus').textContent = item.status;
-                document.getElementById('popupTanggalPinjam').textContent = item.tanggalPinjam;
-                document.getElementById('popupTanggalKembali').textContent = item.tanggalKembali;
-                document.getElementById('popup').style.display = 'block';
-            }
-        }
-
-        function closePopup() {
-            document.getElementById('popup').style.display = 'none';
-        }
-
-        function showAll() {
-            updateTable();
-        }
-
-        document.getElementById('searchInput').addEventListener('input', function () {
-            const filter = this.value.toLowerCase();
-            const filteredPinjaman = pinjaman.filter(item => item.judul.toLowerCase().includes(filter));
-            updateTableWithFilter(filteredPinjaman);
-        });
-
-        function updateTableWithFilter(filteredPinjaman) {
-            const tableBody = document.getElementById('pinjamanTableBody');
-            tableBody.innerHTML = '';
-            filteredPinjaman.forEach(item => {
-                const row = document.createElement('tr');
-                row.setAttribute('data-id', item.id);
-                row.innerHTML = `
-                    <td>${item.tanggalPinjam}</td>
-                    <td>${item.judul}</td>
-                    <td>${item.status}</td>
-                    <td>${item.tanggalKembali}</td>
-                `;
-                row.addEventListener('click', function () {
-                    showPopup(item.id);
-                });
-                tableBody.appendChild(row);
-            });
-        }
-
-        showAll();
-    </script>
 </body>
 
 </html>
