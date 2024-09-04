@@ -60,16 +60,16 @@
         <input type="text" id="id" name="id" required>
     </div>
     <div class="form-item">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
-    </div>
-    <div class="form-item">
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-    </div>
-    <div class="form-item">
-        <label for="nama">Nama Lengkap:</label>
+        <label for="nama">nama lengkap:</label>
         <input type="text" id="nama" name="nama" required>
+    </div>
+    <div class="form-item">
+        <label for="username">username:</label>
+        <input type="username" id="username" name="username" required>
+    </div>
+    <div class="form-item">
+        <label for="password">password:</label>
+        <input type="text" id="password" name="password" required>
     </div>
     <div class="form-item">
         <label for="jenis_kelamin">Jenis Kelamin:</label>
