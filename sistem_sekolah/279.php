@@ -48,12 +48,12 @@
             <div class="container-fluid pt-4 px-4">
                 <div class="row vh-100 bg-light rounded align-items-center justify-content-center mx-0">
                     <div class="col-md-6 text-center p-4">
-                        <i class="bi bi-exclamation-triangle display-1 text-primary"></i>
-                        <h1 class="display-1 fw-bold">279</h1>
-                        <h1 class="mb-4">ClTh DaMn Kru!!</h1>
-                        <p class="mb-4">279dAmNkRu!! site is strictly prohibited! if you don't want your body to explode from the tight embrace of women</p>
-                        <a class="btn btn-primary rounded-pill py-3 px-5" href="index.php">Go Back To Dashboard</a>
-                    </div>
+                    <i class="bi bi-exclamation-triangle display-1 text-danger"></i>
+                    <h1 class="display-1 fw-bold">279</h1>
+                        <h1 class="mb-4">cLTh DaMn KrU!!</h1>
+                        <p class="mb-4">279dAmNkRu!! SitE is strICtlY pr0hibItEd! If yoU doN't wANt your b0dY to eXPlodE fRoM tHe TigHt eMbrAce of w0mEn!!</p>
+                        <a class="btn btn-danger rounded-pill py-3 px-5" href="index.php">Go Back To Dashboard</a>
+                     </div>
                 </div>
             </div>
             <!-- 404 End -->
