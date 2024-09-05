@@ -93,7 +93,7 @@ $hasil = mysqli_fetch_array($data);
 			<label for="nisn">Nisn</label>
             <input type="text" id="nisn" name="nisn" value="<?php echo $hasil['nisn'];?>">
             <label for="nomer">Nomer Hp</label>
-            <input type="number" id="nomer" name="nomer" value="<?php echo $hasil['nomer'];?>">
+            <input type="number" id="nomer" name="nomer" value="+62">
             <div class="button-container">
                 <button type="submit" name="simpan">Simpan</button>
                 <a href="../../button.php" class="cancel-btn">Batal</a>
