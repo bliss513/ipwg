@@ -196,9 +196,8 @@
             </div>
         </div>
         <!-- Spinner End -->
-        
         <?php include 'sidebar.php'; ?>
-        
+
         <!-- Content Start -->
         <div class="content">
             <?php include 'header.php'; ?>
