@@ -86,8 +86,8 @@
         }
         .search-container input[type="text"] {
             padding: 10px;
-            font-size: 16px;
-            width: 100%;
+            font-size: 13px;
+            width: 20%;
             box-sizing: border-box;
         }
     </style>
