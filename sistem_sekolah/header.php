@@ -85,5 +85,5 @@
                         </div>
                     </div>
                 </div>
-            </nav>
+            </nav> 
             <!-- Navbar End -->

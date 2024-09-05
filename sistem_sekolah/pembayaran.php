@@ -3,117 +3,184 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pembayaran SPP</title>
+    <title>Tabel Peralihan Siswa Naik Kelas</title>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>DASHMIN - Bootstrap Admin Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container-xxl position-relative bg-white d-flex p-0">
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+        <?php
+        include 'sidebar.php'
+        ?>
+
+        <!-- Content Start -->
+        <div class="content">
+        <?php
+            include 'header.php';
+            ?>
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabel Pembayaran SPP</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
-
-        .container {
-            max-width: 600px;
-            margin: 50px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-
-        h1 {
-            text-align: center;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-        }
-
-        label {
-            margin: 10px 0 5px;
-        }
-
-        input, select {
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        button {
-            padding: 10px;
-            background-color: #28a745;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #218838;
-        }
-
-        #message {
-            text-align: center;
+        table {
+            width: 100%;
+            border-collapse: collapse;
             margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .description {
+            margin-bottom: 20px;
+        }
+        .search-container {
+            margin-bottom: 20px;
+        }
+        .search-container input[type="text"] {
+            padding: 10px;
+            font-size: 13px;
+            width: 20%;
+            box-sizing: border-box;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Pembayaran SPP</h1>
-        <form id="payment-form">
-            <label for="name">Nama Siswa:</label>
-            <input type="text" id="name" name="name" required>
-
-            <label for="class">Kelas:</label>
-            <select id="class" name="class" required>
-                <option value="">Pilih Kelas</option>
-                <option value="1">Kelas 1</option>
-                <option value="2">Kelas 2</option>
-                <option value="3">Kelas 3</option>
-                <!-- Tambah opsi sesuai kebutuhan -->
-            </select>
-
-            <label for="amount">Jumlah Pembayaran (Rp):</label>
-            <input type="number" id="amount" name="amount" required>
-
-            <label for="payment-method">Metode Pembayaran:</label>
-            <select id="payment-method" name="payment-method" required>
-                <option value="">Pilih Metode Pembayaran</option>
-                <option value="bank-transfer">Transfer Bank</option>
-                <option value="cash">Tunai</option>
-                <!-- Tambah opsi sesuai kebutuhan -->
-            </select>
-
-            <button type="submit">Bayar</button>
-        </form>
-        <div id="message"></div>
+    <h1>Tabel Pembayaran SPP</h1>
+    
+    <!-- Deskripsi di atas tabel -->
+   
+    <!-- Kotak pencarian -->
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Cari nama..." onkeyup="searchTable()">
     </div>
+
+    <table id="paymentTable">
+        <thead>
+            <tr>
+                <th>Nomor</th>
+                <th>Bulan</th>
+                <th>Rencana</th>
+                <th>Realisasi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Januari</td>
+                <td>100000</td>
+                <td>100000</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Februari</td>
+                <td>100000</td>
+                <td>100000</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Maret</td>
+                <td>100000</td>
+                <td>100000</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>April</td>
+                <td>100000</td>
+                <td>100000</td>
+            </tr>
+            <!-- Tambahkan baris tambahan sesuai kebutuhan -->
+        </tbody>
+    </table>
+
     <script>
-        document.getElementById('payment-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            // Mengambil data dari form
-            const name = document.getElementById('name').value;
-            const classValue = document.getElementById('class').value;
-            const amount = document.getElementById('amount').value;
-            const paymentMethod = document.getElementById('payment-method').value;
-
-            // Validasi
-            if (!name || !classValue || !amount || !paymentMethod) {
-                document.getElementById('message').innerText = 'Harap isi semua field!';
-                return;
+        function searchTable() {
+            const input = document.getElementById('searchInput');
+            const filter = input.value.toUpperCase();
+            const table = document.getElementById('paymentTable');
+            const tr = table.getElementsByTagName('tr');
+            
+            for (let i = 1; i < tr.length; i++) {
+                const td = tr[i].getElementsByTagName('td')[1]; // Ambil kolom "Bulan" (indeks 1)
+                if (td) {
+                    const txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = '';
+                    } else {
+                        tr[i].style.display = 'none';
+                    }
+                }
             }
-
-            // Menampilkan pesan sukses
-            document.getElementById('message').innerText = `Pembayaran berhasil!\nNama: ${name}\nKelas: ${classValue}\nJumlah: Rp${amount}\nMetode Pembayaran: ${paymentMethod}`;
-
-            // Reset form
-            document.getElementById('payment-form').reset();
-        });
+        }
     </script>
 </body>
 </html>
- 
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/chart/chart.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>
