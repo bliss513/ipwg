@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tabel Peralihan Siswa Naik Kelas</title>
-
+!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -46,18 +40,11 @@
             </div>
         </div>
         <!-- Spinner End -->
-        <?php
-        include 'sidebar.php'
-        ?>
-
+        <?php include 'sidebar.php'; ?>
         <!-- Content Start -->
         <div class="content">
-        <?php
-            include 'header.php';
-            ?>
+        <?php include 'header.php'; ?>
 
-<!DOCTYPE html>
-<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -90,16 +77,17 @@
             width: 20%;
             box-sizing: border-box;
         }
+        tr.clickable-row {
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
     <h1>Tabel Pembayaran SPP</h1>
-    
-    <!-- Deskripsi di atas tabel -->
-   
+
     <!-- Kotak pencarian -->
     <div class="search-container">
-        <input type="text" id="searchInput" placeholder="Cari nama..." onkeyup="searchTable()">
+        <input type="text" id="searchInput" placeholder="Cari bulan..." onkeyup="searchTable()">
     </div>
 
     <table id="paymentTable">
@@ -112,25 +100,25 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
+            <tr class="clickable-row" data-id="1">
                 <td>1</td>
                 <td>Januari</td>
                 <td>100000</td>
                 <td>100000</td>
             </tr>
-            <tr>
+            <tr class="clickable-row" data-id="2">
                 <td>2</td>
                 <td>Februari</td>
                 <td>100000</td>
                 <td>100000</td>
             </tr>
-            <tr>
+            <tr class="clickable-row" data-id="3">
                 <td>3</td>
                 <td>Maret</td>
                 <td>100000</td>
                 <td>100000</td>
             </tr>
-            <tr>
+            <tr class="clickable-row" data-id="4">
                 <td>4</td>
                 <td>April</td>
                 <td>100000</td>
@@ -141,6 +129,7 @@
     </table>
 
     <script>
+        // Fungsi pencarian tabel
         function searchTable() {
             const input = document.getElementById('searchInput');
             const filter = input.value.toUpperCase();
@@ -159,9 +148,19 @@
                 }
             }
         }
+
+        // Fungsi untuk menangani klik pada baris tabel
+        document.querySelectorAll('.clickable-row').forEach(row => {
+            row.addEventListener('click', function() {
+                const id = this.getAttribute('data-id');
+                window.location.href = `transaksi.php?id=${id}`;
+            });
+        });
     </script>
 </body>
-</html>
+<?php include 'footer.php'; ?>
+        </div>
+        <!-- Content End -->
 
 
         <!-- Back to Top -->

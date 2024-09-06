@@ -29,34 +29,6 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
-
-    <style>
-        /* Styling untuk tabel */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-        table, th, td {
-            border: 1px solid #ddd;
-        }
-        th, td {
-            padding: 12px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-        caption {
-            caption-side: top;
-            font-size: 1.5em;
-            margin: 10px 0;
-        }
-        tr:hover {
-            background-color: #f5f5f5;
-            cursor: pointer;
-        }
-    </style>
 </head>
 
 <body>
@@ -68,179 +40,337 @@
             </div>
         </div>
         <!-- Spinner End -->
-
         <?php include 'sidebar.php'; ?>
-
         <!-- Content Start -->
         <div class="content">
-            <?php include 'header.php'; ?>
-           
-            <div class="container">
-                <h1>Pinjaman Perpustakaan</h1>
+        <?php include 'header.php'; ?>
+            <!-- 404 Start -->
+            <head>
+            <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Siswa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .form-container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .form-container h2 {
+            text-align: center;
+            width: 100%;
+        }
+        .form-container .form-item {
+            flex: 1 1 calc(50% - 20px); /* 50% width minus gap */
+            min-width: 200px;
+        }
+        .form-container label {
+            display: block;
+            margin-top: 10px;
+        }
+        .form-container input, .form-container select, .form-container textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .form-container button {
+            margin-top: 20px;
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            flex: 1 1 100%; /* Button takes full width */
+        }
+        .form-container button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+<div class="form-container">
+    <h2>Pendaftaran Siswa</h2>
+    <div class="form-item">
+        <label for="id">ID:</label>
+        <input type="text" id="id" name="id" required>
+    </div>
+    <div class="form-item">
+        <label for="nama">nama lengkap:</label>
+        <input type="text" id="nama" name="nama" required>
+    </div>
+    <div class="form-item">
+        <label for="username">username:</label>
+        <input type="username" id="username" name="username" required>
+    </div>
+    <div class="form-item">
+        <label for="password">password:</label>
+        <input type="text" id="password" name="password" required>
+    </div>
+    <div class="form-item">
+        <label for="jenis_kelamin">Jenis Kelamin:</label>
+        <select id="jenis_kelamin" name="jenis_kelamin" required>
+            <option value="" disabled selected>Pilih Jenis Kelamin</option>
+            <option value="Laki-laki">Laki-laki</option>
+            <option value="Perempuan">Perempuan</option>
+        </select>
+    </div>
+    <div class="form-item">
+        <label for="nisn">NISN:</label>
+        <input type="text" id="nisn" name="nisn" required>
+    </div>
+    <div class="form-item">
+        <label for="tempat_lahir">Tempat Lahir:</label>
+        <input type="text" id="tempat_lahir" name="tempat_lahir" required>
+    </div>
+    <div class="form-item">
+        <label for="tanggal_lahir">Tanggal Lahir:</label>
+        <input type="date" id="tanggal_lahir" name="tanggal_lahir" required>
+    </div>
+    <div class="form-item">
+        <label for="alamat">Alamat:</label>
+        <input type="text" id="alamat" name="alamat" required>
+    </div>
+    <div class="form-item">
+        <label for="nomor_hp">Nomor HP:</label>
+        <input type="text" id="nomor_hp" name="nomor_hp" required>
+    </div>
+    <div class="form-item">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+    </div>
+    <div class="form-item">
+        <label for="foto">Foto (URL):</label>
+        <input type="url" id="foto" name="foto">
+    </div>
+    <div class="form-item">
+        <label for="nama_wali">Nama Wali:</label>
+        <input type="text" id="nama_wali" name="nama_wali" required>
+    </div>
+    <div class="form-item">
+        <label for="tahun_lahir_wali">Tahun Lahir Wali:</label>
+        <input type="number" id="tahun_lahir_wali" name="tahun_lahir_wali" required>
+    </div>
+    <div class="form-item">
+        <label for="pendidikan_wali">Pendidikan Wali:</label>
+        <input type="text" id="pendidikan_wali" name="pendidikan_wali" required>
+    </div>
+    <div class="form-item">
+        <label for="pekerjaan_wali">Pekerjaan Wali:</label>
+        <input type="text" id="pekerjaan_wali" name="pekerjaan_wali" required>
+    </div>
+    <div class="form-item">
+        <label for="penghasilan_wali">Penghasilan Wali:</label>
+        <input type="number" id="penghasilan_wali" name="penghasilan_wali" required>
+    </div>
+    <div class="form-item">
+        <label for="angkatan">Angkatan:</label>
+        <input type="number" id="angkatan" name="angkatan" required>
+    </div>
+    <div class="form-item">
+        <label for="spp_nominal">Nominal SPP:</label>
+        <input type="number" id="spp_nominal" name="spp_nominal" required>
+    </div>
+    <div class="form-item">
+        <label for="nomer">Nomer:</label>
+        <input type="text" id="nomer" name="nomer" required>
+    </div>
+    <button type="button" onclick="submitRegistration()">Daftar</button>
+</div>
 
-                <div class="form-container">
-                    <div class="form-item">
-                        <label for="judul">Judul:</label>
-                        <input type="text" id="judul" required>
-                    </div>
-                    <div class="form-item">
-                        <label for="status">Status:</label>
-                        <select id="status" required>
-                            <option value="Dipinjam">Dipinjam</option>
-                            <option value="Kembali">Kembali</option>
-                            <option value="Lewat Tempo">Lewat Tempo</option>
-                        </select>
-                    </div>
-                    <div class="form-item">
-                        <label for="tanggalPinjam">Tanggal Pinjam:</label>
-                        <input type="date" id="tanggalPinjam" required>
-                    </div>
-                    <div class="form-item">
-                        <label for="tanggalKembali">Tanggal Kembali:</label>
-                        <input type="date" id="tanggalKembali" required>
-                    </div>
-                </div>
+<script>
+    function submitRegistration() {
+        const id = document.getElementById('id').value;
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        const nama = document.getElementById('nama').value;
+        const jenisKelamin = document.getElementById('jenis_kelamin').value;
+        const nisn = document.getElementById('nisn').value;
+        const tempatLahir = document.getElementById('tempat_lahir').value;
+        const tanggalLahir = document.getElementById('tanggal_lahir').value;
+        const alamat = document.getElementById('alamat').value;
+        const nomorHp = document.getElementById('nomor_hp').value;
+        const email = document.getElementById('email').value;
+        const foto = document.getElementById('foto').value;
+        const namaWali = document.getElementById('nama_wali').value;
+        const tahunLahirWali = document.getElementById('tahun_lahir_wali').value;
+        const pendidikanWali = document.getElementById('pendidikan_wali').value;
+        const pekerjaanWali = document.getElementById('pekerjaan_wali').value;
+        const penghasilanWali = document.getElementById('penghasilan_wali').value;
+        const angkatan = document.getElementById('angkatan').value;
+        const sppNominal = document.getElementById('spp_nominal').value;
+        const nomer = document.getElementById('nomer').value;
 
-                <div class="button-container">
-                    <button type="submit" id="prosesButton">Proses</button>
-                </div>
+        // Create a text representation of the data
+        const registrationData = `
+ID: ${id}
+Username: ${username}
+Password: ${password}
+Nama Lengkap: ${nama}
+Jenis Kelamin: ${jenisKelamin}
+NISN: ${nisn}
+Tempat Lahir: ${tempatLahir}
+Tanggal Lahir: ${tanggalLahir}
+Alamat: ${alamat}
+Nomor HP: ${nomorHp}
+Email: ${email}
+Foto: ${foto}
+Nama Wali: ${namaWali}
+Tahun Lahir Wali: ${tahunLahirWali}
+Pendidikan Wali: ${pendidikanWali}
+Pekerjaan Wali: ${pekerjaanWali}
+Penghasilan Wali: ${penghasilanWali}
+Angkatan: ${angkatan}
+Nominal SPP: ${sppNominal}
+Nomer: ${nomer}
 
-                <div class="table-container">
-                    <h2>Daftar Pinjaman</h2>
-                    
-                    <!-- Pindahkan kontainer pencarian ke bawah judul tabel -->
-                    <div class="search-container">
-                        <input type="text" id="searchInput" placeholder="Cari...">
-                    </div>
+        `;
 
-                    <table id="pinjamanTable">
-                        <thead>
-                            <tr>
-                                <th>Judul</th>
-                                <th>Status</th>
-                                <th>Tanggal Pinjam</th>
-                                <th>Tanggal Kembali</th>
-                            </tr>
-                        </thead>
-                        <tbody id="pinjamanTableBody">
-                            <tr data-id="1" onclick="showPopup(1)">
-                                <td>tips agar dapat uang</td>
-                                <td>Dipinjam</td>
-                                <td>2024-08-01</td>
-                                <td>2024-08-31</td>
-                            </tr>
-                            <tr data-id="2" onclick="showPopup(2)">
-                                <td>dongeng anak</td>
-                                <td>Kembali</td>
-                                <td>2024-07-20</td>
-                                <td>2024-08-19</td>
-                            </tr>
-                            <tr data-id="3" onclick="showPopup(3)">
-                                <td>kode keras cewe</td>
-                                <td>Lewat Tempo</td>
-                                <td>2024-08-10</td>
-                                <td>2024-09-09</td>
-                            </tr>
-                            <tr data-id="4" onclick="showPopup(4)">
-                                <td>siksa neraka</td>
-                                <td>Dipinjam</td>
-                                <td>2024-08-05</td>
-                                <td>2024-09-04</td>
-                            </tr>
-                            <tr data-id="5" onclick="showPopup(5)">
-                                <td>hidup enak tanpa narkoba</td>
-                                <td>Kembali</td>
-                                <td>2024-07-25</td>
-                                <td>2024-08-24</td>
-                            </tr>
-                        </tbody>
-                    </table>
+        // Save to localStorage (for demonstration purposes)
+        localStorage.setItem('registrationData', registrationData);
 
-                    <div class="button-container-right">
-                        <button class="share-button" id="shareButton">Bagikan Data</button>
-                    </div>
-                </div>
+        alert('Pendaftaran berhasil! Data disimpan.');
+    }
+</script>
+</body> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendaftaran Siswa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        .container {
+            margin: 20px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+        .form-container {
+            margin-top: 20px;
+        }
+        .form-container form {
+            display: flex;
+            flex-direction: column;
+        }
+        .form-container input, .form-container select {
+            padding: 8px; /* Memperkecil padding */
+            font-size: 12px; /* Memperkecil ukuran font */
+            margin-bottom: 10px; /* Menambah margin bawah */
+            width: 100%; /* Membuat elemen input penuh lebar */
+            max-width: 300px; /* Menentukan lebar maksimum */
+            box-sizing: border-box; /* Memastikan padding dan border termasuk dalam lebar elemen */
+        }
+        .form-container input[type="button"] {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 8px; /* Memperkecil padding tombol */
+            font-size: 12px; /* Memperkecil ukuran font tombol */
+            max-width: 150px; /* Menentukan lebar maksimum tombol */
+        }
+        #dataContainer {
+            margin-top: 20px;
+        }
+        #dataList {
+            list-style-type: none;
+            padding: 0;
+        }
+        #dataList li {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Pendaftaran Siswa</h1>
 
-                <!-- Popup for showing details -->
-                <div class="popup" id="popup">
-                    <span class="close" onclick="closePopup()">&times;</span>
-                    <h2>Detail Pinjaman</h2>
-                    <div id="popupContent"></div>
-                </div>
-
-                <script>
-                    // Menambahkan data ke tabel
-                    document.getElementById('prosesButton').addEventListener('click', function() {
-                        const judul = document.getElementById('judul').value;
-                        const status = document.getElementById('status').value;
-                        const tanggalPinjam = document.getElementById('tanggalPinjam').value;
-                        const tanggalKembali = document.getElementById('tanggalKembali').value;
-
-                        if (judul && status && tanggalPinjam && tanggalKembali) {
-                            const tableBody = document.getElementById('pinjamanTableBody');
-                            const newRow = document.createElement('tr');
-                            newRow.innerHTML = `
-                                <td>${judul}</td>
-                                <td>${status}</td>
-                                <td>${tanggalPinjam}</td>
-                                <td>${tanggalKembali}</td>
-                            `;
-                            newRow.setAttribute('data-id', tableBody.children.length + 1);
-                            newRow.addEventListener('click', function() {
-                                showPopup(this.getAttribute('data-id'));
-                            });
-                            tableBody.appendChild(newRow);
-
-                            // Clear the input fields after adding data
-                            document.getElementById('judul').value = '';
-                            document.getElementById('status').value = 'Dipinjam';
-                            document.getElementById('tanggalPinjam').value = '';
-                            document.getElementById('tanggalKembali').value = '';
-                        } else {
-                            alert('Harap lengkapi semua field!');
-                        }
-                    });
-
-                    // Menambahkan fitur pencarian
-                    document.getElementById('searchInput').addEventListener('keyup', function() {
-                        const searchValue = this.value.toLowerCase();
-                        const rows = document.querySelectorAll('#pinjamanTableBody tr');
-                        rows.forEach(row => {
-                            const title = row.cells[0].textContent.toLowerCase();
-                            if (title.includes(searchValue)) {
-                                row.style.display = '';
-                            } else {
-                                row.style.display = 'none';
-                            }
-                        });
-                    });
-
-                    // Mockup data for popup
-                    const mockupData = {
-                        1: { tanggalPinjam: '2024-08-01', tanggalKembali: '2024-08-31' },
-                        2: { tanggalPinjam: '2024-07-20', tanggalKembali: '2024-08-19' },
-                        3: { tanggalPinjam: '2024-08-10', tanggalKembali: '2024-09-09' },
-                        4: { tanggalPinjam: '2024-08-05', tanggalKembali: '2024-09-04' },
-                        5: { tanggalPinjam: '2024-07-25', tanggalKembali: '2024-08-24' }
-                    };
-
-                    function showPopup(id) {
-                        const data = mockupData[id];
-                        if (data) {
-                            document.getElementById('popupContent').innerHTML = `
-                                <p><strong>Tanggal Pinjam:</strong> ${data.tanggalPinjam}</p>
-                                <p><strong>Tanggal Kembali:</strong> ${data.tanggalKembali}</p>
-                            `;
-                            document.getElementById('popup').style.display = 'block';
-                        }
-                    }
-
-                    function closePopup() {
-                        document.getElementById('popup').style.display = 'none';
-                    }
-                </script>
-            </div>
+        <div class="form-container">
+            <h2>Tambah Data Siswa</h2>
+            <form id="registrationForm">
+                <input type="text" id="name" placeholder="Nama" required>
+                <select id="gender" required>
+                    <option value="" disabled selected>Jenis Kelamin</option>
+                    <option value="Laki-laki">Laki-laki</option>
+                    <option value="Perempuan">Perempuan</option>
+                </select>
+                <input type="text" id="id" placeholder="ID" required>
+                <select id="class" required>
+                    <option value="" disabled selected>Kelas</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select>
+                <input type="text" id="academicYear" placeholder="Tahun Akademik" required>
+                <input type="number" id="spp" placeholder="SPP" required>
+                <input type="date" id="entryDate" required>
+                <input type="button" value="Tambah" onclick="addRow()">
+            </form>
         </div>
+
+        <!-- Tempat untuk menampilkan data yang ditambahkan -->
+        <div id="dataContainer">
+            <h2></h2>
+            <ul id="dataList">
+                <!-- Data yang ditambahkan akan muncul di sini -->
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function addRow() {
+            const dataList = document.getElementById('dataList');
+            const name = document.getElementById('name').value;
+            const gender = document.getElementById('gender').value;
+            const id = document.getElementById('id').value;
+            const className = document.getElementById('class').value;
+            const academicYear = document.getElementById('academicYear').value;
+            const spp = document.getElementById('spp').value;
+            const entryDate = document.getElementById('entryDate').value;
+
+            if (name && gender && id && className && academicYear && spp && entryDate) {
+                const idClass = `${id}_${className}`; // Menggabungkan ID dan Kelas
+
+                const listItem = document.createElement('li');
+                listItem.textContent = `${name} (${gender}), ID_Kelas: ${idClass}, Tahun Akademik: ${academicYear}, SPP: ${spp}, Tanggal Masuk: ${entryDate}`;
+                dataList.appendChild(listItem);
+                
+                // Clear the form
+                document.getElementById('registrationForm').reset();
+            } else {
+                alert('Mohon lengkapi semua kolom!');
+            }
+        }
+    </script>
+</body>
+</html>
+
+        <!-- Content End -->
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>

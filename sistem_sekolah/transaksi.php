@@ -1,149 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>DASHMIN - Bootstrap Admin Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container-xxl position-relative bg-white d-flex p-0">
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+        <?php include 'sidebar.php'; ?>
+        <!-- Content Start -->
+        <div class="content">
+        <?php include 'header.php'; ?>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SPP Payment System</title>
+    <title>Pembayaran SPP</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-
-        header {
-            background-color: #007BFF;
-            color: white;
-            padding: 10px 0;
-            text-align: center;
-        }
-
-        nav {
             margin: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        h1 {
             text-align: center;
         }
-
-        nav ul {
-            list-style: none;
-            padding: 0;
+        .form-group {
+            margin-bottom: 15px;
         }
-
-        nav ul li {
-            display: inline;
-            margin: 0 10px;
-        }
-
-        nav ul li a {
-            color: #007BFF;
-            text-decoration: none;
-        }
-
-        nav ul li a:hover {
-            text-decoration: underline;
-        }
-
-        main {
-            padding: 20px;
-            max-width: 800px;
-            margin: auto;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        form label {
+        label {
             display: block;
-            margin: 10px 0 5px;
+            margin-bottom: 5px;
         }
-
-        form input {
+        input[type="text"], input[type="number"] {
             width: 100%;
             padding: 8px;
             box-sizing: border-box;
         }
-
-        form button {
-            background-color: #28a745;
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
             color: white;
             border: none;
-            padding: 10px;
-            border-radius: 5px;
             cursor: pointer;
         }
-
-        form button:hover {
-            background-color: #218838;
+        button:hover {
+            background-color: #45a049;
         }
-
-        footer {
-            text-align: center;
-            padding: 10px;
-            background-color: #007BFF;
-            color: white;
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #f9f9f9;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>SPP Payment System</h1>
-    </header>
+    <div class="container">
+        <h1>Pembayaran SPP</h1>
+        <form id="pembayaranForm">
+            <div class="form-group">
+                <label for="tanggalBayar">Tanggal Bayar:</label>
+                <input type="date" id="tanggalBayar" name="tanggalBayar" required>
+            </div>
+            <div class="form-group">
+                <label for="jumlahBayar">Jumlah Bayar:</label>
+                <input type="number" id="jumlahBayar" name="jumlahBayar" min="0" step="0.01" required>
+            </div>
+            <button type="submit">Simpan Pembayaran</button>
+        </form>
 
-    <nav>
-        <ul>
-            <li><a href="#" id="make-payment-link">Make a Payment</a></li>
-        </ul>
-    </nav>
-
-    <main id="main-content">
-        <div id="home">
-            <h2>Welcome to the SPP Payment System</h2>
-            <p>Here you can make payments for SPP. Click the link above to start the payment process.</p>
+        <div id="result" class="result" style="display: none;">
+            <h2>Data Pembayaran SPP:</h2>
+            <p id="resultTanggal"></p>
+            <p id="resultJumlah"></p>
         </div>
-
-        <div id="payment-form" style="display: none;">
-            <h2>Make a Payment</h2>
-            <form id="payment-form-element">
-                <label for="student_name">Student Name:</label>
-                <input type="text" id="student_name" name="student_name" required>
-                <br>
-                <label for="amount">Amount:</label>
-                <input type="number" id="amount" name="amount" step="0.01" required>
-                <br>
-                <button type="submit">Submit Payment</button>
-            </form>
-            <button id="back-button">Back to Home</button>
-        </div>
-    </main>
-
-    <footer>
-        <p>&copy; 2024 SPP Payment System. All rights reserved.</p>
-    </footer>
+    </div>
 
     <script>
-        document.getElementById('make-payment-link').addEventListener('click', function(event) {
+        document.getElementById('pembayaranForm').addEventListener('submit', function(event) {
             event.preventDefault();
-            document.getElementById('home').style.display = 'none';
-            document.getElementById('payment-form').style.display = 'block';
-        });
-
-        document.getElementById('back-button').addEventListener('click', function() {
-            document.getElementById('home').style.display = 'block';
-            document.getElementById('payment-form').style.display = 'none';
-        });
-
-        document.getElementById('payment-form-element').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const studentName = document.getElementById('student_name').value;
-            const amount = document.getElementById('amount').value;
-
-            alert(`Payment submitted:\nStudent Name: ${studentName}\nAmount: ${amount}`);
             
-            // Here you would typically send the data to a server using fetch or XMLHttpRequest.
-            // For demonstration purposes, we'll just reset the form and return to the home view.
-            document.getElementById('payment-form').style.display = 'none';
-            document.getElementById('home').style.display = 'block';
+            // Ambil nilai dari input
+            var tanggalBayar = document.getElementById('tanggalBayar').value;
+            var jumlahBayar = document.getElementById('jumlahBayar').value;
+            
+            // Tampilkan hasil
+            document.getElementById('resultTanggal').textContent = 'Tanggal Bayar: ' + tanggalBayar;
+            document.getElementById('resultJumlah').textContent = 'Jumlah Bayar: Rp ' + jumlahBayar;
+            
+            document.getElementById('result').style.display = 'block';
         });
     </script>
 </body>
+<?php include 'footer.php'; ?>
+        </div>
+        <!-- Content End -->
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/chart/chart.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
 </html>
