@@ -186,25 +186,26 @@ $result = $conn->query($sql);
                 </tr>
             </thead>
             <tbody>
-                <?php
-                if ($result->num_rows > 0) {
-                    while($row = $result->fetch_assoc()) {
-                        echo "<tr>";
-                        echo "<td>" . $row["id"] . "</td>";
-                        echo "<td>" . $row["nama"] . "</td>";
-                        echo "<td>" . $row["tanggal"] . "</td>";
-                        echo "<td>" . $row["id_jurnal"] . "</td>";
-                        echo "<td><input type='radio' name='kehadiran_" . $row["id"] . "' value='Hadir'" . ($row["kehadiran_kelas"] == "Hadir" ? " checked" : "") . "></td>";
-                        echo "<td><input type='radio' name='kehadiran_" . $row["id"] . "' value='Izin'" . ($row["kehadiran_kelas"] == "Izin" ? " checked" : "") . "></td>";
-                        echo "<td><input type='radio' name='kehadiran_" . $row["id"] . "' value='Sakit'" . ($row["kehadiran_kelas"] == "Sakit" ? " checked" : "") . "></td>";
-                        echo "<td><input type='radio' name='kehadiran_" . $row["id"] . "' value='Alfa'" . ($row["kehadiran_kelas"] == "Alfa" ? " checked" : "") . "></td>";
-                        echo "</tr>";
-                    }
-                } else {
-                    echo "<tr><td colspan='8'>Tidak ada data</td></tr>";
-                }
-                ?>
-            </tbody>
+    <?php
+    if ($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+            echo "<tr onclick=\"window.location.href='edit_abs.php?id=" . $row["id"] . "'\" style='cursor:pointer;'>";
+            echo "<td>" . $row["id"] . "</td>";
+            echo "<td>" . $row["nama"] . "</td>";
+            echo "<td>" . $row["tanggal"] . "</td>";
+            echo "<td>" . $row["id_jurnal"] . "</td>";
+            echo "<td><input type='radio' name='kehadiran_" . $row["id"] . "' value='Hadir'" . ($row["kehadiran_kelas"] == "Hadir" ? " checked" : "") . "></td>";
+            echo "<td><input type='radio' name='kehadiran_" . $row["id"] . "' value='Izin'" . ($row["kehadiran_kelas"] == "Izin" ? " checked" : "") . "></td>";
+            echo "<td><input type='radio' name='kehadiran_" . $row["id"] . "' value='Sakit'" . ($row["kehadiran_kelas"] == "Sakit" ? " checked" : "") . "></td>";
+            echo "<td><input type='radio' name='kehadiran_" . $row["id"] . "' value='Alfa'" . ($row["kehadiran_kelas"] == "Alfa" ? " checked" : "") . "></td>";
+            echo "</tr>";
+        }
+    } else {
+        echo "<tr><td colspan='8'>Tidak ada data</td></tr>";
+    }
+    ?>
+</tbody>
+
         </table>
         <div class="filter-container">
             <button type="submit">Proses</button>
