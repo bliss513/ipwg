@@ -124,6 +124,54 @@
                 <td>100000</td>
                 <td>100000</td>
             </tr>
+            <tr class="clickable-row" data-id="4">
+                <td>5</td>
+                <td>Mei</td>
+                <td>100000</td>
+                <td>100000</td>
+            </tr>
+            <tr class="clickable-row" data-id="4">
+                <td>6</td>
+                <td>Juni</td>
+                <td>100000</td>
+                <td>100000</td>
+            </tr>
+            <tr class="clickable-row" data-id="4">
+                <td>7</td>
+                <td>Juli</td>
+                <td>100000</td>
+                <td>100000</td>
+            </tr>
+            <tr class="clickable-row" data-id="4">
+                <td>8</td>
+                <td>Agustus</td>
+                <td>100000</td>
+                <td>100000</td>
+            </tr>
+            <tr class="clickable-row" data-id="4">
+                <td>9</td>
+                <td>September</td>
+                <td>100000</td>
+                <td>100000</td>
+            </tr>
+            <tr class="clickable-row" data-id="4">
+                <td>10</td>
+                <td>Oktober</td>
+                <td>100000</td>
+                <td>100000</td>
+            </tr>
+            <tr class="clickable-row" data-id="4">
+                <td>11</td>
+                <td>November</td>
+                <td>100000</td>
+                <td>100000</td>
+            </tr>
+            <tr class="clickable-row" data-id="4">
+                <td>12</td>
+                <td>Desember</td>
+                <td>100000</td>
+                <td>100000</td>
+            </tr>
             <!-- Tambahkan baris tambahan sesuai kebutuhan -->
         </tbody>
     </table>
