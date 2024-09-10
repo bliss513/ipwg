@@ -195,10 +195,9 @@
                 <span class="sr-only">Loading...</span>
             </div>
         </div>
-        <!-- Spinner End -->
-        
+        <!-- Spinner End --> 
         <?php include 'sidebar.php'; ?>
-        
+
         <!-- Content Start -->
         <div class="content">
             <?php include 'header.php'; ?>
