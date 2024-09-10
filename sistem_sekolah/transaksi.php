@@ -40,173 +40,102 @@
             </div>
         </div>
         <!-- Spinner End -->
-        <?php
-        include 'sidebar.php'
-        ?>
-
+        <?php include 'sidebar.php'; ?>
         <!-- Content Start -->
         <div class="content">
-        <?php
-            include 'header.php';
-            ?>
-<?php
-include "config/koneksi.php";
+        <?php include 'header.php'; ?>
 
-$error_message = '';
-$success_message = '';
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['simpan'])) {
-        $siswa_id = $_POST['siswa_id'];
-        $kelas = $_POST['kelas'];
-        $bulan = $_POST['bulan'];
-        $tahun = $_POST['tahun'];
-        $jumlah = $_POST['jumlah'];
-        $tanggal_pembayaran = $_POST['tanggal_pembayaran'];
-        $metode_pembayaran = $_POST['metode_pembayaran'];
-        $keterangan = $_POST['keterangan'];
-
-        // Menggunakan prepared statements untuk menghindari SQL Injection
-        $sql = "INSERT INTO transaksi (siswa_id, bulan, tahun, jumlah, tanggal_pembayaran, metode_pembayaran, keterangan) 
-                VALUES (?, ?, ?, ?, ?, ?, ?)";
-
-        if ($stmt = mysqli_prepare($koneksi, $sql)) {
-            mysqli_stmt_bind_param($stmt, "sssssss", $siswa_id, $bulan, $tahun, $jumlah, $tanggal_pembayaran, $metode_pembayaran, $keterangan);
-
-            if (mysqli_stmt_execute($stmt)) {
-                $success_message = "Pembayaran berhasil diproses!";
-            } else {
-                $error_message = "Oupss.... Maaf, proses penyimpanan data tidak berhasil: " . mysqli_stmt_error($stmt);
-            }
-
-            mysqli_stmt_close($stmt);
-        } else {
-            $error_message = "Gagal menyiapkan pernyataan: " . mysqli_error($koneksi);
-        }
-
-        mysqli_close($koneksi);
-    }
-}
-?>
-
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulir Pembayaran SPP</title>
+    <title>Pembayaran SPP</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
         }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
         label {
             display: block;
-            margin: 10px 0 5px;
+            margin-bottom: 5px;
         }
-        input, select {
-            padding: 8px;
+        input[type="text"], input[type="number"] {
             width: 100%;
+            padding: 8px;
             box-sizing: border-box;
         }
         button {
-            padding: 10px 15px;
-            background-color: #007bff;
-            border: none;
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
             color: white;
-            font-size: 16px;
+            border: none;
             cursor: pointer;
         }
         button:hover {
-            background-color: #0056b3;
+            background-color: #45a049;
         }
-        .message {
-            font-weight: bold;
-        }
-        .error {
-            color: red;
-        }
-        .success {
-            color: green;
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #f9f9f9;
         }
     </style>
 </head>
 <body>
-    <h1>Formulir Pembayaran SPP</h1>
-    
-    <script>
-            function searchTable() {
-                var input, filter, table, tr, td, i, j, txtValue;
-                input = document.getElementById("searchInput");
-                filter = input.value.toLowerCase();
-                table = document.getElementById("dataTable");
-                tr = table.getElementsByTagName("tr");
-
-                for (i = 1; i < tr.length; i++) {
-                    tr[i].style.display = "none";
-                    td = tr[i].getElementsByTagName("td");
-                    for (j = 0; j < td.length; j++) {
-                        if (td[j]) {
-                            txtValue = td[j].textContent || td[j].innerText;
-                            if (txtValue.toLowerCase().indexOf(filter) > -1) {
-                                tr[i].style.display = "";
-                                break;
-                            }
-                        }
-                    }
-                }
-            }
-        </script>
-         <div class="search-container">
-                <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search...">
+    <div class="container">
+        <h1>Pembayaran SPP</h1>
+        <form id="pembayaranForm">
+            <div class="form-group">
+                <label for="tanggalBayar">Tanggal Bayar:</label>
+                <input type="date" id="tanggalBayar" name="tanggalBayar" required>
             </div>
-    <?php if (!empty($success_message)): ?>
-        <p class="message success"><?php echo htmlspecialchars($success_message); ?></p>
-    <?php endif; ?>
+            <div class="form-group">
+                <label for="jumlahBayar">Jumlah Bayar:</label>
+                <input type="number" id="jumlahBayar" name="jumlahBayar" min="0" step="0.01" required>
+            </div>
+            <button type="submit">Simpan Pembayaran</button>
+        </form>
 
-    <?php if (!empty($error_message)): ?>
-        <p class="message error"><?php echo htmlspecialchars($error_message); ?></p>
-    <?php endif; ?>
+        <div id="result" class="result" style="display: none;">
+            <h2>Data Pembayaran SPP:</h2>
+            <p id="resultTanggal"></p>
+            <p id="resultJumlah"></p>
+        </div>
+    </div>
 
-    <form action="payment_process.php" method="post">
-        <label for="siswa">Nama Siswa:</label>
-        <select id="siswa" name="siswa_id" required>
-            <?php
-            $result = mysqli_query($koneksi, "SELECT id, nama FROM siswa");
-            while ($row = mysqli_fetch_assoc($result)) {
-                echo "<option value='{$row['id']}'>{$row['nama']}</option>";
-            }
-            ?>
-        </select>
-
-        <label for="kelas">Kelas:</label>
-        <input type="text" id="kelas" name="kelas" required>
-
-        <label for="bulan">Bulan:</label>
-        <input type="text" id="bulan" name="bulan" required>
-
-        <label for="tahun">Tahun:</label>
-        <input type="number" id="tahun" name="tahun" min="2000" max="2100" required>
-
-        <label for="jumlah">Jumlah Pembayaran:</label>
-        <input type="number" id="jumlah" name="jumlah" step="0.01" required>
-
-        <label for="tanggal_pembayaran">Tanggal Pembayaran:</label>
-        <input type="date" id="tanggal_pembayaran" name="tanggal_pembayaran" required>
-
-        
-        <label for="metode_pembayaran">metode pembayaran</label>
-            <select id="metode_pembayaran" name="metode_pembayaran">
-                <option value="transfer">transfer</option>
-                <option value="tunai">tunai</option>
-            </select>
-        <label for="keterangan">Keterangan:</label>
-        <textarea id="keterangan" name="keterangan" rows="4"></textarea>
-
-        <button type="submit" name="simpan">Simpan Pembayaran</button>
-    </form>
+    <script>
+        document.getElementById('pembayaranForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // Ambil nilai dari input
+            var tanggalBayar = document.getElementById('tanggalBayar').value;
+            var jumlahBayar = document.getElementById('jumlahBayar').value;
+            
+            // Tampilkan hasil
+            document.getElementById('resultTanggal').textContent = 'Tanggal Bayar: ' + tanggalBayar;
+            document.getElementById('resultJumlah').textContent = 'Jumlah Bayar: Rp ' + jumlahBayar;
+            
+            document.getElementById('result').style.display = 'block';
+        });
+    </script>
 </body>
-</html>
+<?php include 'footer.php'; ?>
+        </div>
+        <!-- Content End -->
+
 
         <!-- Back to Top -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>

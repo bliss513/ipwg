@@ -12,12 +12,17 @@
             display: flex;
             flex-direction: column;
             height: 100vh;
+            justify-content: center; /* Menempatkan konten di tengah-tengah vertikal */
+            align-items: center; /* Menempatkan konten di tengah-tengah horizontal */
         }
         .container {
-            margin: 20px;
-            display: flex;
-            flex-direction: column;
-            flex: 1;
+            width: 100%;
+            max-width: 800px; /* Menentukan lebar maksimum untuk kontainer */
+            padding: 20px;
+            box-sizing: border-box; /* Memastikan padding termasuk dalam lebar elemen */
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #f9f9f9;
         }
         .form-container {
             margin-top: 20px;
@@ -27,11 +32,11 @@
             flex-direction: column;
         }
         .form-container input, .form-container select {
-            padding: 8px; /* Memperkecil padding */
-            font-size: 12px; /* Memperkecil ukuran font */
-            margin-bottom: 10px; /* Menambah margin bawah */
+            padding: 12px; /* Memperbesar padding */
+            font-size: 14px; /* Memperbesar ukuran font */
+            margin-bottom: 15px; /* Menambah margin bawah */
             width: 100%; /* Membuat elemen input penuh lebar */
-            max-width: 300px; /* Menentukan lebar maksimum */
+            max-width: 100%; /* Menghapus lebar maksimum */
             box-sizing: border-box; /* Memastikan padding dan border termasuk dalam lebar elemen */
         }
         .form-container input[type="button"] {
@@ -39,9 +44,8 @@
             color: white;
             border: none;
             cursor: pointer;
-            padding: 8px; /* Memperkecil padding tombol */
-            font-size: 12px; /* Memperkecil ukuran font tombol */
-            max-width: 150px; /* Menentukan lebar maksimum tombol */
+            padding: 12px; /* Memperbesar padding tombol */
+            font-size: 14px; /* Memperbesar ukuran font tombol */
         }
         #dataContainer {
             margin-top: 20px;
@@ -51,10 +55,11 @@
             padding: 0;
         }
         #dataList li {
-            margin-bottom: 10px;
-            padding: 10px;
+            margin-bottom: 15px; /* Menambah margin bawah item */
+            padding: 15px; /* Memperbesar padding item */
             border: 1px solid #ddd;
             border-radius: 5px;
+            background-color: #fff; /* Menambahkan latar belakang putih untuk item */
         }
     </style>
 </head>
