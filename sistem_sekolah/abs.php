@@ -65,35 +65,28 @@ if ($conn->connect_error) {
     die("Koneksi gagal: " . $conn->connect_error);
 }
 
-// Inisialisasi variabel
-$selected_jurnal = isset($_GET['jurnal']) ? $_GET['jurnal'] : '';
-$selected_date = isset($_GET['tanggal']) ? $_GET['tanggal'] : date('Y-m-d');
-
 // Proses penyimpanan absensi
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     foreach ($_POST as $key => $value) {
         if (strpos($key, 'kehadiran_') === 0) {
-            $id_siswa = str_replace('kehadiran_', '', $key);
+            $id_absensi = str_replace('kehadiran_', '', $key);
             $kehadiran_kelas = $value;
-
-            // Periksa apakah data absensi untuk siswa pada tanggal dan jurnal ini sudah ada
-            $check_sql = "SELECT * FROM absensi_kelas WHERE id_siswa='$id_siswa' AND tanggal='$selected_date' AND id_jurnal='$selected_jurnal'";
-            $check_result = $conn->query($check_sql);
-
-            if ($check_result->num_rows > 0) {
-                // Update data absensi jika sudah ada
-                $update_sql = "UPDATE absensi_kelas SET kehadiran_kelas='$kehadiran_kelas' WHERE id_siswa='$id_siswa' AND tanggal='$selected_date' AND id_jurnal='$selected_jurnal'";
-                $conn->query($update_sql);
+            // Update data absensi ke dalam database
+            $update_sql = "UPDATE absensi_kelas SET kehadiran_kelas='$kehadiran_kelas' WHERE id=$id_absensi";
+            if ($conn->query($update_sql) === TRUE) {
+                // Menampilkan pesan berhasil jika update sukses
+                echo "<script>alert('Data berhasil disimpan!');</script>";
             } else {
-                // Insert data baru jika belum ada
-                $insert_sql = "INSERT INTO absensi_kelas (id_siswa, tanggal, id_jurnal, kehadiran_kelas) 
-                               VALUES ('$id_siswa', '$selected_date', '$selected_jurnal', '$kehadiran_kelas')";
-                $conn->query($insert_sql);
+                // Menampilkan pesan gagal jika update gagal
+                echo "Error: " . $conn->error;
             }
         }
     }
-    echo "<script>alert('Data berhasil disimpan!'); window.print();</script>";
 }
+
+// Inisialisasi variabel
+$selected_jurnal = isset($_GET['jurnal']) ? $_GET['jurnal'] : '';
+$selected_date = isset($_GET['tanggal']) ? $_GET['tanggal'] : '';
 
 // Query untuk mengambil data dari tabel jurnal untuk dropdown
 $jurnal_sql = "SELECT id, mapel FROM jurnal";
@@ -109,7 +102,7 @@ if ($selected_jurnal != '') {
     $conditions[] = "a.id_jurnal = " . $conn->real_escape_string($selected_jurnal);
 }
 if ($selected_date != '') {
-    $conditions[] = "a.tanggal = '" . $conn->real_escape_string($selected_date) . "'";
+    $conditions[] = "a.tanggal = " . $conn->real_escape_string($selected_date);
 }
 if (count($conditions) > 0) {
     $sql .= " AND " . implode(' AND ', $conditions);
@@ -176,8 +169,6 @@ $result = $conn->query($sql);
                 }
                 ?>
             </select>
-            <label for="tanggal">Pilih Tanggal:</label>
-            <input type="date" name="tanggal" id="tanggal" value="<?php echo $selected_date; ?>" onchange="this.form.submit()">
         </form>
     </div>
 
@@ -196,26 +187,27 @@ $result = $conn->query($sql);
                 </tr>
             </thead>
             <tbody>
-    <?php
-    if ($result->num_rows > 0) {
-        while($row = $result->fetch_assoc()) {
-            echo "<td>" . $row["id"] . "</td>";
-            echo "<td>" . $row["nama"] . "</td>";
-            echo "<td>" . $row["tanggal"] . "</td>";
-            echo "<td>" . $row["id_jurnal"] . "</td>";
-            echo "<td><input type='radio' name='kehadiran_" . $row["id_siswa"] . "' value='Hadir'" . ($row["kehadiran_kelas"] == "Hadir" ? " checked" : "") . "></td>";
-            echo "<td><input type='radio' name='kehadiran_" . $row["id_siswa"] . "' value='Izin'" . ($row["kehadiran_kelas"] == "Izin" ? " checked" : "") . "></td>";
-            echo "<td><input type='radio' name='kehadiran_" . $row["id_siswa"] . "' value='Sakit'" . ($row["kehadiran_kelas"] == "Sakit" ? " checked" : "") . "></td>";
-            echo "<td><input type='radio' name='kehadiran_" . $row["id_siswa"] . "' value='Alfa'" . ($row["kehadiran_kelas"] == "Alfa" ? " checked" : "") . "></td>";
-            echo "</tr>";
+        <?php
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                echo "<tr>";
+                echo "<td>" . $row["id"] . "</td>";
+                echo "<td>" . $row["nama"] . "</td>";
+                echo "<td>" . $row["tanggal"] . "</td>";
+                echo "<td>" . $row["id_jurnal"] . "</td>";
+                echo "<td><input type='radio' name='kehadiran_" . $row["id"] . "' value='Hadir'" . ($row["kehadiran_kelas"] == "Hadir" ? " checked" : "") . "></td>";
+                echo "<td><input type='radio' name='kehadiran_" . $row["id"] . "' value='Izin'" . ($row["kehadiran_kelas"] == "Izin" ? " checked" : "") . "></td>";
+                echo "<td><input type='radio' name='kehadiran_" . $row["id"] . "' value='Sakit'" . ($row["kehadiran_kelas"] == "Sakit" ? " checked" : "") . "></td>";
+                echo "<td><input type='radio' name='kehadiran_" . $row["id"] . "' value='Alfa'" . ($row["kehadiran_kelas"] == "Alfa" ? " checked" : "") . "></td>";
+                echo "</tr>";
+            }
+        } else {
+            echo "<tr><td colspan='8'>Tidak ada data</td></tr>";
         }
-    } else {
-        echo "<tr><td colspan='8'>Tidak ada data</td></tr>";
-    }
-    ?>
-</tbody>
-
+        ?>
+        </tbody>
         </table>
+        <!-- Tambahkan tombol Simpan di bawah tabel -->
         <div class="filter-container">
             <button type="submit">Simpan</button>
         </div>
