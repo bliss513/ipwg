@@ -79,7 +79,7 @@
                 <caption></caption>
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th>NO</th>
                         <th>ID Buku</th>
                         <th>ID Siswa</th>
                         <th>Tanggal Pinjam</th>
@@ -118,7 +118,7 @@
                         <td>2024-08-25</td>
                         <td>-</td>
                         <td>Belum Kembali</td>
-                        <td>Dalam proses perbaikan</td>
+                        <td>dalam kondisi rusak</td>
                     </tr>
                 </tbody>
             </table>

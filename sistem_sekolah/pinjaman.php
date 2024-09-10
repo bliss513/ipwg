@@ -49,6 +49,14 @@
 
         h1, h2 {
             color: #333;
+            text-align: center; /* Mengatur judul agar berada di tengah */
+        }
+
+        .header-image {
+            width: 13%; /* Membuat gambar melebar mengikuti lebar kontainer */
+            height: auto;
+            display: block;
+            margin: 0 auto; /* Memastikan gambar berada di tengah */
         }
 
         .form-container {
@@ -203,6 +211,9 @@
             <?php include 'header.php'; ?>
             
             <div class="container">
+                <!-- Gambar di atas judul -->
+                <img src="ip.png" alt="Library" class="header-image">
+
                 <h1>Pinjaman Perpustakaan</h1>
 
                 <div class="form-container">
@@ -263,7 +274,7 @@
                                 <td>2024-08-19</td>
                             </tr>
                             <tr data-id="3" onclick="showPopup(3)">
-                                <td>kode keras cewe</td>
+                                <td>upin&ipin</td>
                                 <td>Lewat Tempo</td>
                                 <td>2024-08-10</td>
                                 <td>2024-09-09</td>
