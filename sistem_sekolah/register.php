@@ -105,15 +105,19 @@
         <input type="text" id="id" name="id" required>
     </div>
     <div class="form-item">
-        <label for="nama">nama lengkap:</label>
+        <label for="nama">Nama lengkap:</label>
         <input type="text" id="nama" name="nama" required>
     </div>
     <div class="form-item">
-        <label for="username">username:</label>
+        <label for="nisn">NISN:</label>
+        <input type="text" id="nisn" name="nisn" required>
+    </div>
+    <div class="form-item">
+        <label for="username">Username:</label>
         <input type="username" id="username" name="username" required>
     </div>
     <div class="form-item">
-        <label for="password">password:</label>
+        <label for="password">Password:</label>
         <input type="text" id="password" name="password" required>
     </div>
     <div class="form-item">
@@ -123,10 +127,6 @@
             <option value="Laki-laki">Laki-laki</option>
             <option value="Perempuan">Perempuan</option>
         </select>
-    </div>
-    <div class="form-item">
-        <label for="nisn">NISN:</label>
-        <input type="text" id="nisn" name="nisn" required>
     </div>
     <div class="form-item">
         <label for="tempat_lahir">Tempat Lahir:</label>
@@ -157,8 +157,8 @@
         <input type="text" id="nama_wali" name="nama_wali" required>
     </div>
     <div class="form-item">
-        <label for="tahun_lahir_wali">Tahun Lahir Wali:</label>
-        <input type="number" id="tahun_lahir_wali" name="tahun_lahir_wali" required>
+        <label for="tanggal_lahir_wali">Tanggal Lahir Wali:</label>
+        <input type="number" id="tanggal_lahir_wali" name="tanggal_lahir_wali" required>
     </div>
     <div class="form-item">
         <label for="pendidikan_wali">Pendidikan Wali:</label>
@@ -225,7 +225,7 @@ Nomor HP: ${nomorHp}
 Email: ${email}
 Foto: ${foto}
 Nama Wali: ${namaWali}
-Tahun Lahir Wali: ${tahunLahirWali}
+Tanggal Lahir Wali: ${tanggalLahirWali}
 Pendidikan Wali: ${pendidikanWali}
 Pekerjaan Wali: ${pekerjaanWali}
 Penghasilan Wali: ${penghasilanWali}
