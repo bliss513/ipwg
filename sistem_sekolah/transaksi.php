@@ -104,7 +104,7 @@
             </div>
             <div class="form-group">
                 <label for="jumlahBayar">Jumlah Bayar:</label>
-                <input type="number" id="jumlahBayar" name="jumlahBayar" min="0" step="0.01" required>
+                <input type="text" id="jumlahBayar" name="jumlahBayar" min="0" step="0.01" required>
             </div>
             <button type="submit">Simpan Pembayaran</button>
         </form>

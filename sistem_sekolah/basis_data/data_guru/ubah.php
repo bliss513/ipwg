@@ -91,10 +91,23 @@ $hasil = mysqli_fetch_array($data);
         <form method="post" action="">
             <label for="id">Id</label>
             <input type="text" id="id" name="id" value="<?php echo $hasil['id'];?>" readonly>
+            <label for="username">username</label>
+            <input type="text" id="username" name="username" value="<?php echo $hasil['username'];?>">
+            <label for="password">password</label>
+            <input type="text" id="password" name="password" value="<?php echo $hasil['password'];?>">
             <label for="nip">nip</label>
             <input type="text" id="nip" name="nip" value="<?php echo $hasil['nip'];?>">
+            <label for="sekolah">sekolah</label>
+            <input type="text" id="sekolah" name="sekolah" value="<?php echo $hasil['sekolah'];?>">
             <label for="nama_guru">nama guru</label>
             <input type="text" id="nama_guru" name="nama_guru" value="<?php echo $hasil['nama_guru'];?>">
+            <div class="form-group">
+                          <label for="jenis_kelamin">jenis Kelamin</label><br>
+                            <input type="radio" id="jenis_kelamin" name="jenis_kelamin" value="Laki-laki">
+                            <label for="laki-laki">Laki-laki</label> &nbsp; &nbsp; <br>
+                            <input type="radio" id="jenis_kelamin" name="jenis_kelamin" value="Perempuan">
+                            <label for="perempuan">Perempuan</label><br>
+                        </div>
             <div class="button-container">
                 <button type="submit" name="simpan">Simpan</button>
                 <a href="hapus.php?id=<?php echo $hasil['id']; ?>" class="delete-btn" onclick="return confirm('Yakin ingin menghapus data ini?')">Hapus</a>

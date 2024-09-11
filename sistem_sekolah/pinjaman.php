@@ -36,6 +36,9 @@
             background-color: cyan; /* Mengubah latar belakang menjadi cyan */
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         .container {
@@ -49,6 +52,14 @@
 
         h1, h2 {
             color: #333;
+            text-align: center; /* Mengatur judul agar berada di tengah */
+        }
+
+        .header-image {
+            width: 10%; /* Membuat gambar melebar mengikuti lebar kontainer */
+            height: auto;
+            display: block;
+            margin: 0 auto; /* Memastikan gambar berada di tengah */
         }
 
         .form-container {
@@ -184,11 +195,24 @@
             justify-content: flex-end; /* Menempatkan tombol di pojok kanan */
             margin-top: 20px;
         }
+
+        /* Footer Styles */
+        footer {
+            margin-top: auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            text-align: center;
+        }
+
+        .footer-text {
+            color: #6c757d;
+            font-size: 14px;
+        }
     </style>
 </head>
 
 <body>
-    <div class="container-xxl position-relative bg-white d-flex p-0">
+    <div class="container-xxl position-relative bg-white d-flex p-0 flex-column">
         <!-- Spinner Start -->
         <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
             <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
@@ -203,6 +227,9 @@
             <?php include 'header.php'; ?>
             
             <div class="container">
+                <!-- Gambar di atas judul -->
+                <img src="ip.png" alt="Library" class="header-image">
+
                 <h1>Pinjaman Perpustakaan</h1>
 
                 <div class="form-container">
@@ -263,7 +290,7 @@
                                 <td>2024-08-19</td>
                             </tr>
                             <tr data-id="3" onclick="showPopup(3)">
-                                <td>kode keras cewe</td>
+                                <td>upin&ipin</td>
                                 <td>Lewat Tempo</td>
                                 <td>2024-08-10</td>
                                 <td>2024-09-09</td>
@@ -369,6 +396,24 @@
             </div>
         </div>
         <!-- Content End -->
+
+        <!-- Footer Start -->
+        <footer>
+            <div class="container-fluid pt-4 px-4">
+                <div class="bg-light rounded-top p-4">
+                    <div class="row">
+                        <div class="col-12 col-sm-6 text-center text-sm-start">
+                            <!-- Footer content can be added here if needed -->
+                        </div>
+                        <div class="col-12 col-sm-6 text-center text-sm-end">
+                            <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                            Designed By <a href="https://www.instagram.com/ogaasedikitpintar"> .punyaku.</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Footer End -->
 
         <!-- Back to Top -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
