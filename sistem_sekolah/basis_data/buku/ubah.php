@@ -148,7 +148,7 @@ if (isset($_POST['simpan'])) {
 </head>
 <body>
     <div class="container">
-        <h1>Ubah Data Buku</h1>
+        <h1> data Buku</h1>
         <form method="post" action="">
             <div class="form-grid">
                 <!-- Left Column (2 items) -->

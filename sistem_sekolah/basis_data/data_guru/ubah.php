@@ -23,12 +23,11 @@ if (isset($_POST['simpan'])) {
     $hp = mysqli_real_escape_string($koneksi, $_POST['hp']);
     $foto = mysqli_real_escape_string($koneksi, $_POST['foto']);
 
-    $sql = "UPDATE siswa SET 
+    $sql = "UPDATE guru SET 
         username='$username', password='$password', nip='$nip', sekolah='$sekolah', nama_guru='$nama_guru',
         jenis_kelamin='$jenis_kelamin', tempat_lahir='$tempat_lahir', tanggal_lahir='$tanggal_lahir',
         nik='$nik', pengawas_bidang_studi='$pengawas_bidang_studi', alamat='$alamat', hp='$hp', foto='$foto'
         WHERE id='$id'";
-
     if (mysqli_query($koneksi, $sql)) {
         header('Location: ../../guru.php');
         exit();
@@ -40,7 +39,7 @@ if (isset($_POST['simpan'])) {
 <!DOCTYPE html>
 <html> 
 <head>
-    <title>Mengubah Data Siswa</title>
+    <title>Mengubah Data guru</title>
     <style>
 body {
     font-family: Arial, sans-serif;
@@ -158,7 +157,7 @@ button[type="submit"]:hover, .cancel-btn:hover, .delete-btn:hover {
 </head>
 <body>
     <div class="container">
-        <h1>Ubah Data Siswa</h1>
+        <h1>data guru</h1>
         <form method="post" action="">
             <div class="form-grid">
                 <!-- Left Column (2 items) -->
@@ -230,7 +229,7 @@ button[type="submit"]:hover, .cancel-btn:hover, .delete-btn:hover {
             </div>
 
             <div class="button-container">
-                <a href="../../button.php" class="cancel-btn">Batal</a>
+                <a href="../../guru.php" class="cancel-btn">Batal</a>
                 <a onclick="return confirm('Yakin ingin menghapus data ini?')" href="hapus.php?id=<?php echo urlencode($hasil['id']); ?>" class="delete-btn">Hapus</a>
                 <button type="submit" name="simpan">Simpan</button>
             </div>
