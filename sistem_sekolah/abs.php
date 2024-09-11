@@ -34,11 +34,11 @@
     <body>
         <div class="container-xxl position-relative bg-white d-flex p-0">
             <!-- Spinner Start -->
-            <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <!-- <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
                 <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
                     <span class="sr-only">Loading...</span>
                 </div>
-            </div>
+            </div> -->
             <!-- Spinner End -->
 
             <?php
@@ -183,9 +183,8 @@ $result = $conn->query($sql);
         <table>
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>No</th> 
                     <th>Nama Siswa</th>
-                    <th>ID Jurnal</th>
                     <th>Hadir</th>
                     <th>Izin</th>
                     <th>Sakit</th>
@@ -195,11 +194,11 @@ $result = $conn->query($sql);
             <tbody>
         <?php
         if ($result->num_rows > 0) {
+            $no = 1; // Inisialisasi nomor urut
             while($row = $result->fetch_assoc()) {
                 echo "<tr>";
-                echo "<td>" . $row["id"] . "</td>";
-                echo "<td>" . $row["nama"] . "</td>";
-                echo "<td>" . $row["id_jurnal"] . "</td>";
+                echo "<td>" . $no++ . "</td>"; // Menampilkan nomor urut
+                echo "<td>" . $row["nama"] . "</td>"; // Menampilkan nama siswa
                 echo "<td><input type='radio' name='kehadiran_" . $row["id"] . "' value='Hadir'" . ($row["kehadiran_kelas"] == "Hadir" ? " checked" : "") . "></td>";
                 echo "<td><input type='radio' name='kehadiran_" . $row["id"] . "' value='Izin'" . ($row["kehadiran_kelas"] == "Izin" ? " checked" : "") . "></td>";
                 echo "<td><input type='radio' name='kehadiran_" . $row["id"] . "' value='Sakit'" . ($row["kehadiran_kelas"] == "Sakit" ? " checked" : "") . "></td>";
@@ -207,12 +206,12 @@ $result = $conn->query($sql);
                 echo "</tr>";
             }
         } else {
-            echo "<tr><td colspan='7'>Tidak ada data</td></tr>";
+            echo "<tr><td colspan='6'>Tidak ada data</td></tr>";
         }
         ?>
         </tbody>
         </table>
-        <!-- Tambahkan tombol Simpan di bawah tabel -->
+        <!-- Tambahkan  tombol Simpan di bawah tabel -->
         <div class="filter-container">
             <button type="submit">Simpan</button>
         </div>
@@ -224,6 +223,7 @@ $result = $conn->query($sql);
 // Menutup koneksi
 $conn->close();
 ?>
+
 
     
 
