@@ -87,94 +87,10 @@
 
     <!-- Kotak pencarian -->
     <div class="search-container">
-        <input type="text" id="searchInput" placeholder="Cari bulan..." onkeyup="searchTable()">
+        <input type="text" id="searchInput" placeholder="Cari nama..." onkeyup="searchTable()">
     </div>
 
-    <table id="paymentTable">
-        <thead>
-            <tr>
-                <th>Nomor</th>
-                <th>Bulan</th>
-                <th>Rencana</th>
-                <th>Realisasi</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr class="clickable-row" data-id="1">
-                <td>1</td>
-                <td>Januari</td>
-                <td>100000</td>
-                <td>100000</td>
-            </tr>
-            <tr class="clickable-row" data-id="2">
-                <td>2</td>
-                <td>Februari</td>
-                <td>100000</td>
-                <td>100000</td>
-            </tr>
-            <tr class="clickable-row" data-id="3">
-                <td>3</td>
-                <td>Maret</td>
-                <td>100000</td>
-                <td>100000</td>
-            </tr>
-            <tr class="clickable-row" data-id="4">
-                <td>4</td>
-                <td>April</td>
-                <td>100000</td>
-                <td>100000</td>
-            </tr>
-            <tr class="clickable-row" data-id="4">
-                <td>5</td>
-                <td>Mei</td>
-                <td>100000</td>
-                <td>100000</td>
-            </tr>
-            <tr class="clickable-row" data-id="4">
-                <td>6</td>
-                <td>Juni</td>
-                <td>100000</td>
-                <td>100000</td>
-            </tr>
-            <tr class="clickable-row" data-id="4">
-                <td>7</td>
-                <td>Juli</td>
-                <td>100000</td>
-                <td>100000</td>
-            </tr>
-            <tr class="clickable-row" data-id="4">
-                <td>8</td>
-                <td>Agustus</td>
-                <td>100000</td>
-                <td>100000</td>
-            </tr>
-            <tr class="clickable-row" data-id="4">
-                <td>9</td>
-                <td>September</td>
-                <td>100000</td>
-                <td>100000</td>
-            </tr>
-            <tr class="clickable-row" data-id="4">
-                <td>10</td>
-                <td>Oktober</td>
-                <td>100000</td>
-                <td>100000</td>
-            </tr>
-            <tr class="clickable-row" data-id="4">
-                <td>11</td>
-                <td>November</td>
-                <td>100000</td>
-                <td>100000</td>
-            </tr>
-            <tr class="clickable-row" data-id="4">
-                <td>12</td>
-                <td>Desember</td>
-                <td>100000</td>
-                <td>100000</td>
-            </tr>
-            <!-- Tambahkan baris tambahan sesuai kebutuhan -->
-        </tbody>
-    </table>
+   
 
     <script>
         // Fungsi pencarian tabel
