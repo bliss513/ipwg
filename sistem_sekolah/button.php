@@ -244,7 +244,6 @@
     </head>
     <body>
         <div class="container">
-            <a href="basis_data/data_siswa/form_tambah.php" class="cancel-btn">Tambah Data</a>
             <div class="search-container">
                 <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search...">
             </div>
