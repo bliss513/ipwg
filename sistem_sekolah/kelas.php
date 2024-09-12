@@ -137,7 +137,7 @@
     </head>
     <body>
         <div class="container">
-            <a href="basis_data/kelas/form_tambah.php" class="cancel-btn">Tambah Data</a>
+            <a href="tmbh_kls.php" class="cancel-btn">Tambah Data</a>
             <div class="search-container">
                 <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search...">
             </div>
