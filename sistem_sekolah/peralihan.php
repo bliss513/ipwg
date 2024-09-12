@@ -365,69 +365,109 @@
                 checkbox.checked = source.checked;
             });
         }
+      function prosesPeralihan() {
+    const checkboxes = document.querySelectorAll('tbody input[type="checkbox"]');
+    const peralihan = [];
+    const active = [];
+    const rows = document.querySelectorAll('#siswa-table tbody tr');
 
-        function prosesPeralihan() {
-            const checkboxes = document.querySelectorAll('tbody input[type="checkbox"]');
-            const peralihan = [];
-            const active = [];
-            const rows = document.querySelectorAll('#siswa-table tbody tr');
-
-            checkboxes.forEach(checkbox => {
-                const row = checkbox.closest('tr');
-                const no = row.cells[0].textContent;
-                const namaSiswa = row.cells[1].textContent;
-                const kelasSaatIni = row.cells[2].textContent;
-                const kelasBaru = row.cells[3].textContent;
-                
-                if (checkbox.checked) {
-                    peralihan.push({ no, namaSiswa, kelasSaatIni, kelasBaru });
-                    // Mark the row as inactive in the previous class
-                    row.classList.add('inactive');
-                } else {
-                    active.push({ no, namaSiswa, kelasSaatIni, kelasBaru });
-                }
-            });
-
-            displayResultTable(peralihan);
-            displayActiveTable(active);
+    rows.forEach(row => {
+        const checkbox = row.querySelector('input[type="checkbox"]');
+        const no = row.cells[0].textContent;
+        const namaSiswa = row.cells[1].textContent;
+        const kelasSaatIni = row.cells[2].textContent;
+        const kelasBaru = row.cells[3].textContent;
+        const status = checkbox.checked ? 'Inactive' : 'Active';
+        
+        if (checkbox.checked) {
+            peralihan.push({ no, namaSiswa, kelasSaatIni, kelasBaru, status });
+        } else {
+            active.push({ no, namaSiswa, kelasSaatIni, kelasBaru, status });
         }
+    });
 
-        function displayResultTable(peralihan) {
-            const container = document.getElementById('result-table-container');
-            container.innerHTML = ''; // Clear previous content
+    displayResultTable(peralihan);
+    displayActiveTable(active);
+}
 
-            if (peralihan.length === 0) {
-                container.innerHTML = '<p>No data selected.</p>';
-                return;
-            }
+function displayResultTable(peralihan) {
+    const container = document.getElementById('result-table-container');
+    container.innerHTML = ''; // Clear previous content
 
-            let tableHtml = `
-                <table>
-                    <thead>
-                        <tr>
-                            <th>No.</th>
-                            <th>Nama Siswa</th>
-                            <th>Kelas Saat Ini</th>
-                            <th>Kelas Baru</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-            `;
+    if (peralihan.length === 0) {
+        container.innerHTML = '<p>No data selected.</p>';
+        return;
+    }
 
-            peralihan.forEach(item => {
-                tableHtml += `
-                    <tr>
-                        <td>${item.no}</td>
-                        <td>${item.namaSiswa}</td>
-                        <td>${item.kelasSaatIni}</td>
-                        <td>${item.kelasBaru}</td>
-                    </tr>
-                `;
-            });
+    let tableHtml = `
+        <table>
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Nama Siswa</th>
+                    <th>Kelas Saat Ini</th>
+                    <th>Kelas Baru</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+    `;
 
-            tableHtml += '</tbody></table>';
-            container.innerHTML = tableHtml;
-        }
+    peralihan.forEach(item => {
+        tableHtml += `
+            <tr>
+                <td>${item.no}</td>
+                <td>${item.namaSiswa}</td>
+                <td>${item.kelasSaatIni}</td>
+                <td>${item.kelasBaru}</td>
+                <td>${item.status}</td>
+            </tr>
+        `;
+    });
+
+    tableHtml += '</tbody></table>';
+    container.innerHTML = tableHtml;
+}
+
+function displayActiveTable(active) {
+    const container = document.getElementById('active-table-container');
+    container.innerHTML = ''; // Clear previous content
+
+    if (active.length === 0) {
+        container.innerHTML = '<p>No active students.</p>';
+        return;
+    }
+
+    let tableHtml = `
+        <table>
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Nama Siswa</th>
+                    <th>Kelas Saat Ini</th>
+                    <th>Kelas Baru</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+    `;
+
+    active.forEach(item => {
+        tableHtml += `
+            <tr>
+                <td>${item.no}</td>
+                <td>${item.namaSiswa}</td>
+                <td>${item.kelasSaatIni}</td>
+                <td>${item.kelasBaru}</td>
+                <td>${item.status}</td>
+            </tr>
+        `;
+    });
+
+    tableHtml += '</tbody></table>';
+    container.innerHTML = tableHtml;
+}
+
 
         function displayActiveTable(active) {
             const container = document.getElementById('active-table-container');
