@@ -243,7 +243,9 @@
         </script>
     </head>
     <body>
+        
         <div class="container">
+        <button><a href="register.php" style="color: white;">Tambah</a></button>
             <div class="search-container">
                 <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search...">
             </div>
