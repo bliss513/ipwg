@@ -31,7 +31,7 @@
     <link href="css/style.css" rel="stylesheet">
 
     <style>
-        body {
+      body {
             font-family: Arial, sans-serif;
             background-color: #f8f9fa; /* Light background color */
         }
@@ -64,14 +64,14 @@
             border-radius: 4px;
         }
         .form-container button {
-            margin-top: 20px;
+            position: relative; /* Changed from absolute to relative */
+            margin-top: 20px; /* Added margin to push it down */
             padding: 10px 15px;
             background-color: #28a745;
             color: white;
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            flex: 1 1 100%; /* Button takes full width */
         }
         .form-container button:hover {
             background-color: #218838;
@@ -204,38 +204,64 @@
                         <label for="nomer">Nomer:</label>
                         <input type="text" id="nomer" name="nomer" required>
                     </div>
-                    <button type="submit">Submit</button>
-                </form>
+                  
 
                 <!-- Table to display submitted data -->
-                <table id="dataTable">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nama</th>
-                            <th>NISN</th>
-                            <th>Username</th>
-                            <th>Password</th>
-                            <th>Jenis Kelamin</th>
-                            <th>Tempat Lahir</th>
-                            <th>Tanggal Lahir</th>
-                            <th>Alamat</th>
-                            <th>Nomor HP</th>
-                            <th>Email</th>
-                            <th>Foto</th>
-                            <th>Nama Wali</th>
-                            <th>Tanggal Lahir Wali</th>
-                            <th>Pendidikan Wali</th>
-                            <th>Pekerjaan Wali</th>
-                            <th>Penghasilan Wali</th>
-                            <th>Angkatan</th>
-                            <th>Nominal SPP</th>
-                            <th>Nomer</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+              
+                <h2>Anggota kelas </h2>
+                <form id="registrationForm" onsubmit="submitRegistration(event)">
+                    <div class="form-item">
+                        <label for="id">ID:</label>
+                        <input type="text" id="id" name="id" required>
+                    </div>
+                    <div class="form-item">
+                        <label for="id_kelas">id kelas:</label>
+                        <input type="text" id="id_kelas" name="id_kelas" required>
+                    </div>
+                    <div class="form-item">
+                        <label for="id_siswa">id siswa:</label>
+                        <input type="text" id="id_siswa" name="id_siswa" required>
+                    </div>
+                    <div class="form-item">
+                        <label for="tahun_akademik">tahun akademik:</label>
+                        <input type="text" id="tahun_akademik" name="tahun_akademik" required>
+                    </div>
+                    <div class="form-item">
+                        <label for="status_siswa">setatus siswa:</label>
+                        <input type="text" id="status_siswa" name="status_siswa" required>
+                    </div>
                         <!-- Data will be inserted here -->
-                    </tbody>
+                           <!-- Table to display submitted data -->
+             
+                <h2>Rencana spp </h2>
+                <form id="registrationForm" onsubmit="submitRegistration(event)">
+                    <div class="form-item">
+                        <label for="id">ID:</label>
+                        <input type="text" id="id" name="id" required>
+                    </div>
+                    <div class="form-item">
+                        <label for="id_siswa">id siswa:</label>
+                        <input type="text" id="id_siswa" name="id_siswa" required>
+                    </div>
+                    <div class="form-item">
+                        <label for="pembayaran_ke">pembayaran ke:</label>
+                        <input type="text" id="pembayaran_ke" name="pembayaran_ke" required>
+                    </div>
+                    <div class="form-item">
+                        <label for="bulan_pembayaran">bulan_pembayaran:</label>
+                        <input type="text" id="bulan_pembayaran" name="bulan_pembayaran" required>
+                    </div>
+                    <div class="form-item">
+                        <label for="wajib_spp">wajib spp:</label>
+                        <input type="text" id="wajib_spp" name="wajib_spp" required>
+                    </div>
+                    <div class="form-item">
+                        <label for="id_user">id user :</label>
+                        <input type="text" id="id_user" name="id_user" required>
+                    </div>
+                    <button type="simpan">simpan</button>
+                    </form>
+                        <!-- Data will be inserted here -->
                 </table>
             </div>
 

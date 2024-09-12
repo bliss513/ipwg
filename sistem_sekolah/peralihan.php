@@ -51,6 +51,7 @@
             ?>
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -75,7 +76,7 @@
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
-            table-layout: fixed; /* Membuat lebar kolom tetap */
+            table-layout: fixed;
         }
 
         table, th, td {
@@ -93,17 +94,13 @@
         }
 
         .checkbox-column {
-            width: 50px; /* Lebar kolom checkbox */
-            text-align: center; /* Posisikan checkbox di tengah kolom */
-        }
-
-        td {
-            text-align: left;
+            width: 50px;
+            text-align: center;
         }
 
         td input[type="checkbox"] {
             cursor: pointer;
-            width: 20px; /* Ukuran checkbox seragam */
+            width: 20px;
             height: 20px;
             border: 2px solid #4CAF50;
             box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
@@ -126,7 +123,7 @@
 
         .button-container {
             display: flex;
-            justify-content: flex-end; /* Posisikan tombol ke kanan */
+            justify-content: flex-end;
             margin-top: 20px;
         }
 
@@ -143,8 +140,37 @@
         .button-container button:hover {
             background-color: #45a049;
         }
+
+        .table-wrapper {
+            margin-top: 20px;
+        }
+
+        .result-table-container, .active-table-container {
+            margin-bottom: 20px;
+        }
+
+        .result-table-container table, .active-table-container table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .result-table-container th, .active-table-container th, .result-table-container td, .active-table-container td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid black;
+        }
+
+        .result-table-container th, .active-table-container th {
+            background-color: #f2f2f2;
+        }
+
+        .inactive {
+            background-color: #f9d6d6; /* Light red background for inactive rows */
+            text-decoration: line-through; /* Strikethrough text for inactive rows */
+        }
     </style>
 </head>
+
 <body>
     <h1>Tabel Peralihan Siswa Naik Kelas</h1>
     <div class="search-container">
@@ -154,11 +180,11 @@
             <option value="5">5</option>
             <option value="6">6</option>
             <option value="7">7</option>
-            <option value="8">8</option>
+           
         </select>
-    </div>
+    </div> 
     <div class="table-container">
-        <table>
+        <table id="siswa-table">
             <thead>
                 <tr>
                     <th>No.</th>
@@ -172,42 +198,42 @@
             </thead>
             <tbody id="tabel-body">
                 <!-- Data Siswa Kelas 5 -->
-                <tr>
+                <tr data-class="5">
                     <td>1</td>
                     <td>Andi</td>
                     <td>5</td>
                     <td>6</td>
                     <td class="checkbox-column"><input type="checkbox" id="andi" name="peralihan" value="andi"></td>
                 </tr>
-                <tr>
+                <tr data-class="5">
                     <td>2</td>
                     <td>Budi</td>
                     <td>5</td>
                     <td>6</td>
                     <td class="checkbox-column"><input type="checkbox" id="budi" name="peralihan" value="budi"></td>
                 </tr>
-                <tr>
+                <tr data-class="5">
                     <td>3</td>
                     <td>Citra</td>
                     <td>5</td>
                     <td>6</td>
                     <td class="checkbox-column"><input type="checkbox" id="citra" name="peralihan" value="citra"></td>
                 </tr>
-                <tr>
+                <tr data-class="5">
                     <td>4</td>
                     <td>Dina</td>
                     <td>5</td>
                     <td>6</td>
                     <td class="checkbox-column"><input type="checkbox" id="dina" name="peralihan" value="dina"></td>
                 </tr>
-                <tr>
+                <tr data-class="5">
                     <td>5</td>
                     <td>Eko</td>
                     <td>5</td>
                     <td>6</td>
                     <td class="checkbox-column"><input type="checkbox" id="eko" name="peralihan" value="eko"></td>
                 </tr>
-                <tr>
+                <tr data-class="5">
                     <td>6</td>
                     <td>Fani</td>
                     <td>5</td>
@@ -216,42 +242,42 @@
                 </tr>
                 
                 <!-- Data Siswa Kelas 6 -->
-                <tr>
+                <tr data-class="6">
                     <td>7</td>
                     <td>Gina</td>
                     <td>6</td>
                     <td>7</td>
                     <td class="checkbox-column"><input type="checkbox" id="gina" name="peralihan" value="gina"></td>
                 </tr>
-                <tr>
+                <tr data-class="6">
                     <td>8</td>
                     <td>Hadi</td>
                     <td>6</td>
                     <td>7</td>
                     <td class="checkbox-column"><input type="checkbox" id="hadi" name="peralihan" value="hadi"></td>
                 </tr>
-                <tr>
+                <tr data-class="6">
                     <td>9</td>
                     <td>Ira</td>
                     <td>6</td>
                     <td>7</td>
                     <td class="checkbox-column"><input type="checkbox" id="ira" name="peralihan" value="ira"></td>
                 </tr>
-                <tr>
+                <tr data-class="6">
                     <td>10</td>
                     <td>Joko</td>
                     <td>6</td>
                     <td>7</td>
                     <td class="checkbox-column"><input type="checkbox" id="joko" name="peralihan" value="joko"></td>
                 </tr>
-                <tr>
+                <tr data-class="6">
                     <td>11</td>
                     <td>Kiki</td>
                     <td>6</td>
                     <td>7</td>
                     <td class="checkbox-column"><input type="checkbox" id="kiki" name="peralihan" value="kiki"></td>
                 </tr>
-                <tr>
+                <tr data-class="6">
                     <td>12</td>
                     <td>Lia</td>
                     <td>6</td>
@@ -260,98 +286,59 @@
                 </tr>
                 
                 <!-- Data Siswa Kelas 7 -->
-                <tr>
+                <tr data-class="7">
                     <td>13</td>
                     <td>Mario</td>
                     <td>7</td>
                     <td>8</td>
                     <td class="checkbox-column"><input type="checkbox" id="mario" name="peralihan" value="mario"></td>
                 </tr>
-                <tr>
+                <tr data-class="7">
                     <td>14</td>
                     <td>Nina</td>
                     <td>7</td>
                     <td>8</td>
                     <td class="checkbox-column"><input type="checkbox" id="nina" name="peralihan" value="nina"></td>
                 </tr>
-                <tr>
+                <tr data-class="7">
                     <td>15</td>
                     <td>Oka</td>
                     <td>7</td>
                     <td>8</td>
                     <td class="checkbox-column"><input type="checkbox" id="oka" name="peralihan" value="oka"></td>
                 </tr>
-                <tr>
+                <tr data-class="7">
                     <td>16</td>
-                    <td>Pia</td>
+                    <td>Putu</td>
                     <td>7</td>
                     <td>8</td>
-                    <td class="checkbox-column"><input type="checkbox" id="pia" name="peralihan" value="pia"></td>
+                    <td class="checkbox-column"><input type="checkbox" id="putu" name="peralihan" value="putu"></td>
                 </tr>
-                <tr>
+                <tr data-class="7">
                     <td>17</td>
-                    <td>Qasim</td>
+                    <td>Qina</td>
                     <td>7</td>
                     <td>8</td>
-                    <td class="checkbox-column"><input type="checkbox" id="qasim" name="peralihan" value="qasim"></td>
+                    <td class="checkbox-column"><input type="checkbox" id="qina" name="peralihan" value="qina"></td>
                 </tr>
-                <tr>
+                <tr data-class="7">
                     <td>18</td>
-                    <td>Rina</td>
+                    <td>Rian</td>
                     <td>7</td>
                     <td>8</td>
-                    <td class="checkbox-column"><input type="checkbox" id="rina" name="peralihan" value="rina"></td>
-                </tr>
-                
-                <!-- Data Siswa Kelas 8 -->
-                <tr>
-                    <td>19</td>
-                    <td>Sari</td>
-                    <td>8</td>
-                    <td>9</td>
-                    <td class="checkbox-column"><input type="checkbox" id="sari" name="peralihan" value="sari"></td>
-                </tr>
-                <tr>
-                    <td>20</td>
-                    <td>Toni</td>
-                    <td>8</td>
-                    <td>9</td>
-                    <td class="checkbox-column"><input type="checkbox" id="toni" name="peralihan" value="toni"></td>
-                </tr>
-                <tr>
-                    <td>21</td>
-                    <td>Umi</td>
-                    <td>8</td>
-                    <td>9</td>
-                    <td class="checkbox-column"><input type="checkbox" id="umi" name="peralihan" value="umi"></td>
-                </tr>
-                <tr>
-                    <td>22</td>
-                    <td>Vera</td>
-                    <td>8</td>
-                    <td>9</td>
-                    <td class="checkbox-column"><input type="checkbox" id="vera" name="peralihan" value="vera"></td>
-                </tr>
-                <tr>
-                    <td>23</td>
-                    <td>Wira</td>
-                    <td>8</td>
-                    <td>9</td>
-                    <td class="checkbox-column"><input type="checkbox" id="wira" name="peralihan" value="wira"></td>
-                </tr>
-                <tr>
-                    <td>24</td>
-                    <td>Xena</td>
-                    <td>8</td>
-                    <td>9</td>
-                    <td class="checkbox-column"><input type="checkbox" id="xena" name="peralihan" value="xena"></td>
+                    <td class="checkbox-column"><input type="checkbox" id="rian" name="peralihan" value="rian"></td>
                 </tr>
             </tbody>
         </table>
 
-        <!-- Tombol Proses dipindahkan ke kanan bawah tabel -->
         <div class="button-container">
             <button onclick="prosesPeralihan()">Proses</button>
+        </div>
+        
+        <!-- Placeholder for result and active tables -->
+        <div class="table-wrapper">
+            <div id="result-table-container" class="result-table-container"></div>
+            <div id="active-table-container" class="active-table-container"></div>
         </div>
     </div>
 
@@ -359,12 +346,11 @@
         function filterKelas() {
             const select = document.getElementById('kelas-cari');
             const filter = select.value;
-            const table = document.querySelector('table');
-            const rows = table.querySelectorAll('tbody tr');
+            const rows = document.querySelectorAll('#siswa-table tbody tr');
 
             rows.forEach(row => {
-                const kelasSaatIni = row.cells[2].textContent;
-                
+                const kelasSaatIni = row.dataset.class;
+
                 if (filter === '' || kelasSaatIni === filter) {
                     row.style.display = '';
                 } else {
@@ -383,27 +369,106 @@
         function prosesPeralihan() {
             const checkboxes = document.querySelectorAll('tbody input[type="checkbox"]');
             const peralihan = [];
+            const active = [];
+            const rows = document.querySelectorAll('#siswa-table tbody tr');
 
             checkboxes.forEach(checkbox => {
+                const row = checkbox.closest('tr');
+                const no = row.cells[0].textContent;
+                const namaSiswa = row.cells[1].textContent;
+                const kelasSaatIni = row.cells[2].textContent;
+                const kelasBaru = row.cells[3].textContent;
+                
                 if (checkbox.checked) {
-                    const row = checkbox.closest('tr');
-                    const no = row.cells[0].textContent;
-                    const namaSiswa = row.cells[1].textContent;
-                    const kelasSaatIni = row.cells[2].textContent;
-                    const kelasBaru = row.cells[3].textContent;
                     peralihan.push({ no, namaSiswa, kelasSaatIni, kelasBaru });
+                    // Mark the row as inactive in the previous class
+                    row.classList.add('inactive');
+                } else {
+                    active.push({ no, namaSiswa, kelasSaatIni, kelasBaru });
                 }
             });
 
-            alert('Peralihan yang dipilih:\n' + peralihan.map(p => 
-                `No: ${p.no}, Nama: ${p.namaSiswa}, Kelas Saat Ini: ${p.kelasSaatIni}, Kelas Baru: ${p.kelasBaru}`
-            ).join('\n'));
+            displayResultTable(peralihan);
+            displayActiveTable(active);
+        }
+
+        function displayResultTable(peralihan) {
+            const container = document.getElementById('result-table-container');
+            container.innerHTML = ''; // Clear previous content
+
+            if (peralihan.length === 0) {
+                container.innerHTML = '<p>No data selected.</p>';
+                return;
+            }
+
+            let tableHtml = `
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Nama Siswa</th>
+                            <th>Kelas Saat Ini</th>
+                            <th>Kelas Baru</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+
+            peralihan.forEach(item => {
+                tableHtml += `
+                    <tr>
+                        <td>${item.no}</td>
+                        <td>${item.namaSiswa}</td>
+                        <td>${item.kelasSaatIni}</td>
+                        <td>${item.kelasBaru}</td>
+                    </tr>
+                `;
+            });
+
+            tableHtml += '</tbody></table>';
+            container.innerHTML = tableHtml;
+        }
+
+        function displayActiveTable(active) {
+            const container = document.getElementById('active-table-container');
+            container.innerHTML = ''; // Clear previous content
+
+            if (active.length === 0) {
+                container.innerHTML = '<p>No active students.</p>';
+                return;
+            }
+
+            let tableHtml = `
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Nama Siswa</th>
+                            <th>Kelas Saat Ini</th>
+                            <th>Kelas Baru</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+
+            active.forEach(item => {
+                tableHtml += `
+                    <tr>
+                        <td>${item.no}</td>
+                        <td>${item.namaSiswa}</td>
+                        <td>${item.kelasSaatIni}</td>
+                        <td>${item.kelasBaru}</td>
+                    </tr>
+                `;
+            });
+
+            tableHtml += '</tbody></table>';
+            container.innerHTML = tableHtml;
         }
     </script>
 </body>
+
 </html>
-
-
 
         <!-- Back to Top -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
