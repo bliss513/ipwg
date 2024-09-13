@@ -77,7 +77,7 @@
         }
 
         th {
-            background-color: #0000FF; /* Blue color for headers */
+            background-color: #4CAF50; /* Green color for headers */
             color: white;
         }
 
@@ -96,7 +96,7 @@
 
         a {
             text-decoration: none;
-            color: #FF0000;
+            color: #4CAF50;
             transition: color 0.3s;
             font-weight: bold; /* Make link text bold */
         }
@@ -106,7 +106,7 @@
         }
 
         button {
-            background-color: #4CAF50;
+            background-color: #FF0000; /* Red color for button */
             color: white;
             border: none;
             padding: 12px 20px;
@@ -117,7 +117,7 @@
         }
 
         button:hover {
-            background-color: #45a049;
+            background-color: #e60000; /* Darker red for hover effect */
         }
     </style>
 </head>
@@ -147,7 +147,7 @@
                             <th>id</th>
                             <th>judul</th>
                             <th>pengarang</th>
-                            <th> genre</th>
+                            <th>genre</th>
                             <th>tentang buku</th>
                             <th>status</th>
                         </tr>

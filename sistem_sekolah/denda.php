@@ -84,7 +84,7 @@
             margin: 8px 0 4px;
             font-size: 14px;
         }
-        input[type="date"] {
+        input[type="date"], select {
             width: 100%;
             padding: 6px;
             margin-bottom: 8px;
@@ -156,6 +156,12 @@
                     <input type="date" id="tanggalPeminjaman" required>
                     <label for="tanggalPengembalian">Tanggal Pengembalian:</label>
                     <input type="date" id="tanggalPengembalian" required>
+                    <label for="kondisiBuku">Kondisi Buku:</label>
+                    <select id="kondisiBuku" required>
+                        <option value="" disabled selected>Pilih Kondisi Buku</option>
+                        <option value="baik">Baik</option>
+                        <option value="rusak">Rusak</option>
+                    </select>
                     <button type="submit">Hitung Denda</button>
                 </form>
                 <div id="hasilDenda"></div>
@@ -187,17 +193,23 @@
         function hitungDenda() {
             const tanggalPeminjaman = new Date(document.getElementById("tanggalPeminjaman").value);
             const tanggalPengembalian = new Date(document.getElementById("tanggalPengembalian").value);
+            const kondisiBuku = document.getElementById("kondisiBuku").value;
 
             const dendaPerHari = 1000;
+            const dendaRusak = 10000;
+            const satuBulan = 30;
+
             const selisihWaktu = tanggalPengembalian - tanggalPeminjaman;
             const selisihHari = Math.ceil(selisihWaktu / (1000 * 60 * 60 * 24));
 
             let denda = 0;
-            const satuBulan = 30;
-
             if (selisihHari > satuBulan) {
                 const hariTerlambat = selisihHari - satuBulan;
                 denda = hariTerlambat * dendaPerHari;
+            }
+
+            if (kondisiBuku === "rusak") {
+                denda += dendaRusak;
             }
 
             document.getElementById("hasilDenda").innerHTML = `
@@ -206,12 +218,14 @@
                         <th>Tanggal Peminjaman</th>
                         <th>Tanggal Pengembalian</th>
                         <th>Jumlah Hari Terlambat</th>
-                        <th>Total Denda (Rp1000 per hari)</th>
+                        <th>Kondisi Buku</th>
+                        <th>Total Denda (Rp1000 per hari + Rp10000 jika rusak)</th>
                     </tr>
                     <tr>
                         <td>${tanggalPeminjaman.toISOString().split('T')[0]}</td>
                         <td>${tanggalPengembalian.toISOString().split('T')[0]}</td>
                         <td>${selisihHari > satuBulan ? selisihHari - satuBulan : 0}</td>
+                        <td>${kondisiBuku === "baik" ? "Baik" : "Rusak"}</td>
                         <td>Rp ${denda}</td>
                     </tr>
                 </table>`;

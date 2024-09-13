@@ -87,7 +87,7 @@
             <input type="text" id="judul" name="judul">
             <label for="pengarang">pengarang</label>
             <input type="text" id="pengarang" name="pengarang">
-            <label for="id_genre">id_genre</label>
+            <label for="id_genre">id genre</label>
             <input type="text" id="id_genre" name="id_genre">
 
             <label for="tentang_buku">tentang buku</label>
