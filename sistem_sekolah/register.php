@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>DASHMIN - Bootstrap Admin Template</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"> 
     <meta content="" name="keywords">
     <meta content="" name="description">
 
@@ -31,7 +31,7 @@
     <link href="css/style.css" rel="stylesheet">
 
     <style>
-      body {
+        body {
             font-family: Arial, sans-serif;
             background-color: #f8f9fa; /* Light background color */
         }
@@ -120,6 +120,7 @@
             <div class="form-container">
                 <h2>Pendaftaran Siswa</h2>
                 <form id="registrationForm" onsubmit="submitRegistration(event)">
+                    <!-- Registration Form -->
                     <div class="form-item">
                         <label for="id">ID:</label>
                         <input type="text" id="id" name="id" required>
@@ -177,8 +178,8 @@
                         <input type="text" id="nama_wali" name="nama_wali" required>
                     </div>
                     <div class="form-item">
-                        <label for="tanggal_lahir_wali">Tanggal Lahir Wali:</label>
-                        <input type="number" id="tanggal_lahir_wali" name="tanggal_lahir_wali" required>
+                        <label for="tahun_lahir_wali">Tahun Lahir Wali:</label>
+                        <input type="number" id="tahun_lahir_wali" name="tahun_lahir_wali" required>
                     </div>
                     <div class="form-item">
                         <label for="pendidikan_wali">Pendidikan Wali:</label>
@@ -201,89 +202,45 @@
                         <input type="number" id="spp_nominal" name="spp_nominal" required>
                     </div>
                     <div class="form-item">
-                        <label for="nomer">Nomer:</label>
-                        <input type="text" id="nomer" name="nomer" required>
+                        <label for="nomer_hp">Nomer hp:</label>
+                        <input type="text" id="nomer_hp" name="nomer_hp" required>
                     </div>
-                  
 
-                <!-- Table to display submitted data -->
-              
-                <h2>Anggota kelas </h2>
-                <form id="registrationForm" onsubmit="submitRegistration(event)">
+                    <!-- Table for Anggota Kelas -->
+                    <h2>Anggota Kelas</h2>
                     <div class="form-item">
-                        <label for="id">ID:</label>
-                        <input type="text" id="id" name="id" required>
-                    </div>
-                    <div class="form-item">
-                        <label for="id_kelas">id kelas:</label>
+                        <label for="id_kelas">ID Kelas:</label>
                         <input type="text" id="id_kelas" name="id_kelas" required>
                     </div>
                     <div class="form-item">
-                        <label for="id_siswa">id siswa:</label>
+                        <label for="id_siswa">ID Siswa:</label>
                         <input type="text" id="id_siswa" name="id_siswa" required>
                     </div>
                     <div class="form-item">
-                        <label for="tahun_akademik">tahun akademik:</label>
+                        <label for="tahun_akademik">Tahun Akademik:</label>
                         <input type="text" id="tahun_akademik" name="tahun_akademik" required>
                     </div>
+
+                    <!-- Table for Rencana SPP -->
+                    <h2>Rencana SPP</h2>
                     <div class="form-item">
-                        <label for="status_siswa">setatus siswa:</label>
-                        <input type="text" id="status_siswa" name="status_siswa" required>
+                        <label for="wajib_spp">Wajib SPP:</label>
+                        <input type="text" id="wajib_spp" name="wajib_spp" required>
                     </div>
-                        <!-- Data will be inserted here -->
-                           <!-- Table to display submitted data -->
+                    <div class="form-item">
+                        <label for="tanggal_masuk">Tanggal Masuk:</label>
+                        <input type="date" id="tanggal_masuk" name="tanggal_masuk" required>
+                    </div>
+                    <button type="submit">Simpan</button>
+                </form>
+
              
-                           <h2>Rencana spp</h2>
-<form id="registrationForm" onsubmit="submitRegistration(event)">
-    <div class="form-item">
-        <label for="id">ID:</label>
-        <input type="text" id="id" name="id" required>
-    </div>
-    <div class="form-item">
-        <label for="id_siswa">id siswa:</label>
-        <input type="text" id="id_siswa" name="id_siswa" required>
-    </div>
-    <div class="form-item">
-        <label for="pembayaran_ke">pembayaran ke:</label>
-        <input type="text" id="pembayaran_ke" name="pembayaran_ke" required>
-    </div>
-    <div class="form-item">
-        <label for="bulan_pembayaran">bulan_pembayaran:</label>
-        <input type="text" id="bulan_pembayaran" name="bulan_pembayaran" required>
-    </div>
-    <div class="form-item">
-        <label for="wajib_spp">wajib spp:</label>
-        <input type="text" id="wajib_spp" name="wajib_spp" required>
-    </div>
-    <div class="form-item">
-        <label for="id_user">id user:</label>
-        <input type="text" id="id_user" name="id_user" required>
-    </div>
-    <div class="form-item">
-        <label for="tanggal_masuk">Tanggal Masuk:</label>
-        <input type="date" id="tanggal_masuk" name="tanggal_masuk" required>
-    </div>
-    <button type="simpan">simpan</button>
-</form>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        var today = new Date().toISOString().split('T')[0];
-        document.getElementById('tanggal_masuk').value = today;
-    });
-
-    function submitRegistration(event) {
-        event.preventDefault();
-        // Your form submission logic here
-        alert('Form submitted!');
-    }
-</script>
-
-                    </form>
                         <!-- Data will be inserted here -->
+                    </tbody>
                 </table>
             </div>
 
+            <!-- Footer -->
             <?php include 'footer.php'; ?>
         </div>
         <!-- Content End -->
@@ -306,6 +263,11 @@
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
     <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var today = new Date().toISOString().split('T')[0];
+            document.getElementById('tanggal_masuk').value = today;
+        });
+
         function submitRegistration(event) {
             event.preventDefault(); // Prevent form from submitting normally
 
