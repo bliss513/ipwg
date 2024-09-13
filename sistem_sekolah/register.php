@@ -121,6 +121,7 @@
                 <h2>Pendaftaran Siswa</h2>
                 <form id="registrationForm" onsubmit="submitRegistration(event)">
                     <!-- Registration Form -->
+                    <form method="POST" action="proses_tambah_register.php">
                     <div class="form-item">
                         <label for="id">ID:</label>
                         <input type="text" id="id" name="id" required>
@@ -322,6 +323,7 @@
             // Optionally clear the form after submission
             document.getElementById('registrationForm').reset();
         }
+        header("Location: button.php");
     </script>
 </body>
 </html>
