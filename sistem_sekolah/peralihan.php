@@ -53,24 +53,36 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tabel Peralihan Siswa Naik Kelas</title>
-    <style>
-     <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tabel Peralihan Siswa Naik Kelas</title>
-    <style>
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tabel Peralihan Siswa Naik Kelas</title>
+    <meta charset="utf-8">
+    <title>DASHMIN - Bootstrap Admin Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -185,6 +197,7 @@
         }
     </style>
 </head>
+
 <body>
     <h1>Tabel Peralihan Siswa Naik Kelas</h1>
     <div class="search-container">
@@ -195,7 +208,7 @@
             <option value="6">6</option>
             <option value="7">7</option>
         </select>
-    </div> 
+    </div>
     <div class="table-container">
         <table id="siswa-table">
             <thead>
@@ -361,11 +374,11 @@
                 }
 
                 if (checkbox.checked) {
-                    // Student is being moved to the next class
-                    peralihan.push({ no, namaSiswa, kelasBaru, status: 'Active' });
+                    // Student is staying in the current class
+                    active.push({ no, namaSiswa, kelasSaatIni, status: 'Active' });
                 } else {
-                    // Student remains in the current class
-                    active.push({ no, namaSiswa, kelasSaatIni, status: 'Inactive' });
+                    // Student is moving to the next class
+                    peralihan.push({ no, namaSiswa, kelasBaru, status: 'Inactive' });
                 }
             });
 
@@ -375,11 +388,11 @@
 
         function displayResultTable(data) {
             const container = document.getElementById('result-table-container');
-            let html = '<h2>Daftar Siswa yang Aktif (Naik Kelas)</h2>';
-            html += '<table><thead><tr><th>No.</th><th>Nama Siswa</th><th>Kelas Baru</th></tr></thead><tbody>';
+            let html = '<h2>Daftar Siswa yang Aktif (kelas baru)</h2>';
+            html += '<table><thead><tr><th>No.</th><th>Nama Siswa</th><th>Kelas baru</th></tr></thead><tbody>';
 
             data.forEach(item => {
-                if (item.status === 'Active') {
+                if (item.status === 'Inactive') {
                     html += `<tr><td>${item.no}</td><td>${item.namaSiswa}</td><td>${item.kelasBaru}</td></tr>`;
                 }
             });
@@ -390,11 +403,11 @@
 
         function displayActiveTable(data) {
             const container = document.getElementById('active-table-container');
-            let html = '<h2>Daftar Siswa yang Tidak Aktif (Tetap di Kelas Saat Ini)</h2>';
-            html += '<table><thead><tr><th>No.</th><th>Nama Siswa</th><th>Kelas Saat Ini</th></tr></thead><tbody>';
+            let html = '<h2>Daftar Siswa tidak Aktif (siswa tinggal kelas)</h2>';
+            html += '<table><thead><tr><th>No.</th><th>Nama Siswa</th><th>siswa tinggal kelas</th></tr></thead><tbody>';
 
             data.forEach(item => {
-                if (item.status === 'Inactive') {
+                if (item.status === 'Active') {
                     html += `<tr class="inactive"><td>${item.no}</td><td>${item.namaSiswa}</td><td>${item.kelasSaatIni}</td></tr>`;
                 }
             });
@@ -404,6 +417,7 @@
         }
     </script>
 </body>
+
 </html>
 
 
