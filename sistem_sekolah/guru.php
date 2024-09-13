@@ -75,7 +75,7 @@
         }
 
         th {
-            background-color: #0000FF; /* Blue color for headers */
+            background-color: #008000; /* Green color for headers */
             color: white;
         }
 
@@ -104,7 +104,7 @@
         }
 
         button {
-            background-color: #4CAF50;
+            background-color: #FF0000; /* Red color for the "Tambah" button */
             color: white;
             border: none;
             padding: 12px 20px;
@@ -115,7 +115,7 @@
         }
 
         button:hover {
-            background-color: #45a049;
+            background-color: #cc0000; /* Darker red for hover effect */
         }
     </style>
 </head>
@@ -152,7 +152,7 @@
                     <tbody>
                         <?php
                             include "config/koneksi.php";
-                             $no = 1;
+                            $no = 1;
                             $data = mysqli_query($koneksi, "SELECT * FROM guru");
                             while ($hasil = mysqli_fetch_array($data)) {
                         ?>
@@ -174,8 +174,7 @@
                 </table>
             </div>
         </div>
-        
-       
+
         <!-- Back to Top -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>

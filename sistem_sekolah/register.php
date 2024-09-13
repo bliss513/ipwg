@@ -15,7 +15,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
@@ -31,41 +31,55 @@
     <link href="css/style.css" rel="stylesheet">
 
     <style>
-      body {
+        body {
             font-family: Arial, sans-serif;
-            background-color: #f8f9fa; /* Light background color */
+            background-color: #f8f9fa;
+            /* Light background color */
         }
+
         .form-container {
-            max-width: 1000px; /* Increased width for better visibility */
+            max-width: 1000px;
+            /* Increased width for better visibility */
             margin: auto;
             padding: 20px;
             border: 1px solid #ddd;
             border-radius: 5px;
-            background-color: #ffffff; /* White background for the form */
+            background-color: #ffffff;
+            /* White background for the form */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
+
         .form-container h2 {
             text-align: center;
             width: 100%;
         }
+
         .form-container .form-item {
-            flex: 1 1 100%; /* Full width for form items */
+            flex: 1 1 100%;
+            /* Full width for form items */
             min-width: 300px;
         }
+
         .form-container label {
             display: block;
             margin-top: 10px;
         }
-        .form-container input, .form-container select, .form-container textarea {
+
+        .form-container input,
+        .form-container select,
+        .form-container textarea {
             width: 100%;
             padding: 8px;
             margin-top: 5px;
             border: 1px solid #ddd;
             border-radius: 4px;
         }
+
         .form-container button {
-            position: relative; /* Changed from absolute to relative */
-            margin-top: 20px; /* Added margin to push it down */
+            position: relative;
+            /* Changed from absolute to relative */
+            margin-top: 20px;
+            /* Added margin to push it down */
             padding: 10px 15px;
             background-color: #28a745;
             color: white;
@@ -73,28 +87,37 @@
             border-radius: 4px;
             cursor: pointer;
         }
+
         .form-container button:hover {
             background-color: #218838;
         }
+
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
         }
-        table, th, td {
+
+        table,
+        th,
+        td {
             border: 1px solid #ddd;
             padding: 10px;
             text-align: left;
         }
+
         th {
             background-color: #28a745;
             color: white;
         }
+
         tr:nth-child(even) {
             background-color: #f2f2f2;
         }
+
         td {
-            width: 33%; /* Set each cell to take up 33% of the table width */
+            width: 33%;
+            /* Set each cell to take up 33% of the table width */
         }
     </style>
 </head>
@@ -102,7 +125,8 @@
 <body>
     <div class="container-xxl position-relative bg-white d-flex p-0">
         <!-- Spinner Start -->
-        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div id="spinner"
+            class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
             <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
                 <span class="sr-only">Loading...</span>
             </div>
@@ -119,30 +143,30 @@
             <!-- Form and Table -->
             <div class="form-container">
                 <h2>Pendaftaran Siswa</h2>
-                <form id="registrationForm" onsubmit="submitRegistration(event)">
+                <form id="registrationForm" action="" method="post">
                     <div class="form-item">
                         <label for="id">ID:</label>
-                        <input type="text" id="id" name="id" required>
+                        <input type="text" id="id" name="id">
                     </div>
                     <div class="form-item">
                         <label for="nama">Nama lengkap:</label>
-                        <input type="text" id="nama" name="nama" required>
+                        <input type="text" id="nama" name="nama">
                     </div>
                     <div class="form-item">
                         <label for="nisn">NISN:</label>
-                        <input type="text" id="nisn" name="nisn" required>
+                        <input type="text" id="nisn" name="nisn">
                     </div>
                     <div class="form-item">
                         <label for="username">Username:</label>
-                        <input type="text" id="username" name="username" required>
+                        <input type="text" id="username" name="username">
                     </div>
                     <div class="form-item">
                         <label for="password">Password:</label>
-                        <input type="text" id="password" name="password" required>
+                        <input type="text" id="password" name="password">
                     </div>
                     <div class="form-item">
                         <label for="jenis_kelamin">Jenis Kelamin:</label>
-                        <select id="jenis_kelamin" name="jenis_kelamin" required>
+                        <select id="jenis_kelamin" name="jenis_kelamin">
                             <option value="" disabled selected>Pilih Jenis Kelamin</option>
                             <option value="Laki-laki">Laki-laki</option>
                             <option value="Perempuan">Perempuan</option>
@@ -150,23 +174,23 @@
                     </div>
                     <div class="form-item">
                         <label for="tempat_lahir">Tempat Lahir:</label>
-                        <input type="text" id="tempat_lahir" name="tempat_lahir" required>
+                        <input type="text" id="tempat_lahir" name="tempat_lahir">
                     </div>
                     <div class="form-item">
                         <label for="tanggal_lahir">Tanggal Lahir:</label>
-                        <input type="date" id="tanggal_lahir" name="tanggal_lahir" required>
+                        <input type="date" id="tanggal_lahir" name="tanggal_lahir">
                     </div>
                     <div class="form-item">
                         <label for="alamat">Alamat:</label>
-                        <input type="text" id="alamat" name="alamat" required>
+                        <input type="text" id="alamat" name="alamat">
                     </div>
                     <div class="form-item">
                         <label for="nomor_hp">Nomor HP:</label>
-                        <input type="text" id="nomor_hp" name="nomor_hp" required>
+                        <input type="text" id="nomor_hp" name="nomor_hp">
                     </div>
                     <div class="form-item">
                         <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" required>
+                        <input type="text" id="email" name="email">
                     </div>
                     <div class="form-item">
                         <label for="foto">Foto (URL):</label>
@@ -174,95 +198,88 @@
                     </div>
                     <div class="form-item">
                         <label for="nama_wali">Nama Wali:</label>
-                        <input type="text" id="nama_wali" name="nama_wali" required>
+                        <input type="text" id="nama_wali" name="nama_wali">
                     </div>
                     <div class="form-item">
                         <label for="tanggal_lahir_wali">Tanggal Lahir Wali:</label>
-                        <input type="number" id="tanggal_lahir_wali" name="tanggal_lahir_wali" required>
+                        <input type="number" id="tanggal_lahir_wali" name="tanggal_lahir_wali">
                     </div>
                     <div class="form-item">
                         <label for="pendidikan_wali">Pendidikan Wali:</label>
-                        <input type="text" id="pendidikan_wali" name="pendidikan_wali" required>
+                        <input type="text" id="pendidikan_wali" name="pendidikan_wali">
                     </div>
                     <div class="form-item">
                         <label for="pekerjaan_wali">Pekerjaan Wali:</label>
-                        <input type="text" id="pekerjaan_wali" name="pekerjaan_wali" required>
+                        <input type="text" id="pekerjaan_wali" name="pekerjaan_wali">
                     </div>
                     <div class="form-item">
                         <label for="penghasilan_wali">Penghasilan Wali:</label>
-                        <input type="number" id="penghasilan_wali" name="penghasilan_wali" required>
+                        <input type="number" id="penghasilan_wali" name="penghasilan_wali">
                     </div>
                     <div class="form-item">
                         <label for="angkatan">Angkatan:</label>
-                        <input type="number" id="angkatan" name="angkatan" required>
+                        <input type="number" id="angkatan" name="angkatan">
                     </div>
                     <div class="form-item">
                         <label for="spp_nominal">Nominal SPP:</label>
-                        <input type="number" id="spp_nominal" name="spp_nominal" required>
+                        <input type="number" id="spp_nominal" name="spp_nominal">
                     </div>
                     <div class="form-item">
                         <label for="nomer">Nomer:</label>
-                        <input type="text" id="nomer" name="nomer" required>
+                        <input type="text" id="nomer" name="nomer">
                     </div>
-                  
 
-                <!-- Table to display submitted data -->
-              
-                <h2>Anggota kelas </h2>
-                <form id="registrationForm" onsubmit="submitRegistration(event)">
+                    <h2>Anggota kelas </h2>
                     <div class="form-item">
                         <label for="id">ID:</label>
-                        <input type="text" id="id" name="id" required>
+                        <input type="text" id="id" name="id">
                     </div>
                     <div class="form-item">
                         <label for="id_kelas">id kelas:</label>
-                        <input type="text" id="id_kelas" name="id_kelas" required>
+                        <input type="text" id="id_kelas" name="id_kelas">
                     </div>
                     <div class="form-item">
                         <label for="id_siswa">id siswa:</label>
-                        <input type="text" id="id_siswa" name="id_siswa" required>
+                        <input type="text" id="id_siswa" name="id_siswa">
                     </div>
                     <div class="form-item">
                         <label for="tahun_akademik">tahun akademik:</label>
-                        <input type="text" id="tahun_akademik" name="tahun_akademik" required>
+                        <input type="text" id="tahun_akademik" name="tahun_akademik">
                     </div>
                     <div class="form-item">
                         <label for="status_siswa">setatus siswa:</label>
-                        <input type="text" id="status_siswa" name="status_siswa" required>
+                        <input type="text" id="status_siswa" name="status_siswa">
                     </div>
-                        <!-- Data will be inserted here -->
-                           <!-- Table to display submitted data -->
-             
-                <h2>Rencana spp </h2>
-                <form id="registrationForm" onsubmit="submitRegistration(event)">
+                    <!-- Data will be inserted here -->
+                    <!-- Table to display submitted data -->
+
+                    <h2>Rencana spp </h2>
                     <div class="form-item">
                         <label for="id">ID:</label>
-                        <input type="text" id="id" name="id" required>
+                        <input type="text" id="id" name="id">
                     </div>
                     <div class="form-item">
                         <label for="id_siswa">id siswa:</label>
-                        <input type="text" id="id_siswa" name="id_siswa" required>
+                        <input type="text" id="id_siswa" name="id_siswa">
                     </div>
                     <div class="form-item">
                         <label for="pembayaran_ke">pembayaran ke:</label>
-                        <input type="text" id="pembayaran_ke" name="pembayaran_ke" required>
+                        <input type="text" id="pembayaran_ke" name="pembayaran_ke">
                     </div>
                     <div class="form-item">
                         <label for="bulan_pembayaran">bulan_pembayaran:</label>
-                        <input type="text" id="bulan_pembayaran" name="bulan_pembayaran" required>
+                        <input type="text" id="bulan_pembayaran" name="bulan_pembayaran">
                     </div>
                     <div class="form-item">
                         <label for="wajib_spp">wajib spp:</label>
-                        <input type="text" id="wajib_spp" name="wajib_spp" required>
+                        <input type="text" id="wajib_spp" name="wajib_spp">
                     </div>
                     <div class="form-item">
                         <label for="id_user">id user :</label>
-                        <input type="text" id="id_user" name="id_user" required>
+                        <input type="text" id="id_user" name="id_user">
                     </div>
-                    <button type="simpan">simpan</button>
-                    </form>
-                        <!-- Data will be inserted here -->
-                </table>
+                    <button type="submit">simpan</button>
+                </form>
             </div>
 
             <?php include 'footer.php'; ?>
@@ -286,61 +303,6 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
-    <script>
-        function submitRegistration(event) {
-            event.preventDefault(); // Prevent form from submitting normally
-
-            const id = document.getElementById('id').value;
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            const nama = document.getElementById('nama').value;
-            const jenisKelamin = document.getElementById('jenis_kelamin').value;
-            const nisn = document.getElementById('nisn').value;
-            const tempatLahir = document.getElementById('tempat_lahir').value;
-            const tanggalLahir = document.getElementById('tanggal_lahir').value;
-            const alamat = document.getElementById('alamat').value;
-            const nomorHp = document.getElementById('nomor_hp').value;
-            const email = document.getElementById('email').value;
-            const foto = document.getElementById('foto').value;
-            const namaWali = document.getElementById('nama_wali').value;
-            const tanggalLahirWali = document.getElementById('tanggal_lahir_wali').value;
-            const pendidikanWali = document.getElementById('pendidikan_wali').value;
-            const pekerjaanWali = document.getElementById('pekerjaan_wali').value;
-            const penghasilanWali = document.getElementById('penghasilan_wali').value;
-            const angkatan = document.getElementById('angkatan').value;
-            const sppNominal = document.getElementById('spp_nominal').value;
-            const nomer = document.getElementById('nomer').value;
-
-            // Create a new row and append to the table
-            const tableBody = document.querySelector('#dataTable tbody');
-            const newRow = document.createElement('tr');
-            newRow.innerHTML = `
-                <td>${id}</td>
-                <td>${nama}</td>
-                <td>${nisn}</td>
-                <td>${username}</td>
-                <td>${password}</td>
-                <td>${jenisKelamin}</td>
-                <td>${tempatLahir}</td>
-                <td>${tanggalLahir}</td>
-                <td>${alamat}</td>
-                <td>${nomorHp}</td>
-                <td>${email}</td>
-                <td><img src="${foto}" alt="Foto" style="width: 50px; height: 50px; object-fit: cover;"></td>
-                <td>${namaWali}</td>
-                <td>${tanggalLahirWali}</td>
-                <td>${pendidikanWali}</td>
-                <td>${pekerjaanWali}</td>
-                <td>${penghasilanWali}</td>
-                <td>${angkatan}</td>
-                <td>${sppNominal}</td>
-                <td>${nomer}</td>
-            `;
-            tableBody.appendChild(newRow);
-
-            // Optionally clear the form after submission
-            document.getElementById('registrationForm').reset();
-        }
-    </script>
 </body>
+
 </html>
