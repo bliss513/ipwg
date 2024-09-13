@@ -51,9 +51,9 @@
                             <a href="index.php" class="">
                                 <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>DASHMIN</h3>
                             </a>
-                            <h3>Sign In</h3>
+                            <h3>Sign Ind</h3>
                         </div>
-                        <form mrthode="post" action="signin_aksi.php">
+                        <form method="POST" action="signin_aksi.php">
                         <div class="form-floating mb-3">
                             <input type="username" class="form-control" id="username" name="username">
                             <label for="floatingInput">Username</label>

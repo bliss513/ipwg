@@ -6,7 +6,7 @@
  $username=$_POST['username'];
  $password=$_POST['password'];
 
- $ambildata=mysqli_query($koneksi, "select * from users where username=$'username' and password=$'password'");
+ $ambildata=mysqli_query($koneksi, "select * from users where username='$username' and password='$password'");
 
  $cek=mysqli_num_rows($ambildata);
  if($cek>0)
