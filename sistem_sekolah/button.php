@@ -148,7 +148,7 @@
 
         /* Footer Styles */
         .footer {
-            background-color: #4CAF50; /* Same green color as headers */
+            
             color: white;
             text-align: center;
             padding: 10px 0;
