@@ -30,139 +30,14 @@
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
 
+       <?php
+            include 'sidebar.php'
+            ?>
+            <!-- Content Start -->
+            
     <!-- Custom Styles -->
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #FFFF00;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 25px auto;
-            background-color: white;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            flex: 1;
-        }
-
-        h1 {
-            font-size: 32px;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-
-        p {
-            font-size: 18px;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        table, th, td {
-            border: none; /* Remove table borders */
-            padding: 12px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #0000FF; /* Blue color for headers */
-            color: white;
-        }
-
-        th, td {
-            font-size: 16px;
-        }
-
-        tr:hover {
-            background-color: #f1f1f1; /* Add hover effect */
-            cursor: pointer;
-        }
-
-        .action-container {
-            display: none; /* Hide action buttons by default */
-        }
-
-        a {
-            text-decoration: none;
-            color: #FF0000;
-            transition: color 0.3s;
-            font-weight: bold; /* Make link text bold */
-        }
-
-        a:hover {
-            color: #45a049;
-        }
-
-        button {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            cursor: pointer;
-            border-radius: 4px;
-            font-size: 16px;
-            transition: background-color 0.3s;
-        }
-
-        button:hover {
-            background-color: #45a049;
-        }
-    </style>
-
-    <!-- JavaScript Functions -->
-    <script>
-        function showActions(row) {
-            // Hide all action containers first
-            const actionContainers = document.querySelectorAll('.action-container');
-            actionContainers.forEach(container => {
-                container.style.display = 'none';
-            });
-
-            // Show the action container for the clicked row
-            const actionContainer = row.querySelector('.action-container');
-            if (actionContainer) {
-                actionContainer.style.display = 'flex';
-            }
-        }
-    </script>
-</head>
-
-<body>
-    <div class="container-xxl position-relative bg-white d-flex p-0">
-        <!-- Spinner Start -->
-        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-                <span class="sr-only">Loading...</span>
-            </div>
-        </div>
-        <!-- Spinner End -->
-
-        <!-- Sidebar -->
-        <?php include 'sidebar.php'; ?>
-
-        <!-- Content Start -->
-        <div class="content">
-
-            <?php include 'header.php'; ?>
-
-            <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Daftar Kelas</title>
-        <style>
-            body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #FFFF00;
             margin: 0;
@@ -249,55 +124,96 @@
         button:hover {
             background-color: #e60000; /* Darker red for hover effect */
         }
-        </style>
-    <script>
-            function searchTable() {
-                var input, filter, table, tr, td, i, j, txtValue;
-                input = document.getElementById("searchInput");
-                filter = input.value.toLowerCase();
-                table = document.getElementById("dataTable");
-                tr = table.getElementsByTagName("tr");
 
-                for (i = 1; i < tr.length; i++) {
-                    tr[i].style.display = "none";
-                    td = tr[i].getElementsByTagName("td");
-                    for (j = 0; j < td.length; j++) {
-                        if (td[j]) {
-                            txtValue = td[j].textContent || td[j].innerText;
-                            if (txtValue.toLowerCase().indexOf(filter) > -1) {
-                                tr[i].style.display = "";
-                                break;
-                            }
+        /* Search and Button Container */
+        .action-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-container input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            margin-left: 10px;
+            width: 200px; /* Adjust as needed */
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: #4CAF50; /* Same green color as headers */
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+
+    <!-- JavaScript Functions -->
+    <script>
+        function searchTable() {
+            var input, filter, table, tr, td, i, j, txtValue;
+            input = document.getElementById("searchInput");
+            filter = input.value.toLowerCase();
+            table = document.getElementById("dataTable");
+            tr = table.getElementsByTagName("tr");
+
+            for (i = 1; i < tr.length; i++) {
+                tr[i].style.display = "none";
+                td = tr[i].getElementsByTagName("td");
+                for (j = 0; j < td.length; j++) {
+                    if (td[j]) {
+                        txtValue = td[j].textContent || td[j].innerText;
+                        if (txtValue.toLowerCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                            break;
                         }
                     }
                 }
             }
-        </script>
-    </head>
-    <body>
-        
+        }
+    </script>
+</head>
+
+<body>
+    <!-- Content Start -->
+    <div class="content">
+        <?php include 'header.php'; ?>
+
         <div class="container">
-        <button><a href="register.php" style="color: white;">Tambah</a></button>
-          
+            <div class="action-container">
+                <button><a href="register.php" style="color: white;">Tambah</a></button>
+                <div class="search-container">
+                    <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search...">
+                </div>
+            </div>
+
             <table id="dataTable">
                 <thead>
                     <tr>
-                        
                         <th>Id</th>
                         <th>Nama</th>
                         <th>Nisn</th>
-                        <th> Nomer Hp</th>
+                        <th>Nomer Hp</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
                         include "config/koneksi.php";
-                        $no = 1;
-                        $data = mysqli_query($koneksi, "SELECT * FROM siswa");
+                        $data = mysqli_query($koneksi, "SELECT * FROM siswa WHERE id BETWEEN 1 AND 14");
                         while ($hasil = mysqli_fetch_array($data)) {
                     ?>
                     <tr onclick="window.location.href='basis_data/data_siswa/ubah.php?id=<?php echo $hasil['id']; ?>'">
-                        
                         <td><?php echo $hasil['id']; ?></td>
                         <td><?php echo $hasil['nama']; ?></td>
                         <td><?php echo $hasil['nisn']; ?></td>
@@ -308,30 +224,32 @@
                     ?>
                 </tbody>
             </table>
-
         </div>
-    </body>
-            <!-- Content End -->
-            <?php include 'footer.php'; ?>
+    </div>
+    <!-- Content End -->
 
-            <!-- Back to Top -->
-            <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
-        </div>
+    <!-- Footer -->
+    <?php include 'footer.php'; ?>
+    <div class="footer">
+        
+    </div>
 
-        <!-- JavaScript Libraries -->
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="lib/chart/chart.min.js"></script>
-        <script src="lib/easing/easing.min.js"></script>
-        <script src="lib/waypoints/waypoints.min.js"></script>
-        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-        <script src="lib/tempusdominus/js/moment.min.js"></script>
-        <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
-        <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
 
-        <!-- Template Javascript -->
-        <script src="js/main.js"></script>
-    </body>
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/chart/chart.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
 
-    </html>
+</html>
