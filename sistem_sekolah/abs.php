@@ -34,11 +34,11 @@
     <body>
         <div class="container-xxl position-relative bg-white d-flex p-0">
             <!-- Spinner Start -->
-            <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <!-- <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
                 <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
                     <span class="sr-only">Loading...</span>
                 </div>
-            </div>
+            </div> -->
             <!-- Spinner End -->
 
             <?php
@@ -75,7 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $kehadiran_kelas = $value;
 
             // Update data absensi ke dalam database
-            $update_sql = "UPDATE abse nsi_kelas SET kehadiran_kelas='$kehadiran_kelas', tanggal='$tanggal' WHERE id=$id_absensi";
+            $update_sql = "UPDATE absensi_kelas SET kehadiran_kelas='$kehadiran_kelas', tanggal='$tanggal' WHERE id=$id_absensi";
             if ($conn->query($update_sql) === TRUE) {
                 // Menampilkan pesan berhasil jika update sukses
                 echo "<script>alert('Data berhasil disimpan!');</script>";
@@ -105,7 +105,7 @@ if ($selected_jurnal != '') {
     $conditions[] = "a.id_jurnal = " . $conn->real_escape_string($selected_jurnal);
 }
 if ($selected_date != '') {
-    $conditions[] = "a.tanggal = " . $conn->real_escape_string($selected_date);
+    $conditions[] = "a.tanggal = '" . $conn->real_escape_string($selected_date) . "'";
 }
 if (count($conditions) > 0) {
     $sql .= " AND " . implode(' AND ', $conditions);
@@ -224,6 +224,7 @@ $result = $conn->query($sql);
 // Menutup koneksi
 $conn->close();
 ?>
+
 
     
 
