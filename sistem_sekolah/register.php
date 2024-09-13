@@ -32,7 +32,7 @@ if (isset($_POST)) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
@@ -50,16 +50,19 @@ if (isset($_POST)) {
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f8f9fa; /* Light background color */
+            background-color: #f8f9fa;
+            /* Light background color */
         }
 
         .form-container {
-            max-width: 1000px; /* Increased width for better visibility */
+            max-width: 1000px;
+            /* Increased width for better visibility */
             margin: auto;
             padding: 20px;
             border: 1px solid #ddd;
             border-radius: 5px;
-            background-color: #ffffff; /* White background for the form */
+            background-color: #ffffff;
+            /* White background for the form */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
@@ -70,11 +73,16 @@ if (isset($_POST)) {
 
         .form-container .form-item {
 <<<<<<< HEAD
+<<<<<<< HEAD
             flex: 1 1 calc(50% - 20px);
             /* 50% width minus gap */
             min-width: 200px;
 =======
             flex: 1 1 100%; /* Full width for form items */
+=======
+            flex: 1 1 100%;
+            /* Full width for form items */
+>>>>>>> fa68da69e5d68d6ae660e24d6831a8ad5498b92c
             min-width: 300px;
 >>>>>>> dbc12cba0c27b791389791dc1339069e78637609
         }
@@ -95,8 +103,10 @@ if (isset($_POST)) {
         }
 
         .form-container button {
-            position: relative; /* Changed from absolute to relative */
-            margin-top: 20px; /* Added margin to push it down */
+            position: relative;
+            /* Changed from absolute to relative */
+            margin-top: 20px;
+            /* Added margin to push it down */
             padding: 10px 15px;
             background-color: #28a745;
             color: white;
@@ -113,25 +123,33 @@ if (isset($_POST)) {
         .form-container button:hover {
             background-color: #218838;
         }
+
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
         }
-        table, th, td {
+
+        table,
+        th,
+        td {
             border: 1px solid #ddd;
             padding: 10px;
             text-align: left;
         }
+
         th {
             background-color: #28a745;
             color: white;
         }
+
         tr:nth-child(even) {
             background-color: #f2f2f2;
         }
+
         td {
-            width: 33%; /* Set each cell to take up 33% of the table width */
+            width: 33%;
+            /* Set each cell to take up 33% of the table width */
         }
     </style>
 </head>
@@ -235,7 +253,8 @@ if (isset($_POST)) {
 =======
     <div class="container-xxl position-relative bg-white d-flex p-0">
         <!-- Spinner Start -->
-        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div id="spinner"
+            class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
             <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
                 <span class="sr-only">Loading...</span>
             </div>
@@ -252,8 +271,7 @@ if (isset($_POST)) {
             <!-- Form and Table -->
             <div class="form-container">
                 <h2>Pendaftaran Siswa</h2>
-                <form method="post" action="">
-                    <!-- Registration Form -->
+                <form id="registrationForm" action="" method="post">
                     <div class="form-item">
                         <label for="id">ID:</label>
                         <input type="text" id="id" name="id">
@@ -311,8 +329,8 @@ if (isset($_POST)) {
                         <input type="text" id="nama_wali" name="nama_wali">
                     </div>
                     <div class="form-item">
-                        <label for="tahun_lahir_wali">Tahun Lahir Wali:</label>
-                        <input type="number" id="tahun_lahir_wali" name="tahun_lahir_wali">
+                        <label for="tanggal_lahir_wali">Tanggal Lahir Wali:</label>
+                        <input type="number" id="tanggal_lahir_wali" name="tanggal_lahir_wali">
                     </div>
                     <div class="form-item">
                         <label for="pendidikan_wali">Pendidikan Wali:</label>
@@ -335,42 +353,61 @@ if (isset($_POST)) {
                         <input type="number" id="spp_nominal" name="spp_nominal">
                     </div>
                     <div class="form-item">
-                        <label for="nomer_hp">Nomer hp:</label>
-                        <input type="text" id="nomer_hp" name="nomer_hp">
+                        <label for="nomer">Nomer:</label>
+                        <input type="text" id="nomer" name="nomer">
                     </div>
 
-                    <!-- Table for Anggota Kelas -->
-                    <h2>Anggota Kelas</h2>
+                    <h2>Anggota kelas </h2>
                     <div class="form-item">
-                        <label for="id_kelas">ID Kelas:</label>
+                        <label for="id">ID:</label>
+                        <input type="text" id="id" name="id">
+                    </div>
+                    <div class="form-item">
+                        <label for="id_kelas">id kelas:</label>
                         <input type="text" id="id_kelas" name="id_kelas">
                     </div>
                     <div class="form-item">
-                        <label for="id_siswa">ID Siswa:</label>
+                        <label for="id_siswa">id siswa:</label>
                         <input type="text" id="id_siswa" name="id_siswa">
                     </div>
                     <div class="form-item">
-                        <label for="tahun_akademik">Tahun Akademik:</label>
+                        <label for="tahun_akademik">tahun akademik:</label>
                         <input type="text" id="tahun_akademik" name="tahun_akademik">
                     </div>
-
-                    <!-- Table for Rencana SPP -->
-                    <h2>Rencana SPP</h2>
                     <div class="form-item">
-                        <label for="wajib_spp">Wajib SPP:</label>
+                        <label for="status_siswa">setatus siswa:</label>
+                        <input type="text" id="status_siswa" name="status_siswa">
+                    </div>
+                    <!-- Data will be inserted here -->
+                    <!-- Table to display submitted data -->
+
+                    <h2>Rencana spp </h2>
+                    <div class="form-item">
+                        <label for="id">ID:</label>
+                        <input type="text" id="id" name="id">
+                    </div>
+                    <div class="form-item">
+                        <label for="id_siswa">id siswa:</label>
+                        <input type="text" id="id_siswa" name="id_siswa">
+                    </div>
+                    <div class="form-item">
+                        <label for="pembayaran_ke">pembayaran ke:</label>
+                        <input type="text" id="pembayaran_ke" name="pembayaran_ke">
+                    </div>
+                    <div class="form-item">
+                        <label for="bulan_pembayaran">bulan_pembayaran:</label>
+                        <input type="text" id="bulan_pembayaran" name="bulan_pembayaran">
+                    </div>
+                    <div class="form-item">
+                        <label for="wajib_spp">wajib spp:</label>
                         <input type="text" id="wajib_spp" name="wajib_spp">
                     </div>
                     <div class="form-item">
-                        <label for="tanggal_masuk">Tanggal Masuk:</label>
-                        <input type="date" id="tanggal_masuk" name="tanggal_masuk">
+                        <label for="id_user">id user :</label>
+                        <input type="text" id="id_user" name="id_user">
                     </div>
-                    <button type="submit">Simpan</button>
+                    <button type="submit">simpan</button>
                 </form>
-
-             
-                        <!-- Data will be inserted here -->
-                    </tbody>
-                </table>
             </div>
 
             <!-- Footer -->
@@ -396,5 +433,10 @@ if (isset($_POST)) {
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
 </body>
+<<<<<<< HEAD
 </html>
 >>>>>>> dbc12cba0c27b791389791dc1339069e78637609
+=======
+
+</html>
+>>>>>>> fa68da69e5d68d6ae660e24d6831a8ad5498b92c

@@ -75,7 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $kehadiran_kelas = $value;
 
             // Update data absensi ke dalam database
-            $update_sql = "UPDATE absensi_kelas SET kehadiran_kelas='$kehadiran_kelas', tanggal='$tanggal' WHERE id=$id_absensi";
+            $update_sql = "UPDATE abse nsi_kelas SET kehadiran_kelas='$kehadiran_kelas', tanggal='$tanggal' WHERE id=$id_absensi";
             if ($conn->query($update_sql) === TRUE) {
                 // Menampilkan pesan berhasil jika update sukses
                 echo "<script>alert('Data berhasil disimpan!');</script>";
@@ -99,7 +99,7 @@ $jurnal_result = $conn->query($jurnal_sql);
 $sql = "SELECT a.id, a.id_siswa, a.tanggal, a.id_jurnal, a.kehadiran_kelas, s.nama 
         FROM absensi_kelas a
         JOIN siswa s ON a.id_siswa = s.id
-        WHERE 1=1";
+        WHERE 1=1"; 
 $conditions = [];
 if ($selected_jurnal != '') {
     $conditions[] = "a.id_jurnal = " . $conn->real_escape_string($selected_jurnal);
