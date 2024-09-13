@@ -204,7 +204,11 @@
                         <th>Id</th>
                         <th>Nama</th>
                         <th>Nisn</th>
+<<<<<<< HEAD
                         <th>Nomer Hp</th>
+=======
+                        <th>Hp</th>
+>>>>>>> 023162dc11c66c78f7fcab460220c57166e8f724
                     </tr>
                 </thead>
                 <tbody>
@@ -217,7 +221,7 @@
                         <td><?php echo $hasil['id']; ?></td>
                         <td><?php echo $hasil['nama']; ?></td>
                         <td><?php echo $hasil['nisn']; ?></td>
-                        <td><?php echo $hasil['nomer_hp']; ?></td>
+                        <td><?php echo $hasil['hp']; ?></td>
                     </tr>
                     <?php
                         }
