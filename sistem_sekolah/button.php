@@ -286,7 +286,7 @@
                         <th>Id</th>
                         <th>Nama</th>
                         <th>Nisn</th>
-                        <th> Nomer Hp</th>
+                        <th>Hp</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -301,7 +301,7 @@
                         <td><?php echo $hasil['id']; ?></td>
                         <td><?php echo $hasil['nama']; ?></td>
                         <td><?php echo $hasil['nisn']; ?></td>
-                        <td><?php echo $hasil['nomer_hp']; ?></td>
+                        <td><?php echo $hasil['hp']; ?></td>
                     </tr>
                     <?php
                         }
