@@ -67,21 +67,34 @@ if ($conn->connect_error) {
 
 // Proses penyimpanan absensi
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $tanggal = isset($_POST['tanggal']) ? $_POST['tanggal'] : date('Y-m-d'); // Ambil tanggal dari input
+    $tanggal = isset($_POST['tanggal']) ? $_POST['tanggal'] : date('Y-m-d');
+    $id_jurnal = isset($_POST['jurnal']) ? $_POST['jurnal'] : '';
 
     foreach ($_POST as $key => $value) {
         if (strpos($key, 'kehadiran_') === 0) {
             $id_absensi = str_replace('kehadiran_', '', $key);
             $kehadiran_kelas = $value;
 
-            // Update data absensi ke dalam database
-            $update_sql = "UPDATE absensi_kelas SET kehadiran_kelas='$kehadiran_kelas', tanggal='$tanggal' WHERE id=$id_absensi";
-            if ($conn->query($update_sql) === TRUE) {
-                // Menampilkan pesan berhasil jika update sukses
-                echo "<script>alert('Data berhasil disimpan!');</script>";
+            // Periksa apakah data absensi sudah ada untuk tanggal dan jurnal ini
+            $check_sql = "SELECT id FROM absensi_kelas WHERE id_siswa=$id_absensi AND tanggal='$tanggal' AND id_jurnal='$id_jurnal'";
+            $check_result = $conn->query($check_sql);
+
+            if ($check_result->num_rows > 0) {
+                // Jika ada, update data absensi
+                $update_sql = "UPDATE absensi_kelas SET kehadiran_kelas='$kehadiran_kelas' WHERE id_siswa=$id_absensi AND tanggal='$tanggal' AND id_jurnal='$id_jurnal'";
+                if ($conn->query($update_sql) === TRUE) {
+                    echo "<script>alert('Data berhasil diupdate!');</script>";
+                } else {
+                    echo "Error: " . $conn->error;
+                }
             } else {
-                // Menampilkan pesan gagal jika update gagal
-                echo "Error: " . $conn->error;
+                // Jika tidak ada, insert data absensi baru
+                $insert_sql = "INSERT INTO absensi_kelas (id_siswa, tanggal, id_jurnal, kehadiran_kelas) VALUES ($id_absensi, '$tanggal', '$id_jurnal', '$kehadiran_kelas')";
+                if ($conn->query($insert_sql) === TRUE) {
+                    echo "<script>alert('Data berhasil disimpan!');</script>";
+                } else {
+                    echo "Error: " . $conn->error;
+                }
             }
         }
     }
@@ -121,8 +134,9 @@ $result = $conn->query($sql);
     <title>Tabel Absensi Kelas</title>
     <style>
         table {
-            width: 100%;
+            width: 95%;
             border-collapse: collapse;
+            margin: 0 auto; /* Center the table */
         }
         table, th, td {
             border: 1px solid black;
@@ -138,17 +152,18 @@ $result = $conn->query($sql);
             margin-bottom: 10px;
             display: flex;
             justify-content: space-between;
+            align-items: center;
         }
         .filter-container form {
             margin: 0;
         }
         button[type="submit"] {
-            margin-top: 10px;
             padding: 8px 16px;
             background-color: #4CAF50;
             color: white;
             border: none;
             cursor: pointer;
+            float: right; /* Place button on the right */
         }
         button[type="submit"]:hover {
             background-color: #45a049;
@@ -171,21 +186,20 @@ $result = $conn->query($sql);
                 }
                 ?>
             </select>
+            <input type="date" id="tanggal" name="tanggal" value="<?php echo $selected_date; ?>" onchange="this.form.submit()">
         </form>
     </div>
 
-    <!-- Input tanggal untuk mengubah semua data -->
+    <!-- Formulir untuk mengubah data absensi -->
     <form method="POST" action="">
-        <div class="filter-container">
-            <input type="date" id="tanggal" name="tanggal" value="<?php echo isset($_POST['tanggal']) ? $_POST['tanggal'] : date('Y-m-d'); ?>">
-        </div>
+        <input type="hidden" name="jurnal" value="<?php echo $selected_jurnal; ?>">
+        <input type="hidden" name="tanggal" value="<?php echo $selected_date; ?>">
 
         <table>
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>No</th>
                     <th>Nama Siswa</th>
-                    <th>ID Jurnal</th>
                     <th>Hadir</th>
                     <th>Izin</th>
                     <th>Sakit</th>
@@ -195,19 +209,20 @@ $result = $conn->query($sql);
             <tbody>
         <?php
         if ($result->num_rows > 0) {
+            $no = 1; // Inisialisasi nomor urut 
             while($row = $result->fetch_assoc()) {
                 echo "<tr>";
-                echo "<td>" . $row["id"] . "</td>";
+                echo "<td>" . $no . "</td>"; // Menampilkan nomor urut
                 echo "<td>" . $row["nama"] . "</td>";
-                echo "<td>" . $row["id_jurnal"] . "</td>";
-                echo "<td><input type='radio' name='kehadiran_" . $row["id"] . "' value='Hadir'" . ($row["kehadiran_kelas"] == "Hadir" ? " checked" : "") . "></td>";
-                echo "<td><input type='radio' name='kehadiran_" . $row["id"] . "' value='Izin'" . ($row["kehadiran_kelas"] == "Izin" ? " checked" : "") . "></td>";
-                echo "<td><input type='radio' name='kehadiran_" . $row["id"] . "' value='Sakit'" . ($row["kehadiran_kelas"] == "Sakit" ? " checked" : "") . "></td>";
-                echo "<td><input type='radio' name='kehadiran_" . $row["id"] . "' value='Alfa'" . ($row["kehadiran_kelas"] == "Alfa" ? " checked" : "") . "></td>";
+                echo "<td><input type='radio' name='kehadiran_" . $row["id_siswa"] . "' value='Hadir'" . ($row["kehadiran_kelas"] == "Hadir" ? " checked" : "") . "></td>";
+                echo "<td><input type='radio' name='kehadiran_" . $row["id_siswa"] . "' value='Izin'" . ($row["kehadiran_kelas"] == "Izin" ? " checked" : "") . "></td>";
+                echo "<td><input type='radio' name='kehadiran_" . $row["id_siswa"] . "' value='Sakit'" . ($row["kehadiran_kelas"] == "Sakit" ? " checked" : "") . "></td>";
+                echo "<td><input type='radio' name='kehadiran_" . $row["id_siswa"] . "' value='Alfa'" . ($row["kehadiran_kelas"] == "Alfa" ? " checked" : "") . "></td>";
                 echo "</tr>";
+                $no++; // Increment nomor urut
             }
         } else {
-            echo "<tr><td colspan='7'>Tidak ada data</td></tr>";
+            echo "<tr><td colspan='6'>Tidak ada data</td></tr>";
         }
         ?>
         </tbody>
