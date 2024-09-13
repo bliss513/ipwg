@@ -233,33 +233,52 @@
                         <!-- Data will be inserted here -->
                            <!-- Table to display submitted data -->
              
-                <h2>Rencana spp </h2>
-                <form id="registrationForm" onsubmit="submitRegistration(event)">
-                    <div class="form-item">
-                        <label for="id">ID:</label>
-                        <input type="text" id="id" name="id" required>
-                    </div>
-                    <div class="form-item">
-                        <label for="id_siswa">id siswa:</label>
-                        <input type="text" id="id_siswa" name="id_siswa" required>
-                    </div>
-                    <div class="form-item">
-                        <label for="pembayaran_ke">pembayaran ke:</label>
-                        <input type="text" id="pembayaran_ke" name="pembayaran_ke" required>
-                    </div>
-                    <div class="form-item">
-                        <label for="bulan_pembayaran">bulan_pembayaran:</label>
-                        <input type="text" id="bulan_pembayaran" name="bulan_pembayaran" required>
-                    </div>
-                    <div class="form-item">
-                        <label for="wajib_spp">wajib spp:</label>
-                        <input type="text" id="wajib_spp" name="wajib_spp" required>
-                    </div>
-                    <div class="form-item">
-                        <label for="id_user">id user :</label>
-                        <input type="text" id="id_user" name="id_user" required>
-                    </div>
-                    <button type="simpan">simpan</button>
+                           <h2>Rencana spp</h2>
+<form id="registrationForm" onsubmit="submitRegistration(event)">
+    <div class="form-item">
+        <label for="id">ID:</label>
+        <input type="text" id="id" name="id" required>
+    </div>
+    <div class="form-item">
+        <label for="id_siswa">id siswa:</label>
+        <input type="text" id="id_siswa" name="id_siswa" required>
+    </div>
+    <div class="form-item">
+        <label for="pembayaran_ke">pembayaran ke:</label>
+        <input type="text" id="pembayaran_ke" name="pembayaran_ke" required>
+    </div>
+    <div class="form-item">
+        <label for="bulan_pembayaran">bulan_pembayaran:</label>
+        <input type="text" id="bulan_pembayaran" name="bulan_pembayaran" required>
+    </div>
+    <div class="form-item">
+        <label for="wajib_spp">wajib spp:</label>
+        <input type="text" id="wajib_spp" name="wajib_spp" required>
+    </div>
+    <div class="form-item">
+        <label for="id_user">id user:</label>
+        <input type="text" id="id_user" name="id_user" required>
+    </div>
+    <div class="form-item">
+        <label for="tanggal_masuk">Tanggal Masuk:</label>
+        <input type="date" id="tanggal_masuk" name="tanggal_masuk" required>
+    </div>
+    <button type="simpan">simpan</button>
+</form>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var today = new Date().toISOString().split('T')[0];
+        document.getElementById('tanggal_masuk').value = today;
+    });
+
+    function submitRegistration(event) {
+        event.preventDefault();
+        // Your form submission logic here
+        alert('Form submitted!');
+    }
+</script>
+
                     </form>
                         <!-- Data will be inserted here -->
                 </table>
