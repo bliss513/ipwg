@@ -160,12 +160,7 @@ if (isset($_POST)) {
             <!-- Form and Table -->
             <div class="form-container">
                 <h2>Pendaftaran Siswa</h2>
-<<<<<<< HEAD
                 <form id="registrationForm" action="" method="post">
-=======
-                <form method="post" action="">
-                    <!-- Registration Form -->
->>>>>>> dbc12cba0c27b791389791dc1339069e78637609
                     <div class="form-item">
                         <label for="id">ID:</label>
                         <input type="text" id="id" name="id">
@@ -247,7 +242,6 @@ if (isset($_POST)) {
                         <input type="number" id="spp_nominal" name="spp_nominal">
                     </div>
                     <div class="form-item">
-<<<<<<< HEAD
                         <label for="nomer">Nomer:</label>
                         <input type="text" id="nomer" name="nomer">
                     </div>
@@ -303,44 +297,6 @@ if (isset($_POST)) {
                     </div>
                     <button type="submit">simpan</button>
                 </form>
-=======
-                        <label for="nomer_hp">Nomer hp:</label>
-                        <input type="text" id="nomer_hp" name="nomer_hp">
-                    </div>
-
-                    <!-- Table for Anggota Kelas -->
-                    <h2>Anggota Kelas</h2>
-                    <div class="form-item">
-                        <label for="id_kelas">ID Kelas:</label>
-                        <input type="text" id="id_kelas" name="id_kelas">
-                    </div>
-                    <div class="form-item">
-                        <label for="id_siswa">ID Siswa:</label>
-                        <input type="text" id="id_siswa" name="id_siswa">
-                    </div>
-                    <div class="form-item">
-                        <label for="tahun_akademik">Tahun Akademik:</label>
-                        <input type="text" id="tahun_akademik" name="tahun_akademik">
-                    </div>
-
-                    <!-- Table for Rencana SPP -->
-                    <h2>Rencana SPP</h2>
-                    <div class="form-item">
-                        <label for="wajib_spp">Wajib SPP:</label>
-                        <input type="text" id="wajib_spp" name="wajib_spp">
-                    </div>
-                    <div class="form-item">
-                        <label for="tanggal_masuk">Tanggal Masuk:</label>
-                        <input type="date" id="tanggal_masuk" name="tanggal_masuk">
-                    </div>
-                    <button type="submit">Simpan</button>
-                </form>
-
-             
-                        <!-- Data will be inserted here -->
-                    </tbody>
-                </table>
->>>>>>> dbc12cba0c27b791389791dc1339069e78637609
             </div>
 
             <!-- Footer -->
