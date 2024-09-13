@@ -72,9 +72,19 @@ if (isset($_POST)) {
         }
 
         .form-container .form-item {
+<<<<<<< HEAD
+<<<<<<< HEAD
+            flex: 1 1 calc(50% - 20px);
+            /* 50% width minus gap */
+            min-width: 200px;
+=======
+            flex: 1 1 100%; /* Full width for form items */
+=======
             flex: 1 1 100%;
             /* Full width for form items */
+>>>>>>> fa68da69e5d68d6ae660e24d6831a8ad5498b92c
             min-width: 300px;
+>>>>>>> dbc12cba0c27b791389791dc1339069e78637609
         }
 
         .form-container label {
@@ -103,6 +113,11 @@ if (isset($_POST)) {
             border: none;
             border-radius: 4px;
             cursor: pointer;
+<<<<<<< HEAD
+            flex: 1 1 100%;
+            /* Button takes full width */
+=======
+>>>>>>> dbc12cba0c27b791389791dc1339069e78637609
         }
 
         .form-container button:hover {
@@ -140,6 +155,102 @@ if (isset($_POST)) {
 </head>
 
 <body>
+<<<<<<< HEAD
+    <form action="" method="post">
+        <div class="form-container">
+            <h2>Pendaftaran Siswa</h2>
+            <div class="form-item">
+                <label for="id">ID:</label>
+                <input type="text" id="id" name="id">
+            </div>
+            <div class="form-item">
+                <label for="nama">nama lengkap:</label>
+                <input type="text" id="nama" name="nama">
+            </div>
+            <div class="form-item">
+                <label for="username">username:</label>
+                <input type="username" id="username" name="username">
+            </div>
+            <div class="form-item">
+                <label for="password">password:</label>
+                <input type="text" id="password" name="password">
+            </div>
+            <div class="form-item">
+                <label for="jenis_kelamin">Jenis Kelamin:</label>
+                <select id="jenis_kelamin" name="jenis_kelamin">
+                    <option value="" disabled selected>Pilih Jenis Kelamin</option>
+                    <option value="Laki-laki">Laki-laki</option>
+                    <option value="Perempuan">Perempuan</option>
+                </select>
+            </div>
+            <div class="form-item">
+                <label for="nisn">NISN:</label>
+                <input type="text" id="nisn" name="nisn">
+            </div>
+            <div class="form-item">
+                <label for="tempat_lahir">Tempat Lahir:</label>
+                <input type="text" id="tempat_lahir" name="tempat_lahir">
+            </div>
+            <div class="form-item">
+                <label for="tanggal_lahir">Tanggal Lahir:</label>
+                <input type="date" id="tanggal_lahir" name="tanggal_lahir">
+            </div>
+            <div class="form-item">
+                <label for="alamat">Alamat:</label>
+                <input type="text" id="alamat" name="alamat">
+            </div>
+            <div class="form-item">
+                <label for="nomor_hp">Nomor HP:</label>
+                <input type="text" id="nomor_hp" name="nomor_hp">
+            </div>
+            <div class="form-item">
+                <label for="email">Email:</label>
+                <input type="text" id="email" name="email">
+            </div>
+            <div class="form-item">
+                <label for="foto">Foto (URL):</label>
+                <input type="url" id="foto" name="foto">
+            </div>
+            <div class="form-item">
+                <label for="nama_wali">Nama Wali:</label>
+                <input type="text" id="nama_wali" name="nama_wali">
+            </div>
+            <div class="form-item">
+                <label for="tahun_lahir_wali">Tahun Lahir Wali:</label>
+                <input type="number" id="tahun_lahir_wali" name="tahun_lahir_wali">
+            </div>
+            <div class="form-item">
+                <label for="pendidikan_wali">Pendidikan Wali:</label>
+                <input type="text" id="pendidikan_wali" name="pendidikan_wali">
+            </div>
+            <div class="form-item">
+                <label for="pekerjaan_wali">Pekerjaan Wali:</label>
+                <input type="text" id="pekerjaan_wali" name="pekerjaan_wali">
+            </div>
+            <div class="form-item">
+                <label for="penghasilan_wali">Penghasilan Wali:</label>
+                <input type="number" id="penghasilan_wali" name="penghasilan_wali">
+            </div>
+            <div class="form-item">
+                <label for="angkatan">Angkatan:</label>
+                <input type="number" id="angkatan" name="angkatan">
+            </div>
+            <div class="form-item">
+                <label for="spp_nominal">Nominal SPP:</label>
+                <input type="number" id="spp_nominal" name="spp_nominal">
+            </div>
+            <div class="form-item">
+                <label for="nomer">Nomer:</label>
+                <input type="text" id="nomer" name="nomer">
+            </div>
+            <button type="submin">Daftar</button>
+        </div>
+    </form>
+
+</body>
+
+</html>
+=======
     <div class="container-xxl position-relative bg-white d-flex p-0">
         <!-- Spinner Start -->
         <div id="spinner"
@@ -322,5 +433,10 @@ if (isset($_POST)) {
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
 </body>
+<<<<<<< HEAD
+</html>
+>>>>>>> dbc12cba0c27b791389791dc1339069e78637609
+=======
 
 </html>
+>>>>>>> fa68da69e5d68d6ae660e24d6831a8ad5498b92c
