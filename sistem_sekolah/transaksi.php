@@ -96,7 +96,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Pembayaran SPP</h1>
+        <h1>Transaksi</h1>
         <form id="pembayaranForm">
             <div class="form-group">
                 <label for="tanggalBayar">Tanggal Bayar:</label>
