@@ -225,7 +225,7 @@
                         <label for="tanggal_masuk">Tanggal Masuk:</label>
                         <input type="date" id="tanggal_masuk" name="tanggal_masuk" required>
                     </div>
-                    <button nama="simpan" type="submit">Simpan</button>
+                    <button nama="simpan" type="submit" id="">Simpan</button>
                 </form>
 
              
