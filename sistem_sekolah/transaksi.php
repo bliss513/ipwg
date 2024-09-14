@@ -119,7 +119,6 @@ $siswa = mysqli_fetch_array($data);
                         <th>Sisa Bayar</th>
                         <th>Total Bayar</th>
                         <th>Status</th>
-                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody id="reportTableBody">
@@ -157,10 +156,6 @@ $siswa = mysqli_fetch_array($data);
                     <td>Rp. ${sisaBayar.toFixed(2)}</td>
                     <td>Rp. ${totalBayar.toFixed(2)}</td>
                     <td>${status}</td>
-                    <td>
-                        <button class="btn btn-pay">Bayar</button>
-                        <button class="btn btn-print">Cetak</button>
-                    </td>
                 </tr>
             `;
         });
