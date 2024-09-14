@@ -22,17 +22,14 @@ if(isset($_POST['simpan'])){
     $spp_nominal = $_POST['spp_nominal'];
     $nomer_hp = $_POST['nomer_hp'];
    
-
     $sql = "INSERT INTO siswa( username, password, nama, jenis_kelamin, nisn, tempat_lahir, tanggal_lahir, alamat, email, foto, nama_wali, tahun_lahir_wali, pendidikan_wali, pekerjaan_wali, penghasilan_wali, angkatan, spp_nominal, nomer_hp) VALUES( '$username', '$password', '$nama', '$jenis_kelamin', '$nisn', '$tempat_lahir', '$tanggal_lahir', '$alamat', '$email', '$foto', '$nama_wali', '$tahun_lahir_wali', '$pendidikan_wali', '$pekerjaan_wali', '$penghasilan_wali', '$angkatan', '$spp_nominal', '$nomer_hp')";
 
     $id_kelas = $_POST['id_kelas'];
-   
     $tahun_akademik = $_POST['tahun_akademik'];
    
 
     $sql = "INSERT INTO anggota_kelas( id_kelas, tahun_akademik,) VALUES('$id_kelas', '$tahun_akademik',  )";
     
-   
     $wajib_spp = $_POST['wajib_spp'];
     $tanggal_masuk = $_POST['tanggal_masuk'];
 
