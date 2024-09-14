@@ -214,7 +214,7 @@ button[type="submit"]:hover, .cancel-btn:hover, .delete-btn:hover {
                 </div>
                 <div class="input-group">
                     <label for="nomer_hp">Nomer HP</label>
-                    <input type="text" id="hp" name="hp" value="<?php echo htmlspecialchars($hasil['hp']);?>">
+                    <input type="text" id="nomer_hp" name="nomer_hp" value="<?php echo htmlspecialchars($hasil['nomer_hp']);?>">
                 </div>
             </div>
 

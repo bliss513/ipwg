@@ -210,119 +210,44 @@
         </select>
     </div>
     <div class="table-container">
-        <table id="siswa-table">
-            <thead>
-                <tr>
-                    <th>No.</th>
-                    <th>Nama Siswa</th>
-                    <th>Kelas</th>
-                    <th class="checkbox-column">
-                        <input type="checkbox" id="select-all" onclick="toggleSelectAll(this)">
-                    </th>
-                </tr>
-            </thead>
-            <tbody id="tabel-body">
-                <!-- Data Siswa Kelas 5 -->
-                <tr data-class="5">
-                    <td>1</td>
-                    <td>Andi</td>
-                    <td>5</td>
-                    <td class="checkbox-column"><input type="checkbox" id="andi" name="peralihan" value="andi"></td>
-                </tr>
-                <tr data-class="5">
-                    <td>2</td>
-                    <td>Budi</td>
-                    <td>5</td>
-                    <td class="checkbox-column"><input type="checkbox" id="budi" name="peralihan" value="budi"></td>
-                </tr>
-                <tr data-class="5">
-                    <td>3</td>
-                    <td>Cici</td>
-                    <td>5</td>
-                    <td class="checkbox-column"><input type="checkbox" id="cici" name="peralihan" value="cici"></td>
-                </tr>
-                <tr data-class="5">
-                    <td>4</td>
-                    <td>Doni</td>
-                    <td>5</td>
-                    <td class="checkbox-column"><input type="checkbox" id="doni" name="peralihan" value="doni"></td>
-                </tr>
-                <tr data-class="5">
-                    <td>5</td>
-                    <td>Eka</td>
-                    <td>5</td>
-                    <td class="checkbox-column"><input type="checkbox" id="eka" name="peralihan" value="eka"></td>
-                </tr>
-
-                <!-- Data Siswa Kelas 6 -->
-                <tr data-class="6">
-                    <td>6</td>
-                    <td>Fifi</td>
-                    <td>6</td>
-                    <td class="checkbox-column"><input type="checkbox" id="fifi" name="peralihan" value="fifi"></td>
-                </tr>
-                <tr data-class="6">
-                    <td>7</td>
-                    <td>Gina</td>
-                    <td>6</td>
-                    <td class="checkbox-column"><input type="checkbox" id="gina" name="peralihan" value="gina"></td>
-                </tr>
-                <tr data-class="6">
-                    <td>8</td>
-                    <td>Hadi</td>
-                    <td>6</td>
-                    <td class="checkbox-column"><input type="checkbox" id="hadi" name="peralihan" value="hadi"></td>
-                </tr>
-                <tr data-class="6">
-                    <td>9</td>
-                    <td>Ika</td>
-                    <td>6</td>
-                    <td class="checkbox-column"><input type="checkbox" id="ika" name="peralihan" value="ika"></td>
-                </tr>
-                <tr data-class="6">
-                    <td>10</td>
-                    <td>Joni</td>
-                    <td>6</td>
-                    <td class="checkbox-column"><input type="checkbox" id="joni" name="peralihan" value="joni"></td>
-                </tr>
-
-                <!-- Data Siswa Kelas 7 -->
-                <tr data-class="7">
-                    <td>11</td>
-                    <td>Kiki</td>
-                    <td>7</td>
-                    <td class="checkbox-column"><input type="checkbox" id="kiki" name="peralihan" value="kiki"></td>
-                </tr>
-                <tr data-class="7">
-                    <td>12</td>
-                    <td>Lina</td>
-                    <td>7</td>
-                    <td class="checkbox-column"><input type="checkbox" id="lina" name="peralihan" value="lina"></td>
-                </tr>
-                <tr data-class="7">
-                    <td>13</td>
-                    <td>Mario</td>
-                    <td>7</td>
-                    <td class="checkbox-column"><input type="checkbox" id="mario" name="peralihan" value="mario"></td>
-                </tr>
-                <tr data-class="7">
-                    <td>14</td>
-                    <td>Nina</td>
-                    <td>7</td>
-                    <td class="checkbox-column"><input type="checkbox" id="nina" name="peralihan" value="nina"></td>
-                </tr>
-                <tr data-class="7">
-                    <td>15</td>
-                    <td>Omar</td>
-                    <td>7</td>
-                    <td class="checkbox-column"><input type="checkbox" id="omar" name="peralihan" value="omar"></td>
-                </tr>
-            </tbody>
-        </table>
-
-        <div class="button-container">
-            <button onclick="prosesPeralihan()">Proses</button>
-        </div>
+        <form id="status-form" method="POST" action="">
+            <table id="siswa-table">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Nama Siswa</th>
+                        <th>Tahun Akademik</th>
+                        <th class="checkbox-column">
+                            <input type="checkbox" id="select-all" onclick="toggleSelectAll(this)">
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                        include "config/koneksi.php";
+                        $data = mysqli_query($koneksi, "SELECT a.id, s.nama AS nama_siswa, a.tahun_akademik, a.status_anggota 
+                                                        FROM anggota_kelas a 
+                                                        JOIN siswa s ON a.id_siswa = s.id 
+                                                        WHERE a.id BETWEEN 1 AND 14");
+                        while ($hasil = mysqli_fetch_array($data)) {
+                    ?>
+                    <tr>
+                        <td><?php echo $hasil['id']; ?></td>
+                        <td><?php echo htmlspecialchars($hasil['nama_siswa']); ?></td>
+                        <td><?php echo htmlspecialchars($hasil['tahun_akademik']); ?></td>
+                        <td class="checkbox-column">
+                            <input type="checkbox" name="status_anggota[]" value="<?php echo $hasil['id']; ?>" <?php echo $hasil['status_anggota'] == 'aktif' ? 'checked' : ''; ?>>
+                        </td>
+                    </tr>
+                    <?php
+                        }
+                    ?>
+                </tbody>
+            </table>
+            <div class="button-container">
+                <button type="submit" name="proses">Proses</button>
+            </div>
+        </form>
         
         <!-- Placeholder for result and active tables -->
         <div class="table-wrapper">
@@ -355,70 +280,36 @@
             });
         }
 
-        function prosesPeralihan() {
-            const selectedClass = document.getElementById('kelas-cari').value;
-            const checkboxes = document.querySelectorAll('tbody input[type="checkbox"]');
-            const peralihan = [];
-            const active = [];
-            const rows = document.querySelectorAll('#siswa-table tbody tr');
-
-            rows.forEach(row => {
-                const checkbox = row.querySelector('input[type="checkbox"]');
-                const no = row.cells[0].textContent;
-                const namaSiswa = row.cells[1].textContent;
-                const kelasSaatIni = parseInt(row.cells[2].textContent, 10);
-                const kelasBaru = kelasSaatIni + 1; // Increment class level by 1
-
-                if (selectedClass === '' || row.dataset.class !== selectedClass) {
-                    return; // Skip rows that don't match the selected class
-                }
-
-                if (checkbox.checked) {
-                    // Student is staying in the current class
-                    active.push({ no, namaSiswa, kelasSaatIni, status: 'Active' });
-                } else {
-                    // Student is moving to the next class
-                    peralihan.push({ no, namaSiswa, kelasBaru, status: 'Inactive' });
-                }
-            });
-
-            displayResultTable(peralihan);
-            displayActiveTable(active);
-        }
-
-        function displayResultTable(data) {
-            const container = document.getElementById('result-table-container');
-            let html = '<h2>Daftar Siswa yang Aktif (kelas baru)</h2>';
-            html += '<table><thead><tr><th>No.</th><th>Nama Siswa</th><th>Kelas baru</th></tr></thead><tbody>';
-
-            data.forEach(item => {
-                if (item.status === 'Inactive') {
-                    html += `<tr><td>${item.no}</td><td>${item.namaSiswa}</td><td>${item.kelasBaru}</td></tr>`;
-                }
-            });
-
-            html += '</tbody></table>';
-            container.innerHTML = html;
-        }
-
-        function displayActiveTable(data) {
-            const container = document.getElementById('active-table-container');
-            let html = '<h2>Daftar Siswa tidak Aktif (siswa tinggal kelas)</h2>';
-            html += '<table><thead><tr><th>No.</th><th>Nama Siswa</th><th>siswa tinggal kelas</th></tr></thead><tbody>';
-
-            data.forEach(item => {
-                if (item.status === 'Active') {
-                    html += `<tr class="inactive"><td>${item.no}</td><td>${item.namaSiswa}</td><td>${item.kelasSaatIni}</td></tr>`;
-                }
-            });
-
-            html += '</tbody></table>';
-            container.innerHTML = html;
-        }
+        // JavaScript functions to display result and active tables, if needed, can be added here
     </script>
+
+    <?php
+        // PHP logic for processing form submission
+        if (isset($_POST['proses'])) {
+            include "config/koneksi.php";
+
+            // Update status for selected checkboxes
+            $ids = $_POST['status_anggota'] ?? [];
+            $ids = array_map('intval', $ids); // Sanitize input
+            $ids_string = implode(',', $ids);
+
+            // Update status to 'aktif' for selected IDs
+            $update_active = "UPDATE anggota_kelas SET status_anggota = 'aktif' WHERE id IN ($ids_string)";
+            mysqli_query($koneksi, $update_active);
+
+            // Update status to 'tidak aktif' for unselected IDs
+            $update_inactive = "UPDATE anggota_kelas SET status_anggota = 'tidak aktif' WHERE id NOT IN ($ids_string)";
+            mysqli_query($koneksi, $update_inactive);
+
+            // Provide feedback
+            echo '<script>alert("Status anggota kelas telah diperbarui."); window.location.reload();</script>';
+        }
+    ?>
 </body>
 
 </html>
+
+
 
 
         <!-- Back to Top -->
