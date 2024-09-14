@@ -121,7 +121,7 @@
                 <h2>Pendaftaran Siswa</h2>
               
                     <!-- Registration Form -->
-                    <form method="POST" action="proses_tambah_register.php">
+                    <form method="POST" action="button.php">
                   
                     <div class="form-item">
                         <label for="nama">Nama lengkap:</label>
@@ -316,7 +316,7 @@
             // Optionally clear the form after submission
             document.getElementById('registrationForm').reset();
         }
-        header("Location: button.php");
+        header("Location:./button.php");
     </script>
 </body>
 </html>
