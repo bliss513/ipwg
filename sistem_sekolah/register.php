@@ -205,7 +205,7 @@
                     </div>
 
                     <!-- Table for Anggota Kelas -->
-                    <h2>Anggota Kelas</h2>
+                  
                     <div class="form-item">
                         <label for="id_kelas">ID Kelas:</label>
                         <input type="text" id="id_kelas" name="id_kelas" required>
@@ -216,7 +216,7 @@
                     </div>
 
                     <!-- Table for Rencana SPP -->
-                    <h2>Rencana SPP</h2>
+                  
                     <div class="form-item">
                         <label for="wajib_spp">Wajib SPP:</label>
                         <input type="text" id="wajib_spp" name="wajib_spp" required>
