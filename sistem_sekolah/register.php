@@ -119,13 +119,10 @@
             <!-- Form and Table -->
             <div class="form-container">
                 <h2>Pendaftaran Siswa</h2>
-                <form id="registrationForm" onsubmit="submitRegistration(event)">
+              
                     <!-- Registration Form -->
                     <form method="POST" action="proses_tambah_register.php">
-                    <div class="form-item">
-                        <label for="id">ID:</label>
-                        <input type="text" id="id" name="id" required>
-                    </div>
+                  
                     <div class="form-item">
                         <label for="nama">Nama lengkap:</label>
                         <input type="text" id="nama" name="nama" required>
@@ -214,10 +211,6 @@
                         <input type="text" id="id_kelas" name="id_kelas" required>
                     </div>
                     <div class="form-item">
-                        <label for="id_siswa">ID Siswa:</label>
-                        <input type="text" id="id_siswa" name="id_siswa" required>
-                    </div>
-                    <div class="form-item">
                         <label for="tahun_akademik">Tahun Akademik:</label>
                         <input type="text" id="tahun_akademik" name="tahun_akademik" required>
                     </div>
@@ -232,7 +225,7 @@
                         <label for="tanggal_masuk">Tanggal Masuk:</label>
                         <input type="date" id="tanggal_masuk" name="tanggal_masuk" required>
                     </div>
-                    <button type="submit">Simpan</button>
+                    <button nama="simpan" type="submit">Simpan</button>
                 </form>
 
              

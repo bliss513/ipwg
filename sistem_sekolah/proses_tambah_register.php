@@ -1,8 +1,8 @@
 <?php
-include"../../config/koneksi.php";
+include"config/koneksi.php";
 
 if(isset($_POST['simpan'])){
-    $Id = $_POST['Id'];
+   
     $username = $_POST['username'];
     $password = $_POST['password'];
     $nama = $_POST['nama'];
@@ -23,14 +23,14 @@ if(isset($_POST['simpan'])){
     $nomer_hp = $_POST['nomer_hp'];
    
 
-    $sql = "INSERT INTO siswa(id, username, password, nama, jenis_kelamin, nisn, tempat_lahir, tanggal_lahir, alamat, email, foto, nama_wali, tahun_lahir_wali, pendidikan_wali, pekerjaan_wali, penghasilan_wali, angkatan, spp_nominal, nomer_hp) VALUES('$id', '$username', '$password', '$nama', '$jenis_kelamin', '$nisn', '$tempat_lahir', '$tanggal_lahir', '$alamat', '$email', '$foto', '$nama_wali', '$tahun_lahir_wali', '$pendidikan_wali', '$pekerjaan_wali', '$penghasilan_wali', '$angkatan', '$spp_nominal', '$nomer_hp')";
+    $sql = "INSERT INTO siswa( username, password, nama, jenis_kelamin, nisn, tempat_lahir, tanggal_lahir, alamat, email, foto, nama_wali, tahun_lahir_wali, pendidikan_wali, pekerjaan_wali, penghasilan_wali, angkatan, spp_nominal, nomer_hp) VALUES( '$username', '$password', '$nama', '$jenis_kelamin', '$nisn', '$tempat_lahir', '$tanggal_lahir', '$alamat', '$email', '$foto', '$nama_wali', '$tahun_lahir_wali', '$pendidikan_wali', '$pekerjaan_wali', '$penghasilan_wali', '$angkatan', '$spp_nominal', '$nomer_hp')";
 
     $id_kelas = $_POST['id_kelas'];
-    $id_siswa = $_POST['id_siswa'];
+   
     $tahun_akademik = $_POST['tahun_akademik'];
    
 
-    $sql = "INSERT INTO anggota_kelas( id_kelas, id_siswa, tahun_akademik,) VALUES('$id_kelas', '$id_siswa', '$tahun_akademik',  )";
+    $sql = "INSERT INTO anggota_kelas( id_kelas, tahun_akademik,) VALUES('$id_kelas', '$tahun_akademik',  )";
     
    
     $wajib_spp = $_POST['wajib_spp'];
@@ -40,7 +40,7 @@ if(isset($_POST['simpan'])){
     $sql = "INSERT INTO rencana_spp( wajib_spp, tanggal_masuk ) VALUES( '$wajib_spp',  '$tanggal_masuk', )";
 
     if(mysqli_query($koneksi, $sql)){
-        header('location:../../button.php');
+        header('location:./button.php');
     } else {
         echo "Oupss....Maaf proses penyimpanan data tidak berhasil";
     }
