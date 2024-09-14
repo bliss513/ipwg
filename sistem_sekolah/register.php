@@ -316,7 +316,7 @@
             // Optionally clear the form after submission
             document.getElementById('registrationForm').reset();
         }
-        header("Location:./button.php");
+        header("Location:button.php");
     </script>
 </body>
 </html>
