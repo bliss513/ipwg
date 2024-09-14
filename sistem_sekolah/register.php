@@ -168,8 +168,8 @@
                         <input type="email" id="email" name="email" required>
                     </div>
                     <div class="form-item">
-                        <label for="foto">Foto (URL):</label>
-                        <input type="url" id="foto" name="foto">
+                        <label for="foto">Foto:</label>
+                        <input type="file" id="foto" name="foto">
                     </div>
                     <div class="form-item">
                         <label for="nama_wali">Nama Wali:</label>
@@ -316,7 +316,7 @@
             // Optionally clear the form after submission
             document.getElementById('registrationForm').reset();
         }
-        header("Location:button.php");
+        header("Location:./button.php");
     </script>
 </body>
 </html>
