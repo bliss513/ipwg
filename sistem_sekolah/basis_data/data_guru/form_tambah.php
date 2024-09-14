@@ -215,7 +215,7 @@ button[type="submit"]:hover, .cancel-btn:hover, .delete-btn:hover {
                     <input type="text" id="hp" name="hp" value="">
                 </div>
                 <div class="input-group">
-                    <label for="foto">Foto</label>
+                         <label for="foto">Foto</label>
                     <input type="text" id="foto" name="foto" value="">
                 </div>
             </div>
