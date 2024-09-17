@@ -153,10 +153,10 @@ button[type="submit"]:hover, .cancel-btn:hover, .delete-btn:hover {
         <form method="post" action="">
             <div class="form-grid">
                 <!-- Left Column (2 items) -->
-                <div class="input-group">
+                <!-- <div class="input-group">
                     <label for="id">Id</label>
                     <input type="text" id="id" name="id" value="" readonly>
-                </div>
+                </div> -->
                 <div class="input-group">
                     <label for="username">Username</label>
                     <input type="text" id="username" name="username" value="">
@@ -194,7 +194,7 @@ button[type="submit"]:hover, .cancel-btn:hover, .delete-btn:hover {
                 </div>
                 <div class="input-group">
                     <label for="tanggal_lahir">Tanggal Lahir</label>
-                    <input type="date" id="tanggal_lahir" name="tanggal_lahir" value="">
+                    <input type="date" id="tanggal_lahir" name="tanggal_lahir" value="<?php echo date('Y-m-d'); ?>">
                 </div>
 
                 <!-- Right Column (3 items) -->
@@ -214,10 +214,10 @@ button[type="submit"]:hover, .cancel-btn:hover, .delete-btn:hover {
                     <label for="hp">HP</label>
                     <input type="text" id="hp" name="hp" value="">
                 </div>
-                <div class="input-group">
+                <!-- <div class="input-group">
                          <label for="foto">Foto</label>
                     <input type="text" id="foto" name="foto" value="">
-                </div>
+                </div> -->
             </div>
 
             <div class="button-container">
