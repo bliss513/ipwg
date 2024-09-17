@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>DASHMIN - Bootstrap Admin Template</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"> 
     <meta content="" name="keywords">
     <meta content="" name="description">
 
@@ -64,14 +64,14 @@
             border-radius: 4px;
         }
         .form-container button {
-            margin-top: 20px;
+            position: relative; /* Changed from absolute to relative */
+            margin-top: 20px; /* Added margin to push it down */
             padding: 10px 15px;
             background-color: #28a745;
             color: white;
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            flex: 1 1 100%; /* Button takes full width */
         }
         .form-container button:hover {
             background-color: #218838;
@@ -119,11 +119,10 @@
             <!-- Form and Table -->
             <div class="form-container">
                 <h2>Pendaftaran Siswa</h2>
-                <form id="registrationForm" onsubmit="submitRegistration(event)">
-                    <div class="form-item">
-                        <label for="id">ID:</label>
-                        <input type="text" id="id" name="id" required>
-                    </div>
+              
+                    <!-- Registration Form -->
+                    <form method="POST" action="button.php">
+                  
                     <div class="form-item">
                         <label for="nama">Nama lengkap:</label>
                         <input type="text" id="nama" name="nama" required>
@@ -169,16 +168,16 @@
                         <input type="email" id="email" name="email" required>
                     </div>
                     <div class="form-item">
-                        <label for="foto">Foto (URL):</label>
-                        <input type="url" id="foto" name="foto">
+                        <label for="foto">Foto:</label>
+                        <input type="file" id="foto" name="foto">
                     </div>
                     <div class="form-item">
                         <label for="nama_wali">Nama Wali:</label>
                         <input type="text" id="nama_wali" name="nama_wali" required>
                     </div>
                     <div class="form-item">
-                        <label for="tanggal_lahir_wali">Tanggal Lahir Wali:</label>
-                        <input type="number" id="tanggal_lahir_wali" name="tanggal_lahir_wali" required>
+                        <label for="tahun_lahir_wali">Tahun Lahir Wali:</label>
+                        <input type="number" id="tahun_lahir_wali" name="tahun_lahir_wali" required>
                     </div>
                     <div class="form-item">
                         <label for="pendidikan_wali">Pendidikan Wali:</label>
@@ -201,44 +200,41 @@
                         <input type="number" id="spp_nominal" name="spp_nominal" required>
                     </div>
                     <div class="form-item">
-                        <label for="nomer">Nomer:</label>
-                        <input type="text" id="nomer" name="nomer" required>
+                        <label for="nomer_hp">Nomer hp:</label>
+                        <input type="text" id="nomer_hp" name="nomer_hp" required>
                     </div>
-                    <button type="submit">Submit</button>
+
+                    <!-- Table for Anggota Kelas -->
+                  
+                    <div class="form-item">
+                        <label for="id_kelas">ID Kelas:</label>
+                        <input type="text" id="id_kelas" name="id_kelas" required>
+                    </div>
+                    <div class="form-item">
+                        <label for="tahun_akademik">Tahun Akademik:</label>
+                        <input type="text" id="tahun_akademik" name="tahun_akademik" required>
+                    </div>
+
+                    <!-- Table for Rencana SPP -->
+                  
+                    <div class="form-item">
+                        <label for="wajib_spp">Wajib SPP:</label>
+                        <input type="text" id="wajib_spp" name="wajib_spp" required>
+                    </div>
+                    <div class="form-item">
+                        <label for="tanggal_masuk">Tanggal Masuk:</label>
+                        <input type="date" id="tanggal_masuk" name="tanggal_masuk" required>
+                    </div>
+                    <button nama="simpan" type="submit" id="">Simpan</button>
                 </form>
 
-                <!-- Table to display submitted data -->
-                <table id="dataTable">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nama</th>
-                            <th>NISN</th>
-                            <th>Username</th>
-                            <th>Password</th>
-                            <th>Jenis Kelamin</th>
-                            <th>Tempat Lahir</th>
-                            <th>Tanggal Lahir</th>
-                            <th>Alamat</th>
-                            <th>Nomor HP</th>
-                            <th>Email</th>
-                            <th>Foto</th>
-                            <th>Nama Wali</th>
-                            <th>Tanggal Lahir Wali</th>
-                            <th>Pendidikan Wali</th>
-                            <th>Pekerjaan Wali</th>
-                            <th>Penghasilan Wali</th>
-                            <th>Angkatan</th>
-                            <th>Nominal SPP</th>
-                            <th>Nomer</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+             
                         <!-- Data will be inserted here -->
                     </tbody>
                 </table>
             </div>
 
+            <!-- Footer -->
             <?php include 'footer.php'; ?>
         </div>
         <!-- Content End -->
@@ -261,6 +257,11 @@
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
     <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var today = new Date().toISOString().split('T')[0];
+            document.getElementById('tanggal_masuk').value = today;
+        });
+
         function submitRegistration(event) {
             event.preventDefault(); // Prevent form from submitting normally
 
@@ -315,6 +316,7 @@
             // Optionally clear the form after submission
             document.getElementById('registrationForm').reset();
         }
+        header("Location:./button.php");
     </script>
 </body>
 </html>

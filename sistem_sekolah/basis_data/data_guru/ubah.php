@@ -124,13 +124,13 @@ input[type="text"]:focus, input[type="number"]:focus, input[type="email"]:focus,
 }
 
 button[type="submit"], .cancel-btn, .delete-btn {
-    padding: 15px 30px; /* Increased padding */
+    padding: 10px 15px; /* Increased padding */
     border: none;
     border-radius: 4px;
     cursor: pointer;
     text-align: center;
     text-decoration: none;
-    font-size: 18px; /* Increased font size */
+    font-size: 15px; /* Increased font size */
     transition: background-color 0.3s ease;
 }
 

@@ -53,8 +53,13 @@
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="signin.php" class="dropdown-item">Sign In</a>
+<<<<<<< HEAD
                             <a href="signup.php" class="dropdown-item">Sign Up</a>
                             <a href="279.php" class="dropdown-item">279 TeRr0rr!</a>
+=======
+                            <a href="signup.php" class="dropdown-item">Sign Out</a>
+                            <a href="279.php" class="dropdown-item">279 Error!</a>
+>>>>>>> cbb6a2c61f03525ea0366a9bde570d8f446e46fa
                             <a href="blank.php" class="dropdown-item">Blank Page</a>
                         </div>
                     </div>

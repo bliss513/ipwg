@@ -228,7 +228,7 @@
             
             <div class="container">
                 <!-- Gambar di atas judul -->
-                <img src="ip.png" alt="Library" class="header-image">
+                <!-- <img src="ip.png" alt="Library" class="header-image"> -->
 
                 <h1>Pinjaman Perpustakaan</h1>
 
