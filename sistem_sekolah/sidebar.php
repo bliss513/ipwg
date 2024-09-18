@@ -16,6 +16,7 @@
                 </div>
                 <div class="navbar-nav w-100">
                     <a href="index.php" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a href="register.php" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Register</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Basis Data </a>
                         <div class="dropdown-menu bg-transparent border-0">
@@ -41,7 +42,6 @@
                  <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fas fa-dollar-sign me-2"></i>SPP</a>
                         <div class="dropdown-menu bg-transparent border-0">
-                            <a href="register.php" class="dropdown-item">Register</a>
                             <a href="peralihan.php" class="dropdown-item">peralihan</a>
                             <a href="pembayaran.php" class="dropdown-item">pembayaran</a>
                         </div>
