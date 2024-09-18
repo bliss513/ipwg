@@ -35,7 +35,7 @@ $siswa = mysqli_fetch_array($data);
             margin: 10px 0 5px;
         }
         input[type="text"], input[type="date"] {
-            width: 100%;
+            width: 30%;
             padding: 8px;
             margin-bottom: 10px;
             border: 1px solid #ccc;
@@ -63,7 +63,7 @@ $siswa = mysqli_fetch_array($data);
             color: #fff;
         }
         table {
-            width: 100%;
+            width: 95%;
             border-collapse: collapse;
             margin-top: 20px;
             font-size: 16px;
@@ -73,7 +73,7 @@ $siswa = mysqli_fetch_array($data);
         }
         th, td {
             padding: 15px;
-            text-align: left;
+            text-align: center;
         }
         th {
             background-color: #f2f2f2;
@@ -92,9 +92,13 @@ $siswa = mysqli_fetch_array($data);
                 <input type="text" id="nisn" name="nisn" value="<?php echo $siswa['nisn']; ?>" required>
             </div>
             <div class="form-group">
-                <label for="tanggal-bayar">Tanggal Bayar</label>
-                <input type="date" id="tanggal-bayar" value="2024-09-13" required>
+                <label for="nama">Nama</label>
+                <input type="text" id="nama" name="nama" value="<?php echo $siswa['nama']; ?>" required>
             </div>
+            <div class="input-group">
+                    <label for="tanggal_bayar">Tanggal Bayar</label>
+                    <input type="date" id="tanggal_bayar" name="tanggal_bayar" value="<?php echo date('Y-m-d'); ?>">
+                </div>
             <div class="form-group">
                 <label for="jumlah-bayar">Jumlah Bayar</label>
                 <input type="text" id="jumlah-bayar" placeholder="Masukkan jumlah bayar" required>
@@ -115,6 +119,7 @@ $siswa = mysqli_fetch_array($data);
                 <thead>
                     <tr>
                         <th>NISN</th>
+                        <th>Nama</th>
                         <th>Jumlah Bayar</th>
                         <th>Sisa Bayar</th>
                         <th>Total Bayar</th>
@@ -134,6 +139,7 @@ $siswa = mysqli_fetch_array($data);
 
             // Get the form values
             const nisn = document.getElementById('nisn').value;
+            const nama = document.getElementById('nama').value;
             const jumlahBayar = parseFloat(document.getElementById('jumlah-bayar').value);
             const totalBayar = parseFloat(document.getElementById('total-bayar').value);
 
@@ -152,6 +158,7 @@ $siswa = mysqli_fetch_array($data);
             reportTableBody.innerHTML = ` 
                 <tr>
                     <td>${nisn}</td>
+                    <td>${nama}</td?>
                     <td>Rp. ${jumlahBayar.toFixed(2)}</td>
                     <td>Rp. ${sisaBayar.toFixed(2)}</td>
                     <td>Rp. ${totalBayar.toFixed(2)}</td>

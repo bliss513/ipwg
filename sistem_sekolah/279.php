@@ -28,36 +28,33 @@
         <link href="css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Template Stylesheet -->
-        <link href="css/style.css" rel="stylesheet">
+        <!-- <link href="css/style.css" rel="stylesheet">
     </head>
 
     <body>
-        <div class="container-xxl position-relative bg-white d-flex p-0">
+        <div class="container-xxl position-relative bg-white d-flex p-0"> -->
             <!-- Spinner Start -->
-            <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <!-- <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
                 <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
                     <span class="sr-only">Loading...</span>
                 </div>
-            </div>
+            </div> -->
             <!-- Spinner End -->
-            <?php include 'sidebar.php'; ?>
             <!-- Content Start -->
             <div class="content">
-            <?php include 'header.php'; ?>
             <!-- 404 Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="row vh-100 bg-light rounded align-items-center justify-content-center mx-0">
                     <div class="col-md-6 text-center p-4">
                     <i class="bi bi-exclamation-triangle display-1 text-danger"></i>
                     <h1 class="display-1 fw-bold">279</h1>
-                        <h1 class="mb-4">cLTh DaMn KrU!!</h1>
+                        <h1 class="mb-4">BL!$$ cLTh DaMn KrU!!</h1>
                         <p class="mb-4">279dAmNkRu!! SitE is strICtlY pr0hibItEd! If yoU doN't wANt your b0dY to eXPlodE fRoM tHe TigHt eMbrAce of w0mEn!!</p>
-                        <a class="btn btn-danger rounded-pill py-3 px-5" href="index.php">Go Back To Dashboard</a>
+                        <a class="btn btn-danger rounded-pill py-3 px-5" href="index.php">Go bAck t0 Da$HboaRd</a>
                      </div>
                 </div>
             </div>
             <!-- 404 End -->
-            <?php include 'footer.php'; ?>
         </div>
         <!-- Content End -->
 

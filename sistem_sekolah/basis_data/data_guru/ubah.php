@@ -161,10 +161,10 @@ button[type="submit"]:hover, .cancel-btn:hover, .delete-btn:hover {
         <form method="post" action="">
             <div class="form-grid">
                 <!-- Left Column (2 items) -->
-                <div class="input-group">
+                <!-- <div class="input-group">
                     <label for="id">Id</label>
                     <input type="text" id="id" name="id" value="<?php echo htmlspecialchars($hasil['id']);?>" readonly>
-                </div>
+                </div> -->
                 <div class="input-group">
                     <label for="username">Username</label>
                     <input type="text" id="username" name="username" value="<?php echo htmlspecialchars($hasil['username']);?>">
@@ -202,8 +202,9 @@ button[type="submit"]:hover, .cancel-btn:hover, .delete-btn:hover {
                 </div>
                 <div class="input-group">
                     <label for="tanggal_lahir">Tanggal Lahir</label>
-                    <input type="date" id="tanggal_lahir" name="tanggal_lahir" value="<?php echo htmlspecialchars($hasil['tanggal_lahir']);?>">
+                    <input type="date" id="tanggal_lahir" name="tanggal_lahir" value="<?php echo date('Y-m-d'); ?>">
                 </div>
+
 
                 <!-- Right Column (3 items) -->
                 <div class="input-group">
@@ -220,12 +221,12 @@ button[type="submit"]:hover, .cancel-btn:hover, .delete-btn:hover {
                 </div>
                 <div class="input-group">
                     <label for="hp">HP</label>
-                    <input type="text" id="hp" name="hp" value="<?php echo htmlspecialchars($hasil['hp']);?>">
+                    <input type="number" id="hp" name="hp" value="<?php echo htmlspecialchars($hasil['hp']);?>">
                 </div>
-                <div class="input-group">
+                <!-- <div class="input-group">
                     <label for="foto">Foto</label>
                     <input type="text" id="foto" name="foto" value="<?php echo htmlspecialchars($hasil['foto']);?>">
-                </div>
+                </div> -->
             </div>
 
             <div class="button-container">
