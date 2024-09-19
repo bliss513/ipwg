@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,72 +32,82 @@
     <link href="css/style.css" rel="stylesheet">
 
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f9fa; /* Light background color */
-        }
-        .form-container {
-            max-width: 1000px; /* Increased width for better visibility */
-            margin: auto;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            background-color: #ffffff; /* White background for the form */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .form-container h2 {
-            text-align: center;
-            width: 100%;
-        }
-        .form-container .form-item {
-            flex: 1 1 100%; /* Full width for form items */
-            min-width: 300px;
-        }
-        .form-container label {
-            display: block;
-            margin-top: 10px;
-        }
-        .form-container input, .form-container select, .form-container textarea {
-            width: 100%;
-            padding: 8px;
-            margin-top: 5px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-        .form-container button {
-            position: relative; /* Changed from absolute to relative */
-            margin-top: 20px; /* Added margin to push it down */
-            padding: 10px 15px;
-            background-color: #28a745;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        .form-container button:hover {
-            background-color: #218838;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        table, th, td {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: left;
-        }
-        th {
-            background-color: #28a745;
-            color: white;
-        }
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-        td {
-            width: 33%; /* Set each cell to take up 33% of the table width */
-        }
-    </style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa; /* Light background color */
+    }
+    .form-container {
+        max-width: 1000px; /* Increased width for better visibility */
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #ffffff; /* White background for the form */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .form-container h2 {
+        text-align: center;
+        width: 100%;
+    }
+    .form-container .form-item {
+        flex: 1 1 100%; /* Full width for form items */
+        min-width: 300px;
+    }
+    .form-container label {
+        display: block;
+        margin-top: 10px;
+    }
+    .form-container input, 
+    .form-container select, 
+    .form-container textarea {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+        border: none; /* Remove border */
+        border-bottom: 1px solid #ddd; /* Add underline */
+        border-radius: 0; /* Remove border-radius */
+        outline: none; /* Remove outline on focus */
+    }
+    .form-container input:focus, 
+    .form-container select:focus, 
+    .form-container textarea:focus {
+        border-bottom: 1px solid #28a745; /* Change underline color on focus */
+    }
+    .form-container button {
+        position: relative; /* Changed from absolute to relative */
+        margin-top: 20px; /* Added margin to push it down */
+        padding: 10px 15px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    .form-container button:hover {
+        background-color: #218838;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+    table, th, td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: left;
+    }
+    th {
+        background-color: #28a745;
+        color: white;
+    }
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+    td {
+        width: 33%; /* Set each cell to take up 33% of the table width */
+    }
+</style>
+
 </head>
 
 <body>
@@ -118,134 +129,125 @@
 
             <!-- Form and Table -->
             <div class="form-container">
-                <h2>Pendaftaran Siswa</h2>
-              
-                    <!-- Registration Form -->
-                    <form method="POST" action="button.php">
-                  
-                    <div class="form-item">
-                        <label for="nama">Nama lengkap:</label>
-                        <input type="text" id="nama" name="nama" required>
-                    </div>
-                    <div class="form-item">
-                        <label for="nisn">NISN:</label>
-                        <input type="text" id="nisn" name="nisn" required>
-                    </div>
-                    <div class="form-item">
-                        <label for="username">Username:</label>
-                        <input type="text" id="username" name="username" required>
-                    </div>
-                    <div class="form-item">
-                        <label for="password">Password:</label>
-                        <input type="text" id="password" name="password" required>
-                    </div>
-                    <div class="form-item">
-                        <label for="jenis_kelamin">Jenis Kelamin:</label>
-                        <select id="jenis_kelamin" name="jenis_kelamin" required>
-                            <option value="" disabled selected>Pilih Jenis Kelamin</option>
-                            <option value="Laki-laki">Laki-laki</option>
-                            <option value="Perempuan">Perempuan</option>
-                        </select>
-                    </div>
-                    <div class="form-item">
-                        <label for="tempat_lahir">Tempat Lahir:</label>
-                        <input type="text" id="tempat_lahir" name="tempat_lahir" required>
-                    </div>
-                    <div class="form-item">
-                        <label for="tanggal_lahir">Tanggal Lahir:</label>
-                        <input type="date" id="tanggal_lahir" name="tanggal_lahir" required>
-                    </div>
-                    <div class="form-item">
-                        <label for="alamat">Alamat:</label>
-                        <input type="text" id="alamat" name="alamat" required>
-                    </div>
-                    <div class="form-item">
-                        <label for="nomor_hp">Nomor HP:</label>
-                        <input type="text" id="nomor_hp" name="nomor_hp" required>
-                    </div>
-                    <div class="form-item">
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-item">
-                        <label for="foto">Foto:</label>
-                        <input type="file" id="foto" name="foto">
-                    </div>
-                    <div class="form-item">
-                        <label for="nama_wali">Nama Wali:</label>
-                        <input type="text" id="nama_wali" name="nama_wali" required>
-                    </div>
-                    <div class="form-item">
-                        <label for="tahun_lahir_wali">Tahun Lahir Wali:</label>
-                        <input type="number" id="tahun_lahir_wali" name="tahun_lahir_wali" required>
-                    </div>
-                    <div class="form-item">
-                        <label for="pendidikan_wali">Pendidikan Wali:</label>
-                        <input type="text" id="pendidikan_wali" name="pendidikan_wali" required>
-                    </div>
-                    <div class="form-item">
-                        <label for="pekerjaan_wali">Pekerjaan Wali:</label>
-                        <input type="text" id="pekerjaan_wali" name="pekerjaan_wali" required>
-                    </div>
-                    <div class="form-item">
-                        <label for="penghasilan_wali">Penghasilan Wali:</label>
-                        <input type="number" id="penghasilan_wali" name="penghasilan_wali" required>
-                    </div>
-                    <div class="form-item">
-                        <label for="angkatan">Angkatan:</label>
-                        <input type="number" id="angkatan" name="angkatan" required>
-                    </div>
-                    <div class="form-item">
-                        <label for="spp_nominal">Nominal SPP:</label>
-                        <input type="number" id="spp_nominal" name="spp_nominal" required>
-                    </div>
-                    <div class="form-item">
-                        <label for="nomer_hp">Nomer hp:</label>
-                        <input type="text" id="nomer_hp" name="nomer_hp" required>
-                    </div>
+    <h2>Pendaftaran Siswa</h2>
 
-                    <!-- Table for Anggota Kelas -->
-                  
-                    <div class="form-item">
-    <label for="kelas">Kelas:</label>
-    <select id="kelas" name="kelas" required>
-        <option value="" disabled selected>Pilih Kelas</option>
-        <option value="X">X</option>
-        <option value="XI">XI</option>
-        <option value="XII">XII</option>
-        
-    </select>
-</div>
-<div class="form-item">
-    <label for="tahun_akademik">Tahun Akademik:</label>
-    <select id="tahun_akademik" name="tahun_akademik" required>
-        <option value="" disabled selected>Pilih Tahun Akademik</option>
-        <option value="2023/2024">2023/2024</option>
-        <option value="2024/2025">2024/2025</option>
-        <option value="2025/2026">2025/2026</option>
-     
-    </select>
-</div>
-
-
-                    <!-- Table for Rencana SPP -->
-                  
-                    <div class="form-item">
-        <label for="wajib_spp">Wajib SPP:</label>
-        <input type="text" id="wajib_spp" name="wajib_spp" class="currency-input" required>
-    </div>
-                    <div class="form-item">
-                        <label for="tanggal_masuk">Tanggal Masuk:</label>
-                        <input type="date" id="tanggal_masuk" name="tanggal_masuk" required>
-                    </div>
-                    <button nama="simpan" type="submit" id="">Simpan</button>
-                </form>
-
-             
-                        <!-- Data will be inserted here -->
-                    </tbody>
-                </table>
+    <!-- Registration Form -->
+    <form method="POST" action="button.php">
+        <div class="row">
+            <div class="col-md-3 form-item">
+                <label for="nama">Nama lengkap:</label>
+                <input type="text" id="nama" name="nama" required>
             </div>
+            <div class="col-md-3 form-item">
+                <label for="nisn">NISN:</label>
+                <input type="text" id="nisn" name="nisn" required>
+            </div>
+            <div class="col-md-3 form-item">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="col-md-3 form-item">
+                <label for="password">Password:</label>
+                <input type="text" id="password" name="password" required>
+            </div>
+            <div class="col-md-4 form-item">
+                <label for="jenis_kelamin">Jenis Kelamin:</label>
+                <select id="jenis_kelamin" name="jenis_kelamin" required>
+                    <option value="" disabled selected>Pilih Jenis Kelamin</option>
+                    <option value="Laki-laki">Laki-laki</option>
+                    <option value="Perempuan">Perempuan</option>
+                </select>
+            </div>
+            <div class="col-md-4 form-item">
+                <label for="tempat_lahir">Tempat Lahir:</label>
+                <input type="text" id="tempat_lahir" name="tempat_lahir" required>
+            </div>
+            <div class="col-md-4 form-item">
+                <label for="tanggal_lahir">Tanggal Lahir:</label>
+                <input type="date" id="tanggal_lahir" name="tanggal_lahir" required>
+            </div>
+            <div class="col-md-4 form-item">
+                <label for="alamat">Alamat:</label>
+                <input type="text" id="alamat" name="alamat" required>
+            </div>
+            <div class="col-md-5 form-item">
+                <label for="nomor_hp">Nomor HP:</label>
+                <input type="text" id="nomor_hp" name="nomor_hp" required>
+            </div>
+            <div class="col-md-5 form-item">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="col-md-5 form-item">
+                <label for="foto">Foto:</label>
+                <input type="file" id="foto" name="foto">
+            </div>
+            <div class="col-md-5 form-item">
+                <label for="nama_wali">Nama Wali:</label>
+                <input type="text" id="nama_wali" name="nama_wali" required>
+            </div>
+            <div class="col-md-6 form-item">
+                <label for="tahun_lahir_wali">Tahun Lahir Wali:</label>
+                <input type="number" id="tahun_lahir_wali" name="tahun_lahir_wali" required>
+            </div>
+            <div class="col-md-6 form-item">
+                <label for="pendidikan_wali">Pendidikan Wali:</label>
+                <input type="text" id="pendidikan_wali" name="pendidikan_wali" required>
+            </div>
+            <div class="col-md-6 form-item">
+                <label for="pekerjaan_wali">Pekerjaan Wali:</label>
+                <input type="text" id="pekerjaan_wali" name="pekerjaan_wali" required>
+            </div>
+            <div class="col-md-7 form-item">
+                <label for="penghasilan_wali">Penghasilan Wali:</label>
+                <input type="number" id="penghasilan_wali" name="penghasilan_wali" required>
+            </div>
+            <div class="col-md-7 form-item">
+                <label for="angkatan">Angkatan:</label>
+                <input type="number" id="angkatan" name="angkatan" required>
+            </div>
+            <div class="col-md-7 form-item">
+                <label for="spp_nominal">Nominal SPP:</label>
+                <input type="number" id="spp_nominal" name="spp_nominal" required>
+            </div>
+            <div class="col-md-7 form-item">
+                <label for="nomer_hp">Nomer HP:</label>
+                <input type="text" id="nomer_hp" name="nomer_hp" required>
+            </div>
+
+            <div class="col-md-8 form-item">
+                <label for="kelas">Kelas:</label>
+                <select id="kelas" name="kelas" required>
+                    <option value="" disabled selected>Pilih Kelas</option>
+                    <option value="X">X</option>
+                    <option value="XI">XI</option>
+                    <option value="XII">XII</option>
+                </select>
+            </div>
+            <div class="col-md-8 form-item">
+                <label for="tahun_akademik">Tahun Akademik:</label>
+                <select id="tahun_akademik" name="tahun_akademik" required>
+                    <option value="" disabled selected>Pilih Tahun Akademik</option>
+                    <option value="2023/2024">2023/2024</option>
+                    <option value="2024/2025">2024/2025</option>
+                    <option value="2025/2026">2025/2026</option>
+                </select>
+            </div>
+
+            <div class="col-md-8 form-item">
+                <label for="wajib_spp">Wajib SPP:</label>
+                <input type="text" id="wajib_spp" name="wajib_spp" class="currency-input" required>
+            </div>
+            <div class="col-md-8 form-item">
+                <label for="tanggal_masuk">Tanggal Masuk:</label>
+                <input type="date" id="tanggal_masuk" name="tanggal_masuk" required>
+            </div>
+        </div>
+        <button name="simpan" type="submit">Simpan</button>
+    </form>
+</div>
+
+
 
             <!-- Footer -->
             <?php include 'footer.php'; ?>
