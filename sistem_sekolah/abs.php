@@ -198,11 +198,7 @@ $result = $conn->query($sql);
         <table>
             <thead>
                 <tr>
-<<<<<<< HEAD
-                    <th>No</th> 
-=======
                     <th>No</th>
->>>>>>> cbb6a2c61f03525ea0366a9bde570d8f446e46fa
                     <th>Nama Siswa</th>
                     <th>Hadir</th>
                     <th>Izin</th>
@@ -213,17 +209,6 @@ $result = $conn->query($sql);
             <tbody>
         <?php
         if ($result->num_rows > 0) {
-<<<<<<< HEAD
-            $no = 1; // Inisialisasi nomor urut
-            while($row = $result->fetch_assoc()) {
-                echo "<tr>";
-                echo "<td>" . $no++ . "</td>"; // Menampilkan nomor urut
-                echo "<td>" . $row["nama"] . "</td>"; // Menampilkan nama siswa
-                echo "<td><input type='radio' name='kehadiran_" . $row["id"] . "' value='Hadir'" . ($row["kehadiran_kelas"] == "Hadir" ? " checked" : "") . "></td>";
-                echo "<td><input type='radio' name='kehadiran_" . $row["id"] . "' value='Izin'" . ($row["kehadiran_kelas"] == "Izin" ? " checked" : "") . "></td>";
-                echo "<td><input type='radio' name='kehadiran_" . $row["id"] . "' value='Sakit'" . ($row["kehadiran_kelas"] == "Sakit" ? " checked" : "") . "></td>";
-                echo "<td><input type='radio' name='kehadiran_" . $row["id"] . "' value='Alfa'" . ($row["kehadiran_kelas"] == "Alfa" ? " checked" : "") . "></td>";
-=======
             $no = 1; // Inisialisasi nomor urut 
             while($row = $result->fetch_assoc()) {
                 echo "<tr>";
@@ -233,7 +218,6 @@ $result = $conn->query($sql);
                 echo "<td><input type='radio' name='kehadiran_" . $row["id_siswa"] . "' value='Izin'" . ($row["kehadiran_kelas"] == "Izin" ? " checked" : "") . "></td>";
                 echo "<td><input type='radio' name='kehadiran_" . $row["id_siswa"] . "' value='Sakit'" . ($row["kehadiran_kelas"] == "Sakit" ? " checked" : "") . "></td>";
                 echo "<td><input type='radio' name='kehadiran_" . $row["id_siswa"] . "' value='Alfa'" . ($row["kehadiran_kelas"] == "Alfa" ? " checked" : "") . "></td>";
->>>>>>> cbb6a2c61f03525ea0366a9bde570d8f446e46fa
                 echo "</tr>";
                 $no++; // Increment nomor urut
             }

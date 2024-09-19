@@ -270,7 +270,7 @@
                         <td><?php echo $hasil['id']; ?></td>
                         <td><?php echo $hasil['nama']; ?></td>
                         <td><?php echo $hasil['nisn']; ?></td>
-                        <td><?php echo $hasil['hp']; ?></td>
+                        <td><?php echo $hasil['nomer_hp']; ?></td>
                     </tr>
                     <?php
                         }
