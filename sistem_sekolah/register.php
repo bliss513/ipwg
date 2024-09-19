@@ -327,7 +327,7 @@
             tableBody.appendChild(newRow);
 
             // Optionally clear the form after submission
-            document.getElementById('registrationForm').reset();
+            document.getElementById('register.php').reset();
         }
         header("Location:./button.php");
     </script>

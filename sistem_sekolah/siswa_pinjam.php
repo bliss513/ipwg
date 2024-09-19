@@ -1,23 +1,64 @@
+<?php
+// Database connection
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "sistem_sekolah";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $data = mysqli_query($conn, "SELECT * FROM buku WHERE id='$id'");
+    $hasil = mysqli_fetch_array($data);
+}
+
+// Handle form submission for updating
+if (isset($_POST['simpan'])) {
+    $tanggal_pinjam = mysqli_real_escape_string($conn, $_POST['borrowDate']);
+    $tanggal_pengembalian = mysqli_real_escape_string($conn, $_POST['returnDate']);
+    $status = mysqli_real_escape_string($conn, $_POST['status']);
+
+    $sql = "UPDATE buku SET 
+        tanggal_pinjam='$tanggal_pinjam', 
+        tanggal_pengembalian='$tanggal_pengembalian', 
+        status='$status' 
+        WHERE id='$id'";
+
+    if (mysqli_query($conn, $sql)) {
+        header('Location: pinjaman.php');
+        exit();
+    } else {
+        echo "Oups.... Maaf, proses penyimpanan data tidak berhasil: " . mysqli_error($conn);
+    }
+}
+?>
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
     <title>Sistem Peminjaman Buku</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: cyan; /* Menambahkan warna latar belakang cyan */
+            background-color: cyan;
         }
         .container {
             max-width: 600px;
-            margin: 20px auto; /* Menambahkan margin atas dan bawah */
+            margin: 20px auto;
             padding: 20px;
             border: 1px solid #ddd;
             border-radius: 8px;
-            background-color: white; /* Menambahkan latar belakang putih untuk container */
+            background-color: white;
         }
         h1 {
             text-align: center;
@@ -28,10 +69,28 @@
         }
         input[type="text"], input[type="date"] {
             width: 100%;
-            padding: 8px;
+            padding: 10px;
             margin-top: 5px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+            border: none;
+            border-bottom: 2px solid #ccc;
+            transition: border-color 0.3s;
+        }
+        input[type="text"]:focus, input[type="date"]:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: none;
+            border-bottom: 2px solid #ccc;
+            background-color: white;
+            transition: border-color 0.3s;
+        }
+        select:focus {
+            border-color: #007bff;
+            outline: none;
         }
         button {
             padding: 10px 15px;
@@ -41,71 +100,36 @@
             border-radius: 4px;
             cursor: pointer;
             margin-top: 10px;
+            width: 100%;
         }
         button:hover {
             background-color: #45a049;
         }
-        .records {
-            margin-top: 20px;
-        }
-        .record-item {
-            padding: 10px;
-            border-bottom: 1px solid #ddd;
-        }
     </style>
+
 </head>
 <body>
     <div class="container">
         <h1>Sistem Peminjaman Buku</h1>
-        <form id="loanForm">
-            <label for="name">Nama Siswa:</label>
-            <input type="text" id="name" required>
-            
+        <form id="updateForm" method="POST" action="">
             <label for="borrowDate">Tanggal Peminjaman:</label>
-            <input type="date" id="borrowDate" required>
+            <input type="date" id="borrowDate" name="borrowDate" value="<?php echo htmlspecialchars($hasil['tanggal_pinjam']); ?>" required>
             
             <label for="returnDate">Tanggal Pengembalian:</label>
-            <input type="date" id="returnDate" required>
-            
-            <button type="submit">Tambah Peminjaman</button>
+            <input type="date" id="returnDate" name="returnDate" value="<?php echo htmlspecialchars($hasil['tanggal_pengembalian']); ?>" required>
+
+            <label for="status">Status</label>
+            <select id="status" name="status" required>
+                <option value="tersedia" <?php echo ($hasil['status'] == 'tersedia' ? 'selected' : ''); ?>>Tersedia</option>
+                <option value="dipinjam" <?php echo ($hasil['status'] == 'dipinjam' ? 'selected' : ''); ?>>Dipinjam</option>
+                <option value="sudah_dikembalikan" <?php echo ($hasil['status'] == 'sudah_dikembalikan' ? 'selected' : ''); ?>>Sudah Dikembalikan</option>
+                <option value="lewat_tempo" <?php echo ($hasil['status'] == 'lewat_tempo' ? 'selected' : ''); ?>>Lewat Tempo</option>
+            </select>
+
+            <button type="submit" name="simpan">Simpan Perubahan</button>
         </form>
-        
-        <div class="records" id="recordList">
-            <!-- Daftar peminjaman akan muncul di sini -->
-        </div>
     </div>
 
-    <script>
-        document.getElementById('loanForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Mencegah form dari refresh halaman
-            
-            // Ambil data dari form
-            const name = document.getElementById('name').value;
-            const borrowDate = document.getElementById('borrowDate').value;
-            const returnDate = document.getElementById('returnDate').value;
-            
-            // Validasi tanggal
-            if (new Date(returnDate) < new Date(borrowDate)) {
-                alert('Tanggal pengembalian harus setelah tanggal peminjaman.');
-                return;
-            }
-            
-            // Buat elemen baru untuk data peminjaman
-            const recordList = document.getElementById('recordList');
-            const recordItem = document.createElement('div');
-            recordItem.className = 'record-item';
-            recordItem.innerHTML = `
-                <strong>Nama Siswa:</strong> ${name}<br>
-                <strong>Tanggal Peminjaman:</strong> ${borrowDate}<br>
-                <strong>Tanggal Pengembalian:</strong> ${returnDate}
-            `;
-            
-            // Tambahkan ke daftar
-            recordList.appendChild(recordItem);
-            
-            // Reset form
-            document.getElementById('loanForm').reset();
-        });
-    </script>
+    <?php $conn->close(); ?>
 </body>
 </html>

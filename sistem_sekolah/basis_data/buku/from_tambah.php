@@ -81,8 +81,6 @@
     <div class="container">
         <h1>Tambah Data</h1>
         <form method="post" action="tambah.php">
-            <label for="id">id</label>
-            <input type="text" id="id" name="id">
             <label for="judul">judul</label>
             <input type="text" id="judul" name="judul">
             <label for="pengarang">pengarang</label>
