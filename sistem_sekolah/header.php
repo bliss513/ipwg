@@ -82,6 +82,7 @@
                             <a href="fav.php" class="dropdown-item">My Profile</a>
                             <a href="#" class="dropdown-item">Settings</a>
                             <a href="#" class="dropdown-item">Log Out</a>
+                            <a href="279.php" class="dropdown-item">TeRor!</a>
                         </div>
                     </div>
                 </div>
