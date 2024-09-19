@@ -67,6 +67,7 @@ $result = $conn->query($sql);
         th, td {
             padding: 15px;
             text-align: left;
+            border: 1px solid #ddd; /* Added border */
         }
 
         th {
@@ -77,6 +78,15 @@ $result = $conn->query($sql);
         tr:hover {
             background-color: #f5f5f5;
             cursor: pointer;
+        }
+
+        .search-container {
+            margin-bottom: 20px;
+        }
+
+        /* Remove underline from status column */
+        .no-underline {
+            text-decoration: none;
         }
     </style>
 </head>
@@ -92,7 +102,7 @@ $result = $conn->query($sql);
                 <div class="table-container">
                     <h2>Daftar Pinjaman</h2>
                     <div class="search-container">
-                        <input type="text" id="searchInput" placeholder="Cari...">
+                        <input type="text" id="searchInput" placeholder="Cari..." onkeyup="filterTable()">
                     </div>
 
                     <table id="pinjamanTable">
@@ -112,7 +122,7 @@ $result = $conn->query($sql);
                                     echo "<td>" . htmlspecialchars($row['judul']) . "</td>";
                                     echo "<td>" . htmlspecialchars($row['tanggal_pinjam']) . "</td>";  
                                     echo "<td>" . htmlspecialchars($row['tanggal_pengembalian']) . "</td>";
-                                    echo "<td>" . htmlspecialchars($row['status']) . "</td>";
+                                    echo "<td class='no-underline'>" . htmlspecialchars($row['status']) . "</td>"; // Added class
                                     echo "</tr>";
                                 }
                             } else {
@@ -126,6 +136,27 @@ $result = $conn->query($sql);
                 <script>
                     function redirectToPage(bookId) {
                         window.location.href = 'siswa_pinjam.php?id=' + bookId;
+                    }
+
+                    function filterTable() {
+                        const input = document.getElementById("searchInput");
+                        const filter = input.value.toLowerCase();
+                        const table = document.getElementById("pinjamanTable");
+                        const rows = table.getElementsByTagName("tr");
+
+                        for (let i = 1; i < rows.length; i++) {
+                            const cells = rows[i].getElementsByTagName("td");
+                            let found = false;
+
+                            for (let j = 0; j < cells.length; j++) {
+                                if (cells[j].textContent.toLowerCase().indexOf(filter) > -1) {
+                                    found = true;
+                                    break;
+                                }
+                            }
+
+                            rows[i].style.display = found ? "" : "none";
+                        }
                     }
                 </script>
             </div>
@@ -144,5 +175,5 @@ $result = $conn->query($sql);
     <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
     <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
     <script src="js/main.js"></script>
-</body>
+</body> 
 </html>

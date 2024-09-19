@@ -50,7 +50,7 @@ if (isset($_POST['simpan'])) {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: cyan;
+            background-color: white; /* Changed background color to white */
         }
         .container {
             max-width: 600px;
@@ -58,7 +58,7 @@ if (isset($_POST['simpan'])) {
             padding: 20px;
             border: 1px solid #ddd;
             border-radius: 8px;
-            background-color: white;
+            background-color: white; /* Keep container background white */
         }
         h1 {
             text-align: center;
@@ -122,8 +122,8 @@ if (isset($_POST['simpan'])) {
             <select id="status" name="status" required>
                 <option value="tersedia" <?php echo ($hasil['status'] == 'tersedia' ? 'selected' : ''); ?>>Tersedia</option>
                 <option value="dipinjam" <?php echo ($hasil['status'] == 'dipinjam' ? 'selected' : ''); ?>>Dipinjam</option>
-                <option value="sudah_dikembalikan" <?php echo ($hasil['status'] == 'sudah_dikembalikan' ? 'selected' : ''); ?>>Sudah Dikembalikan</option>
-                <option value="lewat_tempo" <?php echo ($hasil['status'] == 'lewat_tempo' ? 'selected' : ''); ?>>Lewat Tempo</option>
+                <option value="sudah dikembalikan" <?php echo ($hasil['status'] == 'sudah_dikembalikan' ? 'selected' : ''); ?>>Sudah Dikembalikan</option>
+                <option value="lewat tempo" <?php echo ($hasil['status'] == 'lewat_tempo' ? 'selected' : ''); ?>>Lewat Tempo</option>
             </select>
 
             <button type="submit" name="simpan">Simpan Perubahan</button>
