@@ -206,7 +206,7 @@ $result = $conn->query($sql);
                     <th>Nama Siswa</th>
                     <th>Hadir</th>
                     <th>Izin</th>
-                    <th>Sakit</th>
+                    <th>Sakit<a/th>
                     <th>Alfa</th>
                 </tr>
             </thead>

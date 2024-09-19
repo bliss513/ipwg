@@ -220,8 +220,8 @@ button[type="submit"]:hover, .cancel-btn:hover, .delete-btn:hover {
                     <input type="text" id="alamat" name="alamat" value="<?php echo htmlspecialchars($hasil['alamat']);?>">
                 </div>
                 <div class="input-group">
-                    <label for="hp">HP</label>
-                    <input type="number" id="hp" name="hp" value="<?php echo htmlspecialchars($hasil['hp']);?>">
+                    <label for="nomer_hp">nomer hp</label>
+                    <input type="number" id="nomer_hp" name="nomer_hp" value="<?php echo htmlspecialchars($hasil['nomer_hp']);?>">
                 </div>
                 <!-- <div class="input-group">
                     <label for="foto">Foto</label>

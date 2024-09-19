@@ -25,6 +25,7 @@ $siswa = mysqli_fetch_array($data);
             background-color: #fff;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
         }
         h2 {
             text-align: center;
@@ -35,7 +36,7 @@ $siswa = mysqli_fetch_array($data);
             margin: 10px 0 5px;
         }
         input[type="text"], input[type="date"] {
-            width: 30%;
+            width: 300px;
             padding: 8px;
             margin-bottom: 10px;
             border: 1px solid #ccc;
@@ -81,11 +82,18 @@ $siswa = mysqli_fetch_array($data);
         .hidden {
             display: none;
         }
+        .parent{
+            
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h2>Aplikasi Pembayaran SPP Sekolah</h2>
+        <div class = "parent">
         <form id="paymentForm">
             <div class="form-group">
                 <label for="nisn">NISN</label>
@@ -111,7 +119,7 @@ $siswa = mysqli_fetch_array($data);
             <button type="submit" class="btn btn-save">Simpan</button>
             <button type="button" class="btn btn-cancel" id="cancelBtn">Batal</button>
         </form>
-
+    </div>
         <!-- Section for displaying the report -->
         <div id="reportSection" class="hidden">
             <h3>Laporan Pembayaran SPP</h3>
