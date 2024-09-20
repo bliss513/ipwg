@@ -1,94 +1,160 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
+  <html>
+  
+    <style>
+  body {
+    margin: 0;
+    padding: 0;
+    background: url(home.jpg) ;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: sans-serif;
+  }
+  .login {
+    position: fixed;
+    top: 50%;
+    left: 40%;
+    transform: translate(-30%, -50%);
+    background: rgba(233, 230, 230, 0.707);
+    padding: 60px;
+    width: 270px;
+    box-shadow: 0px 0px 25px 10px rgb(106, 104, 104);
+    border-radius: 15px;
+  }
+  .avatar {
+    font-size: 30px ;
+    background: #ffffffc2;
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    position: fixed;
+    left: 50%;
+    top: 11%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    border-radius: 50%;
+  }
+  .login h2 {
+    text-align: center;
+    color: rgb(0, 0, 0);
+    font-size: 30px;
+    font-family: sans-serif;
+    letter-spacing: 1px;
+    padding-top: 25%;
+    margin-top: -20px;
+  }
+  .login h3 {
+    text-align: center;
+    color: rgb(9, 6, 6);
+    font-size: 14px;
+    font-family: sans-serif;
+    letter-spacing: 1px;
+    padding-top: 0;
+    margin-top: -20px;
+  }
+  .login p {
+    text-align: center;
+    color: rgb(86, 84, 84);
+    font-size: 16px;
+    font-family: sans-serif;
+    letter-spacing: 0,5px;
+    padding-top: 5%;
+    margin-top: -20px;
+  }
+  .box-login {
+    display: flex;
+    justify-content:space-between;
+    margin: 10px;
+    border-bottom: 2px solid rgb(195, 195, 193);
+    padding: 8px 0;
+  }
+  .box-login i {
+    font-size: 23px;
+    color: rgb(0, 0, 0);
+    padding: 5px 0;
+  }
+  .box-login input {
+    width: 85%;
+    padding: 5px 0;
+    background: none;
+    border: none;
+    outline: none;
+    color: rgb(239, 15, 15);
+    font-size: 18px;
+  }
+  .box-login input::placeholder {
+    color: rgb(25, 23, 23);
+  }
+  .btn-login
+  .box-login input:hover{
+    background: rgba(10, 10, 10,s 0.5);
+  }
+  .btn-login {
+    margin-left: 10px;
+    margin-bottom: 20px;
+    background-color: rgba(19, 161, 3, 0.992); 
+    border: 1px solid rgb(255, 255, 255);
+    width: 92.5%;
+    padding: 15px;
+    color: rgb(251, 251, 251);
+    font-size: 18px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    border-radius: 10px; 
+    font-size: 12px;
+    font-weight: bold;
+  }
+  .btn-login:hover{
+    background: rgb(8, 149, 3);
+  }
+  .bottom {
+    margin-left: 30px;
+    margin-right: 30px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .bottom a {
+    color: rgb(0, 0, 0);
+    font-size: 14px;
+    text-decoration: none;
+  }
+  .bottom a:hover {
+  text-decoration: underline;
+  }
+</style>
     <meta charset="utf-8">
-    <title>DASHMIN - Bootstrap Admin Template</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <title>Login</title>
+   
+    <link rel="stylesheet" href="assets/style.css" media="screen" title="no title">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+      <div class="login">
 
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+          <div class="avatar">
+            <img src="1.png" style="width: 100px;" alt="Avatar">       
+           </div>
 
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Icon Font Stylesheet -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+          <h2><b>Pembayaran SPP</b></h2>
+          <h3>Smk Ma'arif Walisongo Kajoran</h3>
+          <br>
+          <p>Masukan <b>Username</b> Dan <b>Password</b></p>
 
-    <!-- Libraries Stylesheet -->
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+          <div class="box-login">
+            <i class="fa fa-user"></i>
+            <input type="text" placeholder="Username">
+          </div>
 
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+          <div class="box-login">
+            <i class="fas fa-lock"></i>
+            <input type="text" placeholder="Password">
+          </div>
 
-    <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
-</head>
-
-<body>
-    <div class="container-xxl position-relative bg-white d-flex p-0">
-        <!-- Spinner Start -->
-        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-                <span class="sr-only">Loading...</span>
-            </div>
-        </div>
-        <!-- Spinner End -->
-
-
-        <!-- Sign In Start -->
-        <div class="container-fluid">
-            <div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh;">
-                <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
-                     <div class="bg-light rounded p-4 p-sm-5 my-4 mx-3">
-                        <div class="d-flex align-items-center justify-content-between mb-3">
-                            <a href="index.php" class="">
-                               
-                            </a>
-                           
-                        </div>
-                        <form method="POST" action="signin_aksi.php">
-                        <div class="form-floating mb-3">
-                            <input type="username" class="form-control" id="username" name="username">
-                            <label for="floatingInput">Username</label>
-                        </div>
-                        <div class="form-floating mb-4">
-                            <input type="password" class="form-control" id="password" name="password">
-                            <label for="floatingPassword">Password</label>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-between mb-4">
-                           
-                           
-                        </div>
-                        <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Sign In</button>
-                        <p class="text-center mb-0">Don't have an Account? <a href="signup.php">Sign Up</a></p>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Sign In End -->
-    </div>
-
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/chart/chart.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/tempusdominus/js/moment.min.js"></script>
-    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
-    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
-
-    <!-- Template Javascript -->
-    <script src="js/main.js"></script>
-</body>
-
-</html>
+          <button type="submit" name="login" class="btn-login">SIGN IN</button>
+          <div class="bottom">
+            <a href="#">© 2024 Smk Ma'arif M-w9</a>
+          </div>
+      </div>
+  </head>
+  </html>
