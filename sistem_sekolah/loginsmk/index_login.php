@@ -10,7 +10,7 @@
       <div class="login">
 
           <div class="avatar">
-            <img src="assets/img/1.png" style="width: 100px;" alt="Avatar">       
+            <img src="1.png" style="width: 100px;" alt="Avatar">       
            </div>
 
           <h2><b>Pembayaran SPP</b></h2>
