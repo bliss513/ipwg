@@ -215,34 +215,7 @@
                 <input type="text" id="nomer_hp" name="nomer_hp" required>
             </div>
 
-            <div class="col-md-8 form-item">
-                <label for="kelas">Kelas:</label>
-                <select id="kelas" name="kelas" required>
-                    <option value="" disabled selected>Pilih Kelas</option>
-                    <option value="X">X</option>
-                    <option value="XI">XI</option>
-                    <option value="XII">XII</option>
-                </select>
-            </div>
-            <div class="col-md-8 form-item">
-                <label for="tahun_akademik">Tahun Akademik:</label>
-                <select id="tahun_akademik" name="tahun_akademik" required>
-                    <option value="" disabled selected>Pilih Tahun Akademik</option>
-                    <option value="2023/2024">2023/2024</option>
-                    <option value="2024/2025">2024/2025</option>
-                    <option value="2025/2026">2025/2026</option>
-                </select>
-            </div>
-
-            <div class="col-md-8 form-item">
-                <label for="wajib_spp">Wajib SPP:</label>
-                <input type="text" id="wajib_spp" name="wajib_spp" class="currency-input" required>
-            </div>
-            <div class="col-md-8 form-item">
-                <label for="tanggal_masuk">Tanggal Masuk:</label>
-                <input type="date" id="tanggal_masuk" name="tanggal_masuk" required>
-            </div>
-        </div>
+          
         <button name="simpan" type="submit">Simpan</button>
     </form>
 </div>
@@ -329,7 +302,7 @@
             tableBody.appendChild(newRow);
 
             // Optionally clear the form after submission
-            document.getElementById('register.php').reset();
+            document.getElementById('button.php').reset();
         }
         header("Location:./button.php");
     </script>
