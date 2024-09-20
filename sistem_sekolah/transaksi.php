@@ -47,6 +47,7 @@ $siswa = mysqli_fetch_array($data);
         }
         .form-group {
             margin-bottom: 15px;
+
         }
         .btn {
             padding: 10px 15px;
@@ -109,7 +110,7 @@ $siswa = mysqli_fetch_array($data);
                 </div>
             <div class="form-group">
                 <label for="jumlah-bayar">Jumlah Bayar</label>
-                <input type="text" id="jumlah-bayar" placeholder="Masukkan jumlah bayar" required>
+                <input type="number" id="jumlah-bayar" placeholder="Masukkan jumlah bayar" required>
             </div>
             <div class="form-group">
                 <label for="total-bayar">Total Bayar</label>

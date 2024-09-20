@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
     <meta charset="utf-8">
     <title>sistem_sekolah</title>
@@ -99,7 +100,133 @@
 
 
             <!-- Widgets Start -->
-            <table width="6%" border="0" align="center" cellpadding="3" cellspacing="0">
+            <style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #FFFFFF; /* Ganti kuning dengan putih */
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    .container {
+        max-width: 900px;
+        margin: 25px auto;
+        background-color: white;
+        padding: 25px;
+        border-radius: 8px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        flex: 1;
+    }
+
+    h1 {
+        font-size: 32px;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    p {
+        font-size: 18px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    table {
+        width: 96%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    table, th, td {
+        border: none; /* Remove table borders */
+        padding: 12px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #0099FF; /* Green color for headers */
+        color: white;
+    }
+
+    th, td {
+        font-size: 16px;
+    }
+
+    tr:hover {
+        background-color: white; /* Add hover effect */
+        cursor: pointer;
+    }
+
+    .action-container {
+        display: none; /* Hide action buttons by default */
+    }
+
+    a {
+        text-decoration: none;
+        color: #4CAF50;
+        transition: color 0.3s;
+        font-weight: bold; /* Make link text bold */
+    }
+
+    a:hover {
+        color: #45a049;
+    }
+
+    button {
+        background-color: #FF0000; /* Red color for button */
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        cursor: pointer;
+        border-radius: 4px;
+        font-size: 16px;
+        transition: background-color 0.3s;
+    }
+
+    button:hover {
+        background-color: #e60000; /* Darker red for hover effect */
+    }
+
+    /* Search and Button Container */
+    .action-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .search-container {
+        display: flex;
+        align-items: center;
+    }
+
+    .search-container input[type="text"] {
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+        margin-left: 10px;
+        width: 200px; /* Adjust as needed */
+    }
+
+    /* Footer Styles */
+    .footer {
+        color: white;
+        text-align: center;
+        padding: 10px 0;
+        position: relative;
+        bottom: 0;
+        width: 100%;
+        box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    }
+</style>
+<table>
+    <tr>
+        <td>Data Siswa</td>
+    </tr>
+</table>
+            <table width="96%" border="0" align="center" cellpadding="3" cellspacing="0">
                 <thead>
                     <tr>
                         <th>Id</th>
@@ -129,10 +256,7 @@
             <!-- Widgets End -->
 
 
-            <?php
-            include 'footer.php';
-            ?>
-        </div>
+         
         <!-- Content End -->
 
 
