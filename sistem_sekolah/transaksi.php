@@ -95,7 +95,7 @@ $siswa = mysqli_fetch_array($data);
     <div class="container">
         <h2>Aplikasi Pembayaran SPP Sekolah</h2>
         <div class = "parent">
-        <form id="paymentForm">
+        <form id="paymentForm" action="proses-transaksi.php" method="POST">
             <div class="form-group">
                 <label for="nisn">NISN</label>
                 <input type="text" id="nisn" name="nisn" value="<?php echo $siswa['nisn']; ?>" required>

@@ -104,7 +104,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 $selected_jurnal = isset($_GET['jurnal']) ? $_GET['jurnal'] : '';
 $selected_date = isset($_GET['tanggal']) ? $_GET['tanggal'] : '';
 
-// Query untuk mengambil data dari tabel jurnal untuk dropdown
+// Query untuk mengambil data dari tabel jurnal untuk dropdown  
 $jurnal_sql = "SELECT id, mapel FROM jurnal";
 $jurnal_result = $conn->query($jurnal_sql);
 
